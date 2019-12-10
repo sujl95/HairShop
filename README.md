@@ -34,7 +34,8 @@
 
 ### 2.2 BlockQuote
 ```
-> BlckQuote
+> BlockQuote
+>> BlockQuote
 ```
 > BlockQuote1
 >> BlockQuote2
@@ -84,16 +85,16 @@ __double underscores__
     - 목차
 
 1. 순서
-  2. 있는
-    3. 목차
+2. 있는
+3. 목차
 ```
 - 순서
   - 없는
     - 목차
 
 1. 순서
-  2. 있는
-    3. 목차
+2. 있는
+3. 목차
 
 목차를 구분할 때 사용합니다.
 
