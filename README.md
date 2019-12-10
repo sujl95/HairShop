@@ -48,14 +48,12 @@
 _single underscores_
 **double asterisks**
 __double underscores__
-++underline++
 ~~cancelline~~
 ```
 *single asterisks*
 _single underscores_
 **double asterisks**
 __double underscores__
-++underline++
 ~~cancelline~~
 
 텍스트 스타일 마크다운입니다. 보통은 BOLD를 많이 활용합니다.
