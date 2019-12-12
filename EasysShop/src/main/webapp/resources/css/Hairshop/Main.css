@@ -96,7 +96,7 @@ html, body {
 	vertical-align: top;
 	width: 25px;
 	height: 25px;
-	background-image: url('../images/common/close.png');
+	background-image: url('../../images/Eimages/common/close.png');
 	background-size: 20px;
 	background-repeat: no-repeat;
 }
@@ -106,7 +106,7 @@ html, body {
 	vertical-align: top;
 	width: 25px;
 	height: 25px;
-	background-image: url('../images/common/open.png');
+	background-image: url("../../images/Eimages/common/open.png");
 	background-size: 20px;
 	background-repeat: no-repeat;
 }

@@ -9,24 +9,16 @@
 <!-- 탭 아이콘 -->
 <link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
 <!-- 메인 CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/css/Main.css" />
-<!-- 메인 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/Main2.css" />
-<!-- 레이아웃 스타일 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/layout.css" />
-<!-- 버튼 스타일 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/btn.css" />
-<!-- input 스타일 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/input.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/Main.css" />
 
 <!-- jQuery js 파일 -->
-<script type="text/javascript" src="./script/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <!-- 슬림 스크롤 js 파일 -->
-<script type="text/javascript" src="./script/jquery/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="resources/script/jquery/jquery.slimscroll.js"></script>
 <!-- 메인 js 파일 -->
-<script type="text/javascript" src="./script/Main.js"></script>
+<script type="text/javascript" src="resources/script/jquery/Main.js"></script>
 <!-- 버튼 js 파일 -->
-<script type="text/javascript" src="./script/btn.js"></script>
+<script type="text/javascript" src="resources/script/jquery/btn.js"></script>
 
 <script type="text/javascript">
 	//버튼에 한글자씩 추가되면 길이가 10씩 늘어납니다.
@@ -51,7 +43,7 @@
 	<div class="left_wrap">
 		<div class="logo_wrap">
 			<div>
-				<img src="./images/hairshop.ico"> EASYS SHOP
+				<img src="resources/images/Eimages/hairshop.ico"> EASYS SHOP
 			</div>
 		</div>
 		<div class="menu_wrap">
