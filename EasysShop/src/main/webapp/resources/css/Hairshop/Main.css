@@ -53,7 +53,6 @@ html, body {
 	margin-left: 5px;
 	color: #F2CB07;
 }
-
 .menu_wrap {
 	font-weight: bold;
 	text-indent: 10px;
@@ -212,6 +211,11 @@ html, body {
 .p_btn_area {
 	width: 60px;
 }
+.p_btn_cal_area {
+	padding: 10px;
+	width: 100px;
+}
+
 
 .p_btn_space {
 	height: 6px;

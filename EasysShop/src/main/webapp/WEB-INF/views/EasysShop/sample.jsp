@@ -12,6 +12,10 @@
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/Main.css" />
 <!-- 버튼 CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/btn.css" />
+<!-- 레이아웃 CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/layout.css" />
+<!-- input CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/input.css" />
 
 <!-- jQuery js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -38,6 +42,8 @@
 				$(this).width($(this).width() + (10 * leng_diff) + "px");
 			}
 		})
+		 
+		  
 	});
 </script>
 </head>
@@ -247,7 +253,20 @@
 				</div>
 			</div>
 			<div class="btn_area">
-				<input type="button" class="p_btn btn_size_normal" value="일정예약"/>
+				<div class="p_btn_cal_area">
+					<div class="p_btn btn_size_normal">
+						<div>
+							<div>일정예약</div>
+						</div>
+					</div>
+				</div>	
+				<div class="p_btn_cal_area">
+					<div class="p_btn btn_size_normal">
+						<div>
+							<div>대기고객</div>
+						</div>
+					</div>
+				</div>	
 				<div class="p_btn_area">
 					<div class="p_btn">
 						<div>
@@ -265,7 +284,44 @@
 		</div>
 			<div class="title_area">고객 목록</div>
 			<div class="content_area">
-				<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+				<div class="list_wrap">
+					<div class="table_top_area">
+						<div class="top_title_area">
+							
+						</div>
+						<div class="top_btn_area">
+							<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+							<input type="button" class="btn_normal btn_size_normal" value="수정"/>
+							<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+						</div>
+					</div>
+					<div class="table_top_area">
+						<div class="top_title_area size25">
+							<div>
+								<span id=list_cnt_all">#</span>
+								개 항목중
+								<span id=list_cnt_select">#</span>
+								개 선택
+							</div>
+						</div>
+						<div class="top_btn_area size75">
+							<select class="input_size pxsize100">
+								<option selected="selected">전체</option>
+								<option>예약자</option>
+								<option>연락처</option>
+								<option>담당자</option>
+								<option>예약내용</option>
+							</select>
+							<input class="input_size pxsize150" name="current" type="date" value="">
+							~
+							<input class="input_size pxsize150" type="date" value="">
+							<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">
+							<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+						</div>
+					</div>
+					<table class="table_list">
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -15,31 +15,17 @@
     font-size: 10pt;
     text-indent: 5px;
 }
-/* 기본 입력 폼 사이즈 */
-/* 10% */
-.input_size10{
-	width:10%;
+
+/* 사이즈 설정 입력폼 스타일 */
+.input_size {
+    height: 30px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+
+    font-size: 10pt;
+    text-indent: 5px;
 }
-/* 20% */
-.input_size20{
-	width:20%;
-}
-/* 35% */
-.input_size35{
-	width:35%;
-}
-/* 48% */
-.input_size48{
-	width:48%;
-}
-/* 70% */
-.input_size70{
-	width:70%;
-}
-/* 75% */
-.input_size75{
-	width:75%;
-}
+
 /* 기본 입력폼 Placeholder 스타일 */
 .input_normal::placeholder {
     color: #cacaca;
@@ -51,7 +37,6 @@
     height: 30px;
     border: 1px solid #eeeeee;
     border-radius: 3px;
-
     font-size: 10pt;
     text-indent: 5px;
 }
@@ -101,7 +86,7 @@
 
 /* 폼 포커스 스타일 */
 input:focus, textarea:focus, select:focus {
-    border: 1px solid #F2B807;
+    border: 1px solid #27a7df;
     box-shadow: none;
     outline: none;
 }
