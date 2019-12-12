@@ -7,17 +7,17 @@
 <meta charset="UTF-8">
 <title>고객 목록</title>
 <!-- 탭 아이콘 -->
-<link rel="shortcut icon" href="./images/hairshop.ico">
+<link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
 <!-- 메인 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/Main.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/css/Main.css" />
 <!-- 메인 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/Main2.css" />
+<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/Main2.css" />
 <!-- 레이아웃 스타일 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/layout.css" />
+<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/layout.css" />
 <!-- 버튼 스타일 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/btn.css" />
+<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/btn.css" />
 <!-- input 스타일 CSS -->
-<link rel="stylesheet" type="text/css" href="./css/input.css" />
+<link rel="stylesheet" type="text/css" href="./css/Hairshop/css/input.css" />
 
 <!-- jQuery js 파일 -->
 <script type="text/javascript" src="./script/jquery/jquery-1.12.4.min.js"></script>
