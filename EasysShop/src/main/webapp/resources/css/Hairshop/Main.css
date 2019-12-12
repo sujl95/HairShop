@@ -14,7 +14,7 @@ html, body {
 	vertical-align: top;
 	width: 200px;
 	/* height: 100%; */
-	background-color: #4886D9;
+	background-color: #F2F2F2;
 	box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -29,7 +29,7 @@ html, body {
 	display: table;
 	width: 100%;
 	height: 60px;
-	background-color: #3068D9;
+	background-color: #27a7df;
 	font-size: 20px;
 	font-weight: bold;
 	color: #F2F2F2;
@@ -69,8 +69,8 @@ html, body {
 }
 
 .first_menu:hover {
-	background-color: #B6DBF2;
-	color: #595959;
+	/* background-color: #B6DBF2; */
+	color: #000000;
 }
 
 .first_menu_on {
@@ -78,8 +78,8 @@ html, body {
 	color: #F2f2f2;
 }
 .first_menu {
-	background-color: #27a7df;
-	color: #F2f2f2;
+	background-color: #FFFFFF;
+	color: #595959;
 }
 
 .first_menu > div, .first_menu_on > div {
@@ -119,19 +119,17 @@ html, body {
 	display: table;
 	width: 100%;
 	font-size: 12pt;
-	color: #F2F2F2;
+	color: #595959;
 	height: 40px;
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .second_menu:hover {
-	background-color: #B6DBF2;
-	color: #595959;
+	color: #000000;
 }
 
 .second_menu_on {
-	background-color: #4886D9;
-	color: #595959;
+	color: #27a7df;
 }
 
 .second_menu > div, .second_menu_on > div {
@@ -143,14 +141,15 @@ html, body {
 .gnb_wrap {
 	min-width: 1080px;
 	height: 60px;
-	background-color: #EEEEEE;
+	/* background-color: #EEEEEE; */
+	background-color: #27a7df;
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .gnb_area {
 	display: inline-block;
 	vertical-align: top;
-	width: calc(100% - 260px);
+	width: calc(100% - 400px);
 	height: 60px;
 }
 
@@ -160,7 +159,7 @@ html, body {
 	height: 60px;
 	font-size: 14pt;
 	font-weight: bold;
-	color: #595959;
+	color: #f2f2f2;
 }
 
 .gnb_area > div > div {
@@ -170,15 +169,15 @@ html, body {
 	text-indent: 20px;
 }
 
-.person_area {
+.btn_area {
 	display: inline-block;
 	vertical-align: top;
-	width: 240px;
+	width: 400px;
 	height: 50px;
 	padding: 5px 10px;
 }
 
-.person_area > div {
+.btn_area > div {
 	display: inline-block;
 	vertical-align: top;
 	height: 50px;
@@ -221,24 +220,30 @@ html, body {
 .p_btn {
 	width: calc(100% - 2px);
 	height: 20px;
-	background-color: #F2B807;
-	border: 1px solid #707070;
+	background-color: #27aae1;
+	border: 1px solid #ffffff;
 	border-radius: 3px;
 	font-size: 10px;
 	cursor: pointer;
+	color: #FFFFFF;
 }
 
 .p_btn:hover {
-	background-color: #F2CB07;
+	color : #27aae1;
+	background-color: #ffffff;
 }
 
+.size80 {
+	width : 80px;
+	height : 30px;
+}
 .p_btn > div {
 	display: table;
 	width: 100%;
 	height: 20px;
 	font-size: 10pt;
 	font-weight: bold;
-	color: #595959;
+	
 }
 
 .p_btn > div > div {

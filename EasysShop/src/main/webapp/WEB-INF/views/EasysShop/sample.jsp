@@ -10,6 +10,8 @@
 <link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
 <!-- 메인 CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/Main.css" />
+<!-- 버튼 CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/btn.css" />
 
 <!-- jQuery js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -43,7 +45,7 @@
 	<div class="left_wrap">
 		<div class="logo_wrap">
 			<div>
-				<img src="resources/images/Eimages/hairshop.ico"> EASYS SHOP
+				<img src="resources/images/Eimages/EasysShopLogo.PNG"> EASYS SHOP
 			</div>
 		</div>
 		<div class="menu_wrap">
@@ -69,17 +71,17 @@
 					<div class="menu_gbn"></div>
 				</div>
 			</div>
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>직원등록</div>
-					</div>
-					<div class="second_menu">
-						<div>직원관리</div>
-					</div>
-					<div class="second_menu">
-						<div>근태관리</div>
-					</div>
-				</div>
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>직원등록</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>직원관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>근태관리</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			
 			<div class="first_menu">
 				<div>
@@ -87,37 +89,37 @@
 					<div class="menu_gbn"></div>
 				</div>
 			</div>
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>시술등록</div>
-					</div>
-					<div class="second_menu">
-						<div>시술관리</div>
-					</div>
-					<div class="second_menu">
-						<div>시술일별현황</div>
-					</div>
-					<div class="second_menu">
-						<div>시술상위고객</div>
-					</div>
-				</div>
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>시술등록</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>시술관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>시술일별현황</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>시술상위고객</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="first_menu">
 				<div>
 					<div class="menu_txt">판매</div>
 					<div class="menu_gbn"></div>
 				</div>
 			</div>
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>판매등록</div>
-					</div>
-					<div class="second_menu">
-						<div>판매관리</div>
-					</div>
-					<div class="second_menu">
-						<div>판매일별현황</div>
-					</div>
-				</div>
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>판매등록</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>판매관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>판매일별현황</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="first_menu_wrap">
 				<div class="first_menu">
 					<div>
@@ -126,17 +128,15 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>포인트등록</div>
-					</div>
-					<div class="second_menu">
-						<div>포인트관리</div>
-					</div>
-				</div>
-				<div class="first_menu_wrap">
-			
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>포인트등록</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>포인트관리</div> -->
+<!-- 				</div> -->
+<!-- 			</div>  -->
+			<div class="first_menu_wrap">
 			<div class="first_menu">
 				<div>
 					<div class="menu_txt">재고</div>
@@ -144,31 +144,30 @@
 				</div>
 			</div>
 			</div>
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>재고등록</div>
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 					<div class="second_menu"> -->
+<!-- 						<div>재고등록</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="second_menu"> -->
+<!-- 						<div>재고현황</div> -->
+<!-- 					</div> -->
+<!-- 			</div> -->
+			<div class="first_menu_wrap">
+				<div class="first_menu">
+					<div>
+						<div class="menu_txt">입고</div>
+						<div class="menu_gbn"></div>
 					</div>
-					<div class="second_menu">
-						<div>재고현황</div>
-					</div>
-				</div>
-				<div class="first_menu_wrap">
-			
-			<div class="first_menu">
-				<div>
-					<div class="menu_txt">입고</div>
-					<div class="menu_gbn"></div>
 				</div>
 			</div>
-			</div>
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>입고등록</div>
-					</div>
-					<div class="second_menu">
-						<div>입고관리</div>
-					</div>
-				</div>
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>입고등록</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>입고관리</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<div class="first_menu_wrap">
 				<div class="first_menu">
 					<div>
@@ -176,54 +175,43 @@
 						<div class="menu_gbn"></div>
 					</div>
 				</div>
-				<!-- <div class="second_menu_wrap">
-				<div class="second_menu">
-					<div>등급목록</div>
-				</div>
-				<div class="second_menu">
-					<div>등급 추가/수정</div>
-				</div>
-			</div> -->
 			</div>
-			
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>출고등록</div>
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 					<div class="second_menu"> -->
+<!-- 						<div>출고등록</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="second_menu"> -->
+<!-- 						<div>출고관리</div> -->
+<!-- 					</div> -->
+<!-- 			</div> -->
+			<div class="first_menu_wrap">
+				<div class="first_menu">
+					<div>
+						<div class="menu_txt">기초코드관리</div>
+						<div class="menu_gbn"></div>
 					</div>
-					<div class="second_menu">
-						<div>출고관리</div>
-					</div>
-				</div>
-				<div class="first_menu_wrap">
-			
-			<div class="first_menu">
-				<div>
-					<div class="menu_txt">기초코드관리</div>
-					<div class="menu_gbn"></div>
 				</div>
 			</div>
-			</div>
-			<div class="second_menu_wrap">
-					<div class="second_menu">
-						<div>등급코드관리</div>
-					</div>
-					<div class="second_menu">
-						<div>시술코드관리</div>
-					</div>
-					<div class="second_menu">
-						<div>직급코드관리</div>
-					</div>
-					<div class="second_menu">
-						<div>상품코드관리</div>
-					</div>
-					<div class="second_menu">
-						<div>계정코드관리</div>
-					</div>
-					<div class="second_menu">
-						<div>거래처코드관리</div>
-					</div>
-					
-				</div>
+<!-- 			<div class="second_menu_wrap"> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>등급코드관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>시술코드관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>직급코드관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>상품코드관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>계정코드관리</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="second_menu"> -->
+<!-- 					<div>거래처코드관리</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 				<div class="first_menu_wrap">
 			
 			<div class="first_menu">
@@ -258,15 +246,8 @@
 					<div>Home > 고객 > 고객 목록</div>
 				</div>
 			</div>
-			<div class="person_area">
-				<div class="p_img"></div>
-				<div class="p_info">
-					<div>
-						<div>
-							이성준 팀장<br />고객1팀
-						</div>
-					</div>
-				</div>
+			<div class="btn_area">
+				<input type="button" class="p_btn btn_size_normal" value="일정예약"/>
 				<div class="p_btn_area">
 					<div class="p_btn">
 						<div>
@@ -284,7 +265,7 @@
 		</div>
 			<div class="title_area">고객 목록</div>
 			<div class="content_area">
-			
+				<input type="button" class="btn_normal btn_size_normal" value="등록"/>
 			</div>
 		</div>
 	</div>

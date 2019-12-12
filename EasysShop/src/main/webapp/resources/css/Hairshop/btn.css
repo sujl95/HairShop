@@ -9,7 +9,7 @@
 }
 /* 버튼 색 스타일 */
 /* 노란색 버튼 */
-.btn_yellow {
+.btn_normal {
     display: inline-block;
     margin-left: 10px;
 
@@ -18,16 +18,16 @@
 
     border-radius: 3px;
 
-    background-color: #F2B807;
-    border: 1px solid #c5960a;
-    color: #272727;
+    background-color: #27aae1;
+    border: 1px solid #008aab;
+    color: #ffffff;
 
     font-size: 10pt;
     font-weight: bold;
     cursor: pointer;
 }
-.btn_yellow:hover {
-    background-color: #F2CB07;
+.btn_normal:hover {
+    background-color: #1d95c9;
 }
 /* 검은색 버튼 */
 .btn_black {
