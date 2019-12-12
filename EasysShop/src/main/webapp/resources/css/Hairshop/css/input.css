@@ -1,0 +1,119 @@
+/* 
+    모든 입력 폼의 스타일을 정의
+*/
+* {
+	box-sizing: border-box;
+}
+
+/* 기본 입력폼 스타일 */
+.input_normal {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+
+    font-size: 10pt;
+    text-indent: 5px;
+}
+/* 기본 입력 폼 사이즈 */
+/* 10% */
+.input_size10{
+	width:10%;
+}
+/* 20% */
+.input_size20{
+	width:20%;
+}
+/* 35% */
+.input_size35{
+	width:35%;
+}
+/* 48% */
+.input_size48{
+	width:48%;
+}
+/* 70% */
+.input_size70{
+	width:70%;
+}
+/* 75% */
+.input_size75{
+	width:75%;
+}
+/* 기본 입력폼 Placeholder 스타일 */
+.input_normal::placeholder {
+    color: #cacaca;
+}
+
+/* 짧은 입력폼 스타일 */
+.input_short {
+    width: 30%;
+    height: 30px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+
+    font-size: 10pt;
+    text-indent: 5px;
+}
+/* 짧은 입력폼 Placeholder 스타일 */
+.input_short::placeholder {
+    color: #cacaca;
+}
+
+/* 
+    읽기 전용 입력폼 스타일 
+    - 보통 주소 입력폼에서 사용  
+*/
+.input_readonly {
+    background-color: #e0e0e0;
+    color: #7a7a7a;
+    vertical-align: top;
+}
+/* 주소 입력폼 간격용 div magin 스타일 */
+.field_contents>.address_margin {
+    margin-bottom: 10px;
+}
+
+/* Textarea 기본 스타일 - 가로 크기 고정 */
+.textarea_normal {
+    width: 100%;
+    height: 100px;
+    min-height: 100px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+    resize: vertical;
+
+    font-size: 10pt;
+}
+/* Textarea 크기고정 스타일 */
+.textarea_noresize {
+    width: 100%;
+    height: 60px;
+    min-height: 60px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+    resize: none;
+
+    font-size: 10pt;
+}
+
+/* 짧은 Select 박스 스타일 */
+
+/* 폼 포커스 스타일 */
+input:focus, textarea:focus, select:focus {
+    border: 1px solid #F2B807;
+    box-shadow: none;
+    outline: none;
+}
+/* 드랍다운 리스트 */
+.input_DD:hover {
+	cursor:pointer;
+}
+
+/* 고객 검색 텍스트 스타일*/
+.input_txt_100size {
+	width : 100px;
+}
+.input_txt_200size {
+	width : 200px;
+}
