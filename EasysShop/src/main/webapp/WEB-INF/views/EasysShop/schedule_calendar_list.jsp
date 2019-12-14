@@ -228,7 +228,7 @@
 				<div class="second_menu">
 					<div>예약&일정</div>
 				</div>
-				<div class="second_menu">
+				<div class="second_menu_on">
 					<div>월간 예약 목록</div>
 				</div>
 				<div class="second_menu">

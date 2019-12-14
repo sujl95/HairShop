@@ -20,6 +20,18 @@ public class EController {
 		mav.setViewName("EasysShop/sample");
 		return mav;
 	}
+	
+	@RequestMapping(value = {"/schedule_calendar_list"})
+	public ModelAndView schedule_calendar_list(ModelAndView mav) {
+		mav.setViewName("EasysShop/schedule_calendar_list");
+		return mav;
+	}
+	
+	@RequestMapping(value = {"/schedule_reservation_list"})
+	public ModelAndView schedule_reservation_list(ModelAndView mav) {
+		mav.setViewName("EasysShop/schedule_reservation_list");
+		return mav;
+	}
 		
 	
 

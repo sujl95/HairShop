@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>월간 예약 목록</title>
+<title>월간 일정 목록</title>
 <!-- 탭 아이콘 -->
 <link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
 <!-- 메인 CSS -->
@@ -231,7 +231,7 @@
 				<div class="second_menu">
 					<div>월간 예약 목록</div>
 				</div>
-				<div class="second_menu">
+				<div class="second_menu_on">
 					<div>월간 일정 목록</div>
 				</div>
 				</div>
@@ -258,7 +258,7 @@
 		<div class="gnb_wrap">
 			<div class="gnb_area">
 				<div>
-					<div>Home > 예약&일정 > 월간 예약 목록 </div>
+					<div>Home > 예약&일정 > 월간 일정 목록 </div>
 				</div>
 			</div>
 			<div class="btn_area">
@@ -291,7 +291,7 @@
 				</div>
 			</div>
 		</div>
-			<div class="title_area">월간 예약 목록</div>
+			<div class="title_area">월간 일정 목록</div>
 			<div class="content_area">
 				<div class="list_wrap">
 					<div class="table_top_area">
@@ -310,10 +310,8 @@
 						<div class="top_title_area size40" style="vertical-align: top;">
 							<select class="input_size pxsize100">
 								<option selected="selected">전체</option>
-								<option>예약자</option>
-								<option>연락처</option>
 								<option>담당자</option>
-								<option>예약내용</option>
+								<option>일정내용</option>
 							</select>
 							<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
 							~
@@ -349,16 +347,14 @@
 					</div>
 					<table class="table_list">
 						<colgroup>
-							<col width="5%">
-							<col width="5%">
-							<col width="5%">
-							<col width="10%">
-							<col width="10%">
+							<col width="8%">
+							<col width="8%">
+							<col width="8%">
+							<col width="8%">
+							<col width="13%">
 							<col width="15%">
 							<col width="10%">
-							<col width="10%">
-							<col width="10%">
-							<col width="20%">
+							<col width="25%">
 						</colgroup>
 						<tbody>
 							<tr class="table_list_header">
@@ -371,12 +367,10 @@
 								<td>수정</td>
 								<td>삭제</td>
 								<td>NO</td>
-								<td>예약일</td>
-								<td>예약시간</td>
-								<td>예약자</td>
-								<td>연락처</td>
+								<td>일시</td>
+								<td>일정시간</td>
 								<td>담당자</td>
-								<td>예약내용</td>
+								<td>일정내용</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -391,9 +385,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -408,9 +400,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -425,9 +415,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -442,9 +430,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -459,9 +445,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -476,9 +460,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -493,9 +475,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -510,9 +490,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -527,9 +505,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -544,9 +520,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 						</tbody>
 					</table>

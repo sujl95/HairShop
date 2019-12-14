@@ -8,7 +8,7 @@
 	box-sizing: border-box;
 }
 /* 버튼 색 스타일 */
-/* 노란색 버튼 */
+/* 파랑 버튼 */
 .btn_normal {
     display: inline-block;
     margin-left: 10px;
@@ -22,6 +22,20 @@
     border: 1px solid #008aab;
     color: #ffffff;
 
+    font-size: 10pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* 파랑date 버튼 */
+.btn_date {
+    display: inline-block;
+    margin-left: 1px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 3px;
+    background-color: #27aae1;
+    border: 1px solid #008aab;
+    color: #ffffff;
     font-size: 10pt;
     font-weight: bold;
     cursor: pointer;
@@ -98,19 +112,15 @@
     width: 40px;
     height: 40px;
     line-height: 40px;
-
     vertical-align: middle;
     text-align: center;
-
-    background-color: #595959;
+    background-color: #27aae1;
     color: #ffffff;
-
     font-size: 10pt;
     cursor: pointer;
 }
 .btn_paging:hover {
-    background-color: #F2B807;
-    color: #272727;
+    background-color: #1d95c9;
 }
 
 

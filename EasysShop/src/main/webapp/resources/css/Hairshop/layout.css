@@ -48,12 +48,10 @@
 
 /* 기본 테이블 설정 */
 .table_normal {
-    width: 1080px;
+    width: 1200px;
     text-align: center;
     border-collapse: collapse;
-
-    border-top: 2px solid #F2B807;
-
+/*     border-top: 2px solid #F2B807; */
     font-size: 0;
 }
 /* tr 기본 설정 */
@@ -125,15 +123,12 @@ tr {
 /* 리스트 테이블 헤더 */
 .table_list_header {
     height: 50px;
-    
-    background-color: #595959;
-    
+    background-color: #27a7df;
     vertical-align: middle;
 }
 .table_list_header td {
     padding : 10px 15px;
     color: #ffffff;
-
     font-size: 10pt;
     font-weight: bold;
     vertical-align: middle;
@@ -145,7 +140,16 @@ tr {
     color: #000000;
     vertical-align: middle;
 }
+.list_contents td:hover {
+	cursor : pointer;
+/* 	border-bottom : 1px solid #595959; */
+	text-decoration : underline;
+}
 
+/* none_hover */
+.none_hover {
+	cursor : default;
+}
 .td_left_align {
     text-align: left;
 }
@@ -198,13 +202,25 @@ tr {
 .size25{
 	width:25%;
 }
+/* 30% */
+.size30{
+	width:30%;
+}
 /* 35% */
 .size35{
 	width:35%;
 }
+/* 40% */
+.size40{
+	width:40%;
+}
 /* 48% */
 .size48{
 	width:48%;
+}
+/* 60% */
+.size60{
+	width:60%;
 }
 /* 70% */
 .size70{
@@ -235,9 +251,17 @@ tr {
 .pxsize35{
 	width:35px;
 }
-/* 48px */
-.pxsize48{
-	width:48px;
+/* 40px */
+.pxsize40{
+	width:40px;
+}
+/* 50px */
+.pxsize50{
+	width:50px;
+}
+/* 60px */
+.pxsize60{
+	width:60px;
 }
 /* 70px */
 .pxsize70{
