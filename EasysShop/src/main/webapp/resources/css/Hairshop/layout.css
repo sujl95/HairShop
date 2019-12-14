@@ -64,15 +64,18 @@ tr {
 .tr_no_uline {
     border-bottom: 0;
 }
+
+
 /* 필드명 */
 .field_name {
     background-color: #f2f2f2;
     color: #272727;
     border: 1px solid #cacaca;
-
     font-size: 10pt;
     font-weight: bold;
 }
+
+
 /* 맨왼쪽 필드명 스타일 - border-left 제거 */
 .first_field_name {
     border-left: 0;
@@ -84,10 +87,8 @@ tr {
 /* 필드 내용 */
 .field_contents {
     padding: 10px 15px;
-
     text-align: left;
     vertical-align: middle;
-
     font-size: 10pt;
 }
 /* 필드 내용이되 정렬은 가운데로 하고싶을때 */
@@ -233,6 +234,14 @@ tr {
 /* 80% */
 .size80{
 	width:80%;
+}
+/* 90% */
+.size90{
+	width:90%;
+}
+/* 100% */
+.size100{
+	width:100%;
 }
 /* 기본 입력 폼 px 사이즈 */
 /* 10px */

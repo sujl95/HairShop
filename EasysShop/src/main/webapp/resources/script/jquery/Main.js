@@ -8,6 +8,7 @@ $(document).ready(function() {
 	});
 	
 	setDate();
+	popsetDays();
 	//최상단 체크박스 클릭
     $("#checkall").click(function(){
         //클릭되었으면
@@ -67,6 +68,20 @@ function setDays(daysago) {
 	endDate1[2] = endDate1[2] > 9 ? endDate1[2] : '0' + endDate1[2];
 	$("#startDate").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
 }
+function popsetDays() {
+	let startDateD = new Date();
+	console.log(startDateD);
+	startDateD.setDate(startDateD.getDate()+1);
+	console.log(startDateD);
+	var endDate1 = startDateD.toLocaleString();
+	console.log(endDate1);
+	var endDate1 = endDate1.length == 24 ?endDate1.substring(0,12).split(". ") : endDate1.substring(0,13).split(". ");
+	endDate1[1] = endDate1[1] > 9 ? endDate1[1] : '0' + endDate1[1];
+	endDate1[2] = endDate1[2] > 9 ? endDate1[2] : '0' + endDate1[2];
+	console.log(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
+	$("#popstartDate").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
+	console.log("체크");
+}
 
 function setDate() {
 	var date = new Date();
@@ -74,8 +89,10 @@ function setDate() {
 	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + date.getMonth()+1;
 	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + date.getMonth()+1;
 	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-	$("input[type=date]").val(yyyy+"-"+mm+"-"+dd);
-	$("input[name=datemove]").val(yyyy+"-"+mm+"-"+"01");
+	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
+	$("#startDate").val(yyyy+"-"+mm+"-"+"01");
+//	$("input[type=date]").val(yyyy+"-"+mm+"-"+dd);
+//	$("input[name=datemove]").val(yyyy+"-"+mm+"-"+"01");
 }
 //function setDays(daysago) {
 //	var endDatearr = $("#endDate").val().split("-");

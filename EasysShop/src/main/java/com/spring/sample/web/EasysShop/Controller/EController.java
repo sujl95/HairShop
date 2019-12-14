@@ -32,6 +32,11 @@ public class EController {
 		mav.setViewName("EasysShop/schedule_reservation_list");
 		return mav;
 	}
+	@RequestMapping(value = {"/schedule_main_list"})
+	public ModelAndView schedule_main_list(ModelAndView mav) {
+		mav.setViewName("EasysShop/schedule_main_list");
+		return mav;
+	}
 		
 	
 
