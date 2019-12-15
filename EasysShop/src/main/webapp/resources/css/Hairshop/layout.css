@@ -113,6 +113,11 @@ tr {
 .list_wrap {
     width: 1200px;
 }
+/* 테이블 보더  */ 
+.tborder tr td{
+	border : 1px solid #cacaca;
+	font-size : 9pt;
+}
 /* 리스트 테이블 */
 .table_list {
     width: 100%;
@@ -256,6 +261,10 @@ tr {
 .pxsize25{
 	width:25px;
 }
+/* 30px */
+.pxsize30{
+	width:30px;
+}
 /* 35px */
 .pxsize35{
 	width:35px;
@@ -291,6 +300,10 @@ tr {
 /* 150px */
 .pxsize150{
 	width:150px;
+}
+/* 180px */
+.pxsize180{
+	width:180px;
 }
 /* 200px */
 .pxsize200{
