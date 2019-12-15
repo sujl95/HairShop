@@ -48,7 +48,184 @@
 </script>
 </head>
 <body>
-	<div class="pop_wrap pop_on">
+	<!-- 고객 등급 목록 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Customer_Grade pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						고객 등급 코드
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td class="field_name first_field_name">검색어</td>
+								<td class="field_contents">
+									<input class="input_size size60" type="text">
+									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table_list">
+						<colgroup>
+							<col width="15%">
+							<col width="35%">
+							<col width="25%">
+							<col width="25%">
+						</colgroup>
+						<tr class="table_list_header">
+							<td>
+								<div class="squaredOne_h">
+									<input type="checkbox" value="None" style="display : none;" id="pop_CG_checkall"  />
+									<label for="pop_CG_checkall"  ></label> <!-- squaredOne 같이? -->
+								</div>
+							</td>
+							<td>등급명</td>
+							<td>레벨</td>
+							<td>수정</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne1" name="pop_CG_check" />
+										<label for="pop_CG_squaredOne1"></label>
+									</div>
+								</td>
+								<td>Bronze</td>
+								<td>1</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne2" name="pop_CG_check" />
+										<label for="pop_CG_squaredOne2"></label>
+									</div>
+								</td>
+								<td>Silver</td>
+								<td>2</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne3" name="pop_CG_check" />
+										<label for="pop_CG_squaredOne3"></label>
+									</div>
+								</td>
+								<td>Gold</td>
+								<td>3</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne4" name="pop_CG_check" />
+										<label for="pop_CG_squaredOne4"></label>
+									</div>
+								</td>
+								<td>Platinum</td>
+								<td>4</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne5" name="pop_CG_check" />
+										<label for="pop_CG_squaredOne5"></label>
+									</div>
+								</td>
+								<td>Diamond</td>
+								<td>5</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne6" name="pop_CG_check" />
+										<label for="pop_CG_squaredOne6"></label>
+									</div>
+								</td>
+								<td>Master</td>
+								<td>6</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne7" name="pop_CG_check" />
+										<label for="pop_CG_squaredOne7"></label>
+									</div>
+								</td>
+								<td>Challenger</td>
+								<td>7</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+						</tr>
+					</table>
+					<div class="pop_btn_bottom_area">
+						<input type="button" class="btn_normal btn_size_normal" value="코드등록"/>
+						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+						<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 고객 등급 목록 팝업 - 등록,수정팝업 -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Customer_Grade_add pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						고객 등급 수정
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<div class="list_wrap">
+						<div class="table_top_area">
+							<div class="top_title_area">
+								등급명을 입력하신뒤 등록을 클릭하세요
+							</div>
+						</div>
+					</div>
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td class="field_name first_field_name">검색어</td>
+								<td class="field_contents">
+									<input class="input_size pxsize100" type="text">
+									<input type="button" class="btn_normal btn_size_normal pxsize70" value="확인"/>
+									<input type="button" class="btn_normal btn_size_normal pxsize70" value="취소"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	</div>
+	
+	<!-- 일정예약 등록 팝업 -->
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_schedule pop_white">
 				<div class="pop_title_area">

@@ -23,19 +23,33 @@
 .pop_white {
 	background-color : #FFFFFF;
 }
-/* 일정 등록 팝업 */
+/* 일정 등록 팝업 크기 */
 .pop_size_schedule {
 	width : 500px;
 	height : 350px;
 	top : calc(50% - 250px);
 	left : calc(50% - 400px);
 }
-/* 예약 등록 팝업 */
+/* 예약 등록 팝업 크기 */
 .pop_size_calendar {
 	width : 500px;
 	height : 400px;
 	top : calc(50% - 250px);
 	left : calc(50% - 400px);
+}
+/* 고객 등급 목록 팝업 크기*/
+.pop_size_Customer_Grade {
+	width : 400px;
+	height : 600px;
+	top : calc(50% - 250px);
+	left : calc(50% - 400px);
+}
+/* 고객 등급 목록 - 등록, 수정 팝업 크기*/
+.pop_size_Customer_Grade_add {
+	width : 400px;
+	height : 200px;
+	top : calc(50% - 50px);
+	left : calc(50% - 200px);
 }
 
 /* 팝업 기본형태 */

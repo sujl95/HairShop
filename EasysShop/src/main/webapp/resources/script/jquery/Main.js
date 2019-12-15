@@ -21,6 +21,17 @@ $(document).ready(function() {
             $("input[name=check]").prop("checked",false);
         }
     });
+    $("#pop_CG_checkall").click(function(){
+    	//클릭되었으면
+    	if($("#pop_CG_checkall").prop("checked")){
+    		//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+    		$("input[name=pop_CG_check]").prop("checked",true);
+    		//클릭이 안되있으면
+    	}else{
+    		//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+    		$("input[name=pop_CG_check]").prop("checked",false);
+    	}
+    });
     
     $("#today").click(function(){
     	var date = new Date();
@@ -70,17 +81,12 @@ function setDays(daysago) {
 }
 function popsetDays() {
 	let startDateD = new Date();
-	console.log(startDateD);
 	startDateD.setDate(startDateD.getDate()+1);
-	console.log(startDateD);
 	var endDate1 = startDateD.toLocaleString();
-	console.log(endDate1);
 	var endDate1 = endDate1.length == 24 ?endDate1.substring(0,12).split(". ") : endDate1.substring(0,13).split(". ");
 	endDate1[1] = endDate1[1] > 9 ? endDate1[1] : '0' + endDate1[1];
 	endDate1[2] = endDate1[2] > 9 ? endDate1[2] : '0' + endDate1[2];
-	console.log(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
 	$("#popstartDate").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
-	console.log("체크");
 }
 
 function setDate() {
