@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>월간 예약 목록</title>
+<title>월간 일정 목록</title>
 <!-- 탭 아이콘 -->
 <link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
 <!-- 메인 CSS -->
@@ -18,6 +18,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/input.css" />
 <!-- 팝업 CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/pop.css" />
+
 <!-- jQuery js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <!-- 슬림 스크롤 js 파일 -->
@@ -48,190 +49,13 @@
 </script>
 </head>
 <body>
-	<!-- 고객 등급 목록 팝업  -->
-	<div class="pop_wrap pop_off">
-		<div class="pop_bg"></div>
-			<div class="pop pop_size_Customer_Grade pop_white">
-				<div class="pop_title_area">
-					<div class="pop_title_text">
-						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						고객 등급 코드
-					</div>
-					<div class="pop_close">
-						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
-					</div>
-				</div>
-				<div class="pop_schedule_contents">
-					<table class="pop_table">
-						<colgroup>
-							<col width="20%">
-							<col width="80%">
-						</colgroup>
-						<tbody>
-							
-							<tr>
-								<td class="field_name first_field_name">검색어</td>
-								<td class="field_contents">
-									<input class="input_size size60" type="text">
-									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table class="table_list">
-						<colgroup>
-							<col width="15%">
-							<col width="35%">
-							<col width="25%">
-							<col width="25%">
-						</colgroup>
-						<tr class="table_list_header">
-							<td>
-								<div class="squaredOne_h">
-									<input type="checkbox" value="None" style="display : none;" id="pop_CG_checkall"  />
-									<label for="pop_CG_checkall"  ></label> <!-- squaredOne 같이? -->
-								</div>
-							</td>
-							<td>등급명</td>
-							<td>레벨</td>
-							<td>수정</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne1" name="pop_CG_check" />
-										<label for="pop_CG_squaredOne1"></label>
-									</div>
-								</td>
-								<td>Bronze</td>
-								<td>1</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne2" name="pop_CG_check" />
-										<label for="pop_CG_squaredOne2"></label>
-									</div>
-								</td>
-								<td>Silver</td>
-								<td>2</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne3" name="pop_CG_check" />
-										<label for="pop_CG_squaredOne3"></label>
-									</div>
-								</td>
-								<td>Gold</td>
-								<td>3</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne4" name="pop_CG_check" />
-										<label for="pop_CG_squaredOne4"></label>
-									</div>
-								</td>
-								<td>Platinum</td>
-								<td>4</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne5" name="pop_CG_check" />
-										<label for="pop_CG_squaredOne5"></label>
-									</div>
-								</td>
-								<td>Diamond</td>
-								<td>5</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne6" name="pop_CG_check" />
-										<label for="pop_CG_squaredOne6"></label>
-									</div>
-								</td>
-								<td>Master</td>
-								<td>6</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_CG_squaredOne7" name="pop_CG_check" />
-										<label for="pop_CG_squaredOne7"></label>
-									</div>
-								</td>
-								<td>Challenger</td>
-								<td>7</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-						</tr>
-					</table>
-					<div class="pop_btn_bottom_area">
-						<input type="button" class="btn_normal btn_size_normal" value="코드등록"/>
-						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
-						<input type="button" class="btn_normal btn_size_normal" value="취소"/>
-					</div>
-				</div>
-			</div>
-	</div>
-	<!-- 고객 등급 목록 팝업 - 등록,수정팝업 -->
-	<div class="pop_wrap pop_off">
-		<div class="pop_bg"></div>
-			<div class="pop pop_size_Customer_Grade_add pop_white">
-				<div class="pop_title_area">
-					<div class="pop_title_text">
-						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						고객 등급 수정
-					</div>
-					<div class="pop_close">
-						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
-					</div>
-				</div>
-				<div class="pop_schedule_contents">
-					<div class="list_wrap">
-						<div class="table_top_area">
-							<div class="top_title_area">
-								등급명을 입력하신뒤 등록을 클릭하세요
-							</div>
-						</div>
-					</div>
-					<table class="pop_table">
-						<colgroup>
-							<col width="20%">
-							<col width="80%">
-						</colgroup>
-						<tbody>
-							
-							<tr>
-								<td class="field_name first_field_name">검색어</td>
-								<td class="field_contents">
-									<input class="input_size pxsize100" type="text">
-									<input type="button" class="btn_normal btn_size_normal pxsize70" value="확인"/>
-									<input type="button" class="btn_normal btn_size_normal pxsize70" value="취소"/>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-	</div>
-	
-	<!-- 일정예약 등록 팝업 -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_schedule pop_white">
 				<div class="pop_title_area">
 					<div class="pop_title_text">
 						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						일정 예약 등록
+						일정 등록
 					</div>
 					<div class="pop_close">
 						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
@@ -500,7 +324,7 @@
 				<div class="second_menu">
 					<div>월간 예약 목록</div>
 				</div>
-				<div class="second_menu">
+				<div class="second_menu_on">
 					<div>월간 일정 목록</div>
 				</div>
 				</div>
@@ -527,7 +351,7 @@
 		<div class="gnb_wrap">
 			<div class="gnb_area">
 				<div>
-					<div>Home > 예약&일정 > 월간 예약 목록 </div>
+					<div>Home > 예약&일정 > 월간 일정 목록 </div>
 				</div>
 			</div>
 			<div class="btn_area">
@@ -560,7 +384,7 @@
 				</div>
 			</div>
 		</div>
-			<div class="title_area">월간 예약 목록</div>
+			<div class="title_area">월간 일정 목록</div>
 			<div class="content_area">
 				<div class="list_wrap">
 					<div class="table_top_area">
@@ -579,10 +403,8 @@
 						<div class="top_title_area size40" style="vertical-align: top;">
 							<select class="input_size pxsize100">
 								<option selected="selected">전체</option>
-								<option>예약자</option>
-								<option>연락처</option>
 								<option>담당자</option>
-								<option>예약내용</option>
+								<option>일정내용</option>
 							</select>
 							<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
 							~
@@ -618,16 +440,14 @@
 					</div>
 					<table class="table_list">
 						<colgroup>
-							<col width="5%">
-							<col width="5%">
-							<col width="5%">
-							<col width="10%">
-							<col width="10%">
+							<col width="8%">
+							<col width="8%">
+							<col width="8%">
+							<col width="8%">
+							<col width="13%">
 							<col width="15%">
 							<col width="10%">
-							<col width="10%">
-							<col width="10%">
-							<col width="20%">
+							<col width="25%">
 						</colgroup>
 						<tbody>
 							<tr class="table_list_header">
@@ -640,12 +460,10 @@
 								<td>수정</td>
 								<td>삭제</td>
 								<td>NO</td>
-								<td>예약일</td>
-								<td>예약시간</td>
-								<td>예약자</td>
-								<td>연락처</td>
+								<td>일시</td>
+								<td>일정시간</td>
 								<td>담당자</td>
-								<td>예약내용</td>
+								<td>일정내용</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -660,9 +478,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -677,9 +493,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -694,9 +508,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -711,9 +523,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -728,9 +538,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -745,9 +553,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -762,9 +568,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -779,9 +583,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -796,9 +598,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -813,9 +613,7 @@
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
 								<td>홍길동</td>
-								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>출장</td>
 							</tr>
 						</tbody>
 					</table>

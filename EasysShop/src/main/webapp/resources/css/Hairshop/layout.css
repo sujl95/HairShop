@@ -48,17 +48,15 @@
 
 /* 기본 테이블 설정 */
 .table_normal {
-    width: 1080px;
+    width: 1200px;
     text-align: center;
     border-collapse: collapse;
-
-    border-top: 2px solid #F2B807;
-
+/*     border-top: 2px solid #F2B807; */
     font-size: 0;
 }
 /* tr 기본 설정 */
 tr {
-    height: 50px;
+    height: 35px;
     font-size : 15px;
     border-bottom: 1px solid #cacaca;
 }
@@ -66,15 +64,18 @@ tr {
 .tr_no_uline {
     border-bottom: 0;
 }
+
+
 /* 필드명 */
 .field_name {
     background-color: #f2f2f2;
     color: #272727;
     border: 1px solid #cacaca;
-
     font-size: 10pt;
     font-weight: bold;
 }
+
+
 /* 맨왼쪽 필드명 스타일 - border-left 제거 */
 .first_field_name {
     border-left: 0;
@@ -86,10 +87,8 @@ tr {
 /* 필드 내용 */
 .field_contents {
     padding: 10px 15px;
-
     text-align: left;
     vertical-align: middle;
-
     font-size: 10pt;
 }
 /* 필드 내용이되 정렬은 가운데로 하고싶을때 */
@@ -124,28 +123,34 @@ tr {
 }
 /* 리스트 테이블 헤더 */
 .table_list_header {
-    height: 50px;
-    
-    background-color: #595959;
-    
+    height: 40px;
+    background-color: #27a7df;
     vertical-align: middle;
 }
 .table_list_header td {
-    padding : 10px 15px;
+    padding : 0px 20px;
     color: #ffffff;
-
     font-size: 10pt;
     font-weight: bold;
     vertical-align: middle;
 }
 /* 리스트 테이블 td 왼쪽 정렬 스타일 */
 .table_list .list_contents td {
-    padding : 10px 15px;
+    padding : 0px 20px;
     font-size: 10pt;
     color: #000000;
     vertical-align: middle;
 }
+.list_contents td:hover {
+	cursor : pointer;
+/* 	border-bottom : 1px solid #595959; */
+	text-decoration : underline;
+}
 
+/* none_hover */
+.none_hover {
+	cursor : default;
+}
 .td_left_align {
     text-align: left;
 }
@@ -198,13 +203,25 @@ tr {
 .size25{
 	width:25%;
 }
+/* 30% */
+.size30{
+	width:30%;
+}
 /* 35% */
 .size35{
 	width:35%;
 }
+/* 40% */
+.size40{
+	width:40%;
+}
 /* 48% */
 .size48{
 	width:48%;
+}
+/* 60% */
+.size60{
+	width:60%;
 }
 /* 70% */
 .size70{
@@ -217,6 +234,14 @@ tr {
 /* 80% */
 .size80{
 	width:80%;
+}
+/* 90% */
+.size90{
+	width:90%;
+}
+/* 100% */
+.size100{
+	width:100%;
 }
 /* 기본 입력 폼 px 사이즈 */
 /* 10px */
@@ -235,9 +260,17 @@ tr {
 .pxsize35{
 	width:35px;
 }
-/* 48px */
-.pxsize48{
-	width:48px;
+/* 40px */
+.pxsize40{
+	width:40px;
+}
+/* 50px */
+.pxsize50{
+	width:50px;
+}
+/* 60px */
+.pxsize60{
+	width:60px;
 }
 /* 70px */
 .pxsize70{

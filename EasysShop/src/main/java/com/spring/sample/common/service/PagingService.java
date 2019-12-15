@@ -18,7 +18,7 @@ public class PagingService implements IPagingService{
 		startCount = (page - 1) * viewCount + 1;
 		return startCount;
 	}
-	
+	 
 	//테이블 종료row
 	@Override
 	public int getEndCount(int page) {

@@ -11,7 +11,7 @@
     height: 30px;
     border: 1px solid #eeeeee;
     border-radius: 3px;
-
+	
     font-size: 10pt;
     text-indent: 5px;
 }
@@ -19,9 +19,9 @@
 /* 사이즈 설정 입력폼 스타일 */
 .input_size {
     height: 30px;
-    border: 1px solid #eeeeee;
+    border: 1px solid #969696;
     border-radius: 3px;
-
+	vertical-align: middle;
     font-size: 10pt;
     text-indent: 5px;
 }
@@ -102,3 +102,89 @@ input:focus, textarea:focus, select:focus {
 .input_txt_200size {
 	width : 200px;
 }
+
+/* 체크 박스 스타일 */
+.input_ck {
+	width : 20px;
+	height : 20px;
+}
+/* 텍스트 글자수 제한 */
+.input_maxlength:maxlength  {
+	maxlength : 4;
+}
+
+/* header 체크박스 스타일 */
+.squaredOne_h {
+	width: 20px;
+}
+.squaredOne_h label {
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	display :inline-block;
+	text-align : center;
+	background-color : #FFFFFF;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(39, 167, 223, 0.4);
+	
+}
+.squaredOne_h label:after {
+	content: "";
+	width: 14px;
+	height: 10px;
+	display :inline-block;
+	border: solid #27a7df;
+	border-width: 0 0 3px 3px;
+	opacity: 0;
+	text-align : center;
+	-webkit-transform: rotate(-50deg);
+	transform: rotate(-50deg);
+	box-shadow:inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+}
+.squaredOne_h label:hover::after {
+	opacity: 0.3;
+}
+.squaredOne_h input[type=checkbox]:checked + label:after {
+	opacity: 1;
+}
+/* body 체크박스 스타일 */
+.squaredOne {
+	width: 20px;
+}
+.squaredOne label {
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	display :inline-block;
+	text-align : center;
+/* 	background: -webkit-linear-gradient(top, #222222 0%, #27a7df 100%); */
+/* 	background: linear-gradient(to bottom, #222222 0%, #27a7df 100%); */
+	background-color : #27a7df;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(39, 167, 223, 0.4);
+	
+}
+.squaredOne label:after {
+	content: "";
+	width: 14px;
+	height: 10px;
+	display :inline-block;
+	border: solid #fcfff4;
+	border-width: 0 0 3px 3px;
+	opacity: 0;
+	text-align : center;
+	-webkit-transform: rotate(-50deg);
+	transform: rotate(-50deg);
+	box-shadow:inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+}
+.squaredOne label:hover::after {
+	opacity: 0.3;
+}
+.squaredOne input[type=checkbox]:checked + label:after {
+	opacity: 1;
+}
+
+  .datePicker {
+        text-align:center;
+        width:80px;    
+    }
