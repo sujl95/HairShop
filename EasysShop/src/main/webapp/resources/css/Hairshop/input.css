@@ -11,7 +11,7 @@
     height: 30px;
     border: 1px solid #eeeeee;
     border-radius: 3px;
-
+	
     font-size: 10pt;
     text-indent: 5px;
 }
@@ -19,9 +19,9 @@
 /* 사이즈 설정 입력폼 스타일 */
 .input_size {
     height: 30px;
-    border: 1px solid #eeeeee;
+    border: 1px solid #969696;
     border-radius: 3px;
-
+	vertical-align: middle;
     font-size: 10pt;
     text-indent: 5px;
 }
@@ -118,8 +118,8 @@ input:focus, textarea:focus, select:focus {
 	width: 20px;
 }
 .squaredOne_h label {
-	width: 28px;
-	height: 28px;
+	width: 23px;
+	height: 23px;
 	cursor: pointer;
 	display :inline-block;
 	text-align : center;
@@ -152,8 +152,8 @@ input:focus, textarea:focus, select:focus {
 	width: 20px;
 }
 .squaredOne label {
-	width: 28px;
-	height: 28px;
+	width: 23px;
+	height: 23px;
 	cursor: pointer;
 	display :inline-block;
 	text-align : center;

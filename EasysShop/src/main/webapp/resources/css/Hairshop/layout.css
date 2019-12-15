@@ -56,7 +56,7 @@
 }
 /* tr 기본 설정 */
 tr {
-    height: 50px;
+    height: 35px;
     font-size : 15px;
     border-bottom: 1px solid #cacaca;
 }
@@ -123,12 +123,12 @@ tr {
 }
 /* 리스트 테이블 헤더 */
 .table_list_header {
-    height: 50px;
+    height: 40px;
     background-color: #27a7df;
     vertical-align: middle;
 }
 .table_list_header td {
-    padding : 10px 15px;
+    padding : 0px 20px;
     color: #ffffff;
     font-size: 10pt;
     font-weight: bold;
@@ -136,7 +136,7 @@ tr {
 }
 /* 리스트 테이블 td 왼쪽 정렬 스타일 */
 .table_list .list_contents td {
-    padding : 10px 15px;
+    padding : 0px 20px;
     font-size: 10pt;
     color: #000000;
     vertical-align: middle;

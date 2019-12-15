@@ -118,6 +118,7 @@
     color: #ffffff;
     font-size: 10pt;
     cursor: pointer;
+    border-radius: 3px;
 }
 .btn_paging:hover {
     background-color: #1d95c9;
