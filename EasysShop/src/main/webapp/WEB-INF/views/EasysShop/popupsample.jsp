@@ -436,7 +436,6 @@
 							<td colspan="2">기본정보</td>
 							<td colspan="2">적립정보</td>
 						</tr>
-
 						
 						<tr class="table_list_header" >
 							<td>시술명</td>
@@ -1049,6 +1048,7 @@
 							<col width="20%">
 						</colgroup>
 						<tbody>
+							
 							<tr>
 								<td class="field_name first_field_name">직급명</td>
 								<td class="field_contents">
