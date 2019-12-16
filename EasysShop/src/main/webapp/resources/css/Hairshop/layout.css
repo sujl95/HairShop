@@ -65,6 +65,11 @@ tr {
     border-bottom: 0;
 }
 
+/* tr 짝수행 배경색 */
+tbody tr:nth-child(even){
+	background-color: #eaeaea;
+}
+
 
 /* 필드명 */
 .field_name {
