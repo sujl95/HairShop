@@ -48,8 +48,341 @@
 </script>
 </head>
 <body>
-	<!-- 시술 등급 목록 팝업  -->
+	<!-- 상품 코드 목록 팝업  -->
 	<div class="pop_wrap pop_on">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Procedure_Code pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						상품 코드 관리
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+					<div class="pop_btn_bottom_area">
+						<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+						<input type="button" class="btn_normal btn_size_normal" value="수정"/>
+						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+					</div>
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td class="field_name first_field_name">검색어</td>
+								<td class="field_contents">
+									<input class="input_size size60" type="text">
+									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table_list tborder" id="pop_Procedure_list" >
+						<colgroup>
+							<col width="3%">
+							<col width="17%">
+							<col width="25%">
+							<col width="15%">
+							<col width="20%">
+							<col width="20%">
+						</colgroup>
+						<thead>
+						<tr class="table_list_header" >
+							<td rowspan="2">
+								<div class="squaredOne_h">
+									<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />
+									<label for="pop_PC_checkall"  ></label> <!-- squaredOne 같이? -->
+								</div>
+							</td>
+							<td rowspan="2">그룹명</td>
+							<td colspan="2">기본정보</td>
+							<td colspan="2">적립정보</td>
+						</tr>
+						
+						<tr class="table_list_header" >
+							<td>시술명</td>
+							<td>요금</td>
+							<td>현금적립금</td>
+							<td>카드적립금</td>
+						</tr>
+						</thead>
+					</table>
+				<div class="pop_schedule_contents">
+					<div class="pop_Procedure_list">
+					<table class="table_list tborder" id="pop_Procedure_list" >
+						<colgroup>
+							<col width="3%">
+							<col width="17%">
+							<col width="25%">
+							<col width="15%">
+							<col width="20%">
+							<col width="20%">
+						</colgroup>
+						<tbody>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne1" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne1"></label>
+									</div>
+								</td>
+								<td rowspan="3">기타</td>
+								<td>기타</td>
+								<td>10,000</td>
+								<td>0</td>
+								<td>0</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne2" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne2"></label>
+									</div>
+								</td>
+								<td>붙임머리</td>
+								<td>75,000</td>
+								<td>7,500</td>
+								<td>3,750</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne3" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne3"></label>
+									</div>
+								</td>
+								<td>올림머리</td>
+								<td>30,000</td>
+								<td>3,000</td>
+								<td>1,500</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne4"></label>
+									</div>
+								</td>
+								<td rowspan="3">드라이</td>
+								<td>드라이</td>
+								<td>15,000</td>
+								<td>0</td>
+								<td>0</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne5"></label>
+									</div>
+								</td>
+								<td>매직드라이</td>
+								<td>15,000</td>
+								<td>1,500</td>
+								<td>750</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne6"></label>
+									</div>
+								</td>
+								<td>웨이브드라이</td>
+								<td>10,000</td>
+								<td>1,000</td>
+								<td>500</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne4"></label>
+									</div>
+								</td>
+								<td rowspan="3">드라이</td>
+								<td>드라이</td>
+								<td>15,000</td>
+								<td>0</td>
+								<td>0</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne5"></label>
+									</div>
+								</td>
+								<td>매직드라이</td>
+								<td>15,000</td>
+								<td>1,500</td>
+								<td>750</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne6"></label>
+									</div>
+								</td>
+								<td>웨이브드라이</td>
+								<td>10,000</td>
+								<td>1,000</td>
+								<td>500</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne4"></label>
+									</div>
+								</td>
+								<td rowspan="3">드라이</td>
+								<td>드라이</td>
+								<td>15,000</td>
+								<td>0</td>
+								<td>0</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne5"></label>
+									</div>
+								</td>
+								<td>매직드라이</td>
+								<td>15,000</td>
+								<td>1,500</td>
+								<td>750</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne6"></label>
+									</div>
+								</td>
+								<td>웨이브드라이</td>
+								<td>10,000</td>
+								<td>1,000</td>
+								<td>500</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne4"></label>
+									</div>
+								</td>
+								<td rowspan="3">드라이</td>
+								<td>드라이</td>
+								<td>15,000</td>
+								<td>0</td>
+								<td>0</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne5"></label>
+									</div>
+								</td>
+								<td>매직드라이</td>
+								<td>15,000</td>
+								<td>1,500</td>
+								<td>750</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
+										<label for="pop_PC_squaredOne6"></label>
+									</div>
+								</td>
+								<td>웨이브드라이</td>
+								<td>10,000</td>
+								<td>1,000</td>
+								<td>500</td>
+						</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 시술 코드 목록 팝업 - 등록,수정팝업 -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Procedure_Code_add pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						시술 코드
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="30%">
+							<col width="25%">
+							<col width="25%">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td class="field_name first_field_name">분류</td>
+								<td class="field_contents colorred" colspan="3">
+									<select class="input_size pxsize150 backcolorred"> 
+										<option selected="selected">분류를 선택해주세요</option>
+										<option>드라이</option>
+										<option>컷</option>
+										<option>펌</option>
+										<option>염색</option>
+										<option>크리닉</option>
+										<option>기타</option>
+									</select>
+									해당 분류가 없으면 직접 입력해 주세요
+								</td>
+							</tr>
+								<tr>
+								<td class="field_name first_field_name">시술명</td>
+								<td class="field_contents">
+									<input class="input_normal  backcolorred" type="text">
+								</td>
+								<td class="field_name first_field_name">현금적립포인트</td>
+								<td>
+									<input class="input_normal txtalignright" type="text">
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">요금</td>
+								<td class="field_contents">
+									<input class="input_normal txtalignright" type="text">
+								</td>
+								<td class="field_name first_field_name">카드적립포인트</td>
+								<td>
+									<input class="input_normal txtalignright" type="text">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				<div class="pop_btn_bottom_area">
+					<input type="button" class="btn_normal btn_size_normal" value="확인"/>
+					<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 시술 등급 목록 팝업  -->
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Procedure_Code pop_white">
 				<div class="pop_title_area">
@@ -363,8 +696,7 @@
 									<input class="input_normal txtalignright" type="text">
 								</td>
 							</tr>
-							</tr>
-								<tr>
+							<tr>
 								<td class="field_name first_field_name">요금</td>
 								<td class="field_contents">
 									<input class="input_normal txtalignright" type="text">
@@ -415,10 +747,11 @@
 					</table>
 					<table class="table_list">
 						<colgroup>
-							<col width="15%">
+							<col width="10%">
 							<col width="35%">
-							<col width="25%">
-							<col width="25%">
+							<col width="35%">
+							<col width="10%">
+							<col width="10%">
 						</colgroup>
 						<tr class="table_list_header">
 							<td>
@@ -428,8 +761,9 @@
 								</div>
 							</td>
 							<td>등급명</td>
-							<td>레벨</td>
+							<td style="padding : 0px;">레벨</td>
 							<td>수정</td>
+							<td>삭제</td>
 						</tr>
 						<tr class="list_contents">
 								<td style="cursor : default;">
@@ -441,6 +775,7 @@
 								<td>Bronze</td>
 								<td>1</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 						</tr>
 						<tr class="list_contents">
 								<td style="cursor : default;">
@@ -452,6 +787,7 @@
 								<td>Silver</td>
 								<td>2</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 						</tr>
 						<tr class="list_contents">
 								<td style="cursor : default;">
@@ -463,6 +799,7 @@
 								<td>Gold</td>
 								<td>3</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 						</tr>
 						<tr class="list_contents">
 								<td style="cursor : default;">
@@ -474,6 +811,7 @@
 								<td>Platinum</td>
 								<td>4</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 						</tr>
 						<tr class="list_contents">
 								<td style="cursor : default;">
@@ -485,6 +823,7 @@
 								<td>Diamond</td>
 								<td>5</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 						</tr>
 						<tr class="list_contents">
 								<td style="cursor : default;">
@@ -496,6 +835,7 @@
 								<td>Master</td>
 								<td>6</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 						</tr>
 						<tr class="list_contents">
 								<td style="cursor : default;">
@@ -507,6 +847,7 @@
 								<td>Challenger</td>
 								<td>7</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 						</tr>
 					</table>
 					<div class="pop_btn_bottom_area">
@@ -542,6 +883,180 @@
 								<td class="field_name first_field_name">검색어</td>
 								<td class="field_contents">
 									<input class="input_normal " placeholder="등급명을 입력하신뒤 등록을 클릭하세요" type="text">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				<div class="pop_btn_bottom_area">
+					<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+					<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 직급 등급 목록 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Employee_Grade pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						직급 코드
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td class="field_name first_field_name">검색어</td>
+								<td class="field_contents">
+									<input class="input_size size60" type="text">
+									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table_list">
+						<colgroup>
+							<col width="10%">
+							<col width="40%">
+							<col width="25%">
+							<col width="12%">
+							<col width="13%">
+						</colgroup>
+						<tr class="table_list_header">
+							<td>
+								<div class="squaredOne_h">
+									<input type="checkbox" value="None" style="display : none;" id="pop_EMP_checkall"  />
+									<label for="pop_EMP_checkall"  ></label> <!-- squaredOne 같이? -->
+								</div>
+							</td>
+							<td>직급명</td>
+							<td>레벨</td>
+							<td>수정</td>
+							<td>삭제</td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_EMP_squaredOne1" name="pop_EMP_check" />
+										<label for="pop_EMP_squaredOne1"></label>
+									</div>
+								</td>
+								<td>대표</td>
+								<td>1</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_EMP_squaredOne2" name="pop_EMP_check" />
+										<label for="pop_EMP_squaredOne2"></label>
+									</div>
+								</td>
+								<td>점장</td>
+								<td>2</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_EMP_squaredOne3" name="pop_EMP_check" />
+										<label for="pop_EMP_squaredOne3"></label>
+									</div>
+								</td>
+								<td>실장</td>
+								<td>3</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_EMP_squaredOne4" name="pop_EMP_check" />
+										<label for="pop_EMP_squaredOne4"></label>
+									</div>
+								</td>
+								<td>디자이너</td>
+								<td>4</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_EMP_squaredOne9" name="pop_EMP_check" />
+										<label for="pop_EMP_squaredOne9"></label>
+									</div>
+								</td>
+								<td>스탭</td>
+								<td>9</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
+						</tr>
+						<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="pop_EMP_squaredOne10" name="pop_EMP_check" />
+										<label for="pop_EMP_squaredOne10"></label>
+									</div>
+								</td>
+								<td>알바</td>
+								<td>10</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+								<td style="cursor : default;"><input type="button" value="삭제"/></td>
+						</tr>
+					</table>
+					<div class="pop_btn_bottom_area">
+						<input type="button" class="btn_normal btn_size_normal" value="코드등록"/>
+						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+						<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 직급 등급 목록 팝업 - 등록,수정팝업 -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Employee_Grade_add pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						직원 등급 등록
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="40%">
+							<col width="20%">
+							<col width="20%">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td class="field_name first_field_name">직급명</td>
+								<td class="field_contents">
+									<input class="input_normal backcolorlred" placeholder="직급명을 입력하신뒤 등록을 클릭하세요" type="text">
+								</td>
+								<td class="field_name first_field_name">레벨</td>
+								<td class="field_contents">
+									<input class="input_normal backcolorlred" type="text">
 								</td>
 							</tr>
 						</tbody>
@@ -825,7 +1340,7 @@
 			</div>
 			<div class="second_menu_wrap">
 				<div class="second_menu">
-					<div>예약&일정</div>
+					<div>예약 & 일정</div>
 				</div>
 				<div class="second_menu">
 					<div>월간 예약 목록</div>
@@ -857,7 +1372,7 @@
 		<div class="gnb_wrap">
 			<div class="gnb_area">
 				<div>
-					<div>Home > 예약&일정 > 월간 예약 목록 </div>
+					<div>Home > 예약 & 일정 > 월간 예약 목록 </div>
 				</div>
 			</div>
 			<div class="btn_area">
@@ -937,9 +1452,9 @@
 									<option>50단위</option>
 									<option>100단위</option>
 								</select>
-								<span id=list_cnt_all">#</span>
+								<span id="list_cnt_all">#</span>
 								개 항목중
-								<span id=list_cnt_select">#</span>
+								<span id="list_cnt_select">#</span>
 								개 선택
 							</div>
 						</div>

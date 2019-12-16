@@ -15,7 +15,7 @@
 /* 팝업 배경 */
 .pop_bg {
 	width: 100%;
-	height: 2500px;
+	height: 100%;
 	background-color: #595959a2;
 	z-index: 710;
 	opacity: 1.0;
@@ -51,6 +51,20 @@
 	height: 150px;
 	top: calc(50% - 50px);
 	left: calc(50% - 200px);
+}
+/* 직급 등급 목록 팝업 크기*/
+.pop_size_Employee_Grade {
+	width: 400px;
+	height: 400px;
+	top: calc(50% - 250px);
+	left: calc(50% - 400px);
+}
+/* 직급 등급 목록 - 등록, 수정 팝업 크기*/
+.pop_size_Employee_Grade_add {
+	width: 600px;
+	height: 150px;
+	top: calc(50% - 50px);
+	left: calc(50% - 300px);
 }
 /* 시술 코드 목록 팝업 크기*/
 .pop_size_Procedure_Code {
