@@ -108,6 +108,10 @@ input:focus, textarea:focus, select:focus {
 	width : 20px;
 	height : 20px;
 }
+/* 텍스트 글자수 제한 */
+.input_maxlength:maxlength  {
+	maxlength : 4;
+}
 
 /* header 체크박스 스타일 */
 .squaredOne_h {
@@ -180,7 +184,9 @@ input:focus, textarea:focus, select:focus {
 	opacity: 1;
 }
 
-  .datePicker {
-        text-align:center;
-        width:80px;    
-    }
+.datePicker {
+   text-align:center;
+   width:80px;    
+}
+
+

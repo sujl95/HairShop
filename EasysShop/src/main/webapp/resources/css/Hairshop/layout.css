@@ -64,20 +64,23 @@ tr {
 .tr_no_uline {
     border-bottom: 0;
 }
+
 /* tr 짝수행 배경색 */
 tbody tr:nth-child(even){
 	background-color: #eaeaea;
 }
+
 
 /* 필드명 */
 .field_name {
     background-color: #f2f2f2;
     color: #272727;
     border: 1px solid #cacaca;
-
     font-size: 10pt;
     font-weight: bold;
 }
+
+
 /* 맨왼쪽 필드명 스타일 - border-left 제거 */
 .first_field_name {
     border-left: 0;
@@ -89,10 +92,8 @@ tbody tr:nth-child(even){
 /* 필드 내용 */
 .field_contents {
     padding: 10px 15px;
-
     text-align: left;
     vertical-align: middle;
-
     font-size: 10pt;
 }
 /* 필드 내용이되 정렬은 가운데로 하고싶을때 */
@@ -116,6 +117,11 @@ tbody tr:nth-child(even){
 /* 리스트 감싸기 - 크기 1100px 로 제한 */
 .list_wrap {
     width: 1200px;
+}
+/* 테이블 보더  */ 
+.tborder tr td{
+	border : 1px solid #cacaca;
+	font-size : 9pt;
 }
 /* 리스트 테이블 */
 .table_list {
@@ -190,6 +196,21 @@ tbody tr:nth-child(even){
     width: 100%;
     height: 50px;
 }
+/* 텍스트 색상 */ 
+.colorred {
+	color: #ff2f2f;
+}
+/* 텍스트 색상 */ 
+.backcolorred {
+	background-color: #ffd9d9;
+}
+.backcolorlred {
+	background-color: #ffd9d9;
+}
+.txtalignright {
+	text-align: right;
+}
+
 /* 기본 입력 폼 % 사이즈 */
 /* 10% */
 .size10{
@@ -239,6 +260,14 @@ tbody tr:nth-child(even){
 .size80{
 	width:80%;
 }
+/* 90% */
+.size90{
+	width:90%;
+}
+/* 100% */
+.size100{
+	width:100%;
+}
 /* 기본 입력 폼 px 사이즈 */
 /* 10px */
 .pxsize10{
@@ -251,6 +280,10 @@ tbody tr:nth-child(even){
 /* 25px */
 .pxsize25{
 	width:25px;
+}
+/* 30px */
+.pxsize30{
+	width:30px;
 }
 /* 35px */
 .pxsize35{
@@ -287,6 +320,10 @@ tbody tr:nth-child(even){
 /* 150px */
 .pxsize150{
 	width:150px;
+}
+/* 180px */
+.pxsize180{
+	width:180px;
 }
 /* 200px */
 .pxsize200{
