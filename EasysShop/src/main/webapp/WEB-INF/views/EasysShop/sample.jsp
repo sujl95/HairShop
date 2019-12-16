@@ -49,272 +49,272 @@
 </head>
 <body>
 	<!-- 시술 등급 목록 팝업  -->
-	<div class="pop_wrap pop_on">
-		<div class="pop_bg"></div>
-			<div class="pop pop_size_Procedure_Code pop_white">
-				<div class="pop_title_area">
-					<div class="pop_title_text">
-						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						시술 코드 관리
-					</div>
-					<div class="pop_close">
-						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
-					</div>
-				</div>
-					<div class="pop_btn_bottom_area">
-						<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-						<input type="button" class="btn_normal btn_size_normal" value="수정"/>
-						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
-						<input type="button" class="btn_normal btn_size_normal pxsize200" value="적립 포인트 일괄 변경"/>
-					</div>
-					<table class="pop_table">
-						<colgroup>
-							<col width="20%">
-							<col width="80%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<td class="field_name first_field_name">검색어</td>
-								<td class="field_contents">
-									<input class="input_size size60" type="text">
-									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table class="table_list tborder" id="pop_Procedure_list" >
-						<colgroup>
-							<col width="3%">
-							<col width="17%">
-							<col width="25%">
-							<col width="15%">
-							<col width="20%">
-							<col width="20%">
-						</colgroup>
-						<thead>
-						<tr class="table_list_header" >
-							<td rowspan="2">
-								<div class="squaredOne_h">
-									<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />
-									<label for="pop_PC_checkall"  ></label> <!-- squaredOne 같이? -->
-								</div>
-							</td>
-							<td rowspan="2">그룹명</td>
-							<td colspan="2">기본정보</td>
-							<td colspan="2">적립정보</td>
-						</tr>
+<!-- 	<div class="pop_wrap pop_off"> -->
+<!-- 		<div class="pop_bg"></div> -->
+<!-- 			<div class="pop pop_size_Procedure_Code pop_white"> -->
+<!-- 				<div class="pop_title_area"> -->
+<!-- 					<div class="pop_title_text"> -->
+<!-- 						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon">  -->
+<!-- 						시술 코드 관리 -->
+<!-- 					</div> -->
+<!-- 					<div class="pop_close"> -->
+<!-- 						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 					<div class="pop_btn_bottom_area"> -->
+<!-- 						<input type="button" class="btn_normal btn_size_normal" value="등록"/> -->
+<!-- 						<input type="button" class="btn_normal btn_size_normal" value="수정"/> -->
+<!-- 						<input type="button" class="btn_normal btn_size_normal" value="삭제"/> -->
+<!-- 						<input type="button" class="btn_normal btn_size_normal pxsize200" value="적립 포인트 일괄 변경"/> -->
+<!-- 					</div> -->
+<!-- 					<table class="pop_table"> -->
+<%-- 						<colgroup> --%>
+<%-- 							<col width="20%"> --%>
+<%-- 							<col width="80%"> --%>
+<%-- 						</colgroup> --%>
+<!-- 						<tbody> -->
+<!-- 							<tr> -->
+<!-- 								<td class="field_name first_field_name">검색어</td> -->
+<!-- 								<td class="field_contents"> -->
+<!-- 									<input class="input_size size60" type="text"> -->
+<!-- 									<input type="button" class="btn_normal btn_size_normal" value="검색"/> -->
+<!-- 								</td> -->
+<!-- 							</tr> -->
+<!-- 						</tbody> -->
+<!-- 					</table> -->
+<!-- 					<table class="table_list tborder" id="pop_Procedure_list" > -->
+<%-- 						<colgroup> --%>
+<%-- 							<col width="3%"> --%>
+<%-- 							<col width="17%"> --%>
+<%-- 							<col width="25%"> --%>
+<%-- 							<col width="15%"> --%>
+<%-- 							<col width="20%"> --%>
+<%-- 							<col width="20%"> --%>
+<%-- 						</colgroup> --%>
+<!-- 						<thead> -->
+<!-- 						<tr class="table_list_header" > -->
+<!-- 							<td rowspan="2"> -->
+<!-- 								<div class="squaredOne_h"> -->
+<!-- 									<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  /> -->
+<!-- 									<label for="pop_PC_checkall"  ></label> squaredOne 같이? -->
+<!-- 								</div> -->
+<!-- 							</td> -->
+<!-- 							<td rowspan="2">그룹명</td> -->
+<!-- 							<td colspan="2">기본정보</td> -->
+<!-- 							<td colspan="2">적립정보</td> -->
+<!-- 						</tr> -->
 						
-						<tr class="table_list_header" >
-							<td>시술명</td>
-							<td>요금</td>
-							<td>현금적립금</td>
-							<td>카드적립금</td>
-						</tr>
-						</thead>
-					</table>
-				<div class="pop_schedule_contents">
-					<div class="pop_Procedure_list">
-					<table class="table_list tborder" id="pop_Procedure_list" >
-						<colgroup>
-							<col width="3%">
-							<col width="17%">
-							<col width="25%">
-							<col width="15%">
-							<col width="20%">
-							<col width="20%">
-						</colgroup>
-						<tbody>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne1" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne1"></label>
-									</div>
-								</td>
-								<td rowspan="3">기타</td>
-								<td>기타</td>
-								<td>10,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne2" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne2"></label>
-									</div>
-								</td>
-								<td>붙임머리</td>
-								<td>75,000</td>
-								<td>7,500</td>
-								<td>3,750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne3" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne3"></label>
-									</div>
-								</td>
-								<td>올림머리</td>
-								<td>30,000</td>
-								<td>3,000</td>
-								<td>1,500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						</tbody>
-					</table>
-					</div>
-				</div>
-			</div>
-	</div>
+<!-- 						<tr class="table_list_header" > -->
+<!-- 							<td>시술명</td> -->
+<!-- 							<td>요금</td> -->
+<!-- 							<td>현금적립금</td> -->
+<!-- 							<td>카드적립금</td> -->
+<!-- 						</tr> -->
+<!-- 						</thead> -->
+<!-- 					</table> -->
+<!-- 				<div class="pop_schedule_contents"> -->
+<!-- 					<div class="pop_Procedure_list"> -->
+<!-- 					<table class="table_list tborder" id="pop_Procedure_list" > -->
+<%-- 						<colgroup> --%>
+<%-- 							<col width="3%"> --%>
+<%-- 							<col width="17%"> --%>
+<%-- 							<col width="25%"> --%>
+<%-- 							<col width="15%"> --%>
+<%-- 							<col width="20%"> --%>
+<%-- 							<col width="20%"> --%>
+<%-- 						</colgroup> --%>
+<!-- 						<tbody> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne1" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne1"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td rowspan="3">기타</td> -->
+<!-- 								<td>기타</td> -->
+<!-- 								<td>10,000</td> -->
+<!-- 								<td>0</td> -->
+<!-- 								<td>0</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne2" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne2"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>붙임머리</td> -->
+<!-- 								<td>75,000</td> -->
+<!-- 								<td>7,500</td> -->
+<!-- 								<td>3,750</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne3" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne3"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>올림머리</td> -->
+<!-- 								<td>30,000</td> -->
+<!-- 								<td>3,000</td> -->
+<!-- 								<td>1,500</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne4"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td rowspan="3">드라이</td> -->
+<!-- 								<td>드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>0</td> -->
+<!-- 								<td>0</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne5"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>매직드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>1,500</td> -->
+<!-- 								<td>750</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne6"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>웨이브드라이</td> -->
+<!-- 								<td>10,000</td> -->
+<!-- 								<td>1,000</td> -->
+<!-- 								<td>500</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne4"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td rowspan="3">드라이</td> -->
+<!-- 								<td>드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>0</td> -->
+<!-- 								<td>0</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne5"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>매직드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>1,500</td> -->
+<!-- 								<td>750</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne6"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>웨이브드라이</td> -->
+<!-- 								<td>10,000</td> -->
+<!-- 								<td>1,000</td> -->
+<!-- 								<td>500</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne4"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td rowspan="3">드라이</td> -->
+<!-- 								<td>드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>0</td> -->
+<!-- 								<td>0</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne5"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>매직드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>1,500</td> -->
+<!-- 								<td>750</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne6"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>웨이브드라이</td> -->
+<!-- 								<td>10,000</td> -->
+<!-- 								<td>1,000</td> -->
+<!-- 								<td>500</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne4"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td rowspan="3">드라이</td> -->
+<!-- 								<td>드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>0</td> -->
+<!-- 								<td>0</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne5"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>매직드라이</td> -->
+<!-- 								<td>15,000</td> -->
+<!-- 								<td>1,500</td> -->
+<!-- 								<td>750</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr class="list_contents"> -->
+<!-- 								<td style="cursor : default;"> -->
+<!-- 									<div class="squaredOne"> -->
+<!-- 										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" /> -->
+<!-- 										<label for="pop_PC_squaredOne6"></label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+<!-- 								<td>웨이브드라이</td> -->
+<!-- 								<td>10,000</td> -->
+<!-- 								<td>1,000</td> -->
+<!-- 								<td>500</td> -->
+<!-- 						</tr> -->
+<!-- 						</tbody> -->
+<!-- 					</table> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 	</div> -->
 	<!-- 시술 코드 목록 팝업 - 등록,수정팝업 -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
