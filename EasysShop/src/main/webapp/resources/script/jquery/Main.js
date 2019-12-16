@@ -11,7 +11,6 @@ $(document).ready(function() {
 	$(".pop_Procedure_list").slimScroll({
 		height: "100%"
 	});
-	
 	setDate();
 	popsetDays();
 	//최상단 체크박스 클릭

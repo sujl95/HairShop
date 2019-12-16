@@ -81,6 +81,25 @@
 	top: calc(50% - 150px);
 	left: calc(50% - 400px);
 }
+/* 상품 코드 목록 팝업 크기*/
+.pop_size_Sales_Code {
+	width: 900px;
+	height: 600px;
+	top: calc(50% - 250px);
+	left: calc(50% - 400px);
+	overflow: hidden;
+}
+/* 상품 코드 - 등록, 수정 팝업 크기*/
+.pop_size_Procedure_Code_add {
+	width: 600px;
+	height: 250px;
+	top: calc(50% - 150px);
+	left: calc(50% - 400px);
+}
+
+.pop_Sales_list  {
+	height : 500px;
+}
 
 /* 팝업 기본형태 */
 .pop {
