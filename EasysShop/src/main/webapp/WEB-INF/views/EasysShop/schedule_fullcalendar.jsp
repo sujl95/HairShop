@@ -18,20 +18,21 @@
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/input.css" />
 <!-- 팝업 CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/pop.css" />
-   <link rel="stylesheet" href='resources/vendor/css/fullcalendar.min.css' />
-    <link rel="stylesheet" href='resources/vendor/css/bootstrap.min.css'>
-    <link rel="stylesheet" href='resources/vendor/css/select2.min.css' />
-    <link rel="stylesheet" href='resources/vendor/css/bootstrap-datetimepicker.min.css' />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="resources/css/fullcalendar/main.css">
+<link rel="stylesheet" href="resources/script/fullcalendar/fullcalendar.css">
 
 <!-- jQuery js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
+<!-- Moment -->
+<script type="text/javascript" src="resources/script/jquery/moment.js"></script>
 <!-- 슬림 스크롤 js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery.slimscroll.js"></script>
+<!-- fullcalendar -->
+<script type="text/javascript" src="resources/script/fullcalendar/fullcalendar.js"></script>
+<script type="text/javascript" src="resources/script/fullcalendar/locale-all.js"></script>
 <!-- 메인 js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/Main.js"></script>
 <!-- 버튼 js 파일 -->
@@ -39,91 +40,58 @@
 <script type="text/javascript">
 	//버튼에 한글자씩 추가되면 길이가 10씩 늘어납니다.
 	$(document).ready(function() {
+		$(".content_area").slimScroll({
+			height: "100%"
+		});
+		
+		$(".pop_Procedure_list").slimScroll({
+			height: "100%"
+		});
+		
 		// Button Auto Sizing
 		$('button').each(function() {
 			if ($(this).html().length > 2) {
 				var leng_diff = $(this).html().length - 2;
 				$(this).width($(this).width() + (10 * leng_diff) + "px");
 			}
-		})
+		});
 		$('.content_btn>div').each(function() {
 			if ($(this).html().length > 2) {
 				var leng_diff = $(this).html().length - 2;
 				$(this).width($(this).width() + (10 * leng_diff) + "px");
 			}
-		})
-		$(function () {
-			// page is now ready, initialize the calendar...
-			 $('#calendar').fullCalendar({
-			  // put your options and callbacks here
-			 })
+		});
+		
+		$.getJSON("resources/data.json", function(res) {
+			$("#calendar").fullCalendar({
+				header: {
+					left: 'month,agendaWeek,agendaDay',
+					center: 'title',
+					right:  'prevYear,prev,next,nextYear,list'
+				},
+				locale: "ko",
+				dayClick: function(date, jsEvent, view) {
+	
+				    alert('Clicked on: ' + date.format());
+	
+				    alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+	
+				    alert('Current view: ' + view.name);
+	
+				    // change the day's background color just for fun
+				    $(this).css('background-color', 'red');
+	
+				},
+				events:res,
+				eventClick: function(event) {
+					alert(event.title);
+				}
 			});
-	  show_username = username.indexOf(event.username) >= 0;
-
-	  if (types && types.length > 0) {
-	    if (types[0] == "all") {
-	      show_type = true;
-	    } else {
-	      show_type = types.indexOf(event.type) >= 0;
-	    }
-	  }
-	  
-	  return show_username && show_type;
-	  
-		  
+		});
+		
+		
+		
 	});
-	 document.addEventListener('DOMContentLoaded', function() {
-		 
-	      var calendarEl = document.getElementById('calendar');
-	    
-	      var calendar = new FullCalendar.Calendar(calendarEl, {
-	        plugins: [ 'dayGrid' ]
-	      });
-	    
-	      
-	      document.addEventListener('DOMContentLoaded', function() {
-	    	    var Calendar = FullCalendar.Calendar;
-	    	 
-	    	    var containerEl = document.getElementById('external-events');
-	    	    var calendarEl = document.getElementById('calendar');
-	    	    var checkbox = document.getElementById('drop-remove');
-	    	 
-	    	    // initialize the external events
-	    	    // -----------------------------------------------------------------
-	    	 
-	    	    new Draggable(containerEl, {
-	    	      itemSelector: '.fc-event',
-	    	      eventData: function(eventEl) {
-	    	        return {
-	    	          title: eventEl.innerText
-	    	        };
-	    	      }
-	    	    });
-	    	 
-	    	    // initialize the calendar
-	    	    // -----------------------------------------------------------------
-	    	 
-	    	    var calendar = new Calendar(calendarEl, {
-	    	      plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
-	    	      header: {
-	    	        left: 'prev,next today',
-	    	        center: 'title',
-	    	        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-	    	      },
-	    	      editable: true,
-	    	      droppable: true, // this allows things to be dropped onto the calendar
-	    	      drop: function(info) {
-	    	        // is the "remove after drop" checkbox checked?
-	    	        if (checkbox.checked) {
-	    	          // if so, remove the element from the "Draggable Events" list
-	    	          info.draggedEl.parentNode.removeChild(info.draggedEl);
-	    	        }
-	    	      }
-	    	    });
-	    	 
-	    	    calendar.render();
-	    });
-	 });
 	 
 </script>
 </head>
@@ -607,24 +575,7 @@
 			    </div>
 			      <!-- /.container -->
 			
-			    <script src='resources/vendor/js/jquery.min.js'></script>
-			    <script src='resources/vendor/js/bootstrap.min.js'></script>
-			    <script src='resources/vendor/js/moment.min.js'></script>
-			    <script src='resources/vendor/js/fullcalendar.min.js'></script>
-			    <script src='resources/vendor/js/ko.js'></script>
-			    <script src='resources/vendor/js/select2.min.js'></script>
-			    <script src='resources/vendor/js/bootstrap-datetimepicker.min.js'></script>
-			    <script src='resources/script/fullcalendar/main.js'></script>
-			    <script src='resources/script/fullcalendar/addEvent.js'></script>
-			    <script src='resources/script/fullcalendar/editEvent.js'></script>
-			    <script src='resources/script/fullcalendar/etcSetting.js'></script>
-			    <script src="resources/vendor/js/main.js"></script>
-			    <script src="resources/vendor/js/addEvent.js"></script>
-			    <script src="resources/vendor/js/editEvent.js"></script>
-			    <script src="resources/vendor/js/etcSetting.js"></script>
-			    
 			</div>
 		</div>
-	</div>
 </body>
 </html>

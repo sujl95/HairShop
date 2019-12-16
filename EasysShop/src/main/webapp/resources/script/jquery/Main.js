@@ -3,9 +3,10 @@
  * create date : 2019.09.19
  */
 $(document).ready(function() {
-	$(".content_area").slimScroll({
-		height: "100%"
-	});
+	
+//	$("input[name=pop_Procedure_list]").slimScroll({
+//		height: "100%"
+//	});
 	
 	setDate();
 	popsetDays();

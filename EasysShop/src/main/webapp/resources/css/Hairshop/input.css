@@ -184,7 +184,9 @@ input:focus, textarea:focus, select:focus {
 	opacity: 1;
 }
 
-  .datePicker {
-        text-align:center;
-        width:80px;    
-    }
+.datePicker {
+   text-align:center;
+   width:80px;    
+}
+
+

@@ -191,6 +191,18 @@ tr {
     width: 100%;
     height: 50px;
 }
+/* 텍스트 색상 */ 
+.colorred {
+	color: #ff2f2f;
+}
+/* 텍스트 색상 */ 
+.backcolorred {
+	background-color: #ffb7b7;
+}
+.txtalignright {
+	text-align: right;
+}
+
 /* 기본 입력 폼 % 사이즈 */
 /* 10% */
 .size10{
