@@ -28,73 +28,73 @@
 .pop_size_schedule {
 	width: 500px;
 	height: 350px;
-	top: calc(50% - 250px);
-	left: calc(50% - 400px);
+	top: calc(50% - 175px);
+	left: calc(50% - 250px);
 }
 /* 예약 등록 팝업 크기 */
 .pop_size_calendar {
 	width: 500px;
 	height: 400px;
-	top: calc(50% - 250px);
-	left: calc(50% - 400px);
+	top: calc(50% - 200px);
+	left: calc(50% - 250px);
 }
 /* 고객 등급 목록 팝업 크기*/
 .pop_size_Customer_Grade {
 	width: 400px;
 	height: 600px;
-	top: calc(50% - 250px);
-	left: calc(50% - 400px);
+	top: calc(50% - 300px);
+	left: calc(50% - 200px);
 }
 /* 고객 등급 목록 - 등록, 수정 팝업 크기*/
 .pop_size_Customer_Grade_add {
 	width: 400px;
 	height: 150px;
-	top: calc(50% - 50px);
+	top: calc(50% - 75px);
 	left: calc(50% - 200px);
 }
 /* 직급 등급 목록 팝업 크기*/
 .pop_size_Employee_Grade {
 	width: 400px;
 	height: 400px;
-	top: calc(50% - 250px);
-	left: calc(50% - 400px);
+	top: calc(50% - 200px);
+	left: calc(50% - 200px);
 }
 /* 직급 등급 목록 - 등록, 수정 팝업 크기*/
 .pop_size_Employee_Grade_add {
 	width: 600px;
 	height: 150px;
-	top: calc(50% - 50px);
+	top: calc(50% - 75px);
 	left: calc(50% - 300px);
 }
 /* 시술 코드 목록 팝업 크기*/
 .pop_size_Procedure_Code {
 	width: 600px;
 	height: 600px;
-	top: calc(50% - 250px);
-	left: calc(50% - 400px);
+	top: calc(50% - 300px);
+	left: calc(50% - 300px);
 	overflow: hidden;
 }
 /* 시술 코드 - 등록, 수정 팝업 크기*/
 .pop_size_Procedure_Code_add {
 	width: 600px;
 	height: 250px;
-	top: calc(50% - 150px);
-	left: calc(50% - 400px);
+	top: calc(50% - 125px);
+	left: calc(50% - 300px);
 }
 /* 상품 코드 목록 팝업 크기*/
 .pop_size_Sales_Code {
 	width: 900px;
 	height: 600px;
-	top: calc(50% - 250px);
-	left: calc(50% - 400px);
+	top: calc(50% - 300px);
+	left: calc(50% - 450px);
 	overflow: hidden;
 }
 /* 상품 코드 - 등록, 수정 팝업 크기*/
 .pop_size_Procedure_Code_add {
 	width: 600px;
 	height: 250px;
-	top: calc(50% - 150px);
-	left: calc(50% - 400px);
+	top: calc(50% - 125px);
+	left: calc(50% - 300px);
 }
 
 .pop_Sales_list  {

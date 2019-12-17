@@ -49,7 +49,7 @@
 </head>
 <body>
 	<!-- 상품 코드 목록 팝업  -->
-	<div class="pop_wrap pop_on">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Procedure_Code pop_white">
 				<div class="pop_title_area">
