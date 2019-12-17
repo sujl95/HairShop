@@ -49,7 +49,7 @@
 </head>
 <body>
 	<!-- 시술 등급 목록 팝업  -->
-	<div class="pop_wrap pop_on">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Procedure_Code pop_white">
 				<div class="pop_title_area">
@@ -645,6 +645,116 @@
 				</div>
 			</div>
 	</div>
+	
+	<!-- 장부 등록 팝업  -->
+	<div class="pop_wrap">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Books pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						장부 등록
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<table class="pop_table table_list tborder">
+					<colgroup>
+						<col width="15%">
+						<col width="35%">
+						<col width="15%">
+						<col width="35%">
+					</colgroup>
+					<tbody>
+						<tr class="height50">
+							<td class="field_name ">거래일자<span class="important_text">*</span></td>
+							<td class="text_align_left "><input type="date" class="input_size ml10"/></td>
+							<td class="field_name">계정<span class="important_text">*</span></td>
+							<td class="text_align_left "><select class="input_size pxsize100 ml10"> 
+										<option selected="selected">분류</option>
+										<option>기타경비</option>
+										<option>기타매출</option>
+										<option>기타잡비</option>
+										<option>시술매출</option>
+										<option>상품매출</option>
+										<option>상품매입</option>
+										<option>식비</option>
+										<option>급료</option>
+										<option>임차료</option>
+										<option>자산매입</option>
+										<option>자산매각</option>
+									</select>
+									<input type="button" class="btn_normal btn_size_normal ml10" value="검색"/>
+									</td>
+						</tr>
+						<tr class="height50">
+							<td class="field_name">거래처</td>
+							<td colspan="3" class="text_align_left ">
+								<input class="input_size pxsize400 ml10" type="text">
+								<input type="button" class="btn_normal btn_size_normal ml10" value="검색"/>
+							</td>
+						</tr>
+						<tr class="height50">
+							<td class="field_name">거래내용<span class="important_text">*</span></td>
+							<td colspan="3" class="text_align_left ">
+								<input class="input_size pxsize495 ml10" type="text">
+							</td>
+						</tr>
+						<tr class="height50">
+							<td class="field_name ">수량<span class="important_text">*</span></td>
+							<td class="text_align_left "><input class="input_size size80 ml10 text_align_right" type="text">개</td>
+							<td class="field_name">단가</td>
+							<td class="text_align_left "><input class="input_size pxsize195 ml10 text_align_right" type="text"></td>
+						</tr>
+						<tr class="height50">
+							<td class="field_name">금액<span class="important_text">*</span></td>
+							<td class="text_align_left "><input class="input_size size80 ml10 text_align_right" type="text"></td>
+							<td colspan="2">
+								<div class="size100 text_align_left text_indent50">공급가<input type="text" class="input_small_size ml10 text_align_right pxsize200"/></div>
+								<div class="size100 text_align_left text_indent50">부가세<input type="text" class="input_small_size ml10 text_align_right pxsize200"/></div>
+							</td>
+						</tr>
+						<tr class="height50">
+							<td class="field_name">비고<span class="important_text">*</span></td>
+							<td colspan="3" class="text_align_left "><select class="input_size pxsize150 ml10"> 
+										<option selected="selected">분류를 선택해주세요</option>
+										<option>신용카드</option>
+										<option>영수증</option>
+										<option>현금연수증</option>
+										<option>세금계산서</option>
+										<option>기타</option>
+									</select></td>
+						</tr>
+						<tr class="height50">
+							<td class="field_name">메모</td>
+							<td colspan="3"><textarea class="size80 textarea_normal"></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+					<%-- <table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td class="field_name first_field_name">검색어</td>
+								<td class="field_contents">
+									<input class="input_size size60" type="text">
+									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+								</td>
+							</tr>
+						</tbody>
+					</table> --%>
+				<div class="pop_btn_bottom_area">
+						<input type="button" class="btn_normal btn_size_normal mr20" value="등록"/>
+						<input type="button" class="btn_normal btn_size_normal mr20" value="취소"/>
+					</div>
+			</div>
+	</div>
+	
+	
 	<div class="left_wrap">
 		<div class="logo_wrap">
 			<div>
@@ -740,6 +850,25 @@
 <!-- 				</div> -->
 <!-- 			</div>  -->
 			<div class="first_menu_wrap">
+				<div class="first_menu">
+					<div>
+						<div class="menu_txt">장부관리</div>
+						<div class="menu_gbn"></div>
+					</div>
+				</div>
+			</div>
+				<div class="second_menu_wrap"> -->
+					<div class="second_menu"> 
+						<div>등록</div> 
+					</div> 
+ 					<div class="second_menu"> 
+						<div>장부현황</div> 
+					</div> 
+					<div class="second_menu"> 
+						<div>일별현황</div> 
+					</div> 
+ 				</div> 
+			<div class="first_menu_wrap">
 			<div class="first_menu">
 				<div>
 					<div class="menu_txt">재고</div>
@@ -817,13 +946,13 @@
 <!-- 			</div> -->
 				<div class="first_menu_wrap">
 			
-			<div class="first_menu_on">
+			<div class="first_menu">
 				<div>
 					<div class="menu_txt">일정관리</div>
 					<div class="menu_gbn"></div>
 				</div>
 			</div>
-			<div class="second_menu_wrap">
+			<!-- <div class="second_menu_wrap">
 				<div class="second_menu">
 					<div>예약&일정</div>
 				</div>
@@ -833,7 +962,7 @@
 				<div class="second_menu">
 					<div>월간 일정 목록</div>
 				</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="first_menu_wrap">
 				<div class="first_menu">
