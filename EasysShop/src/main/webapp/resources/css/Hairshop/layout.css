@@ -214,8 +214,12 @@ tbody tr:nth-child(even){
 .backcolorred {
 	background-color: #ffd9d9;
 }
-.backcolorlred {
-	background-color: #ffd9d9;
+.backcolorwhite {
+	background-color: #ffffff;
+}
+
+.noborder {
+	border : 0;
 }
 .txtalignright {
 	text-align: right;

@@ -11,6 +11,7 @@
 	top: 0;
 	left: 0;
 	z-index: 700;
+	min-width: 1200px;
 }
 /* 팝업 배경 */
 .pop_bg {
@@ -19,6 +20,7 @@
 	background-color: #595959a2;
 	z-index: 710;
 	opacity: 1.0;
+	
 }
 
 .pop_white {
@@ -90,12 +92,19 @@
 	overflow: hidden;
 }
 /* 상품 코드 - 등록, 수정 팝업 크기*/
-.pop_size_Procedure_Code_add {
-	width: 600px;
-	height: 250px;
-	top: calc(50% - 125px);
-	left: calc(50% - 300px);
+.pop_size_Sales_Code_add {
+	width: 700px;
+	height: 500px;
+	top: calc(50% - 300px);
+	left: calc(50% - 500px);
 }
+
+/* 상품 코드 - 등록,수정 공급,부가세,판매가영역 */
+.Sale_Money_area {
+	display : block;
+	height : 30px;
+}
+
 
 .pop_Sales_list  {
 	height : 500px;

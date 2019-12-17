@@ -32,7 +32,7 @@
 </head>
 <body>
 	<!-- 상품 코드 목록 팝업  -->
-	<div class="pop_wrap pop_on">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Sales_Code pop_white">
 				<div class="pop_title_area">
@@ -144,15 +144,36 @@
 							<td>1</td>					
 							<td>2019-12-17</td>
 						</tr>					
+						<tr class="list_contents padding0a10">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne1" name="pop_PC_check" />
+									<label for="pop_PC_squaredOne1"></label>
+								</div>
+							</td>					
+							<td>1</td>					
+							<td>헤라</td>					
+							<td>yes</td>					
+							<td>9,091</td>					
+							<td>10,000</td>					
+							<td>8,182</td>					
+							<td>9,000</td>					
+							<td>1,000</td>					
+							<td>500</td>					
+							<td>미용실</td>					
+							<td>1</td>					
+							<td>1</td>					
+							<td>2019-12-17</td>
+						</tr>					
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
-	<!-- 시술 코드 목록 팝업 - 등록,수정팝업 -->
-	<div class="pop_wrap pop_off">
+	<!-- 상품 코드 목록 팝업 - 등록,수정팝업 -->
+	<div class="pop_wrap pop_on">
 		<div class="pop_bg"></div>
-			<div class="pop pop_size_Procedure_Code_add pop_white">
+			<div class="pop pop_size_Sales_Code_add pop_white">
 				<div class="pop_title_area">
 					<div class="pop_title_text">
 						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
@@ -167,44 +188,92 @@
 						<colgroup>
 							<col width="20%">
 							<col width="30%">
-							<col width="25%">
-							<col width="25%">
+							<col width="20%">
+							<col width="30%">
 						</colgroup>
 						<tbody>
 							
 							<tr>
 								<td class="field_name first_field_name">분류</td>
-								<td class="field_contents colorred" colspan="3">
-									<select class="input_size pxsize150 backcolorred"> 
-										<option selected="selected">분류를 선택해주세요</option>
-										<option>드라이</option>
-										<option>컷</option>
-										<option>펌</option>
-										<option>염색</option>
-										<option>크리닉</option>
-										<option>기타</option>
-									</select>
-									해당 분류가 없으면 직접 입력해 주세요
+								<td class="field_contents colorred" >
+									<input class="input_normal  backcolorred" type="text">
+								</td>
+								<td class="field_name first_field_name">상품규격</td>
+								<td>
+									<input class="input_normal" type="text">
 								</td>
 							</tr>
 								<tr>
-								<td class="field_name first_field_name">시술명</td>
+								<td class="field_name first_field_name">매입처</td>
 								<td class="field_contents">
-									<input class="input_normal  backcolorred" type="text">
+									<input class="input_normal" style="width: 70px;" type="text">
+									<input type="button" class="btn_normal pxsize60" value="검색"/>
 								</td>
-								<td class="field_name first_field_name">현금적립포인트</td>
+								<td class="field_name first_field_name">상품단위</td>
 								<td>
-									<input class="input_normal txtalignright" type="text">
+									<input class="input_normal" type="text">
 								</td>
 							</tr>
 							<tr>
-								<td class="field_name first_field_name">요금</td>
+								<td class="field_name first_field_name">VAT포함여부</td>
 								<td class="field_contents">
-									<input class="input_normal txtalignright" type="text">
+									
+									<label><input type="radio" value="VAT포함" name="Sales_VAT_radio">VAT포함</label>
+									
+									<label><input type="radio" value="VAT미포함" name="Sales_VAT_radio">VAT미포함</label>
+								</td>
+								<td class="colorred"colspan="2">단가에 부가세 포함여부를 선택해주세요</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name" rowspan="2" >판매단가</td>
+								<td class="field_contents" rowspan="2" >
+									<input class="input_normal txtalignright" style="border-bottom : 0px;" value="" id="Sales_Sales_Money" type="text">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" rowspan="2">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">
+									<div class="Sale_Money_area">
+									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_Supply_Money" type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_VAT_Money" type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_Total_Money" type="text">원
+									</div>
+								</td>
+							</tr>
+							<tr>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name" rowspan="2" >매입단가</td>
+								<td class="field_contents" rowspan="2" >
+									<input class="input_normal txtalignright" style="border-bottom : 0px;"id="Purchase_Sales_Money" type="text">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" rowspan="2">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">
+									<div class="Sale_Money_area">
+									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_Supply_Money"  type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_VAT_Money" type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_Total_Money" type="text">원
+									</div>
+								</td>
+							</tr>
+							<tr>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">현금적립포인트</td>
+								<td class="field_contents">
+									<input class="input_normal txtalignright" onkeyup="inputNumberFormat(this)"  type="text">
 								</td>
 								<td class="field_name first_field_name">카드적립포인트</td>
 								<td>
-									<input class="input_normal txtalignright" type="text">
+									<input class="input_normal txtalignright" onkeyup="inputNumberFormat(this)"  type="text">
 								</td>
 							</tr>
 						</tbody>
@@ -214,7 +283,7 @@
 					<input type="button" class="btn_normal btn_size_normal" value="취소"/>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</div>
 	<!-- 시술 등급 목록 팝업  -->
 	<div class="pop_wrap pop_off">
