@@ -227,7 +227,7 @@
 							<tr>
 								<td class="field_name first_field_name" rowspan="2" >판매단가</td>
 								<td class="field_contents" rowspan="2" >
-									<input class="input_normal txtalignright" style="border-bottom : 0px;" value="" id="Sales_Sales_Money" type="text">
+									<input class="input_normal txtalignright" style="border-bottom : 0px;" value=""  id="Sales_Sales_Money" type="text">
 								</td>
 								<td class="field_name first_field_name backcolorwhite" rowspan="2">
 								</td>
