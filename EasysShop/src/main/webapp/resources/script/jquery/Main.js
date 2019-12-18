@@ -11,6 +11,17 @@ $(document).ready(function() {
 	$(".pop_Procedure_list").slimScroll({
 		height: "100%"
 	});
+	$(".pop_Account_list").slimScroll({
+		height: "400px"
+	});
+	$(".pop_Customer_list").slimScroll({
+		width : "100%",
+		height: "300px"
+	});
+	$(".pop_Employee_list").slimScroll({
+		width : "100%",
+		height: "220px"
+	});
 	setDate();
 	popsetDays();
 	//최상단 체크박스 클릭

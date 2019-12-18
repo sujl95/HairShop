@@ -151,6 +151,7 @@ tbody tr:nth-child(even){
     font-weight: bold;
     vertical-align: middle;
 }
+
 .padding0a10 td {
     padding : 0px 10px !important;
 }
@@ -223,6 +224,10 @@ tbody tr:nth-child(even){
 }
 .txtalignright {
 	text-align: right;
+}
+
+.nopadding {
+	padding : 0px !important;
 }
 
 /* 기본 입력 폼 % 사이즈 */
