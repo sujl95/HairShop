@@ -505,3 +505,34 @@
 .pop_column_hover :hover {
 	cursor: pointer;
 }
+
+/* 고객 상세정보 팝업사이즈 */
+.pop_size_customer_detail{
+   width : 1200px;
+   height : 600px;
+   top : calc(50% - 350px);
+   left : calc(50% - 610px); 
+}
+
+.pop_detail_top_area{
+   width : 100%;
+   height : 50px;
+}
+.pop_detail_top1{
+   display : inline-block;
+   
+   width : 75%;
+   height : 50px;
+   
+   line-height : 50px;
+   vertical-align : middle;
+}
+.pop_detail_top2{
+   display : inline-block;
+   
+   width : 25%;
+   height : 50px;
+   
+   line-height : 50px;
+   vertical-align : middle;
+}

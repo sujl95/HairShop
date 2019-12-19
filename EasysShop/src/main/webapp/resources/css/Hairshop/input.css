@@ -199,4 +199,46 @@ input:focus, textarea:focus, select:focus {
    width:80px;    
 }
 
-
+/* detail */
+.detail_srch_ddl{
+   display: inline-block;
+   width: 100px;
+   height: 100%;
+   font-size: 10pt;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}
+.detail_txt_small{
+   display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+    border : 0px;
+}
+.detail_txt_big{
+   display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+}
+.textarea_srch {
+   display : inline-block;
+    width: 350px;
+    height : 90%;
+    
+    border : 0px;
+   
+    font-size: 12px;
+    
+    padding : 10px;
+    outline : none;
+}
