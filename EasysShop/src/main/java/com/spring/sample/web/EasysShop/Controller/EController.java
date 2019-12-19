@@ -48,6 +48,11 @@ public class EController {
 		mav.setViewName("EasysShop/calendarPractice");
 		return mav;
 	}
+	@RequestMapping(value = {"/customer"})
+	public ModelAndView customer(ModelAndView mav) {
+		mav.setViewName("EasysShop/customer");
+		return mav;
+	}
 	
 
 }
