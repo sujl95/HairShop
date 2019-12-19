@@ -55,6 +55,11 @@ public class EController {
 		mav.setViewName("EasysShop/popupsample");
 		return mav;
 	}
+	@RequestMapping(value = {"/customer"})
+	public ModelAndView customer(ModelAndView mav) {
+		mav.setViewName("EasysShop/customer");
+		return mav;
+	}
 	
 	@RequestMapping(value = {"/proc_admin_list"})
 	public ModelAndView proc_admin_list(ModelAndView mav) {
