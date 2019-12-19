@@ -6,6 +6,9 @@
 	box-sizing: border-box;
 }
 
+.area{
+	width:100%;
+}
 /* 내용 영역 감싸기 - 크기 1080px로 제한 */
 .contents_wrap {
     width: 1080px;
@@ -214,6 +217,7 @@ tbody tr:nth-child(even){
 /* 텍스트 색상 */ 
 .backcolorred {
 	background-color: #ffd9d9;
+
 }
 .backcolorwhite {
 	background-color: #ffffff;
@@ -344,9 +348,79 @@ tbody tr:nth-child(even){
 .pxsize180{
 	width:180px;
 }
+/* 195px */
+.pxsize195{
+	width:195px;
+}
 /* 200px */
 .pxsize200{
 	width:200px;
+}
+/* 210px */
+.pxsize210{
+	width:210px;
+}
+/* 220px */
+.pxsize220{
+	width:220px;
+}
+/* 400px */
+.pxsize400{
+	width:400px;
+}
+/* 495px */
+.pxsize495{
+	width:495px;
+}
+
+/* 필수입력 사항 *(별포) 스타일 */
+.important_text {
+	color: #ff3737;
+	font-weight: 800;
+	text-align: center;
+}
+
+/* font-weight*/
+.fontweight{
+	font-weight:bold;
+}
+
+/* margin-left */
+.ml10{
+	margin-left:10px;
+}
+
+/* margin-right */
+.mr20{
+	margin-right:20px;
+}
+/* hegiht px*/
+.height50{
+	height:50px;
+}
+
+/* vertical-align */
+.ver_top{
+	vertical-align:top;
+}
+
+/* text-align */
+.text_align_left{
+	text-align:left;
+}
+.text_align_right{
+	text-align:right;
+}
+
+/* text-indent */
+.text_indent10{
+	text-indent:10px;
+}
+.text_indent30{
+	text-indent:30px;
+}
+.text_indent50{
+	text-indent:50px;
 }
 /* 1510px */
 .pxsize1510{

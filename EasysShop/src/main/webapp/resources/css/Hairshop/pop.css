@@ -26,6 +26,16 @@
 .pop_white {
 	background-color: #FFFFFF;
 }
+
+/* 장부 등록 팝업 크기 */
+.pop_size_Books{
+	width: 600px;
+	height: 510px;
+	top: calc(50% - 260px);
+	left: calc(50% - 300px); 
+	overflow: hidden;
+}
+
 /* 일정 등록 팝업 크기 */
 .pop_size_schedule {
 	width: 500px;
@@ -33,6 +43,7 @@
 	top: calc(50% - 175px);
 	left: calc(50% - 250px);
 }
+
 /* 예약 등록 팝업 크기 */
 .pop_size_calendar {
 	width: 500px;
@@ -40,6 +51,8 @@
 	top: calc(50% - 200px);
 	left: calc(50% - 250px);
 }
+
+
 /* 고객 등급 목록 팝업 크기*/
 .pop_size_Customer_Grade {
 	width: 400px;
