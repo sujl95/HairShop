@@ -68,6 +68,11 @@ tr {
     border-bottom: 0;
 }
 
+/* tr 짝수행 배경색 */
+tbody tr:nth-child(even){
+	background-color: #eaeaea;
+}
+
 
 /* 필드명 */
 .field_name {
@@ -110,8 +115,15 @@ tr {
     height: 50px;
 }
 
-
-
+/* 가로스크롤바 */
+.widthscroll{
+   width: 100%;
+   overflow-x: scroll;
+   overflow-y: scroll;
+   white-space:nowrap;
+   position: relative;
+   overflow : scroll !important; 
+}
 /* 리스트 감싸기 - 크기 1100px 로 제한 */
 .list_wrap {
     width: 1200px;
@@ -119,7 +131,7 @@ tr {
 /* 테이블 보더  */ 
 .tborder tr td{
 	border : 1px solid #cacaca;
-	font-size : 9pt;
+	font-size : 9pt !important;
 }
 /* 리스트 테이블 */
 .table_list {
@@ -141,6 +153,10 @@ tr {
     font-size: 10pt;
     font-weight: bold;
     vertical-align: middle;
+}
+
+.padding0a10 td {
+    padding : 0px 10px !important;
 }
 /* 리스트 테이블 td 왼쪽 정렬 스타일 */
 .table_list .list_contents td {
@@ -201,9 +217,21 @@ tr {
 /* 텍스트 색상 */ 
 .backcolorred {
 	background-color: #ffd9d9;
+
+}
+.backcolorwhite {
+	background-color: #ffffff;
+}
+
+.noborder {
+	border : 0;
 }
 .txtalignright {
 	text-align: right;
+}
+
+.nopadding {
+	padding : 0px !important;
 }
 
 /* 기본 입력 폼 % 사이즈 */
@@ -393,4 +421,8 @@ tr {
 }
 .text_indent50{
 	text-indent:50px;
+}
+/* 1510px */
+.pxsize1510{
+	width:1510px;
 }

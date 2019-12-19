@@ -49,11 +49,16 @@ public class EController {
 		return mav;
 	}
 		
-	@RequestMapping(value = {"/calendarPractice"})
-	public ModelAndView calendarPractice(ModelAndView mav) {
-		mav.setViewName("EasysShop/calendarPractice");
+	
+	@RequestMapping(value = {"/popupsample"})
+	public ModelAndView popupsample(ModelAndView mav) {
+		mav.setViewName("EasysShop/popupsample");
 		return mav;
 	}
 	
-
+	@RequestMapping(value = {"/proc_admin_list"})
+	public ModelAndView proc_admin_list(ModelAndView mav) {
+		mav.setViewName("EasysShop/proc_admin_list");
+		return mav;
+	}
 }
