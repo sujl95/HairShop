@@ -33,6 +33,20 @@
 	left: calc(50% - 300px); 
 	overflow: hidden;
 }
+/* 장부 등록 팝업 크기 */
+.pop_small{
+	width: 400px;
+	height: 200px;
+	top: calc(50% - 100px);
+	left: calc(50% - 200px); 
+	overflow: hidden;
+}
+.pop_middle_area{
+	font-size:18px;
+	height:100px;
+	line-height:75px;
+	text-align:center;
+}
 
 /* 일정 등록 팝업 크기 */
 .pop_size_schedule {

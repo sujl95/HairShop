@@ -316,7 +316,7 @@
 			</div>
 	</div>
 	<!-- 시술 코드 목록 팝업 - 등록,수정팝업 -->
-	<div class="pop_wrap pop_off">
+	<div class="pop_wrap ">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Procedure_Code_add pop_white">
 				<div class="pop_title_area">
