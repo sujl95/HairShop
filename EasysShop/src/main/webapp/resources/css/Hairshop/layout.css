@@ -6,6 +6,9 @@
 	box-sizing: border-box;
 }
 
+.area{
+	width:100%;
+}
 /* 내용 영역 감싸기 - 크기 1080px로 제한 */
 .contents_wrap {
     width: 1080px;
@@ -64,7 +67,6 @@ tr {
 .tr_no_uline {
     border-bottom: 0;
 }
-
 
 /* 필드명 */
 .field_name {
@@ -146,6 +148,7 @@ tr {
     font-weight: bold;
     vertical-align: middle;
 }
+
 .padding0a10 td {
     padding : 0px 10px !important;
 }
@@ -208,12 +211,21 @@ tr {
 /* 텍스트 색상 */ 
 .backcolorred {
 	background-color: #ffd9d9;
+
 }
-.backcolorlred {
-	background-color: #ffd9d9;
+.backcolorwhite {
+	background-color: #ffffff;
+}
+
+.noborder {
+	border : 0;
 }
 .txtalignright {
 	text-align: right;
+}
+
+.nopadding {
+	padding : 0px !important;
 }
 
 /* 기본 입력 폼 % 사이즈 */
@@ -330,11 +342,110 @@ tr {
 .pxsize180{
 	width:180px;
 }
+/* 195px */
+.pxsize195{
+	width:195px;
+}
 /* 200px */
 .pxsize200{
 	width:200px;
 }
+/* 210px */
+.pxsize210{
+	width:210px;
+}
+/* 220px */
+.pxsize220{
+	width:220px;
+}
+/* 400px */
+.pxsize400{
+	width:400px;
+}
+/* 495px */
+.pxsize495{
+	width:495px;
+}
+
+/* 필수입력 사항 *(별포) 스타일 */
+.important_text {
+	color: #ff3737;
+	font-weight: 800;
+	text-align: center;
+}
+
+/* font-weight*/
+.fontweight{
+	font-weight:bold;
+}
+
+/* margin-left */
+.ml10{
+	margin-left:10px;
+}
+
+/* margin-right */
+.mr20{
+	margin-right:20px;
+}
+/* hegiht px*/
+.height50{
+	height:50px;
+}
+
+/* vertical-align */
+.ver_top{
+	vertical-align:top;
+}
+
+/* text-align */
+.text_align_left{
+	text-align:left;
+}
+.text_align_right{
+	text-align:right;
+}
+
+/* text-indent */
+.text_indent10{
+	text-indent:10px;
+}
+.text_indent30{
+	text-indent:30px;
+}
+.text_indent50{
+	text-indent:50px;
+}
 /* 1510px */
 .pxsize1510{
 	width:1510px;
+}
+/* detail */
+.detail_srch_area{
+   margin-left : 10px;
+   width: 502px;
+   height: 40px;
+   border : 1px solid #1b5ac2;
+   border-radius: 5px;
+   background : #ffffff;
+}
+.detail_table_area{
+   width : 1100px;
+   height : 300px;
+   margin-top : 10px;
+   margin-left : 10px;
+}
+.detail_row1{
+   border : 1px solid #D5D5D5;
+   width : 60px;
+}
+.detail_row_txt1{
+   width : 100%;
+   display : inline-block;
+   text-align : center;
+}
+.detail_row2{
+   border : 1px solid #D5D5D5;
+   width : 450px;
+   height : 160px;
 }

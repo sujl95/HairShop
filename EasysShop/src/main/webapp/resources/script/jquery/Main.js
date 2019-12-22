@@ -11,6 +11,17 @@ $(document).ready(function() {
 	$(".pop_Procedure_list").slimScroll({
 		height: "100%"
 	});
+	$(".pop_Account_list").slimScroll({
+		height: "400px"
+	});
+	$(".pop_Customer_list").slimScroll({
+		width : "100%",
+		height: "300px"
+	});
+	$(".pop_Employee_list").slimScroll({
+		width : "100%",
+		height: "220px"
+	});
 	setDate();
 	popsetDays();
 	//최상단 체크박스 클릭
@@ -81,9 +92,91 @@ $(document).ready(function() {
     $("#3days").click(function(){
     	setDays(3);
     });
-    
+    $('#Sales_Sales_Money').on("keyup", function() {
+    	inputNumberFormat(this);
+    	Salesformat(this);
+    });
+    $('#Purchase_Sales_Money').on("keyup",function() {
+    	inputNumberFormat(this);
+    	Purchaseformat(this);
+    });
     
 });
+function numberFormat(inputNumber) {
+	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+function Salesformat(obj) {
+	
+	if(("#Sales_Sales_Money") != null ) {
+		var Sales_Sales_Money = document.getElementById("Sales_Sales_Money").value;
+		var Sales_Supply_Money = document.getElementById("Sales_Supply_Money").value;
+		var Sales_VAT_Money = document.getElementById("Sales_VAT_Money").value;
+		var Sales_Total_Money = document.getElementById("Sales_Total_Money").value;
+		Sales_Sales_Money = Sales_Sales_Money.replace(/,/gi, "") * 1;
+		Sales_Supply_Money =  Sales_Sales_Money / 1.1;
+		Sales_VAT_Money = Math.floor(Sales_Sales_Money) - Math.floor(Sales_Supply_Money);
+		$("#Sales_Supply_Money").val(Math.floor(Sales_Supply_Money));
+		$("#Sales_VAT_Money").val(Math.floor(Sales_VAT_Money));
+		$("#Sales_Total_Money").val(Math.floor(Sales_Sales_Money));
+		var Sales_Supply_Money = document.getElementById("Sales_Supply_Money").value;
+		var Sales_VAT_Money = document.getElementById("Sales_VAT_Money").value;
+		var Sales_Total_Money = document.getElementById("Sales_Total_Money").value;
+		Sales_Supply_Money = Sales_Supply_Money*1;
+		Sales_VAT_Money = Sales_VAT_Money*1;
+		Sales_Total_Money = Sales_Total_Money*1;
+    	$("#Sales_Sales_Money").val(Sales_Sales_Money.toLocaleString());
+		$("#Sales_Supply_Money").val(Sales_Supply_Money.toLocaleString());
+		$("#Sales_VAT_Money").val(Sales_VAT_Money.toLocaleString());
+		$("#Sales_Total_Money").val(Sales_Total_Money.toLocaleString());
+	}
+	
+}
+function Purchaseformat(obj) {
+	
+	if(("#Purchase_Sales_Money") != null ) {
+		var Purchase_Sales_Money = document.getElementById("Purchase_Sales_Money").value;
+		var Purchase_Supply_Money = document.getElementById("Purchase_Supply_Money").value;
+		var Purchase_VAT_Money = document.getElementById("Purchase_VAT_Money").value;
+		var Purchase_Total_Money = document.getElementById("Purchase_Total_Money").value;
+		Purchase_Sales_Money = Purchase_Sales_Money.replace(/,/gi, "") * 1
+		Purchase_Supply_Money =  Purchase_Sales_Money / 1.1;
+		Purchase_VAT_Money = Math.floor(Purchase_Sales_Money) - Math.floor(Purchase_Supply_Money);
+		$("#Purchase_Supply_Money").val(Math.floor(Purchase_Supply_Money));
+		$("#Purchase_VAT_Money").val(Math.floor(Purchase_VAT_Money));
+		$("#Purchase_Total_Money").val(Math.floor(Purchase_Sales_Money));
+		var Purchase_Supply_Money = document.getElementById("Purchase_Supply_Money").value;
+		var Purchase_VAT_Money = document.getElementById("Purchase_VAT_Money").value;
+		var Purchase_Total_Money = document.getElementById("Purchase_Total_Money").value;
+		Purchase_Supply_Money = Purchase_Supply_Money*1;
+		Purchase_VAT_Money = Purchase_VAT_Money*1;
+		Purchase_Total_Money = Purchase_Total_Money*1;
+    	$("#Purchase_Sales_Money").val(Purchase_Sales_Money.toLocaleString());
+		$("#Purchase_Supply_Money").val(Purchase_Supply_Money.toLocaleString());
+		$("#Purchase_VAT_Money").val(Purchase_VAT_Money.toLocaleString());
+		$("#Purchase_Total_Money").val(Purchase_Total_Money.toLocaleString());
+	}
+	
+}
+
+
+function inputNumberFormat(obj) {
+    obj.value = comma(uncomma(obj.value));
+}
+
+function comma(str) {
+    str = String(str);
+    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+//    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
+}
+
+
+
 function setDays(daysago) {
 	var endDatearr = $("#endDate").val().split("-");
 	let startDateD = new Date(endDatearr[0], endDatearr[1]-1,endDatearr[2] );

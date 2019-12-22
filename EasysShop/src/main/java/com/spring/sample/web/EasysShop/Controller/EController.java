@@ -21,6 +21,12 @@ public class EController {
 		return mav;
 	}
 	
+	@RequestMapping(value =  "/sample2")
+	public ModelAndView sample2(ModelAndView mav) {
+		mav.setViewName("EasysShop/sample2");
+		return mav;
+	}
+	
 	@RequestMapping(value = {"/schedule_calendar_list"})
 	public ModelAndView schedule_calendar_list(ModelAndView mav) {
 		mav.setViewName("EasysShop/schedule_calendar_list");
@@ -47,6 +53,11 @@ public class EController {
 	@RequestMapping(value = {"/popupsample"})
 	public ModelAndView popupsample(ModelAndView mav) {
 		mav.setViewName("EasysShop/popupsample");
+		return mav;
+	}
+	@RequestMapping(value = {"/customer"})
+	public ModelAndView customer(ModelAndView mav) {
+		mav.setViewName("EasysShop/customer");
 		return mav;
 	}
 	

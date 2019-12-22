@@ -152,3 +152,45 @@
     line-height: 30px;
     margin-left: 0;
 }
+.detail_btn_nomarl{
+	display: inline-block;
+    margin-left: 10px;
+
+    text-align: center;
+    vertical-align: middle;
+
+    border-radius: 3px;
+
+    background-color: #27aae1;
+    border: 1px solid #008aab;
+    color: #ffffff;
+
+    font-size: 10pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+.detail_btn_size_normal {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align : middle;
+}
+.detail_srch_btn{
+	display : inline-block;
+	width : 50px;
+	height : 100%;
+	
+	border : 0px;
+	border-radius: 5px;
+	
+	background-color : #1b5ac2;
+	color : #ffffff;
+	font-size : 13pt;
+	
+	outline : none;
+	vertical-align : top;
+	
+	text-align : center;
+	line-height : 38px;
+}
+
