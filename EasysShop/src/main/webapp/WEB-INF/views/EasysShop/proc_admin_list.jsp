@@ -353,7 +353,7 @@
 									해당 분류가 없으면 직접 입력해 주세요
 								</td>
 							</tr>
-								<tr>
+							<tr>
 								<td class="field_name first_field_name">시술명</td>
 								<td class="field_contents">
 									<input class="input_normal  backcolorred" type="text">
@@ -363,8 +363,7 @@
 									<input class="input_normal txtalignright" type="text">
 								</td>
 							</tr>
-							</tr>
-								<tr>
+							<tr>
 								<td class="field_name first_field_name">요금</td>
 								<td class="field_contents">
 									<input class="input_normal txtalignright" type="text">
@@ -889,111 +888,281 @@
 				</div>
 			</div>
 		</div>
-			<div class="title_area">시술관리</div>
-			<div class="content_area">
-				<div class="list_wrap">
-					<div class="table_top_area">
-						<div class="top_title_area size40" style="vertical-align: bottom;">
-							<input type="button" class="btn_date pxsize50" id="today" value="오늘"/>
-							<input type="button" class="btn_date pxsize50" id="3days" value="3일"/>
-							<input type="button" class="btn_date pxsize50" id="7days" value="7일"/>
-							<input type="button" class="btn_date pxsize50" id="15days" value="15일"/>
-							<input type="button" class="btn_date pxsize50" id="month" value="한달"/>
-							<input type="button" class="btn_date pxsize50" id="total" value="전체"/>
-						</div>
-						<div class="top_btn_area size60">
-						</div>
+		<div class="title_area">시술관리</div>
+		<div class="content_area">
+			<div class="list_wrap">
+				<div class="table_top_area">
+					<div class="top_title_area size40" style="vertical-align: bottom;">
+						<input type="button" class="btn_date pxsize50" id="today" value="오늘"/>
+						<input type="button" class="btn_date pxsize50" id="3days" value="3일"/>
+						<input type="button" class="btn_date pxsize50" id="7days" value="7일"/>
+						<input type="button" class="btn_date pxsize50" id="15days" value="15일"/>
+						<input type="button" class="btn_date pxsize50" id="month" value="한달"/>
+						<input type="button" class="btn_date pxsize50" id="total" value="전체"/>
 					</div>
-					<div class="table_top_area">
-						<div class="top_title_area size40" style="vertical-align: top;">
+					<div class="top_btn_area size60">
+					</div>
+				</div>
+				<div class="table_top_area">
+					<div class="top_title_area size40" style="vertical-align: top;">
+						<select class="input_size pxsize100">
+							<option selected="selected">전체</option>
+							<option>예약자</option>
+							<option>연락처</option>
+							<option>담당자</option>
+							<option>예약내용</option>
+						</select>
+						<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
+						~
+						<input class="input_size pxsize150" type="date" id="endDate"value="">
+					</div>
+					<div class="top_title_area size35">
+						<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">
+						<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+					</div>
+					<div class="top_btn_area size25">
+						<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+						<input type="button" class="btn_normal btn_size_normal" value="수정"/>
+						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+					</div>
+				</div>
+				<div class="table_top_area">
+					<div class="top_title_area size25">
+						<div>
 							<select class="input_size pxsize100">
-								<option selected="selected">전체</option>
-								<option>예약자</option>
-								<option>연락처</option>
-								<option>담당자</option>
-								<option>예약내용</option>
+								<option selected="selected">10단위</option>
+								<option>20단위</option>
+								<option>50단위</option>
+								<option>100단위</option>
 							</select>
-							<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
-							~
-							<input class="input_size pxsize150" type="date" id="endDate"value="">
-						</div>
-						<div class="top_title_area size35">
-							<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">
-							<input type="button" class="btn_normal btn_size_normal" value="검색"/>
-						</div>
-						<div class="top_btn_area size25">
-							<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-							<input type="button" class="btn_normal btn_size_normal" value="수정"/>
-							<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+							<span id="list_cnt_all">#</span>
+							개 항목중
+							<span id="list_cnt_select">#</span>
+							개 선택
 						</div>
 					</div>
-					<div class="table_top_area">
-						<div class="top_title_area size25">
-							<div>
-								<select class="input_size pxsize100">
-									<option selected="selected">10단위</option>
-									<option>20단위</option>
-									<option>50단위</option>
-									<option>100단위</option>
-								</select>
-								<span id=list_cnt_all">#</span>
-								개 항목중
-								<span id=list_cnt_select">#</span>
-								개 선택
+					<div class="top_btn_area size75">
+					</div>
+				</div>
+				<table class="table_list tborder" id="pop_Procedure_list" >
+					<colgroup>
+						<col width="1%"><!-- 체크박스 -->
+						<col width="1%"><!-- NO -->
+						<col width="5%"><!-- 시술날짜 -->
+						<col width="4%"><!-- 고객명 -->
+						<col width="8%"><!-- 시술명 -->
+						<col width="6%"><!-- 디자이너 -->
+						<col width="4%"><!-- 구분 -->
+						<col width="5%"><!-- 요금 -->
+						<col width="5%"><!-- 적립포인트 -->
+						<col width="5%"><!-- 사용포인트 -->
+						<col width="5%"><!-- 총합계금 -->
+						<col width="5%"><!-- 경과일 -->
+					</colgroup>
+					<thead>
+					<tr class="table_list_header" style="height: 30px; !important"  >
+						<td rowspan="2">
+							<div class="squaredOne_h">
+								<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />
+								<label for="pop_PC_checkall"></label>
 							</div>
-						</div>
-						<div class="top_btn_area size75">
-						</div>
-					</div>
-					<table class="table_list tborder" id="pop_Procedure_list" >
-						<colgroup>
-							<col width="1%"><!-- 체크박스 -->
-							<col width="1%"><!-- NO -->
-							<col width="5%"><!-- 시술날짜 -->
-							<col width="4%"><!-- 고객명 -->
-							<col width="7%"><!-- 시술명 -->
-							<col width="6%"><!-- 디자이너 -->
-							<col width="4%"><!-- 구분 -->
-							<col width="5%"><!-- 요금 -->
-							<col width="5%"><!-- 적립포인트 -->
-							<col width="5%"><!-- 사용포인트 -->
-							<col width="6%"><!-- 총합계금 -->
-							<col width="5%"><!-- 경과일 -->
-						</colgroup>
-						<thead>
-						<tr class="table_list_header" style="height: 30px;" !important >
-							<td rowspan="2">
-								<div class="squaredOne_h">
-									<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />
-									<label for="pop_PC_checkall"></label>
+						</td>
+						<td rowspan="2">NO</td>
+						<td rowspan="2">시술날짜</td>
+						<td rowspan="2">고객명</td>
+						<td colspan="2">시술정보</td>
+						<td colspan="4">요금정보</td>
+						<td rowspan="2">총합계금</td>
+						<td rowspan="2">경과일</td>
+					</tr>
+					
+					<tr class="table_list_header" style="height: 30px; !important"  >
+						<td>시술명</td>
+						<td>디자이너</td>
+						<td>구분</td>
+						<td>요금</td>
+						<td>적립포인트</td>
+						<td>사용포인트</td>
+					</tr>
+					</thead>
+			<!-- 테이블 상단 부분 끝-->
+			<!-- 테이블 내용 부분 시작 -->
+					<tbody>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
 								</div>
 							</td>
-							<td rowspan="2">NO</td>
-							<td rowspan="2">시술날짜</td>
-							<td rowspan="2">고객명</td>
-							<td colspan="2">시술정보</td>
-							<td colspan="4">요금정보</td>
-							<td rowspan="2">총합계금</td>
-							<td rowspan="2">경과일</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
+						</tr>
+						<tr class="list_contents">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+									<label for="table_procedure_squaredOne1"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>2019-12-22</td>
+							<td>박희재</td>
+							<td>매직스트레이트(펌)</td>
+							<td>박희재</td>
+							<td>현금</td>
+							<td>100,000</td>
+							<td>1,000</td>
+							<td>1,000</td>
+							<td>100,000</td>
+							<td>220일</td>
 						</tr>
 						
-						<tr class="table_list_header" style="height: 30px;" !important >
-							<td>시술명</td>
-							<td>디자이너</td>
-							<td>구분</td>
-							<td>요금</td>
-							<td>적립포인트</td>
-							<td>사용포인트</td>
-						</tr>
-						</thead>
-					</table>
-				<!-- 테이블 상단 부분 끝-->
-				<!-- 테이블 내용 부분 시작 -->
-				<div class="procedure_admin_contents">
-					<table class="table_procedure_admin" id="">
-					
-					</table>
-				</div>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>
