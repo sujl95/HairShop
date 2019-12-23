@@ -49,6 +49,18 @@ public class EController {
 		return mav;
 	}
 		
+	@RequestMapping(value = {"/schedule_fullcalendar1"})
+	public ModelAndView schedule_fullcalendar1(ModelAndView mav) {
+		mav.setViewName("EasysShop/schedule_fullcalendar1");
+		return mav;
+	}
+	
+	@RequestMapping(value = {"/schedule_fullcalendar2"})
+	public ModelAndView schedule_fullcalendar2(ModelAndView mav) {
+		mav.setViewName("EasysShop/schedule_fullcalendar2");
+		return mav;
+	}
+	
 	
 	@RequestMapping(value = {"/popupsample"})
 	public ModelAndView popupsample(ModelAndView mav) {
