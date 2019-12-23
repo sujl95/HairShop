@@ -57,6 +57,12 @@
 /*     border-top: 2px solid #F2B807; */
     font-size: 0;
 }
+
+/* 테이블 영역 설정 */
+.table_area {
+	heigth: 411px;
+}
+
 /* tr 기본 설정 */
 tr {
     height: 35px;
