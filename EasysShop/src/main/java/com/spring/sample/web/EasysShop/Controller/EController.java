@@ -78,4 +78,10 @@ public class EController {
 		mav.setViewName("EasysShop/proc_admin_list");
 		return mav;
 	}
+	
+	@RequestMapping(value = {"/popuptest"})
+	public ModelAndView popuptest(ModelAndView mav) {
+		mav.setViewName("EasysShop/popuptest");
+		return mav;
+	}
 }

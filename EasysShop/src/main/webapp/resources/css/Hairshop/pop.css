@@ -148,8 +148,8 @@
 /* 거래처 코드 - 등록, 수정 팝업 크기*/
 .pop_size_Company_Code_add {
 	width: 700px;
-	height: 500px;
-	top: calc(50% - 300px);
+	height: 780px;
+	top: calc(50% - 400px);
 	left: calc(50% - 500px);
 }
 /* 상품 코드 - 등록,수정 공급,부가세,판매가영역 */

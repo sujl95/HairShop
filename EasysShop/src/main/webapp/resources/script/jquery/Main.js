@@ -3,7 +3,19 @@
  * create date : 2019.09.19
  */
 $(document).ready(function() {
-	
+//	$("#popup_wrap").load("text.html");
+//	$.ajax({url:"test.html",
+//
+//		success:function(result) {
+//
+//		$("#popup_wrap").html(result);
+//
+//		}});
+	$("#popup_wrap").load("test.html");
+
+
+
+
 	$(".content_area").slimScroll({
 		height: "100%"
 	});
@@ -49,14 +61,20 @@ $(document).ready(function() {
     });
     
     $("#pop_PC_checkall").click(function(){
-    	//클릭되었으면
     	if($("#pop_PC_checkall").prop("checked")){
-    		//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
     		$("input[name=pop_PC_check]").prop("checked",true);
     		//클릭이 안되있으면
     	}else{
-    		//input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
     		$("input[name=pop_PC_check]").prop("checked",false);
+    	}
+    });
+    
+    $("#pop_CP_checkall").click(function(){
+    	if($("#pop_CP_checkall").prop("checked")){
+    		$("input[name=pop_CP_check]").prop("checked",true);
+    		//클릭이 안되있으면
+    	}else{
+    		$("input[name=pop_CP_check]").prop("checked",false);
     	}
     });
     
