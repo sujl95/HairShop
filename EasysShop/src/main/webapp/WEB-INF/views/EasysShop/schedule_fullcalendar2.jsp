@@ -99,8 +99,8 @@
 					        .addClass("contextOpened")
 					        .css({
 					          display: "block",
-					          left: jsEvent.pageX-200,
-					          top: jsEvent.pageY-250
+					          left: jsEvent.pageX,
+					          top: jsEvent.pageY
 					        });
 					      return false;
 					    });
@@ -459,7 +459,16 @@
 			<div class="content_area">
 				    <div id="calendar"></div>
 			</div>
-			
+			 <!-- 일자 클릭시 메뉴오픈 -->
+			        <div id="contextMenu" class="dropdown clearfix">
+			            <ul class="dropdown-menu dropNewEvent" role="menu" aria-labelledby="dropdownMenu"
+			                style="display:block;position:static;margin-bottom:5px;">
+			                <li><a tabindex="-1" href="#">예약 등록</a></li>
+			                <li><a tabindex="-1" href="#">일정 등록</a></li>
+			                <li class="divider"></li>
+			                <li><a tabindex="-1" href="#" data-role="close">Close</a></li>
+			            </ul>
+			        </div>
 			    
 		</div>
 </body>
