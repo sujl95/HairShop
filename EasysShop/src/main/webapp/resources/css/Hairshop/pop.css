@@ -136,6 +136,22 @@
 	left: calc(50% - 500px);
 }
 
+
+/* 거래처 코드 목록 팝업 크기*/
+.pop_size_Company_Code  {
+	width: 900px;
+	height: 600px;
+	top: calc(50% - 300px);
+	left: calc(50% - 450px);
+	overflow: hidden;
+}
+/* 거래처 코드 - 등록, 수정 팝업 크기*/
+.pop_size_Company_Code_add {
+	width: 700px;
+	height: 500px;
+	top: calc(50% - 300px);
+	left: calc(50% - 500px);
+}
 /* 상품 코드 - 등록,수정 공급,부가세,판매가영역 */
 .Sale_Money_area {
 	display : block;

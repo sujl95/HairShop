@@ -31,6 +31,275 @@
 </script>
 </head>
 <body>
+<!-- 거래처 코드 목록 팝업  -->
+	<div class="pop_wrap pop_on">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Company_Code pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						거래처 코드 관리
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<table class="pop_table">
+					<colgroup>
+						<col width="20%">
+						<col width="80%">
+					</colgroup>
+					<tbody>
+						<tr>
+							<td class="field_name first_field_name">검색어</td>
+							<td class="field_contents">
+								<input class="input_size pxsize200" type="text">
+								<input type="button" class="btn_normal btn_size_normal" value="검색"/>&nbsp; &nbsp; &nbsp; &nbsp;
+								<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+								<input type="button" class="btn_normal btn_size_normal" value="수정"/>
+								<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pop_Sales_list widthscroll">
+				<table class="table_list tborder pxsize1650 " id="pop_Procedure_list" >
+					<colgroup>
+						<col width="4%">
+						<col width="5%">
+						<col width="5%">
+						<col width="5%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="9%">
+						<col width="5%">
+						<col width="7%">
+						<col width="5%">
+						<col width="5%" >
+						<col width="9%">
+						<col width="9%">
+						<col width="6%">
+					</colgroup>
+					<thead>
+					<tr class="table_list_header padding0a10" >
+						<td>
+							<div class="squaredOne_h">
+								<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />
+								<label for="pop_PC_checkall"  ></label> <!-- squaredOne 같이? -->
+							</div>
+						</td>
+						<td>수정</td>
+						<td>삭제</td>
+						<td>NO</td>
+						<td>거래처명</td>
+						<td>전화1</td>
+						<td>전화2</td>
+						<td>핸드폰</td>
+						<td>FAX</td>
+						<td>이메일</td>
+						<td>담당자</td>
+						<td>사업자번호</td>
+						<td>대표자</td>
+						<td>업태</td>
+						<td>종목</td>
+						<td>홈페이지</td>
+						<td>등록일</td>
+					</tr>
+					</thead>
+				</table>
+				
+				<table class="table_list tborder pxsize1650" id="pop_Procedure_list" >
+					<colgroup>
+						<col width="4%">
+						<col width="5%">
+						<col width="5%">
+						<col width="5%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="9%">
+						<col width="5%">
+						<col width="7%">
+						<col width="5%">
+						<col width="5%" style="max-width: 80px;">
+						<col width="9%">
+						<col width="9%">
+						<col width="6%">
+					</colgroup>
+					<tbody>
+						<tr class="list_contents padding0a10">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne1" name="pop_PC_check" />
+									<label for="pop_PC_squaredOne1"></label>
+								</div>
+							</td>	
+							<td style="cursor : default;"><input type="button" value="수정"/></td>
+							<td style="cursor : default;"><input type="button" value="삭제"/></td>
+							<td>1</td>					
+							<td>NT</td>					
+							<td>0220202020</td>					
+							<td>0220202020</td>					
+							<td>01012341234</td>					
+							<td>0220202020</td>					
+							<td >NTeofbd@hanmail.net</td>					
+							<td>홍길순</td>					
+							<td>115-15042-28</td>					
+							<td>홍길동</td>					
+							<td style="max-width: 80px;">생산업,도매업,소매업</td>					
+							<td>조경</td>		
+							<td>NTeofbd.co.kr</td>			
+							<td>2019-12-17</td>
+						</tr>					
+						<tr class="list_contents padding0a10">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne1" name="pop_PC_check" />
+									<label for="pop_PC_squaredOne1"></label>
+								</div>
+							</td>	
+							<td style="cursor : default;"><input type="button" value="수정"/></td>
+							<td style="cursor : default;"><input type="button" value="삭제"/></td>
+							<td>1</td>					
+							<td>NT</td>					
+							<td>0220202020</td>					
+							<td>0220202020</td>					
+							<td>01012341234</td>					
+							<td>0220202020</td>					
+							<td>NTeofbd@hanmail.net</td>					
+							<td>홍길순</td>					
+							<td>115-15042-28</td>					
+							<td>홍길동</td>					
+							<td>생산업,도매업,소매업</td>					
+							<td>조경</td>		
+							<td>NTeofbd.co.kr</td>			
+							<td>2019-12-17</td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- 상품 코드 목록 팝업 - 등록,수정팝업 -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Sales_Code_add pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						시술 코드
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="30%">
+							<col width="20%">
+							<col width="30%">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td class="field_name first_field_name">분류</td>
+								<td class="field_contents colorred" >
+									<input class="input_normal  backcolorred" type="text">
+								</td>
+								<td class="field_name first_field_name">상품규격</td>
+								<td>
+									<input class="input_normal" type="text">
+								</td>
+							</tr>
+								<tr>
+								<td class="field_name first_field_name">매입처</td>
+								<td class="field_contents">
+									<input class="input_normal" style="width: 70px;" type="text">
+									<input type="button" class="btn_normal pxsize60" value="검색"/>
+								</td>
+								<td class="field_name first_field_name">상품단위</td>
+								<td>
+									<input class="input_normal" type="text">
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">VAT포함여부</td>
+								<td class="field_contents">
+									
+									<label><input type="radio" value="VAT포함" name="Sales_VAT_radio">VAT포함</label>
+									
+									<label><input type="radio" value="VAT미포함" name="Sales_VAT_radio">VAT미포함</label>
+								</td>
+								<td class="colorred"colspan="2">단가에 부가세 포함여부를 선택해주세요</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name" rowspan="2" >판매단가</td>
+								<td class="field_contents" rowspan="2" >
+									<input class="input_normal txtalignright" style="border-bottom : 0px;" value=""  id="Sales_Sales_Money" type="text">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" rowspan="2">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">
+									<div class="Sale_Money_area">
+									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_Supply_Money" type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_VAT_Money" type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_Total_Money" type="text">원
+									</div>
+								</td>
+							</tr>
+							<tr>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name" rowspan="2" >매입단가</td>
+								<td class="field_contents" rowspan="2" >
+									<input class="input_normal txtalignright" style="border-bottom : 0px;"id="Purchase_Sales_Money" type="text">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" rowspan="2">
+								</td>
+								<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">
+									<div class="Sale_Money_area">
+									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_Supply_Money"  type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_VAT_Money" type="text">원
+									</div>
+									<div class="Sale_Money_area">
+									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_Total_Money" type="text">원
+									</div>
+								</td>
+							</tr>
+							<tr>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">현금적립포인트</td>
+								<td class="field_contents">
+									<input class="input_normal txtalignright" onkeyup="inputNumberFormat(this)"  type="text">
+								</td>
+								<td class="field_name first_field_name">카드적립포인트</td>
+								<td>
+									<input class="input_normal txtalignright" onkeyup="inputNumberFormat(this)"  type="text">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				<div class="pop_btn_bottom_area">
+					<input type="button" class="btn_normal btn_size_normal" value="확인"/>
+					<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+				</div>
+			</div>
+		</div>	
+	</div>
 	<!-- 상품 코드 목록 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -702,7 +971,7 @@
 	</div>
 	
 	<!-- 직급 등급 목록 팝업  -->
-	<div class="pop_wrap pop_on">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Employee_Grade pop_white">
 				<div class="pop_title_area">
