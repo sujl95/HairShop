@@ -665,29 +665,33 @@
 				</colgroup>
 				<tbody>
 					<tr class="height50">
-						<td class="field_name ">거래일자<span class="important_text">*</span></td>
-						<td class="text_align_left "><input type="date"
+						<td class="field_name ">시술날짜<span class="important_text">*</span></td>
+						<td colspan="3" class="text_align_left "><input type="date"
 							class="input_size ml10" /></td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">거래처</td>
-						<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize400 ml10" type="text"> <input
-							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						<td class="field_name">고객명</td>
+						<td colspan="3" class="text_align_left ">
+							<input class="input_size pxsize400 ml10" type="text"> 
+							<input type="button" class="btn_normal btn_size_normal ml10" value="검색" />
 						</td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">거래내용<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize495 ml10" type="text"></td>
+						<td class="field_name">디자이너<span class="important_text">*</span></td>
+						<td colspan="3" class="text_align_left ">
+							<input class="input_size pxsize400 ml10" type="text">
+							<input type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name ">수량<span class="important_text">*</span></td>
-						<td class="text_align_left "><input
-							class="input_size size80 ml10 text_align_right" type="text">개</td>
-						<td class="field_name">단가</td>
-						<td class="text_align_left "><input
-							class="input_size pxsize195 ml10 text_align_right" type="text"></td>
+						<td class="field_name ">시술명<span class="important_text">*</span></td>
+						<td class="text_align_left ">
+							<input class="input_size size80 ml10 text_align_right" type="text">개
+						</td>
+						<td class="field_name">요금구분</td>
+						<td class="text_align_left ">
+							<input class="input_size pxsize195 ml10 text_align_right" type="text">
+						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name">금액<span class="important_text">*</span></td>
