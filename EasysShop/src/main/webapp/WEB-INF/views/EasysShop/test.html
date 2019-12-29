@@ -1304,17 +1304,17 @@
 		</div>
 	</div>
 	
-	<!-- 일정예약 등록 팝업 -->
-	<div class="pop_wrap pop_off">
+	<!-- 일정 등록 팝업 -->
+	<div class="pop_wrap pop_off" id="popup_calander">
 		<div class="pop_bg"></div>
-			<div class="pop pop_size_schedule pop_white">
+			<div class="pop pop_size_calendar pop_white">
 				<div class="pop_title_area">
 					<div class="pop_title_text">
 						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						일정 예약 등록
+						일정  등록
 					</div>
 					<div class="pop_close">
-						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose" id="popup_calander_Close"/>
 					</div>
 				</div>
 				<div class="pop_schedule_contents">
@@ -1336,7 +1336,7 @@
 							<tr>
 								<td class="field_name first_field_name">일시</td>
 								<td class="field_contents">
-									<input class="input_size pxsize130" name="" id="popstartDate" type="date" value="">
+									<input class="input_size pxsize130" name="" id="startDate1" type="date" value="">
 									<select class="input_size pxsize100"> 
 										<option selected="selected">오전 12시</option>
 										<option>오전 01시</option>
@@ -1381,7 +1381,139 @@
 								</td>
 							</tr>
 							<tr>
+								<td class="field_name first_field_name">색상</td>
+								<td class="field_contents">
+									 <select class="input_normal inputModal" name="color" id="edit-color">
+	                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
+	                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
+	                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
+	                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
+	                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
+	                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
+	                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
+	                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
+	                                    <option value="#495057" style="color:#495057;">검정색</option>
+	                                </select>
+								</td>
+							</tr>
+							
+							<tr>
 								<td class="field_name first_field_name">일정내용</td>
+								<td class="field_contents">
+									<input class="input_normal" type="text">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="pop_btn_bottom_area">
+												<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+							<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 예약 등록 팝업 -->
+	<div class="pop_wrap pop_off" id="popup_reservation">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_schedule pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						예약 등록
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose" id="popup_reservation_Close"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<table class="pop_table" >
+						<colgroup>
+							<col width="20%">
+							<col width="80%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td class="field_name first_field_name">일시</td>
+								<td class="field_contents">
+									<input class="input_size pxsize130" name="" id="startDate" type="date" value="">
+									<select class="input_size pxsize100"> 
+										<option selected="selected">오전 12시</option>
+										<option>오전 01시</option>
+										<option>오전 02시</option>
+										<option>오전 03시</option>
+										<option>오전 04시</option>
+										<option>오전 05시</option>
+										<option>오전 06시</option>
+										<option>오전 07시</option>
+										<option>오전 08시</option>
+										<option>오전 09시</option>
+										<option>오전 10시</option>
+										<option>오전 11시</option>
+										<option>오후 12시</option>
+										<option>오후 01시</option>
+										<option>오후 02시</option>
+										<option>오후 03시</option>
+										<option>오후 04시</option>
+										<option>오후 05시</option>
+										<option>오후 06시</option>
+										<option>오후 07시</option>
+										<option>오후 08시</option>
+										<option>오후 09시</option>
+										<option>오후 10시</option>
+										<option>오후 11시</option>
+									</select>
+									<select class="input_size pxsize100"> 
+										<option selected="selected">00분</option>
+										<option>10분</option>
+										<option>20분</option>
+										<option>30분</option>
+										<option>40분</option>
+										<option>50분</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">고객명</td>
+								<td class="field_contents">
+									<input class="input_size size70" type="text">
+									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">연락처
+			                    <td class="field_contents">
+			                        <input type="text" class="input_size size20" maxlength="4" />
+			                        <span>- </span>
+			                        <input type="text" class="input_size size30" maxlength="4"/>
+			                        <span>- </span>
+			                        <input type="text" class="input_size size30" maxlength="4"/>
+			                    </td>
+		                    </tr>
+							<tr>
+								<td class="field_name first_field_name">담당자</td>
+								<td class="field_contents">
+									<input class="input_size size70" type="text">
+									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">색상</td>
+								<td class="field_contents">
+									 <select class="input_normal inputModal" name="color" id="edit-color">
+	                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
+	                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
+	                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
+	                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
+	                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
+	                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
+	                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
+	                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
+	                                    <option value="#495057" style="color:#495057;">검정색</option>
+	                                </select>
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">예약내용</td>
 								<td class="field_contents">
 									<input class="input_normal" type="text">
 								</td>

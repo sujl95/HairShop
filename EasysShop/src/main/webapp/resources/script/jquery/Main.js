@@ -13,9 +13,6 @@ $(document).ready(function() {
 //		}});
 	$("#popup_wrap").load("test.html");
 
-
-
-
 	$(".content_area").slimScroll({
 		height: "100%"
 	});

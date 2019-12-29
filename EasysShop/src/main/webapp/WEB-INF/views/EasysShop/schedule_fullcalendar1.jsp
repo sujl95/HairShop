@@ -32,6 +32,11 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <!-- 슬림 스크롤 js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery.slimscroll.js"></script>
+<!-- Moment -->
+<script type="text/javascript" src="resources/script/jquery/moment.js"></script>
+<!-- fullcalendar -->
+<script type="text/javascript" src="resources/script/fullcalendar/fullcalendar.js"></script>
+<script type="text/javascript" src="resources/script/fullcalendar/locale-all.js"></script>
 <!-- 메인 js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/Main.js"></script>
 <!-- 버튼 js 파일 -->
