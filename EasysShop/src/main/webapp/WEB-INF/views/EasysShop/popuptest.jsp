@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@include file="test.html" %> 
+<%-- <%@include file="test.html" %>  --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +38,7 @@
 <header id="header">
 </header>
 <div id="popup_wrap">
+<%@include file="test.html" %> 
 </div>
 	<div class="left_wrap">
 		<div class="logo_wrap">
