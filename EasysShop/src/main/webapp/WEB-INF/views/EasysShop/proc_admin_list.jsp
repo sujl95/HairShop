@@ -48,7 +48,7 @@
 </script>
 </head>
 <body>
-	시술 등급 목록 팝업 
+	<!--시술 등급 목록 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Procedure_Code pop_white">
@@ -551,7 +551,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<!-- 일정예약 등록 팝업 -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -659,66 +658,78 @@
 			<table class="pop_table table_list tborder">
 				<colgroup>
 					<col width="15%">
-					<col width="35%">
+					<col width="50%">
 					<col width="15%">
 					<col width="35%">
 				</colgroup>
 				<tbody>
 					<tr class="height50">
 						<td class="field_name ">시술날짜<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><input type="date"
-							class="input_size ml10" /></td>
+						<td colspan="3" class="text_align_left ">
+							<input type="date" class="input_size ml10" />
+							<select class="input_size pxsize60 ml10">
+								<option>시</option>
+								<option>1시</option>
+								<option>2시</option>
+								<option>3시</option>
+								<option>4시</option>
+								<option>5시</option>
+								<option>6시</option>
+							</select>
+							<select class="input_size pxsize60 ml10">
+								<option>분</option>
+								<option>10분</option>
+								<option>20분</option>
+								<option>30분</option>
+								<option>40분</option>
+								<option>50분</option>
+							</select>
+						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name">고객명</td>
-						<td colspan="3" class="text_align_left ">
-							<input class="input_size pxsize400 ml10" type="text"> 
+						<td colspan="2" class="text_align_left ">
+							<input class="input_size pxsize180 ml10" type="text"> 
 							<input type="button" class="btn_normal btn_size_normal ml10" value="검색" />
 						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name">디자이너<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left ">
-							<input class="input_size pxsize400 ml10" type="text">
+						<td colspan="2" class="text_align_left ">
+							<input class="input_size pxsize180 ml10" type="text">
 							<input type="button" class="btn_normal btn_size_normal ml10" value="검색" />
 						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name ">시술명<span class="important_text">*</span></td>
-						<td class="text_align_left ">
-							<input class="input_size size80 ml10 text_align_right" type="text">개
+						<td colspan="3" class="text_align_left">
+							<select class="input_size pxsize150 ml10">
+								<option>시술분류</option>
+								<option>드라이</option>
+								<option>컷</option>
+							</select>
+							<select class="input_size pxsize150 ml10">
+								<option>시술명</option>
+								<option>매직드라이</option>															
+							</select>
 						</td>
-						<td class="field_name">요금구분</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">요금구분<span class="important_text">*</span></td>
 						<td class="text_align_left ">
-							<input class="input_size pxsize195 ml10 text_align_right" type="text">
+							<select class="input_size pxsize150 ml10">
+								<option selected="selected">분류를 선택해주세요</option>
+								<option>현금</option>
+								<option>신용카드</option>
+								<option>서비스</option>
+							</select>
 						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name">금액<span class="important_text">*</span></td>
-						<td class="text_align_left "><input
-							class="input_size size80 ml10 text_align_right" type="text"></td>
-						<td colspan="2">
-							<div class="size100 text_align_left text_indent50">
-								공급가<input type="text"
-									class="input_small_size ml10 text_align_right pxsize200" />
-							</div>
-							<div class="size100 text_align_left text_indent50">
-								부가세<input type="text"
-									class="input_small_size ml10 text_align_right pxsize200" />
-							</div>
+						<td class="text_align_left ">
+							<input class="input_size pxsize270 ml10 text_align_right" type="text">
 						</td>
-					</tr>
-					<tr class="height50">
-						<td class="field_name">비고<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><select
-							class="input_size pxsize150 ml10">
-								<option selected="selected">분류를 선택해주세요</option>
-								<option>신용카드</option>
-								<option>영수증</option>
-								<option>현금연수증</option>
-								<option>세금계산서</option>
-								<option>기타</option>
-						</select></td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name">메모</td>
@@ -732,7 +743,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- 시술 등록 팝업 창 끝 -->
 	<div class="left_wrap">
 		<div class="logo_wrap">
 			<div>

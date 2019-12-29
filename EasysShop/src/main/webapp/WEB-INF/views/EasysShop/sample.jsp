@@ -718,7 +718,6 @@
 							<td><input class="input_normal txtalignright" type="text">
 							</td>
 						</tr>
-						</tr>
 						<tr>
 							<td class="field_name first_field_name">요금</td>
 							<td class="field_contents"><input
@@ -1195,7 +1194,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<!-- 일정예약 등록 팝업 -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -1284,7 +1282,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- 장부 등록 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -1389,8 +1386,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!-- 장부 수정 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -1495,7 +1490,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- 장부 삭제 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -1520,10 +1514,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
 	<!-- 장부 등록 팝업  -->
-	<div class="pop_wrap">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_Books pop_white">
 			<div class="pop_title_area">
@@ -1626,7 +1618,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<div class="left_wrap">
 		<div class="logo_wrap">
@@ -1820,7 +1811,6 @@
 			<!-- 				</div> -->
 			<!-- 			</div> -->
 			<div class="first_menu_wrap">
-
 				<div class="first_menu">
 					<div>
 						<div class="menu_txt">일정관리</div>
@@ -1861,10 +1851,7 @@
 		<div class="gnb_wrap">
 			<div class="gnb_area">
 				<div>
-
-
 					<div>Home > 예약 & 일정 > 월간 예약 목록 </div>
-
 				</div>
 			</div>
 			<div class="btn_area">
@@ -1937,24 +1924,19 @@
 						<input type="button" class="btn_normal btn_size_normal" value="삭제" />
 					</div>
 				</div>
-			
-					<div class="table_top_area">
-						<div class="top_title_area size25">
-							<div>
-								<select class="input_size pxsize100">
-									<option selected="selected">10단위</option>
-									<option>20단위</option>
-									<option>50단위</option>
-									<option>100단위</option>
-								</select>
-								<span id="list_cnt_all">#</span>
-								개 항목중
-								<span id="list_cnt_select">#</span>
-								개 선택
-							</div>
-						</div>
-						<div class="top_btn_area size75">
-
+				<div class="table_top_area">
+					<div class="top_title_area size25">
+						<div>
+							<select class="input_size pxsize100">
+								<option selected="selected">10단위</option>
+								<option>20단위</option>
+								<option>50단위</option>
+								<option>100단위</option>
+							</select>
+							<span id="list_cnt_all">#</span>
+							개 항목중
+							<span id="list_cnt_select">#</span>
+							개 선택
 						</div>
 					</div>
 					<div class="top_btn_area size75"></div>
@@ -2174,10 +2156,9 @@
 					<div class="btn_paging">></div>
 					<div class="btn_paging">>></div>
 				</div>
+			</div>
 				<div class="blank_space"></div>
 			</div>
 		</div>
-	</div>
-	</div>
 </body>
 </html>
