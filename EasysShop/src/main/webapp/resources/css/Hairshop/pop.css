@@ -533,10 +533,10 @@
 
 /* 고객 상세정보 팝업사이즈 */
 .pop_size_customer_detail{
-   width : 1200px;
-   height : 600px;
-   top : calc(50% - 350px);
-   left : calc(50% - 610px); 
+	width : 1200px;
+	height : 800px;
+	top : calc(50% - 400px);
+	left : calc(50% - 610px); 
 }
 
 .pop_detail_top_area{
