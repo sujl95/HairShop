@@ -84,4 +84,6 @@ public class EController {
 		mav.setViewName("EasysShop/popuptest");
 		return mav;
 	}
+	
+	
 }
