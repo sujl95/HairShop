@@ -12,16 +12,13 @@
 .btn_normal {
     display: inline-block;
     margin-left: 10px;
-
     text-align: center;
     vertical-align: middle;
-
     border-radius: 3px;
-
     background-color: #27aae1;
-    border: 1px solid #008aab;
+    border: 1px solid #27aae1;
     color: #ffffff;
-
+    box-shadow: 1px 1px 1px #cacaca;
     font-size: 10pt;
     font-weight: bold;
     cursor: pointer;
@@ -34,11 +31,12 @@
     vertical-align: middle;
     border-radius: 3px;
     background-color: #27aae1;
-    border: 1px solid #008aab;
+    border: 1px solid #27aae1;
     color: #ffffff;
     font-size: 10pt;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: 1px 1px 1px #cacaca;
 }
 .btn_normal:hover {
     background-color: #1d95c9;
