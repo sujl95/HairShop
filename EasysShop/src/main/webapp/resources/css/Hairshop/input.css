@@ -242,3 +242,8 @@ input:focus, textarea:focus, select:focus {
     padding : 10px;
     outline : none;
 }
+
+.detail_input_size {
+	height: 24px;
+	vertical-align: middle;
+}

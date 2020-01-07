@@ -460,7 +460,8 @@ tr {
 	margin-left : 10px;
 	width: 502px;
 	height: 40px;
-	border : 1px solid #1b5ac2;
+	/* border : 1px solid #1b5ac2; */
+	border : 1px solid #27aae1;
 	border-radius: 5px;
 	background : #ffffff;
 }
