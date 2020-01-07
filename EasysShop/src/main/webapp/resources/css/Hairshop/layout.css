@@ -456,32 +456,134 @@ tr {
 .pxsize1650{
 	width:1650px;
 }
-/* detail */
 .detail_srch_area{
-   margin-left : 10px;
-   width: 502px;
-   height: 40px;
-   border : 1px solid #1b5ac2;
-   border-radius: 5px;
-   background : #ffffff;
+	margin-left : 10px;
+	width: 502px;
+	height: 40px;
+	border : 1px solid #1b5ac2;
+	border-radius: 5px;
+	background : #ffffff;
 }
 .detail_table_area{
-   width : 1100px;
-   height : 300px;
-   margin-top : 10px;
-   margin-left : 10px;
+	width : 1100px;
+	height : 180px;
+	margin-top : 10px;
 }
 .detail_row1{
-   border : 1px solid #D5D5D5;
-   width : 60px;
+	border : 1px solid #D5D5D5;
+	width : 60px;
 }
 .detail_row_txt1{
-   width : 100%;
-   display : inline-block;
-   text-align : center;
+	width : 100%;
+	display : inline-block;
+	text-align : center;
 }
 .detail_row2{
-   border : 1px solid #D5D5D5;
-   width : 450px;
-   height : 160px;
+	border : 1px solid #D5D5D5;
+	width : 450px;
+	height : 160px;
+}
+.datail_table_top_area {
+    width: 1200px;
+    margin-top: 10px;
+    font-size: 0;
+    color: #000000;
+}
+/* 테이블 타이틀 공간 */
+.detail_top_title_area {
+    display: inline-block;
+    width: 45%;
+    height: 40px;
+    line-height: 36px;
+
+    vertical-align: middle;
+    text-align: left;
+
+    font-size: 15pt;
+    font-weight: bold;
+}
+.detail_top_title_area1 {
+    display: inline-block;
+    width: 45%;
+    height: 30px;
+	
+    vertical-align: top;
+    text-align: left;
+
+    font-size: 15pt;
+    font-weight: bold;
+}
+/* 일별 표시 버튼 영역 */
+.detail_table_top_area1{
+	width: 1050px;
+	height : 30px;
+    color: #000000;
+}
+/* 테이블 리스트 체크 현황 */
+.detail_top_title_area>div {
+    font-size: 10pt;
+    font-weight: normal;
+}
+/* 버튼 공간 */
+.detail_top_btn_area {
+    display: inline-block;
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+	font-size : 10pt;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.detail_down_Btn > input {
+	margin-left : 10px;
+	margin-top : 10px;
+	outline : none;
+}
+.dtta {
+	width : 100%;
+	height : 290px;
+	overflow-x : scroll;
+}
+.dta{
+	width:900px;
+	height:286px;
+	vertical-align : top;
+	display:inline-block;
+
+}
+.dta2{
+	width:290px;
+	height:286px;
+	vertical-align : top;
+	display:inline-block;
+
+}
+.dta3{
+	width:1050px;
+	height:286px;
+	vertical-align : top;
+	display:inline-block;
+	overflow-x : scroll;
+	overflow-y : scroll;
+}
+.dta4{
+	width:700px;
+	height:286px;
+	vertical-align : top;
+	display:inline-block;
+}
+.detail_down_table {
+	display : inline-block;
+	text-align : center;
+	width:100%;
+	height:100%;
+	margin-top : 10px;
+}
+.detail_log_table {
+	display : inline-block;
+	text-align : center;
+	width:100%;
+	height:100%;
+	margin-top : 10px;
 }

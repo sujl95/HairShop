@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시술 관리</title>
+<title>판매 관리</title>
 <!-- 탭 아이콘 -->
 <link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
 <!-- 메인 CSS -->
