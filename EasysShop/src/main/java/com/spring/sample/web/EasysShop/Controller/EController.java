@@ -27,6 +27,12 @@ public class EController {
 		return mav;
 	}
 	
+	@RequestMapping(value =  "/sampleJHJ")
+	public ModelAndView sampleJHJ(ModelAndView mav) {
+		mav.setViewName("EasysShop/sampleJHJ");
+		return mav;
+	}
+	
 	@RequestMapping(value = {"/schedule_calendar_list"})
 	public ModelAndView schedule_calendar_list(ModelAndView mav) {
 		mav.setViewName("EasysShop/schedule_calendar_list");

@@ -48,6 +48,24 @@
 </script>
 </head>
 <body>
+	<div class="pop_wrap pop_on">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_a pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						직원 관리 상세 정보
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+					<div class="pop_btn_bottom_area">
+						<input type="button" class="btn_normal btn_size_normal" value="수정"/>
+						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+					</div>
+				</div>
+			</div>
+	</div>
 	<!-- 시술 등급 목록 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -638,8 +656,6 @@
 										<label for="checkall"  ></label> <!-- squaredOne 같이? -->
 									</div>
 								</td>
-								<td>수정</td>
-								<td>삭제</td>
 								<td>NO</td>
 								<td>직원명</td>
 								<td>직급</td>
@@ -663,15 +679,21 @@
 										<label for="squaredOne1"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>1</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -680,15 +702,21 @@
 										<label for="squaredOne2"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>2</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -697,15 +725,21 @@
 										<label for="squaredOne3"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>3</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -714,15 +748,21 @@
 										<label for="squaredOne4"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>4</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -731,15 +771,21 @@
 										<label for="squaredOne5"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>5</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -748,15 +794,21 @@
 										<label for="squaredOne6"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>6</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -765,15 +817,21 @@
 										<label for="squaredOne7"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>7</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -782,15 +840,21 @@
 										<label for="squaredOne8"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>8</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -799,15 +863,21 @@
 										<label for="squaredOne9"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>9</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -816,15 +886,21 @@
 										<label for="squaredOne10"></label>
 									</div>
 								</td>
-								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>10</td>
-								<td>2019-12-02</td>
-								<td>오후 5:40</td>
 								<td>홍길동</td>
+								<td>대리</td>
 								<td>01012341234</td>
-								<td>홍길순</td>
-								<td>볼륨매직펌</td>
+								<td>1995-07-03</td>
+								<td>남</td>
+								<td>2020-01-07</td>
+								<td>2020-02-10</td>
+								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
+								<td>국민은행</td>
+								<td>244002-04-101268</td>
+								<td>홍길동</td>
+								<td>gudwns133@naver.com</td>
+								<td>비고</td>
+								<td>근무중</td>
 							</tr>
 						</tbody>
 					</table>
