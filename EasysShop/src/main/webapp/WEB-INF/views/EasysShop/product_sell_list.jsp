@@ -744,7 +744,7 @@
 		</div>
 	</div>
 	<!-- 시술 삭제 팝업  -->
-	<div class="pop_wrap pop_on">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_small pop_white">
 			<div class="pop_title_area">
@@ -759,6 +759,139 @@
 			</div>
 			<div class="pop_middle_area">
 			선택한 시술을 정말 삭제하시겠습니까?
+			</div>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="삭제" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	<!-- 판매 등록 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_sell_add pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 판매 등록
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<table class="pop_table table_list tborder">
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tbody>
+					<tr class="height50">
+						<td class="field_name ">판매일자<span class="important_text">*</span></td>
+						<td colspan="3" class="text_align_left ">
+							<input type="date" class="input_size ml10" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">고객명</td>
+						<td class="text_align_left ">
+							<input class="input_size pxsize100 ml10" type="text"> 
+							<input type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+						<td class="field_name">담당자<span class="important_text">*</span></td>
+						<td class="text_align_left ">
+						<select	class="input_size pxsize100 ml10">
+							<option selected="selected">담당자</option>
+							<option>기타경비</option>
+							<option>기타매출</option>
+							<option>기타잡비</option>
+							<option>시술매출</option>
+							<option>상품매출</option>
+							<option>상품매입</option>
+							<option>식비</option>
+							<option>급료</option>
+							<option>임차료</option>
+							<option>자산매입</option>
+							<option>자산매각</option>
+						</select> 
+						<input type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">상품명<span class="important_text">*</span></td>
+						<td colspan="3" class="text_align_left ">
+							<input class="input_size pxsize400 ml10" type="text">
+							<input type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name ">수량<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size size80 ml10 text_align_right" type="text">개</td>
+						<td class="field_name">단가</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize195 ml10 text_align_right" type="text"></td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">요금분류<span class="important_text">*</span></td>
+						<td colspan="3" class="text_align_left "><select
+							class="input_size pxsize150 ml10">
+								<option selected="selected">분류를 선택해주세요</option>
+								<option>신용카드</option>
+								<option>영수증</option>
+								<option>현금연수증</option>
+								<option>세금계산서</option>
+								<option>기타</option>
+						</select></td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">금액<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size size80 ml10 text_align_right" type="text"></td>
+						<td colspan="2">
+							<div class="size100 text_align_left text_indent50">
+								공급가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize200" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								부가세<input type="text"
+									class="input_small_size ml10 text_align_right pxsize200" />
+							</div>
+						</td>
+					</tr>
+					
+					<tr class="height50">
+						<td class="field_name">메모</td>
+						<td colspan="3"><textarea class="size80 textarea_normal"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="등록" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	<!-- 판매 삭제 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_small pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 판매 삭제
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<div class="pop_middle_area">
+			선택한 판매를 정말 삭제하시겠습니까?
 			</div>
 			<div class="pop_btn_bottom_area">
 				<input type="button" class="btn_normal btn_size_normal mr20"
@@ -1014,7 +1147,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="title_area">시술관리</div>
+		<div class="title_area">판매관리</div>
 		<div class="content_area">
 			<div class="list_wrap">
 				<div class="table_top_area">
@@ -1074,17 +1207,16 @@
 					<table class="table_list tborder" id="pop_Procedure_list" >
 						<colgroup>
 							<col width="1%"><!-- 체크박스 -->
-							<col width="1%"><!-- NO -->
-							<col width="5%"><!-- 시술날짜 -->
-							<col width="4%"><!-- 고객명 -->
-							<col width="8%"><!-- 시술명 -->
-							<col width="6%"><!-- 디자이너 -->
-							<col width="4%"><!-- 구분 -->
-							<col width="5%"><!-- 요금 -->
-							<col width="5%"><!-- 적립포인트 -->
-							<col width="5%"><!-- 사용포인트 -->
-							<col width="5%"><!-- 총합계금 -->
-							<col width="5%"><!-- 경과일 -->
+							<col width="1%"><!--NO -->
+							<col width="3%"><!--판매일 -->
+							<col width="3%"><!--담당자 -->
+							<col width="3%"><!--고객명 -->
+							<col width="5%"><!--상품명 -->
+							<col width="3%"><!--요금구분 -->
+							<col width="6%"><!--요금 -->
+							<col width="4%"><!--적립포인트 -->
+							<col width="4%"><!--사용포인트 -->
+							<col width="5%"><!--메모 -->
 						</colgroup>
 						<thead>
 						<tr class="table_list_header" style="height: 30px; !important"  >
@@ -1095,18 +1227,17 @@
 								</div>
 							</td>
 							<td rowspan="2">NO</td>
-							<td rowspan="2">시술날짜</td>
-							<td rowspan="2">고객명</td>
-							<td colspan="2">시술정보</td>
+							<td colspan="2">판매정보</td>
+							<td colspan="2">고객정보</td>
 							<td colspan="4">요금정보</td>
-							<td rowspan="2">총합계금</td>
-							<td rowspan="2">경과일</td>
+							<td rowspan="2">메모</td>
 						</tr>
-						
 						<tr class="table_list_header" style="height: 30px; !important"  >
-							<td>시술명</td>
-							<td>디자이너</td>
-							<td>구분</td>
+							<td>판매일</td>
+							<td>담당자</td>
+							<td>고객명</td>
+							<td>상품명</td>
+							<td>요금구분</td>
 							<td>요금</td>
 							<td>적립포인트</td>
 							<td>사용포인트</td>
@@ -1132,178 +1263,6 @@
 								<td>1,000</td>
 								<td>1,000</td>
 								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
-							</tr>
-							<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
-										<label for="table_procedure_squaredOne1"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2019-12-22</td>
-								<td>박희재</td>
-								<td>매직스트레이트(펌)</td>
-								<td>박희재</td>
-								<td>현금</td>
-								<td>100,000</td>
-								<td>1,000</td>
-								<td>1,000</td>
-								<td>100,000</td>
-								<td>220일</td>
 							</tr>
 						</tbody>
 					</table>

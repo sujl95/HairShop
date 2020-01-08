@@ -182,6 +182,22 @@
 	left: calc(50% - 300px);
 }
 
+/* 판매 등록 팝업 크기 */
+.pop_size_sell_add{
+	width: 600px;
+	height: 510px;
+	top: calc(50% - 255px);
+	left: calc(50% - 300px); 
+}
+
+/* 포인트 등록 팝업 크기 */
+.pop_size_point_add{
+	width: 300px;
+	height: 300px;
+	top: calc(50% - 150px);
+	left: calc(50% - 150px);
+}
+
 /* 상품 코드 목록 size  */
 .pop_Account_list {
 	width : 100%;

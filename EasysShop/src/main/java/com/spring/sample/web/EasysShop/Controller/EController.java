@@ -97,5 +97,10 @@ public class EController {
 		return mav;
 	}
 	
+	@RequestMapping(value = {"/point_list"})
+	public ModelAndView point_list(ModelAndView mav) {
+		mav.setViewName("EasysShop/point_list");
+		return mav;
+	}
 	
 }

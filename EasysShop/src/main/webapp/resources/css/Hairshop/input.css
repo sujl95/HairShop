@@ -11,7 +11,6 @@
     height: 30px;
     border: 1px solid #eeeeee;
     border-radius: 3px;
-	
     font-size: 10pt;
     text-indent: 5px;
 }
@@ -125,6 +124,7 @@ input:focus, textarea:focus, select:focus {
 
 /* header 체크박스 스타일 */
 .squaredOne_h {
+	display: inline-block;
 	width: 20px;
 }
 .squaredOne_h label {
@@ -160,6 +160,7 @@ input:focus, textarea:focus, select:focus {
 /* body 체크박스 스타일 */
 .squaredOne {
 	width: 20px;
+	display: inline-block;
 }
 .squaredOne label {
 	width: 23px;
@@ -244,6 +245,6 @@ input:focus, textarea:focus, select:focus {
 }
 
 .detail_input_size {
-	height: 24px;
+	height: 30px;
 	vertical-align: middle;
 }
