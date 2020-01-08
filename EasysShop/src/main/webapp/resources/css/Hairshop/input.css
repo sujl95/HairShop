@@ -244,6 +244,6 @@ input:focus, textarea:focus, select:focus {
 }
 
 .detail_input_size {
-	height: 24px;
+	height: 30px;
 	vertical-align: middle;
 }

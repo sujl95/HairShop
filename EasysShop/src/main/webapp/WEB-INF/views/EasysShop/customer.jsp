@@ -76,16 +76,6 @@
 	});
 </script>
 <style type="text/css">
-table {
-	width: 1050px;
-	border-collapse: collapse; /* 셀 테두리 합치기 */
-	padding: 0px;
-	margin: 0px;
-	border-spacing: 0px;
-	font-size: 8pt;
-	border-top: 2px solid #27a7df;
-	margin-left : 10px;
-}
 
 .detail_tr {
 	border-bottom: 1px solid #CCC;
@@ -105,7 +95,7 @@ table {
 }
 .down_tr {
 	border-bottom: 1px solid #CCC;
-	font-size: 7pt;
+	font-size: 10pt;
 	height: 30px;
 	text-align : left;
 }
@@ -118,7 +108,17 @@ table {
 
 
 .ttr{
-	font-size : 5pt;
+	font-size : 10pt;
+	border : 1px solid #d9d9d9;
+}
+.tbl{
+	border-left : 1px solid #d9d9d9;
+}
+.tbr{
+	border-right : 1px solid #d9d9d9;
+}
+table > thead {
+	font-weight : bold;
 }
 </style>
 </head>
@@ -576,7 +576,7 @@ table {
 		</div>
 	</div>
 	<!-- 상세정보 -->
-	<div class="pop_wrap">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_customer_detail pop_white">
 			<div class="pop_title_area">
@@ -687,7 +687,7 @@ table {
 				</tr>
 				</table>
 			</div>
-			<table>
+			<table class = "detail_table_srch">
 			<tr class = "detail_table_tr">
 			<td>
 			<div class="detail_table_top_area1">
@@ -733,34 +733,34 @@ table {
 					<input type = "button" value = "판매정보" id = "sell_Btn"/>
 					<input type = "button" value = "포인트이용내역" id = "point_Btn"/>
 				</div>
-				<div class = "dtta">
+				
 				<div class = "dta">
 				<table class = "detail_down_table">
 				<colgroup>
-					<col width = "5%"/>
-					<col width = "20%"/>
-					<col width = "5%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "20%"/>
+					<col width = "40px"/>
+					<col width = "150px"/>
+					<col width = "100px"/>
+					<col width = "90px"/>
+					<col width = "90px"/>
+					<col width = "90px"/>
+					<col width = "90px"/>
+					<col width = "100px"/>
+					<col width = "150px"/>
 				</colgroup>
 					<thead>
 						<tr class = "ttr">
-							<td rowspan = "2">NO</td>
-							<td rowspan = "2">시술날짜</td>
-							<td colspan = "2">시술정보</td>
-							<td colspan = "4">요금정보</td>
+							<td class = "tbr"rowspan = "2">NO</td>
+							<td class = "tbr"rowspan = "2">시술날짜</td>
+							<td class = "tbr"colspan = "2">시술정보</td>
+							<td class = "tbr"colspan = "4">요금정보</td>
 							<td rowspan = "2">메모</td>
 						</tr>
 						<tr class = "ttr">
-							<td>시술명</td>
-							<td>디자이너</td>
-							<td>구분</td>
-							<td>요금</td>
-							<td>적립포인트</td>
+							<td class = "tbr">시술명</td>
+							<td class = "tbr">디자이너</td>
+							<td class = "tbr">구분</td>
+							<td class = "tbr">요금</td>
+							<td class = "tbr">적립포인트</td>
 							<td>사용포인트</td>
 						</tr>
 					</thead>
@@ -776,26 +776,27 @@ table {
 							<td>9억</td>
 							<td>킈킈킈킈</td>
 						</tr>
+						
 					</tbody>
 				</table>
 				</div>
 				<div class = "dta2">
 				<table class = "detail_log_table">
 				<colgroup>
-					<col width = "80px"/>
-					<col width = "45px"/>
-					<col width = "45px"/>
-					<col width = "120px"/>
+					<col width = "100px"/>
+					<col width = "50px"/>
+					<col width = "50px"/>
+					<col width = "95px"/>
 				</colgroup>
 					<thead>
 						<tr class = "ttr">
-							<td colspan = "2">DETAIL LOG</td>
-							<td colspan = "2">시술 총 현황</td>
+							<td class = "status1">DETAIL LOG</td>
+							<td class = "status2"colspan = "3">시술 총 현황</td>
 						</tr>
 						<tr class = "ttr">
-							<td>시술명</td>
-							<td>총횟수</td>
-							<td>경과일</td>
+							<td class = "tbr">시술명</td>
+							<td class = "tbr">총횟수</td>
+							<td class = "tbr">경과일</td>
 							<td>최근방문</td>
 						</tr>
 					</thead>
@@ -810,26 +811,25 @@ table {
 						</tbody>
 				</table>
 				</div>
-				</div>
 				<div class = "dta3">
 				<table class = "detail_down_table">
 				
 					<thead>
 						<tr class = "ttr">
-							<td rowspan = "2">NO</td>
-							<td colspan = "2">판매정보</td>
-							<td colspan = "2">고객정보</td>
-							<td colspan = "4">요금정보</td>
+							<td  class = "tbr"rowspan = "2">NO</td>
+							<td  class = "tbr"colspan = "2">판매정보</td>
+							<td  class = "tbr"colspan = "2">고객정보</td>
+							<td  class = "tbr"colspan = "4">요금정보</td>
 							<td rowspan = "2">메모</td>
 						</tr>
 						<tr class = "ttr">
-							<td>판매일</td>
-							<td>담당자</td>
-							<td>고객명</td>
-							<td>상품명</td>
-							<td>요금></td>
-							<td>요금</td>
-							<td>적립포인트</td>
+							<td class = "tbr">판매일</td>
+							<td class = "tbr">담당자</td>
+							<td class = "tbr">고객명</td>
+							<td class = "tbr">상품명</td>
+							<td class = "tbr">요금></td>
+							<td class = "tbr">요금</td>
+							<td class = "tbr">적립포인트</td>
 							<td>사용포인트</td>
 						</tr>
 					</thead>
@@ -921,11 +921,11 @@ table {
 				</colgroup>
 					<thead>
 						<tr class = "ttr">
-							<td>NO</td>
-							<td>일시</td>
-							<td>회원명</td>
-							<td>내역</td>
-							<td>적립금액</td>
+							<td class = "tbr">NO</td>
+							<td class = "tbr">일시</td>
+							<td class = "tbr">회원명</td>
+							<td class = "tbr">내역</td>
+							<td class = "tbr">적립금액</td>
 							<td>사용금액</td>
 						</tr>
 					</thead>
@@ -986,20 +986,20 @@ table {
 		</div>
 		<div class="menu_wrap">
 			<div class="first_menu_wrap">
-				<div class="first_menu">
+				<div class="first_menu_on">
 					<div>
 						<div class="menu_txt">고객</div>
 						<div class="menu_gbn" id="menu_customer"></div>
 					</div>
 				</div>
-				<!-- 				<div class="second_menu_wrap"> -->
-				<!-- 					<div class="second_menu"> -->
-				<!-- 						<div id="menu_customer_add">고객등록</div> -->
-				<!-- 					</div> -->
-				<!-- 					<div class="second_menu"> -->
-				<!-- 						<div id="menu_customer_list">고객관리</div> -->
-				<!-- 					</div> -->
-				<!-- 				</div> -->
+				 	<div class="second_menu_wrap">
+				 		<div class="second_menu">
+				 			<div id="menu_customer_add">고객등록</div>
+				 		</div>
+				 			<div class="second_menu">
+				 				<div id="menu_customer_list">고객관리</div>
+				 			</div>
+			 		</div>
 			</div>
 			<div class="first_menu">
 				<div>
@@ -1150,23 +1150,23 @@ table {
 			<!-- 			</div> -->
 			<div class="first_menu_wrap">
 
-				<div class="first_menu_on">
+				<div class="first_menu">
 					<div>
 						<div class="menu_txt">일정관리</div>
 						<div class="menu_gbn"></div>
 					</div>
 				</div>
-				<div class="second_menu_wrap">
+				<!-- <div class="second_menu_wrap">
 					<div class="second_menu">
-						<div>예약&일정</div>
+						<div>고객</div>
 					</div>
 					<div class="second_menu">
-						<div>월간 예약 목록</div>
+						<div>고객관리</div>
 					</div>
 					<div class="second_menu">
-						<div>월간 일정 목록</div>
+						<div>고객 목록</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="first_menu_wrap">
 				<div class="first_menu">
@@ -1190,14 +1190,14 @@ table {
 		<div class="gnb_wrap">
 			<div class="gnb_area">
 				<div>
-					<div>Home > 예약&일정 > 월간 예약 목록</div>
+					<div>Home > 고객 > 고객관리</div>
 				</div>
 			</div>
 			<div class="btn_area">
 				<div class="p_btn_cal_area">
 					<div class="p_btn btn_size_normal">
 						<div>
-							<div>일정예약</div>
+							<div>고객관리</div>
 						</div>
 					</div>
 				</div>
@@ -1223,7 +1223,7 @@ table {
 				</div>
 			</div>
 		</div>
-		<div class="title_area">월간 예약 목록</div>
+		<div class="title_area">고객 목록</div>
 		<!-- 내용작성 -->
 		<div class="content_area">
 			<div class="list_wrap">
