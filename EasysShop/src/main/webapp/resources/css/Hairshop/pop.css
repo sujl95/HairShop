@@ -584,3 +584,43 @@
 	left: calc(50% - 300px);
 	overflow: hidden;
 }
+
+
+
+/* 김현 pop.css 부분 ---------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* 거래처 등록 팝업 크기 */
+.pop_size_account_register{
+	width: 600px;
+	height: 740px;
+	top: calc(50% - 370px);
+	left: calc(50% - 300px); 
+	overflow: hidden;
+}
+/* 거래처 관리 팝업 크기 */
+.pop_size_account_manage{
+	width: 1000px;
+	height: 740px;
+	top: calc(50% - 370px);
+	left: calc(50% - 500px); 
+	overflow: hidden;
+}
+/* 팝업 검색 영영 현 스타일 */
+.pop_search_area_h{
+	font-size:0;
+	text-align:center;
+}
+/* 팝업 검색 타이틀 현 스타일 */
+.search_title_h{
+	font-size:10px;
+	font-weight:bold;
+    color: #272727;
+    background-color:#f2f2f2;
+    border-left: 1px solid #cacaca;
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
+	height:40px;
+	line-height:40px;
+	display:inline-block;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}

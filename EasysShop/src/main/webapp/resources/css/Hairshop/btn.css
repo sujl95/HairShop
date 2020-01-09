@@ -193,3 +193,28 @@
 	line-height : 38px;
 }
 
+
+
+/* ------------------------------------------------------------------ 김현 버튼 스타일 ----------------------------------------------------------------------------------- */
+/* 팝업 검색 버튼 스타일 현 */
+.btn_search_normal_h{
+    display: inline-block;
+    text-align: center;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #27aae1;
+    border:0;
+    border-top: 1px solid #27aae1;
+    border-right: 1px solid #27aae1;
+    border-bottom: 1px solid #27aae1;
+    color: #ffffff;
+    font-size: 10pt;
+    font-weight: bold;
+    cursor: pointer;
+    vertical-align:middle;
+    padding:0;
+}
+.btn_search_normal_h:hover{
+	background-color: #1d95c9;	
+}
+/* ------------------------------------------------------------------ 김현 버튼 스타일 ----------------------------------------------------------------------------------- */

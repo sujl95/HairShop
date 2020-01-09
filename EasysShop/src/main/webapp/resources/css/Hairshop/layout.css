@@ -355,6 +355,10 @@ tr {
 .pxsize180{
 	width:180px;
 }
+/* 190px */
+.pxsize190{
+	width:190px;
+}
 /* 195px */
 .pxsize195{
 	width:195px;
@@ -393,7 +397,15 @@ tr {
 }
 /* 495px */
 .pxsize495{
-	width:495px;
+	width:495px !important;
+}
+/* 1510px */
+.pxsize1510{
+	width:1510px;
+}
+/* 1650px */
+.pxsize1650{
+	width:1650px;
 }
 
 /* 필수입력 사항 *(별포) 스타일 */
@@ -408,28 +420,61 @@ tr {
 	font-weight:bold;
 }
 
+/* display */
+.dis_block{
+	display:block !important;
+}
+.dis_inline_block{
+	display:inline !important;
+}
+
 /* margin-left */
 .ml10{
 	margin-left:10px;
+}
+
+/* margin-top */
+.mt10{
+	margin-top:10px;
 }
 
 /* margin-right */
 .mr20{
 	margin-right:20px;
 }
+
+/* margin-top */
+.mb10{
+	margin-bottom:10px;
+}
+
 /* hegiht px*/
 .height50{
 	height:50px;
 }
+.height40{
+	height:40px !important;
+}
+.height20{
+	height:20px !important;
+}
 
 /* vertical-align */
 .ver_top{
-	vertical-align:top;
+	vertical-align:top !important;
+}
+.ver_middle{
+	vertical-align:middle !important;
+}
+
+/* border-radius */
+.b_r0{
+	border-radius:0px !important;
 }
 
 /* text-align */
 .text_align_left{
-	text-align:left;
+	text-align:left !important;
 }
 .text_align_right{
 	text-align:right;
@@ -445,14 +490,13 @@ tr {
 .text_indent50{
 	text-indent:50px;
 }
-/* 1510px */
-.pxsize1510{
-	width:1510px;
+
+
+/* font-size */
+.fs0{
+	font-size:0;
 }
-/* 1650px */
-.pxsize1650{
-	width:1650px;
-}
+/* ------------------------------------------------------------------------------- 김현 ----------------------------------------------------------------------- */
 .detail_srch_area{
 	margin-left : 10px;
 	width: 502px;
