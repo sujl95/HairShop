@@ -3,14 +3,6 @@
  * create date : 2019.09.19
  */
 $(document).ready(function() {
-//	$("#popup_wrap").load("text.html");
-//	$.ajax({url:"test.html",
-//
-//		success:function(result) {
-//
-//		$("#popup_wrap").html(result);
-//
-//		}});
 	$("#popup_wrap").load("test.html");
 
 	$(".content_area").slimScroll({
@@ -18,6 +10,7 @@ $(document).ready(function() {
 	});
 	
 	$(".pop_Procedure_list").slimScroll({
+		width : "600px",
 		height: "100%"
 	});
 	$(".pop_Account_list").slimScroll({
@@ -115,7 +108,11 @@ $(document).ready(function() {
     	inputNumberFormat(this);
     	Purchaseformat(this);
     });
-    
+    $(".pop_wrap").on("click", ".pop>.pop_title_area>.pop_close" , function() {
+    	$(this).parents("div.pop_title_area").parents("div.pop").parents("div.pop_wrap")
+    	.removeClass("pop_on")
+    	.addClass("pop_off");
+    });
 });
 function numberFormat(inputNumber) {
 	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
