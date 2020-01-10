@@ -11,6 +11,15 @@
     height: 30px;
     border: 1px solid #eeeeee;
     border-radius: 3px;
+    font-size: 10pt;
+    text-indent: 5px;
+}
+/* 기본 입력폼 스타일 */
+.input_normal2 {
+    width: 70%;
+    height: 30px;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
 	
     font-size: 10pt;
     text-indent: 5px;
@@ -125,6 +134,7 @@ input:focus, textarea:focus, select:focus {
 
 /* header 체크박스 스타일 */
 .squaredOne_h {
+	display: inline-block;
 	width: 20px;
 }
 .squaredOne_h label {
@@ -160,6 +170,7 @@ input:focus, textarea:focus, select:focus {
 /* body 체크박스 스타일 */
 .squaredOne {
 	width: 20px;
+	display: inline-block;
 }
 .squaredOne label {
 	width: 23px;
@@ -246,4 +257,18 @@ input:focus, textarea:focus, select:focus {
 .detail_input_size {
 	height: 30px;
 	vertical-align: middle;
+}
+.table_txt{
+    display: inline-block;
+    
+    vertical-align: middle;
+    width: 100%;
+    height: 35px;
+    background: #fff;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+    
+	
+    font-size: 10pt;
+    text-indent: 5px;
 }
