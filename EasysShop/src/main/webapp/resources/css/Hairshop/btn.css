@@ -23,6 +23,20 @@
     font-weight: bold;
     cursor: pointer;
 }
+.btn_normal2 {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 3px;
+    background-color: #27aae1;
+    border: 1px solid #27aae1;
+    color: #ffffff;
+    box-shadow: 1px 1px 1px #cacaca;
+    font-size: 10pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .Customer_btn{
     display: inline-block;
     
@@ -142,6 +156,12 @@
 /* 기본 버튼 크기 */
 .btn_size_normal {
     width: 80px;
+    height: 30px;
+    line-height: 30px;
+}
+/* 큰 버튼 크기 */
+.btn_size_big {
+    width: 150px;
     height: 30px;
     line-height: 30px;
 }
