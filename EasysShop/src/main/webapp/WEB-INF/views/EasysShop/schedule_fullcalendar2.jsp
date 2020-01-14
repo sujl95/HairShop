@@ -106,8 +106,8 @@
 					          top: jsEvent.pageY
 					        });
 					      
-					      $("#startDate").val(date.format());
-					      $("#startDate1").val(date.format());
+					      $(".startDate").val(date.format());
+					      $(".startDate1").val(date.format());
 					      return false;
 					    });
 // 					var $popup_reservation_Close =$("#popup_reservation_Close");
