@@ -145,6 +145,13 @@
     height: 30px;
     line-height: 30px;
 }
+/* 가로 60px 세로 30px 버튼 크기 */
+.btn_size_w60h30 {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 0;
+}
 /* 정사각형 버튼 크기 - 취소 아이콘 버튼으로 활용 */
 .btn_size_sqr {
     width: 20px;

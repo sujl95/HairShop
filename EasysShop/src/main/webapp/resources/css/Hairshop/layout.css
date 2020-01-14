@@ -350,6 +350,10 @@ tr {
 .pxsize100{
 	width:100px;
 }
+/* 120px */
+.pxsize120{
+	width:120px;
+}
 /* 150px */
 .pxsize150{
 	width:150px;
@@ -453,6 +457,9 @@ tr {
 .ml10{
 	margin-left:15px;
 }
+.ml27{
+	margin-left:27px;
+}
 
 /* margin-top */
 .mt10{
@@ -477,6 +484,9 @@ tr {
 /* hegiht px*/
 .height50{
 	height:50px;
+}
+.height100{
+	height:100px;
 }
 .height40{
 	height:40px !important;

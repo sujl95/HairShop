@@ -204,7 +204,13 @@
 	top: calc(50% - 150px);
 	left: calc(50% - 150px);
 }
-
+/* 포인트 양도 팝업 크기 */
+.pop_size_point_assignment{
+	width: 300px;
+	height: 440px;
+	top: calc(50% - 220px);
+	left: calc(50% - 150px);
+}
 /* 상품 코드 목록 size  */
 .pop_Account_list {
 	width : 100%;

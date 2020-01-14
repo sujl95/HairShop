@@ -1171,9 +1171,9 @@
 							<option>담당자</option>
 							<option>예약내용</option>
 						</select>
-						<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
+						<input class="input_size pxsize150" name="startDate" id="startDate" type="date" value="">
 						~
-						<input class="input_size pxsize150" type="date" id="endDate"value="">
+						<input class="input_size pxsize150" name="endDate" type="date" id="endDate"value="">
 					</div>
 					<div class="top_title_area size35">
 						<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">
@@ -1181,7 +1181,7 @@
 					</div>
 					<div class="top_btn_area size25">
 						<input type="button" class="btn_normal btn_size_normal" id="btn_reg" value="등록"/>
-						<input type="button" class="btn_normal btn_size_normal" id="btn_update" value="수정"/>
+<!-- 						<input type="button" class="btn_normal btn_size_normal" id="btn_update" value="수정"/> -->
 						<input type="button" class="btn_normal btn_size_normal" id="btn_del" value="삭제"/>
 					</div>
 				</div>
@@ -1207,16 +1207,17 @@
 					<table class="table_list tborder" id="pop_Procedure_list" >
 						<colgroup>
 							<col width="1%"><!-- 체크박스 -->
+<%-- 							<col width="1%"><!-- 수정 --> --%>
 							<col width="1%"><!--NO -->
 							<col width="3%"><!--판매일 -->
 							<col width="3%"><!--담당자 -->
-							<col width="3%"><!--고객명 -->
+							<col width="2%"><!--고객명 -->
 							<col width="5%"><!--상품명 -->
 							<col width="3%"><!--요금구분 -->
-							<col width="6%"><!--요금 -->
+							<col width="3%"><!--요금 -->
 							<col width="4%"><!--적립포인트 -->
 							<col width="4%"><!--사용포인트 -->
-							<col width="5%"><!--메모 -->
+							<col width="4%"><!--메모 -->
 						</colgroup>
 						<thead>
 						<tr class="table_list_header" style="height: 30px; !important"  >
@@ -1226,6 +1227,7 @@
 									<label for="pop_PC_checkall"></label>
 								</div>
 							</td>
+<!-- 							<td rowspan="2">수정</td> -->
 							<td rowspan="2">NO</td>
 							<td colspan="2">판매정보</td>
 							<td colspan="2">고객정보</td>
@@ -1253,6 +1255,7 @@
 										<label for="table_procedure_squaredOne1"></label>
 									</div>
 								</td>
+<!-- 								<td><input type="button" value="수정"/></td> -->
 								<td>1</td>
 								<td>2019-12-22</td>
 								<td>박희재</td>
