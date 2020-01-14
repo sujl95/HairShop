@@ -123,9 +123,9 @@ table > thead {
 </head>
 <body>
 	<!-- 고객 등록,수정 팝업 -->
-	<div class="pop_wrap">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
-		<div class="pop pop_size_Customer_add pop_white">
+		<div class="pop pop_size_Customer_add2 pop_white">
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
@@ -218,11 +218,165 @@ table > thead {
 							</tr>
 							<tr>
 								<th class="field_name first_field_name">메모</th>
-								<td colspan = "3"><input type = "textarea" class = "textarea_noresize" /></td>
+								<td colspan = "3"> <textarea type="text" class="textarea_normal"></textarea></td>
 							</tr>
 						</table>
+						<div class = "customer_btn_area">
+							<div class="btn_normal2 btn_size_normal mt10">고객등록</div>
+							<div class="btn_normal btn_size_normal mt10">연속등록</div>
+							<div class="btn_normal btn_size_big mt10">고객등록 후 시술등록</div>
+							<div class="btn_normal btn_size_big mt10">고객등록 후 판매등록</div>
+							<div class="btn_normal btn_size_normal mt10">등록취소</div>
+						</div>
 					</div>
 				</div>
+		</div>
+	</div>
+	<!-- 고객 목록  -->
+	<div class="pop_wrap">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Customer_Code pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						고객목록
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<table class="pop_table">
+					<tbody>
+						<tr>
+							<td colspan = "4" class="field_contents size100">
+								<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+								<input type="button" class="btn_normal btn_size_normal" value="수정"/>
+								<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="field_name first_field_name size15">검색조건</td>
+							<td class = "size30">
+								<select class="input_size pxsize200">
+									<option selected="selected">전체</option>
+									<option>고객명</option>
+									<option>연락처</option>
+								</select>
+							</td>
+							<td class="field_name first_field_name size15">검색어</td>
+							<td class="field_contents size40">
+								<input class="input_size pxsize200" type="text">
+								<input type="button" class="btn_normal btn_size_normal" value="검색"/>&nbsp; &nbsp; &nbsp; &nbsp;
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pop_customer_list widthscroll">
+				<table class="table_list tborder pxsize1650 " id="pop_Procedure_list" >
+					<colgroup>
+						<col width="3%">
+						<col width="4%">
+						<col width="3%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="8%">
+						<col width="6%">
+						<col width="4%">
+						<col width="8%">
+						<col width="8%">
+						<col width="10%">
+						<col width="10%">
+						<col width="18%">
+					</colgroup>
+					<thead>
+					<tr class="table_list_header padding0a10" >
+						<td>
+							<div class="squaredOne_h">
+								<input type="checkbox" value="None" style="display : none;" id="pop_CP_checkall"  />
+								<label for="pop_CP_checkall"  ></label> <!-- squaredOne 같이? -->
+							</div>
+						</td>
+						<td>선택</td>
+						<td>NO</td>
+						<td>고객명</td>
+						<td>담당자</td>
+						<td>포인트</td>
+						<td>핸드폰</td>
+						<td>전화</td>
+						<td>성별</td>
+						<td>생년월일</td>
+						<td>회원가입일</td>
+						<td>이메일</td>
+						<td>주소</td>
+						<td>메모</td>
+					</tr>
+					</thead>
+				</table>
+				
+				<table class="table_list tborder pxsize1650" id="pop_Procedure_list" style="table-layout: fixed" >
+					<colgroup>
+						<col width="3%">
+						<col width="4%">
+						<col width="3%">
+						<col width="6%">
+						<col width="6%">
+						<col width="6%">
+						<col width="8%">
+						<col width="6%">
+						<col width="4%">
+						<col width="8%">
+						<col width="8%">
+						<col width="10%">
+						<col width="10%">
+						<col width="18%">
+					</colgroup>
+					<tbody>
+						<tr class="list_contents padding0a10">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="pop_CP_squaredOne1" name="pop_CP_check" />
+									<label for="pop_CP_squaredOne1"></label>
+								</div>
+							</td>
+							<td style="cursor : default;"><input type="button" value="선택"/></td>	
+							<td>1</td>					
+							<td>괴물죄</td>					
+							<td>괴물죄</td>					
+							<td>10000000</td>					
+							<td>010-1234-1234</td>					
+							<td>02-2020-2020</td>					
+							<td >여자</td>					
+							<td>1997-06-27</td>					
+							<td>2019-01-14</td>					
+							<td>asdfasdf@naver.com</td>					
+							<td style="max-width: 80px;">서울특별시 어쩌고저쩌고</td>					
+							<td></td>		
+						</tr>					
+						<tr class="list_contents padding0a10">
+							<td style="cursor : default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display : none;" id="pop_CP_squaredOne2" name="pop_CP_check" />
+									<label for="pop_CP_squaredOne2"></label>
+								</div>
+							</td>
+							<td style="cursor : default;"><input type="button" value="선택"/></td>	
+							<td>1</td>					
+							<td>괴물죄</td>					
+							<td>괴물죄</td>					
+							<td>10000000</td>					
+							<td>010-1234-1234</td>					
+							<td>02-2020-2020</td>					
+							<td >여자</td>					
+							<td>1997-06-27</td>					
+							<td>2019-01-14</td>					
+							<td>asdfasdf@naver.com</td>					
+							<td style="max-width: 80px;">서울특별시 어쩌고저쩌고</td>					
+							<td></td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<!-- 상세정보 -->
@@ -364,8 +518,8 @@ table > thead {
 							<option>담당자</option>
 							<option>예약내용</option>
 						</select> <input class="detail_input_size pxsize150" name="datemove"
-							id="startDate" type="date" value=""> ~ <input
-							class="detail_input_size pxsize150" type="date" id="endDate" value="">
+							name = "startDate" id="startDate" type="date" value=""> ~ 
+							<input class="detail_input_size pxsize150" type="date" name = "endDate" id="endDate" value="">
 					</div>
 					<div class="detail_top_title_area size25">
 						<input class="detail_input_size pxsize200" type="text"
@@ -897,8 +1051,8 @@ table > thead {
 							<option>담당자</option>
 							<option>예약내용</option>
 						</select> <input class="input_size pxsize150" name="datemove"
-							id="startDate" type="date" value=""> ~ <input
-							class="input_size pxsize150" type="date" id="endDate" value="">
+							id="startDate" type="date" value=""> ~ 
+							<input class="input_size pxsize150" type="date" id="endDate" value="">
 					</div>
 					<div class="top_title_area size25">
 						<input class="input_size pxsize200" type="text"

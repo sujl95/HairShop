@@ -145,6 +145,14 @@
 	left: calc(50% - 450px);
 	overflow: hidden;
 }
+/* 고객 목록 팝업 크기 */
+.pop_size_Customer_Code  {
+	width: 900px;
+	height: 600px;
+	top: calc(50% - 300px);
+	left: calc(50% - 450px);
+	overflow: hidden;
+}
 /* 거래처 코드 - 등록, 수정 팝업 크기*/
 .pop_size_Company_Code_add {
 	width: 700px;
@@ -156,6 +164,13 @@
 	width: 600px;
 	height: 600px;
 	top: calc(50% - 300px);
+	left: calc(50% - 300px);
+	overflow: hidden;
+}
+.pop_size_Customer_add2 {
+	width: 600px;
+	height: 630px;
+	top: calc(50% - 350px);
 	left: calc(50% - 300px);
 	overflow: hidden;
 }
@@ -219,7 +234,9 @@
 .pop_Sales_list  {
 	height : 500px;
 }
-
+.pop_customer_list  {
+	height : 450px;
+}
 /* 팝업 기본형태 */
 .pop {
 	display: inline-block;
