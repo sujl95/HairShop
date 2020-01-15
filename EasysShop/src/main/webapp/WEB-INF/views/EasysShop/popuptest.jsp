@@ -33,18 +33,6 @@
 
 
 </script>
-
-
-<!-- 주소 api -->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-        }
-    }).open();
-</script>
 </head>
 <body>
 <header id="header">
@@ -321,9 +309,9 @@
 								<option>담당자</option>
 								<option>예약내용</option>
 							</select>
-							<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
+							<input class="input_size pxsize150" name="startDate" id="startDate" type="date" value="">
 							~
-							<input class="input_size pxsize150" type="date" id="endDate"value="">
+							<input class="input_size pxsize150" type="date" name="endDate" id="endDate"value="">
 						</div>
 						<div class="top_title_area size35">
 							<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">

@@ -901,8 +901,148 @@
 		</div>
 	</div>
 	<!-- 포인트 등록 팝업 시작  -->
-<!-- 	pop_size_point_add -->
-	
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_point_add pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 포인트 등록 / 차감
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<table class="pop_table table_list tborder">
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tbody>
+					<tr class="height50">
+						<td class="field_name">고객명<span class="important_text">*</span></td>
+						<td class="text_align_left">
+							<input class="input_size pxsize120 ml10" type="text"/>
+							<input type="button" class="btn_normal btn_size_w60h30 ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">적립/차감</td>
+						<td class="text_align_left">
+							<input type="radio" name="point" checked="checked" value="1" class="ml10"/> 적립
+							<input type="radio" name="point" value="2" class="ml10"/> 차감
+							<input type="button" class="btn_normal btn_size_w60h30 ml27" value="양도" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">포인트<span class="important_text">*</span></td>
+						<td class="text_align_left">
+							<input class="input_size pxsize200 ml10" type="text"/>
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">내역<span class="important_text">*</span></td>
+						<td class="text_align_left">
+							<input class="input_size pxsize200 ml10" type="text"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20" value="등록" /> 
+				<input type="button" class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	<!-- 포인트 양도 팝업창 -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_point_assignment pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 포인트 등록 / 차감
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<table class="pop_table table_list tborder">
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tbody>
+					<tr class="height50">
+						<td class="field_name">고객명<span class="important_text">*</span></td>
+						<td class="text_align_left">
+							<input class="input_size pxsize120 ml10" type="text"/>
+							<input type="button" class="btn_normal btn_size_w60h30 ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">보유 포인트</td>
+						<td class="text_align_left">
+							<input class="input_size pxsize200 ml10" type="text"/>
+						</td>
+					</tr>
+					<tr class="height100 text_align_center">
+						<div class=""></div>
+						<div class="ml10"></div>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">고객명<span class="important_text">*</span></td>
+						<td class="text_align_left">
+							<input class="input_size pxsize120 ml10" type="text"/>
+							<input type="button" class="btn_normal btn_size_w60h30 ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">인수 포인트</td>
+						<td class="text_align_left">
+							<input class="input_size pxsize200 ml10" type="text"/>
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">양도 내용</td>
+						<td class="text_align_left">
+							<input class="input_size pxsize200 ml10" type="text"/>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20" value="등록" /> 
+				<input type="button" class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	<!-- 포인트 기록 삭제 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_small pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 포인트 기록 삭제
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<div class="pop_middle_area">
+			선택한 기록을 정말 삭제하시겠습니까?
+			</div>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="삭제" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
 	<!-- 팝업창 끝 -->
 	<!-- 내용 시작 -->
 	<div class="left_wrap">
@@ -1174,9 +1314,9 @@
 							<option>담당자</option>
 							<option>예약내용</option>
 						</select>
-						<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
+						<input class="input_size pxsize150" name="startDate" id="startDate" type="date" value="">
 						~
-						<input class="input_size pxsize150" type="date" id="endDate"value="">
+						<input class="input_size pxsize150" name="endDate"  type="date" id="endDate"value="">
 					</div>
 					<div class="top_title_area size35">
 						<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">
@@ -1184,7 +1324,6 @@
 					</div>
 					<div class="top_btn_area size25">
 						<input type="button" class="btn_normal btn_size_normal" id="btn_reg" value="등록"/>
-						<input type="button" class="btn_normal btn_size_normal" id="btn_update" value="수정"/>
 						<input type="button" class="btn_normal btn_size_normal" id="btn_del" value="삭제"/>
 					</div>
 				</div>
@@ -1209,13 +1348,14 @@
 				<div class="table_area">
 					<table class="table_list tborder" id="pop_Procedure_list" >
 						<colgroup>
-							<col width="10%"><!--체크박스 -->
-							<col width="10%"><!--NO-->
+							<col width="5%"><!--체크박스 -->
+							<col width="8%"><!--수정버튼 -->
+							<col width="5%"><!--NO-->
 							<col width="20%"><!--일시 -->
 							<col width="10%"><!-- 고객명 -->
-							<col width="30%"><!--내역-->
+							<col width="27%"><!--내역-->
 							<col width="10%"><!--적립금액-->
-							<col width="10%"><!--사용금액 -->
+							<col width="15%"><!--사용금액 -->
 						</colgroup>
 						<thead>
 						<tr class="table_list_header" style="height: 30px; !important"  >
@@ -1225,6 +1365,7 @@
 									<label for="pop_PC_checkall"></label>
 								</div>
 							</td>
+							<td>수정</td>
 							<td>NO</td>
 							<td>일시</td>
 							<td>고객명</td>
@@ -1243,13 +1384,13 @@
 										<label for="table_procedure_squaredOne1"></label>
 									</div>
 								</td>
+								<td><input type="button" value="수정"/></td>
 								<td>1</td>
 								<td>2019-12-22</td>
 								<td>박희재</td>
 								<td>매직스트레이트(펌)</td>
 								<td>박희재</td>
 								<td>1,000</td>
-								<td>100,000</td>
 							</tr>
 						</tbody>
 					</table>

@@ -159,6 +159,14 @@
     height: 30px;
     line-height: 30px;
 }
+
+/* 가로 60px 세로 30px 버튼 크기 */
+.btn_size_w60h30 {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 0;
+
 /* 큰 버튼 크기 */
 .btn_size_big {
     width: 150px;

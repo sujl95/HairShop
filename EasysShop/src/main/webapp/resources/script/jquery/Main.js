@@ -77,7 +77,7 @@ $(document).ready(function() {
     	$("input[type=date]").val(yyyy+"-"+mm+"-"+dd);
     });
     $("#total").click(function(){
-    	$("#startDate").val("2011"+"-"+"01"+"-"+"01");
+    	$("startDate").val("2011"+"-"+"01"+"-"+"01");
     	var date = new Date();
     	var yyyy = date.getFullYear();
     	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
@@ -190,7 +190,7 @@ function uncomma(str) {
 
 
 function setDays(daysago) {
-	var endDatearr = $("#endDate").val().split("-");
+	var endDatearr = $("input[name=endDate]").val().split("-");
 	let startDateD = new Date(endDatearr[0], endDatearr[1]-1,endDatearr[2] );
 	var oldday = new Date(startDateD-(3600000*24*daysago));
 	var endDate1 = oldday.toLocaleString();
@@ -198,7 +198,7 @@ function setDays(daysago) {
 	var oldday = startDateD.toLocaleString();
 	endDate1[1] = endDate1[1] > 9 ? endDate1[1] : '0' + endDate1[1];
 	endDate1[2] = endDate1[2] > 9 ? endDate1[2] : '0' + endDate1[2];
-	$("#startDate").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
+	$("input[name=startDate]").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
 }
 function popsetDays() {
 	let startDateD = new Date();
@@ -207,7 +207,7 @@ function popsetDays() {
 	var endDate1 = endDate1.length == 24 ?endDate1.substring(0,12).split(". ") : endDate1.substring(0,13).split(". ");
 	endDate1[1] = endDate1[1] > 9 ? endDate1[1] : '0' + endDate1[1];
 	endDate1[2] = endDate1[2] > 9 ? endDate1[2] : '0' + endDate1[2];
-	$("#popstartDate").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
+	$("input[name=popstartDate]").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
 }
 
 function setDate() {
@@ -216,6 +216,6 @@ function setDate() {
 	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
 	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
 	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
-	$("#startDate").val(yyyy+"-"+mm+"-"+"01");
+	$("input[name=endDate]").val(yyyy+"-"+mm+"-"+dd);
+	$("input[name=startDate]").val(yyyy+"-"+mm+"-"+"01");
 }
