@@ -282,6 +282,10 @@ tr {
 .size40{
 	width:40%;
 }
+/* 45% */
+.size45 {
+	width:45%;
+}
 /* 48% */
 .size48{
 	width:48%;
@@ -443,14 +447,6 @@ tr {
 .mb10 {
 	margin-bottom : 10px;
 }
-/* display */
-.dis_block{
-	display:block !important;
-}
-.dis_inline_block{
-	display:inline !important;
-}
-
 /* display */
 .dis_block{
 	display:block !important;
@@ -693,27 +689,33 @@ tr {
 	margin-left : 10px;
 }
 .dta{
-	width:900px;
-	height:286px;
+	width:810px;
+	height:270px;
+	vertical-align : top;
+	display:inline-block;
+}
+.detail_botttom_area{
+	width:auto;
+	height:auto;
 	vertical-align : top;
 	display:inline-block;
 }
 .dta2{
-	width:290px;
-	height:286px;
+	width:370px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
 
 }
 .dta3{
 	width:1050px;
-	height:286px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
 }
 .dta4{
 	width:700px;
-	height:286px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
 }
@@ -724,6 +726,15 @@ tr {
 	height:100%;
 	margin-top : 10px;
 }
+
+.detail_bottom_table {
+	display : inline-block;
+	text-align : center;
+	width:100%;
+	height:auto;
+	margin-top : 10px;
+}
+
 .detail_log_table {
 	display : inline-block;
 	text-align : center;

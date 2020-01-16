@@ -27,9 +27,15 @@ public class EController {
 		return mav;
 	}
 	
-	@RequestMapping(value =  "/sampleJHJ")
+	@RequestMapping(value =  "/staffManage")
 	public ModelAndView sampleJHJ(ModelAndView mav) {
-		mav.setViewName("EasysShop/sampleJHJ");
+		mav.setViewName("EasysShop/staffManage");
+		return mav;
+	}
+	
+	@RequestMapping(value =  "/dlManage")
+	public ModelAndView dlManage(ModelAndView mav) {
+		mav.setViewName("EasysShop/dlManage");
 		return mav;
 	}
 	

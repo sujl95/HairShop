@@ -58,6 +58,7 @@
     font-size: 10pt;
     text-indent: 5px;
 }
+
 /* 짧은 입력폼 Placeholder 스타일 */
 .input_short::placeholder {
     color: #cacaca;
@@ -219,14 +220,17 @@ input:focus, textarea:focus, select:focus {
    border-radius: 5px;
 }
 .detail_txt_small{
-   display: inline-block;
+    display: inline-block;
     vertical-align: middle;
     width: 100%;
     height: 20px;
     box-sizing: border-box;
     font-size: 14px;
-    outline: none;
+    outline: 1px solid #FFFFFF;
     border : 0px;
+}
+.detail_txt_small:focus{
+    outline: 1px solid #FFFFFF;
 }
 .detail_txt_big{
    display: inline-block;
@@ -245,6 +249,19 @@ input:focus, textarea:focus, select:focus {
     width: 350px;
     height : 90%;
     
+    border : 0px;
+   
+    font-size: 12px;
+    
+    padding : 10px;
+    outline : none;
+}
+
+.txt_srch {
+   display : inline-block;
+    width: 350px;
+    height : 100%;
+    vertical-align: top;
     border : 0px;
    
     font-size: 12px;
