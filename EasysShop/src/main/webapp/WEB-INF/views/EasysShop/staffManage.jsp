@@ -87,13 +87,16 @@
 	height:30px;
 }
 
-
 .ttr{
 	font-size : 5pt;
 }
 </style>
 </head>
 <body>
+<!-- 공용팝업 -->
+<div id="popup_wrap">
+<%@include file="test.html" %> 
+</div>
 	<div class="pop_wrap">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_customer_detail pop_white">
@@ -127,22 +130,22 @@
 				<select class="detail_srch_ddl">
 					<!-- 검색드랍다운리스트 -->
 					<option selected="selected">전체</option>
-					<option>고객명</option>
+					<option>직원명</option>
 					<option>연락처</option>
-				</select> <input type="text" class="textarea_srch" placeholder="검색어를 입력해주세요." />
+				</select> <input type="text" class="txt_srch" placeholder="검색어를 입력해주세요." />
 				<div class="detail_srch_btn">검색</div>
 			</div>
 			<!-- 상세보기 위 테이블 -->
-			<div class="detail_table_area">
+			<div class="detail_table_area" style="height: auto;">
 				<table>
 					<tr class="detail_tr">
-						<th class = "top_th">고객명</th>
+						<th class = "top_th">직원명</th>
 						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<th class = "top_th">담당</th>
-						<td><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<td class="detail_row1" rowspan="5"><div
+						<th class = "top_th">직급</th>
+						<td class="top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class="detail_row1" rowspan="7"><div
 								class="detail_row_txt1">메모</div></td>
-						<td class="detail_row2" rowspan="5">
+						<td class="detail_row2" rowspan="7">
 						<input type="text" class="detail_txt_big" /></td>
 
 					</tr>
@@ -153,19 +156,29 @@
 						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
 					</tr>
 					<tr class="detail_tr">
-						<th class = "top_th">전화</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<th class = "top_th">주소</th>
+						<td class = "top_td" colspan="3"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+					</tr>
+					<tr class="detail_tr">
 						<th class = "top_th">휴대폰</th>
 						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-					</tr>
-					<tr class="detail_tr">
-						<th class = "top_th">기념일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<th class = "top_th">최근 방문일</th>
+						<th class = "top_th">근무여부</th>
 						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
 					</tr>
 					<tr class="detail_tr">
-						<th class = "top_th">고객등급</th>
+						<th class = "top_th">입사일</th>
+						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<th class = "top_th">월급일</th>
+						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+					</tr>
+					<tr class="detail_tr">
+						<th class = "top_th">은행명</th>
+						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<th class = "top_th">계좌번호</th>
+						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+					</tr>
+					<tr class="detail_tr">
+						<th class = "top_th">예금주</th>
 						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
 						<th class = "top_th">이메일</th>
 						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
@@ -173,41 +186,12 @@
 				</table>
 			</div>
 			<!-- 상세내역 -->
-			<div class = "down_table_area">
-				<table class = "down_table">
-				<tr class = "down_tr">
-					<td colspan = "10">asdf님의 상세내역(처음방문일인 2019-12-19부터 오늘인 2019-12-19일까지의 내역입니다)</td>
-				</tr>
-				<tr class = "down_tr">
-					<th class = "th_down">총 시술횟수</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">총 구매횟수</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">카드결제</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">현금결제</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">서비스이용</th>
-					<td class = "td_down">0회</td>
-					
-				</tr>
-				<tr class = "down_tr">
-					<th class = "th_down">총 적립포인트</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">총 사용포인트</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">현재 보유포인트</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down"></th>
-					<td class = "td_down"></td>
-					<th class = "th_down">최근 포인트사용일 : 미정</th>
-					<td class = "td_down">0회</td>
-				</tr>
-				</table>
-			</div>
 			<table>
 			<tr class = "detail_table_tr">
 			<td>
+			<div class="pop_title_text" style="margin-top: 10px; text-align: left; text-indent: 0px">
+			직원별 고객 현황
+			</div>
 			<div class="detail_table_top_area1">
 					<div class="detail_top_title_area1 size40" style="vertical-align: bottom;">
 						<input type="button" class="btn_date pxsize50" id="today"
@@ -246,88 +230,131 @@
 				</tr>
 			</table>
 			<div>
-				<div class = "detail_down_Btn">
-					<input type = "button" value = "시술정보" id = "info_Btn"/>
-					<input type = "button" value = "판매정보" id = "sell_Btn"/>
-					<input type = "button" value = "포인트이용내역" id = "point_Btn"/>
-				</div>
 				<div class = "dtta">
-				<div class = "dta">
-				<table class = "detail_down_table">
-				<colgroup>
-					<col width = "5%"/>
-					<col width = "20%"/>
-					<col width = "5%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "20%"/>
-				</colgroup>
-					<thead>
-						<tr class = "ttr">
-							<td rowspan = "2">NO</td>
-							<td rowspan = "2">시술날짜</td>
-							<td colspan = "2">시술정보</td>
-							<td colspan = "4">요금정보</td>
-							<td rowspan = "2">메모</td>
-						</tr>
-						<tr class = "ttr">
-							<td>시술명</td>
-							<td>디자이너</td>
-							<td>구분</td>
-							<td>요금</td>
-							<td>적립포인트</td>
-							<td>사용포인트</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class = "ttr">
-							<td>1</td>
-							<td>2019-12-26</td>
-							<td>탈모클리닉</td>
-							<td>바킈손</td>
-							<td>시술</td>
-							<td>10억</td>
-							<td>1억</td>
-							<td>9억</td>
-							<td>킈킈킈킈</td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
-				<div class = "dta2">
-				<table class = "detail_log_table">
-				<colgroup>
-					<col width = "80px"/>
-					<col width = "45px"/>
-					<col width = "45px"/>
-					<col width = "120px"/>
-				</colgroup>
-					<thead>
-						<tr class = "ttr">
-							<td colspan = "2">DETAIL LOG</td>
-							<td colspan = "2">시술 총 현황</td>
-						</tr>
-						<tr class = "ttr">
-							<td>시술명</td>
-							<td>총횟수</td>
-							<td>경과일</td>
-							<td>최근방문</td>
-						</tr>
-					</thead>
+					<div class = "detail_botttom_area">
+					<table class = "detail_bottom_table">
+					<colgroup>
+						<col width = "5%"/>
+						<col width = "8%"/>
+						<col width = "3%"/>
+						<col width = "9%"/>
+						<col width = "9%"/>
+						<col width = "9%"/>
+						<col width = "9%"/>
+						<col width = "12%"/>
+						<col width = "6%"/>
+						<col width = "6%"/>
+						<col width = "6%"/>
+						<col width = "6%"/>
+						<col width = "6%"/>
+						<col width = "6%"/>
+					</colgroup>
+						<thead>
+							<tr class = "ttr">
+								<td rowspan = "2">NO</td>
+								<td rowspan = "2">성명</td>
+								<td rowspan = "2">성별</td>
+								<td rowspan = "2">총금액</td>
+								<td rowspan = "2">총건수</td>
+								<td rowspan = "2">총현금</td>
+								<td rowspan = "2">총카드</td>
+								<td rowspan = "2">미수금</td>
+								<td colspan = "3">시술매출</td>
+								<td colspan = "3">판매매출</td>
+							</tr>
+							<tr class = "ttr">
+								<td>건수</td>
+								<td>현금</td>
+								<td>카드</td>
+								<td>건수</td>
+								<td>현금</td>
+								<td>카드</td>
+							</tr>
+						</thead>
 						<tbody>
 							<tr class = "ttr">
-								<td>탈모클리닉</td>
-								<td>3</td>
-								<td>12</td>
-								<td>2019-12-26</td>
+								<td>1</td>
+								<td>홍길동</td>
+								<td>남</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>200,000</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
 							</tr>
-							
+							<tr class = "ttr">
+								<td>1</td>
+								<td>홍길동</td>
+								<td>남</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>200,000</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+							</tr>
+							<tr class = "ttr">
+								<td>1</td>
+								<td>홍길동</td>
+								<td>남</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>200,000</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+							</tr>
+							<tr class = "ttr">
+								<td>1</td>
+								<td>홍길동</td>
+								<td>남</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>200,000</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+							</tr>
+							<tr class = "ttr">
+								<td>1</td>
+								<td>홍길동</td>
+								<td>남</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>100,000</td>
+								<td>200,000</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+								<td>5</td>
+							</tr>
 						</tbody>
-				</table>
-				</div>
+					</table>
+					</div>
 				</div>
 		</div>
 	</div>
@@ -623,23 +650,23 @@
 <!-- 					</div> -->
 <!-- 				</div> -->
 			</div>
-			<div class="first_menu">
+			<div class="first_menu_on">
 				<div>
 					<div class="menu_txt">직원</div>
 					<div class="menu_gbn"></div>
 				</div>
 			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>직원등록</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>직원관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>근태관리</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+	 			<div class="second_menu_wrap"> 	
+	 				<div class="second_menu"> 	
+	 					<div>직원등록</div> 	
+	 				</div> 	
+	 				<div class="second_menu_on"> 	
+	 					<div>직원관리</div>	
+	 				</div> 	
+	 				<div class="second_menu"> 	
+	 					<div>근태관리</div> 	
+					</div> 	
+				</div>
 			
 			<div class="first_menu">
 				<div>
@@ -778,7 +805,7 @@
 					<div class="menu_gbn"></div>
 				</div>
 			</div>
-			<div class="second_menu_wrap">
+			<!-- <div class="second_menu_wrap">
 				<div class="second_menu">
 					<div>예약&일정</div>
 				</div>
@@ -788,7 +815,7 @@
 				<div class="second_menu">
 					<div>월간 일정 목록</div>
 				</div>
-				</div>
+			</div> -->
 			</div>
 			<div class="first_menu_wrap">
 				<div class="first_menu">

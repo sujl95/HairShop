@@ -49,6 +49,15 @@
     text-align: right;
 }
 
+/* 고객 등록 버튼영역 */
+.customer_btn_area {
+	width:100%;
+	height: 50px;
+	line-height : 55px;
+	display : inline-block;
+	text-align : left;
+}
+
 /* 기본 테이블 설정 */
 .table_normal {
     width: 1200px;
@@ -60,7 +69,7 @@
 
 /* 테이블 영역 설정 */
 .table_area {
-	heigth: 411px;
+	height: 411px;
 }
 
 /* tr 기본 설정 */
@@ -118,11 +127,11 @@ tr {
 /* 가로스크롤바 */
 .widthscroll{
    width: 100%;
-   overflow-x: scroll;
-   overflow-y: scroll;
    white-space:nowrap;
    position: relative;
-   overflow : scroll !important; 
+   overflow-x: scroll;
+   overflow-y: scroll;
+   overflow : scroll !important;
 }
 /* 리스트 감싸기 - 크기 1100px 로 제한 */
 .list_wrap {
@@ -273,6 +282,10 @@ tr {
 .size40{
 	width:40%;
 }
+/* 45% */
+.size45 {
+	width:45%;
+}
 /* 48% */
 .size48{
 	width:48%;
@@ -350,6 +363,10 @@ tr {
 .pxsize100{
 	width:100px;
 }
+/* 120px */
+.pxsize120{
+	width:120px;
+}
 /* 150px */
 .pxsize150{
 	width:150px;
@@ -357,6 +374,10 @@ tr {
 /* 180px */
 .pxsize180{
 	width:180px;
+}
+/* 190px */
+.pxsize190{
+	width:190px;
 }
 /* 195px */
 .pxsize195{
@@ -396,7 +417,15 @@ tr {
 }
 /* 495px */
 .pxsize495{
-	width:495px;
+	width:495px !important;
+}
+/* 1510px */
+.pxsize1510{
+	width:1510px;
+}
+/* 1650px */
+.pxsize1650{
+	width:1650px;
 }
 
 /* 필수입력 사항 *(별포) 스타일 */
@@ -410,29 +439,91 @@ tr {
 .fontweight{
 	font-weight:bold;
 }
+/* margin-top */
+.mt10 {
+	margin-top : 10px;
+}
+/* margin-bottom */
+.mb10 {
+	margin-bottom : 10px;
+}
+/* display */
+.dis_block{
+	display:block !important;
+}
+.dis_inline_block{
+	display:inline !important;
+}
+
+/* display */
+.dis_block{
+	display:block !important;
+}
+.dis_inline_block{
+	display:inline !important;
+}
 
 /* margin-left */
 .ml10{
 	margin-left:10px;
+}
+.ml10{
+	margin-left:15px;
+}
+.ml27{
+	margin-left:27px;
+}
+
+/* margin-top */
+.mt10{
+	margin-top:10px;
+}
+
+/* margin-top */
+.mt10{
+	margin-top:10px;
 }
 
 /* margin-right */
 .mr20{
 	margin-right:20px;
 }
+
+/* margin-top */
+.mb10{
+	margin-bottom:10px;
+}
+
 /* hegiht px*/
 .height50{
 	height:50px;
 }
+.height100{
+	height:100px;
+}
+.height40{
+	height:40px !important;
+}
+.height20{
+	height:20px !important;
+}
 
 /* vertical-align */
 .ver_top{
-	vertical-align:top;
+	vertical-align:top !important;
+}
+.ver_middle{
+	vertical-align:middle !important;
+}
+
+/* border-radius */
+.b_r0{
+	border-radius:0px !important;
 }
 
 /* text-align */
 .text_align_left{
-	text-align:left;
+	text-align:left !important;
 }
 .text_align_right{
 	text-align:right;
@@ -448,14 +539,13 @@ tr {
 .text_indent50{
 	text-indent:50px;
 }
-/* 1510px */
-.pxsize1510{
-	width:1510px;
+
+
+/* font-size */
+.fs0{
+	font-size:0;
 }
-/* 1650px */
-.pxsize1650{
-	width:1650px;
-}
+/* ------------------------------------------------------------------------------- 김현 ----------------------------------------------------------------------- */
 .detail_srch_area{
 	margin-left : 10px;
 	width: 502px;
@@ -535,42 +625,106 @@ tr {
     vertical-align: middle;
     text-align: right;
 }
-
+.detail_table_srch {
+	margin-left : 7px;
+}
 .detail_down_Btn > input {
 	margin-left : 10px;
-	margin-top : 10px;
+	margin-bottom : 10px;
 	outline : none;
 }
-.dtta {
+/* .dtta {
 	width : 100%;
 	height : 290px;
-	overflow-x : scroll;
+} */
+.detail_table_area > table {
+	width: 1050px;
+	border-collapse: collapse; /* 셀 테두리 합치기 */
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px;
+	font-size: 8pt;
+	border-top: 2px solid #27a7df;
+	margin-left : 10px;
+}
+.down_table_area > table {
+	width: 1050px;
+	border-collapse: collapse; /* 셀 테두리 합치기 */
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px;
+	font-size: 10pt;
+	border-top: 2px solid #27a7df;
+	margin-left : 10px;
+}
+.dta > table {
+    width: 800px;
+    height: 270px;
+    border-collapse: collapse;
+    padding: 0px;
+    margin: 0px;
+    border-spacing: 0px;
+    border-top: 2px solid #27a7df;
+    border-right: 2px solid #27a7df;
+    margin-left: 10px;
+    overflow-x: scroll;
+}
+.dta2 > table {
+	width: 100%;
+	border-collapse: collapse; /* 셀 테두리 합치기 */
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px;
+	border-top: 2px solid #27a7df;
+	margin-left : 10px;
+}
+.dta3 > table {
+	width: 1050px;
+	border-collapse: collapse; /* 셀 테두리 합치기 */
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px;
+	border-top: 2px solid #27a7df;
+	margin-left : 10px;
+}
+.dta4 > table {
+	width: 700px;
+	border-collapse: collapse; /* 셀 테두리 합치기 */
+	padding: 0px;
+	margin: 0px;
+	border-spacing: 0px;
+	border-top: 2px solid #27a7df;
+	margin-left : 10px;
 }
 .dta{
-	width:900px;
-	height:286px;
+	width:810px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
-
 }
+.detail_botttom_area{
+	width:auto;
+	height:auto;
+	vertical-align : top;
+	display:inline-block;
+}
+
 .dta2{
-	width:290px;
-	height:286px;
+	width:370px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
 
 }
 .dta3{
 	width:1050px;
-	height:286px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
-	overflow-x : scroll;
-	overflow-y : scroll;
 }
 .dta4{
 	width:700px;
-	height:286px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
 }
@@ -581,10 +735,28 @@ tr {
 	height:100%;
 	margin-top : 10px;
 }
+
+.detail_bottom_table {
+	display : inline-block;
+	text-align : center;
+	width:100%;
+	height:auto;
+	margin-top : 10px;
+}
+
 .detail_log_table {
 	display : inline-block;
 	text-align : center;
 	width:100%;
 	height:100%;
 	margin-top : 10px;
+}
+.status1 {
+	font-size : 11pt !important;
+	color : #4641D9;
+}
+.status2 {
+	text-align : left;
+	font-size : 8pt !important;
+	color : #4641D9;
 }
