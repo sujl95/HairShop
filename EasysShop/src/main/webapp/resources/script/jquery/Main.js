@@ -3,6 +3,14 @@
  * create date : 2019.09.19
  */
 $(document).ready(function() {
+//	$("#popup_wrap").load("text.html");
+//	$.ajax({url:"test.html",
+//
+//		success:function(result) {
+//
+//		$("#popup_wrap").html(result);
+//
+//		}});
 	$("#popup_wrap").load("test.html");
 
 	$(".content_area").slimScroll({
@@ -77,7 +85,7 @@ $(document).ready(function() {
     	$("input[type=date]").val(yyyy+"-"+mm+"-"+dd);
     });
     $("#total").click(function(){
-    	$("startDate").val("2011"+"-"+"01"+"-"+"01");
+    	$("#startDate").val("2011"+"-"+"01"+"-"+"01");
     	var date = new Date();
     	var yyyy = date.getFullYear();
     	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);

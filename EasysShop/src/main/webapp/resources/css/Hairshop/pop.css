@@ -136,6 +136,14 @@
 	left: calc(50% - 500px);
 }
 
+/* 근태 등록 팝업 크기*/
+.pop_size_dlWrite {
+	width: 700px;
+	height: 500px;
+	top: calc(50% - 200px);
+	left: calc(50% - 400px);
+}
+
 
 /* 거래처 코드 목록 팝업 크기*/
 .pop_size_Company_Code  {

@@ -282,6 +282,10 @@ tr {
 .size40{
 	width:40%;
 }
+/* 45% */
+.size45 {
+	width:45%;
+}
 /* 48% */
 .size48{
 	width:48%;
@@ -698,6 +702,7 @@ tr {
 	vertical-align : top;
 	display:inline-block;
 }
+
 .dta2{
 	width:370px;
 	height:270px;
@@ -724,6 +729,15 @@ tr {
 	height:100%;
 	margin-top : 10px;
 }
+
+.detail_bottom_table {
+	display : inline-block;
+	text-align : center;
+	width:100%;
+	height:auto;
+	margin-top : 10px;
+}
+
 .detail_log_table {
 	display : inline-block;
 	text-align : center;
