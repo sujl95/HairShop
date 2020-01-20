@@ -47,15 +47,10 @@
 	});
 </script>
 <style type="text/css">
-	table {
-	width: 1050px;
+table {
+	width: 100%;
 	border-collapse: collapse; /* 셀 테두리 합치기 */
-	padding: 0px;
-	margin: 0px;
-	border-spacing: 0px;
-	font-size: 8pt;
 	border-top: 2px solid #27a7df;
-	margin-left : 10px;
 }
 
 .detail_tr {
@@ -64,33 +59,34 @@
 	height: 30px;
 }
 
-.top_td {
-	padding: 5px 5px;
-	width : 190px;
-}
-
-.top_th {
-	background-color: #EEEEEE;
-	border-right: 1px solid #CCC;
-	padding: 0px;
-}
-.down_tr {
-	border-bottom: 1px solid #CCC;
-	font-size: 7pt;
-	height: 30px;
-	text-align : left;
-}
-.th_down {
-	padding-left : 10px;
-}
 .detail_table_tr{
 	height:30px;
 }
 
-
-.ttr{
-	font-size : 5pt;
+.detail_area {
+	width: 100%;
+	height: 100%;
+	padding: 20px;
 }
+
+th {
+	background-color: #EAEAEA;
+}
+
+.input_short {
+	width: 50px;
+}
+
+.list_contents:hover {
+	cursor: text !important;
+	text-decoration: none !important;
+}
+
+td:hover {
+	cursor: text !important;
+	text-decoration: none !important;
+}
+
 </style>
 </head>
 <body>
@@ -100,7 +96,7 @@
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
-						class="pop_icon"> 근태 등록
+						class="pop_icon"> 퇴근시간 기록
 				</div>
 				<div class="pop_close">
 					<img src="resources/images/Eimages/button/icon_del_white.png"
@@ -111,225 +107,62 @@
 			<div class="pop_detail_top_area">
 				<!-- 상단 버튼 -->
 				<div class="pop_detail_top1">
-					<input type="button" class="btn_normal btn_size_normal"
-						value="시술등록" /> <input type="button"
-						class="btn_normal btn_size_normal" value="판매등록" /> <input
-						type="button" class="btn_normal btn_size_normal" value="대기등록" />
+				<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+				<input type="button" class="btn_normal btn_size_normal" value="취소"/>
 				</div>
 				<div class="pop_detail_top2">
-					<input type="button" class="btn_normal btn_size_normal"
-						value="고객등록" /> <input type="button"
-						class="btn_normal btn_size_normal" value="고객수정" /> <input
-						type="button" class="btn_normal btn_size_normal" value="등록취소" />
 				</div>
-			</div>
-			<div class="detail_srch_area">
-				<select class="detail_srch_ddl">
-					<!-- 검색드랍다운리스트 -->
-					<option selected="selected">전체</option>
-					<option>고객명</option>
-					<option>연락처</option>
-				</select> <input type="text" class="textarea_srch" placeholder="검색어를 입력해주세요." />
-				<div class="detail_srch_btn">검색</div>
 			</div>
 			<!-- 상세보기 위 테이블 -->
-			<div class="detail_table_area">
+			<div class="detail_area">
 				<table>
+				<colgroup>
+					<col width="20%"/>
+					<col width="80%"/>
+				</colgroup>
 					<tr class="detail_tr">
-						<th class = "top_th">고객명</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<th class = "top_th">담당</th>
-						<td><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<td class="detail_row1" rowspan="5"><div
-								class="detail_row_txt1">메모</div></td>
-						<td class="detail_row2" rowspan="5">
-						<input type="text" class="detail_txt_big" /></td>
-
+						<th>출근일자</th>
+						<td><input type="date" name="popstartDate"/></td>
 					</tr>
 					<tr class="detail_tr">
-						<th class = "top_th">성별</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<th class = "top_th">생일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<th>출근시간</th>
+						<td>
+						<input type="text" class="input_short"/><span class="detail_td_span">시</span>
+						<input type="text" class="input_short"/><span>분</span>
+						</td>
 					</tr>
 					<tr class="detail_tr">
-						<th class = "top_th">전화</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<th class = "top_th">휴대폰</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<th>퇴근시간</th>
+						<td>
+						<input type="text" class="input_short"/><span class="detail_td_span">시</span>
+						<input type="text" class="input_short"/><span>분</span>
+						</td>
 					</tr>
 					<tr class="detail_tr">
-						<th class = "top_th">기념일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<th class = "top_th">최근 방문일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<th>총근무시간</th>
+						<td>
+						<input type="text" class="input_short"/><span class="detail_td_span">시간</span>
+						<input type="text" class="input_short"/><span>분</span>
+						</td>
 					</tr>
 					<tr class="detail_tr">
-						<th class = "top_th">고객등급</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
-						<th class = "top_th">이메일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<th>근무상태</th>
+						<td>
+							<select>
+								<option>출근</option>
+								<option>지각</option>
+								<option>조퇴</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="detail_tr">
+						<th>비고</th>
+						<td>
+							<textarea class="textarea_normal"></textarea>
+						</td>
 					</tr>
 				</table>
 			</div>
-			<!-- 상세내역 -->
-			<div class = "down_table_area">
-				<table class = "down_table">
-				<tr class = "down_tr">
-					<td colspan = "10">asdf님의 상세내역(처음방문일인 2019-12-19부터 오늘인 2019-12-19일까지의 내역입니다)</td>
-				</tr>
-				<tr class = "down_tr">
-					<th class = "th_down">총 시술횟수</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">총 구매횟수</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">카드결제</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">현금결제</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">서비스이용</th>
-					<td class = "td_down">0회</td>
-					
-				</tr>
-				<tr class = "down_tr">
-					<th class = "th_down">총 적립포인트</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">총 사용포인트</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down">현재 보유포인트</th>
-					<td class = "td_down">0회</td>
-					<th class = "th_down"></th>
-					<td class = "td_down"></td>
-					<th class = "th_down">최근 포인트사용일 : 미정</th>
-					<td class = "td_down">0회</td>
-				</tr>
-				</table>
-			</div>
-			<table>
-			<tr class = "detail_table_tr">
-			<td>
-			<div class="detail_table_top_area1">
-					<div class="detail_top_title_area1 size40" style="vertical-align: bottom;">
-						<input type="button" class="btn_date pxsize50" id="today"
-							value="오늘" /> 
-							<input type="button" class="detail_btn_date pxsize50" id="3days" value="3일" /> <input type="button"
-							class="detail_btn_date pxsize50" id="7days" value="7일" /> 
-							<input type="button" class="detail_btn_date pxsize50" id="15days" value="15일" />
-						<input type="button" class="detail_btn_date pxsize50" id="month" value="한달" /> <input type="button" class="btn_date pxsize50" id="total" value="전체" />
-					</div>
-				</div>
-				</td>
-				</tr>
-				
-				<tr>
-				<td>
-				<div class="detail_table_top_area">
-					<div class="detail_top_title_area size40" style="line-height: 33px;">
-						<select class="detail_input_size pxsize100">
-							<option selected="selected">전체</option>
-							<option>예약자</option>
-							<option>연락처</option>
-							<option>담당자</option>
-							<option>예약내용</option>
-						</select> <input class="detail_input_size pxsize150" name="datemove"
-							id="startDate" type="date" value=""> ~ <input
-							class="detail_input_size pxsize150" type="date" id="endDate" value="">
-					</div>
-					<div class="detail_top_title_area size25" style="line-height: 33px;">
-						<input class="detail_input_size pxsize200" type="text"
-							placeholder="예약자/연락처/담당자/예약내용"> <input type="button"
-							class="btn_normal detail_btn_size_normal" value="검색" />
-							
-					</div>
-				</div>
-				</td>
-				</tr>
-			</table>
-			<div>
-				<div class = "detail_down_Btn">
-					<input type = "button" value = "시술정보" id = "info_Btn"/>
-					<input type = "button" value = "판매정보" id = "sell_Btn"/>
-					<input type = "button" value = "포인트이용내역" id = "point_Btn"/>
-				</div>
-				<div class = "dtta">
-				<div class = "dta">
-				<table class = "detail_down_table">
-				<colgroup>
-					<col width = "5%"/>
-					<col width = "20%"/>
-					<col width = "5%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "10%"/>
-					<col width = "20%"/>
-				</colgroup>
-					<thead>
-						<tr class = "ttr">
-							<td rowspan = "2">NO</td>
-							<td rowspan = "2">시술날짜</td>
-							<td colspan = "2">시술정보</td>
-							<td colspan = "4">요금정보</td>
-							<td rowspan = "2">메모</td>
-						</tr>
-						<tr class = "ttr">
-							<td>시술명</td>
-							<td>디자이너</td>
-							<td>구분</td>
-							<td>요금</td>
-							<td>적립포인트</td>
-							<td>사용포인트</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class = "ttr">
-							<td>1</td>
-							<td>2019-12-26</td>
-							<td>탈모클리닉</td>
-							<td>바킈손</td>
-							<td>시술</td>
-							<td>10억</td>
-							<td>1억</td>
-							<td>9억</td>
-							<td>킈킈킈킈</td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
-				<div class = "dta2">
-				<table class = "detail_log_table">
-				<colgroup>
-					<col width = "80px"/>
-					<col width = "45px"/>
-					<col width = "45px"/>
-					<col width = "120px"/>
-				</colgroup>
-					<thead>
-						<tr class = "ttr">
-							<td colspan = "2">DETAIL LOG</td>
-							<td colspan = "2">시술 총 현황</td>
-						</tr>
-						<tr class = "ttr">
-							<td>시술명</td>
-							<td>총횟수</td>
-							<td>경과일</td>
-							<td>최근방문</td>
-						</tr>
-					</thead>
-						<tbody>
-							<tr class = "ttr">
-								<td>탈모클리닉</td>
-								<td>3</td>
-								<td>12</td>
-								<td>2019-12-26</td>
-							</tr>
-							
-						</tbody>
-				</table>
-				</div>
-				</div>
-		</div>
 	</div>
 	</div>
 	
@@ -595,9 +428,9 @@
 					</div>
 					<div class="table_top_area">
 						<div class="top_title_area size30" style="vertical-align: top;">
-							<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
+							<input class="input_size pxsize150" name="startDate" id="startDate" type="date" value="">
 							~
-							<input class="input_size pxsize150" type="date" id="endDate"value="">
+							<input class="input_size pxsize150" type="date" id="endDate" name="endDate" value="">
 						</div>
 						<div class="top_title_area size45">
 							<input class="input_size pxsize150" type="text" placeholder="담당자">
@@ -650,6 +483,7 @@
 									</div>
 								</td>
 								<td>NO</td>
+								<td>날짜</td>
 								<td>직원명</td>
 								<td>출근시간</td>
 								<td>퇴근시간</td>
@@ -668,6 +502,7 @@
 									</div>
 								</td>
 								<td>1</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -686,6 +521,7 @@
 									</div>
 								</td>
 								<td>2</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -704,6 +540,7 @@
 									</div>
 								</td>
 								<td>3</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -722,6 +559,7 @@
 									</div>
 								</td>
 								<td>4</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -740,6 +578,7 @@
 									</div>
 								</td>
 								<td>5</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -758,6 +597,7 @@
 									</div>
 								</td>
 								<td>6</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -776,6 +616,7 @@
 									</div>
 								</td>
 								<td>7</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -794,6 +635,7 @@
 									</div>
 								</td>
 								<td>8</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -812,6 +654,7 @@
 									</div>
 								</td>
 								<td>9</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>
@@ -830,6 +673,7 @@
 									</div>
 								</td>
 								<td>10</td>
+								<td>2020-01-20</td>
 								<td>홍길동</td>
 								<td>오전 08:00:00</td>
 								<td>오후 06:00:00</td>

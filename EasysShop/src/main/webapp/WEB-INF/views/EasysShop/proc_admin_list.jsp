@@ -583,7 +583,7 @@
 						<tr>
 							<td class="field_name first_field_name">일시</td>
 							<td class="field_contents">
-								<input class="input_size pxsize130" name="" id="popstartDate" type="date" value="">
+								<input class="input_size pxsize130" name="startDate" id="popstartDate" type="date" value="">
 								<select class="input_size pxsize100"> 
 									<option selected="selected">오전 12시</option>
 									<option>오전 01시</option>
@@ -744,7 +744,7 @@
 		</div>
 	</div>
 	<!-- 시술 삭제 팝업  -->
-	<div class="pop_wrap pop_on">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_small pop_white">
 			<div class="pop_title_area">
@@ -1048,7 +1048,6 @@
 					</div>
 					<div class="top_btn_area size25">
 						<input type="button" class="btn_normal btn_size_normal" id="btn_reg" value="등록"/>
-						<input type="button" class="btn_normal btn_size_normal" id="btn_update" value="수정"/>
 						<input type="button" class="btn_normal btn_size_normal" id="btn_del" value="삭제"/>
 					</div>
 				</div>

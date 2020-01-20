@@ -74,6 +74,9 @@
 			}
 		});
 		
+		$(".cancelBtn").on("click", function() {
+			$(".pop_wrap>.pop>.pop_title_area>.pop_close").click();
+		})
 		$.getJSON("resources/data.json", function(res) {
 			$("#calendar").fullCalendar({
 				header: {
@@ -103,24 +106,31 @@
 					          top: jsEvent.pageY
 					        });
 					      
-					      $("#startDate").val(date.format());
-					      $("#startDate1").val(date.format());
+					      $(".startDate").val(date.format());
+					      $(".startDate1").val(date.format());
 					      return false;
 					    });
-					var $popup_reservation_Close =$("#popup_reservation_Close");
-					    $popup_reservation_Close.on("click", function(e) {
-				    	  $("#popup_reservation") 
-				    	  .removeClass("pop_on")
-				      	  .addClass("pop_off");
-					    	return false;
+// 					var $popup_reservation_Close =$("#popup_reservation_Close");
+// 					    $popup_reservation_Close.on("click", function(e) {
+// 				    	  $("#popup_reservation") 
+// 				    	  .removeClass("pop_on")
+// 				      	  .addClass("pop_off");
+// 					    	return false;
+// 					    });
+					
+					    $(".pop_wrap").on("click", ".pop>.pop_title_area>.pop_close" , function() {
+					    	$(this).parents("div.pop_title_area").parents("div.pop").parents("div.pop_wrap")
+					    	.removeClass("pop_on")
+					    	.addClass("pop_off");
 					    });
-				    var $popup_calander_Close =$("#popup_calander_Close");
-					    $popup_calander_Close.on("click", function(e) {
-				    	   $("#popup_calander")
-					        .removeClass("pop_on")
-					      	.addClass("pop_off");
-					    	return false;
-				    });
+
+// 				    var $popup_calander_Close =$("#popup_calander_Close");
+// 					    $popup_calander_Close.on("click", function(e) {
+// 				    	   $("#popup_calander")
+// 					        .removeClass("pop_on")
+// 					      	.addClass("pop_off");
+// 					    	return false;
+// 				    });
 					  var $reservation_add =$("#reservation_add");
 					  var $calendar_add = $("#calendar_add");
 					  $reservation_add.on("click", function(e) {
@@ -173,96 +183,6 @@
 <div id="popup_wrap">
 <%@include file="test.html" %> 
 </div>
-	<div class="pop_wrap pop_off"  id="popup_calander">
-		<div class="pop_bg"></div>
-			<div class="pop pop_size_schedule pop_white">
-				<div class="pop_title_area">
-					<div class="pop_title_text">
-						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						일정 예약 등록
-					</div>
-					<div class="pop_close">
-						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
-					</div>
-				</div>
-				<div class="pop_schedule_contents">
-					<table class="pop_table" >
-						<colgroup>
-							<col width="20%">
-							<col width="80%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<td class="field_name first_field_name">일정구분</td>
-								<td class="field_contents">
-									<select class="input_size pxsize100"> 
-										<option selected="selected">일별일정</option>
-										<option>월별일정</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td class="field_name first_field_name">일시</td>
-								<td class="field_contents">
-									<input class="input_size pxsize130" name="" id="startDate" type="date" value="">
-									<select class="input_size pxsize100"> 
-										<option selected="selected">오전 12시</option>
-										<option>오전 01시</option>
-										<option>오전 02시</option>
-										<option>오전 03시</option>
-										<option>오전 04시</option>
-										<option>오전 05시</option>
-										<option>오전 06시</option>
-										<option>오전 07시</option>
-										<option>오전 08시</option>
-										<option>오전 09시</option>
-										<option>오전 10시</option>
-										<option>오전 11시</option>
-										<option>오후 12시</option>
-										<option>오후 01시</option>
-										<option>오후 02시</option>
-										<option>오후 03시</option>
-										<option>오후 04시</option>
-										<option>오후 05시</option>
-										<option>오후 06시</option>
-										<option>오후 07시</option>
-										<option>오후 08시</option>
-										<option>오후 09시</option>
-										<option>오후 10시</option>
-										<option>오후 11시</option>
-									</select>
-									<select class="input_size pxsize100"> 
-										<option selected="selected">00분</option>
-										<option>10분</option>
-										<option>20분</option>
-										<option>30분</option>
-										<option>40분</option>
-										<option>50분</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td class="field_name first_field_name">담당자</td>
-								<td class="field_contents">
-									<input class="input_size size70" type="text">
-									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
-								</td>
-							</tr>
-							<tr>
-								<td class="field_name first_field_name">일정내용</td>
-								<td class="field_contents">
-									<input class="input_normal" type="text">
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="pop_btn_bottom_area">
-												<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-							<input type="button" class="btn_normal btn_size_normal" value="취소"/>
-					</div>
-				</div>
-			</div>
-	</div>
 	<div class="left_wrap">
 		<div class="logo_wrap">
 			<div>

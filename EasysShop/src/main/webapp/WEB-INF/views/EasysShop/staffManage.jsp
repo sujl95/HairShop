@@ -53,9 +53,13 @@
 	padding: 0px;
 	margin: 0px;
 	border-spacing: 0px;
-	font-size: 8pt;
+	font-size: 10pt;
 	border-top: 2px solid #27a7df;
 	margin-left : 10px;
+}
+
+td {
+	padding: 0px 5px;
 }
 
 .detail_tr {
@@ -84,11 +88,20 @@
 	padding-left : 10px;
 }
 .detail_table_tr{
+	width: 100%;
 	height:30px;
 }
 
 .ttr{
-	font-size : 5pt;
+	font-size : 10pt;
+}
+
+.input_normal {
+	border: 0px;
+}
+
+.input_normal:focus {
+	border: 0px;
 }
 </style>
 </head>
@@ -114,16 +127,9 @@
 			<div class="pop_detail_top_area">
 				<!-- 상단 버튼 -->
 				<div class="pop_detail_top1">
-					<input type="button" class="btn_normal btn_size_normal"
-						value="시술등록" /> <input type="button"
-						class="btn_normal btn_size_normal" value="판매등록" /> <input
-						type="button" class="btn_normal btn_size_normal" value="대기등록" />
+				<input type="button" class="btn_normal btn_size_normal" value="수정"/>
 				</div>
 				<div class="pop_detail_top2">
-					<input type="button" class="btn_normal btn_size_normal"
-						value="고객등록" /> <input type="button"
-						class="btn_normal btn_size_normal" value="고객수정" /> <input
-						type="button" class="btn_normal btn_size_normal" value="등록취소" />
 				</div>
 			</div>
 			<div class="detail_srch_area">
@@ -133,16 +139,16 @@
 					<option>직원명</option>
 					<option>연락처</option>
 				</select> <input type="text" class="txt_srch" placeholder="검색어를 입력해주세요." />
-				<div class="detail_srch_btn">검색</div>
+				<div class="detail_btn_nomarl detail_btn_size_normal">검색</div>
 			</div>
 			<!-- 상세보기 위 테이블 -->
 			<div class="detail_table_area" style="height: auto;">
 				<table>
 					<tr class="detail_tr">
 						<th class = "top_th">직원명</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 						<th class = "top_th">직급</th>
-						<td class="top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class="top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 						<td class="detail_row1" rowspan="7"><div
 								class="detail_row_txt1">메모</div></td>
 						<td class="detail_row2" rowspan="7">
@@ -151,37 +157,37 @@
 					</tr>
 					<tr class="detail_tr">
 						<th class = "top_th">성별</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 						<th class = "top_th">생일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 					</tr>
 					<tr class="detail_tr">
 						<th class = "top_th">주소</th>
-						<td class = "top_td" colspan="3"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td" colspan="3"><input type="text" class="input_normal" readonly = "readonly"/></td>
 					</tr>
 					<tr class="detail_tr">
 						<th class = "top_th">휴대폰</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 						<th class = "top_th">근무여부</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 					</tr>
 					<tr class="detail_tr">
 						<th class = "top_th">입사일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 						<th class = "top_th">월급일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 					</tr>
 					<tr class="detail_tr">
 						<th class = "top_th">은행명</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 						<th class = "top_th">계좌번호</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 					</tr>
 					<tr class="detail_tr">
 						<th class = "top_th">예금주</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 						<th class = "top_th">이메일</th>
-						<td class = "top_td"><input type="text" class="detail_txt_small" readonly = "readonly"/></td>
+						<td class = "top_td"><input type="text" class="input_normal" readonly = "readonly"/></td>
 					</tr>
 				</table>
 			</div>
@@ -190,7 +196,7 @@
 			<tr class = "detail_table_tr">
 			<td>
 			<div class="pop_title_text" style="margin-top: 10px; text-align: left; text-indent: 0px">
-			직원별 고객 현황
+			시술 상세내역
 			</div>
 			<div class="detail_table_top_area1">
 					<div class="detail_top_title_area1 size40" style="vertical-align: bottom;">
@@ -216,8 +222,8 @@
 							<option>담당자</option>
 							<option>예약내용</option>
 						</select> <input class="detail_input_size pxsize150" name="datemove"
-							id="startDate" type="date" value=""> ~ <input
-							class="detail_input_size pxsize150" type="date" id="endDate" value="">
+							id="startDate" name="popstartDate" type="date" value=""> ~ <input
+							class="detail_input_size pxsize150" type="date" id="endDate" name="popendDate" value="">
 					</div>
 					<div class="detail_top_title_area size25" style="line-height: 33px;">
 						<input class="detail_input_size pxsize200" type="text"
@@ -235,40 +241,30 @@
 					<table class = "detail_bottom_table">
 					<colgroup>
 						<col width = "5%"/>
-						<col width = "8%"/>
-						<col width = "3%"/>
-						<col width = "9%"/>
-						<col width = "9%"/>
-						<col width = "9%"/>
-						<col width = "9%"/>
+						<col width = "5%"/>
 						<col width = "12%"/>
-						<col width = "6%"/>
-						<col width = "6%"/>
-						<col width = "6%"/>
-						<col width = "6%"/>
-						<col width = "6%"/>
-						<col width = "6%"/>
+						<col width = "20%"/>
+						<col width = "10%"/>
+						<col width = "8%"/>
+						<col width = "8%"/>
+						<col width = "8%"/>
+						<col width = "8%"/>
+						<col width = "8%"/>
+						<col width = "8%"/>
 					</colgroup>
 						<thead>
 							<tr class = "ttr">
-								<td rowspan = "2">NO</td>
-								<td rowspan = "2">성명</td>
-								<td rowspan = "2">성별</td>
-								<td rowspan = "2">총금액</td>
-								<td rowspan = "2">총건수</td>
-								<td rowspan = "2">총현금</td>
-								<td rowspan = "2">총카드</td>
-								<td rowspan = "2">미수금</td>
-								<td colspan = "3">시술매출</td>
-								<td colspan = "3">판매매출</td>
-							</tr>
-							<tr class = "ttr">
-								<td>건수</td>
-								<td>현금</td>
-								<td>카드</td>
-								<td>건수</td>
-								<td>현금</td>
-								<td>카드</td>
+								<td>NO</td>
+								<td>성명</td>
+								<td>시술그룹명</td>
+								<td>시술명</td>
+								<td>시술날짜</td>
+								<td>총건수</td>
+								<td>총금액</td>
+								<td>총현금</td>
+								<td>총카드</td>
+								<td>객단가</td>
+								<td>비율</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -276,15 +272,12 @@
 								<td>1</td>
 								<td>홍길동</td>
 								<td>남</td>
+								<td>2020-01-20</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>200,000</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
 								<td>5</td>
 								<td>5</td>
 							</tr>
@@ -292,15 +285,12 @@
 								<td>1</td>
 								<td>홍길동</td>
 								<td>남</td>
+								<td>2020-01-20</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>200,000</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
 								<td>5</td>
 								<td>5</td>
 							</tr>
@@ -308,15 +298,12 @@
 								<td>1</td>
 								<td>홍길동</td>
 								<td>남</td>
+								<td>2020-01-20</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>200,000</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
 								<td>5</td>
 								<td>5</td>
 							</tr>
@@ -324,15 +311,12 @@
 								<td>1</td>
 								<td>홍길동</td>
 								<td>남</td>
+								<td>2020-01-20</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>200,000</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
 								<td>5</td>
 								<td>5</td>
 							</tr>
@@ -340,15 +324,12 @@
 								<td>1</td>
 								<td>홍길동</td>
 								<td>남</td>
+								<td>2020-01-20</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>100,000</td>
 								<td>200,000</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
-								<td>5</td>
 								<td>5</td>
 								<td>5</td>
 							</tr>
@@ -359,274 +340,6 @@
 		</div>
 	</div>
 	</div>
-	<!-- 시술 등급 목록 팝업  -->
-	<div class="pop_wrap pop_off">
-		<div class="pop_bg"></div>
-			<div class="pop pop_size_Procedure_Code pop_white">
-				<div class="pop_title_area">
-					<div class="pop_title_text">
-						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						시술 코드 관리
-					</div>
-					<div class="pop_close">
-						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
-					</div>
-				</div>
-					<div class="pop_btn_bottom_area">
-						<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-						<input type="button" class="btn_normal btn_size_normal" value="수정"/>
-						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
-						<input type="button" class="btn_normal btn_size_normal pxsize200" value="적립 포인트 일괄 변경"/>
-					</div>
-					<table class="pop_table">
-						<colgroup>
-							<col width="20%">
-							<col width="80%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<td class="field_name first_field_name">검색어</td>
-								<td class="field_contents">
-									<input class="input_size size60" type="text">
-									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<table class="table_list tborder" id="pop_Procedure_list" >
-						<colgroup>
-							<col width="3%">
-							<col width="17%">
-							<col width="25%">
-							<col width="15%">
-							<col width="20%">
-							<col width="20%">
-						</colgroup>
-						<thead>
-						<tr class="table_list_header" >
-							<td rowspan="2">
-								<div class="squaredOne_h">
-									<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />
-									<label for="pop_PC_checkall"  ></label> <!-- squaredOne 같이? -->
-								</div>
-							</td>
-							<td rowspan="2">그룹명</td>
-							<td colspan="2">기본정보</td>
-							<td colspan="2">적립정보</td>
-						</tr>
-						
-						<tr class="table_list_header" >
-							<td>시술명</td>
-							<td>요금</td>
-							<td>현금적립금</td>
-							<td>카드적립금</td>
-						</tr>
-						</thead>
-					</table>
-				<div class="pop_schedule_contents">
-					<div class="pop_Procedure_list">
-					<table class="table_list tborder" id="pop_Procedure_list" >
-						<colgroup>
-							<col width="3%">
-							<col width="17%">
-							<col width="25%">
-							<col width="15%">
-							<col width="20%">
-							<col width="20%">
-						</colgroup>
-						<tbody>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne1" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne1"></label>
-									</div>
-								</td>
-								<td rowspan="3">기타</td>
-								<td>기타</td>
-								<td>10,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne2" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne2"></label>
-									</div>
-								</td>
-								<td>붙임머리</td>
-								<td>75,000</td>
-								<td>7,500</td>
-								<td>3,750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne3" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne3"></label>
-									</div>
-								</td>
-								<td>올림머리</td>
-								<td>30,000</td>
-								<td>3,000</td>
-								<td>1,500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne4" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne4"></label>
-									</div>
-								</td>
-								<td rowspan="3">드라이</td>
-								<td>드라이</td>
-								<td>15,000</td>
-								<td>0</td>
-								<td>0</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne5" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne5"></label>
-									</div>
-								</td>
-								<td>매직드라이</td>
-								<td>15,000</td>
-								<td>1,500</td>
-								<td>750</td>
-						</tr>
-						<tr class="list_contents">
-								<td style="cursor : default;">
-									<div class="squaredOne">
-										<input type="checkbox" value="None" style="display : none;" id="pop_PC_squaredOne6" name="pop_PC_check" />
-										<label for="pop_PC_squaredOne6"></label>
-									</div>
-								</td>
-								<td>웨이브드라이</td>
-								<td>10,000</td>
-								<td>1,000</td>
-								<td>500</td>
-						</tr>
-						</tbody>
-					</table>
-					</div>
-				</div>
-			</div>
-	</div>
-	
 	<div class="left_wrap">
 		<div class="logo_wrap">
 			<div>
@@ -896,9 +609,9 @@
 								<option>담당자</option>
 								<option>예약내용</option>
 							</select>
-							<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
+							<input class="input_size pxsize150" name="startDate" id="startDate" type="date" value="">
 							~
-							<input class="input_size pxsize150" type="date" id="endDate"value="">
+							<input class="input_size pxsize150" name="endDate" type="date" id="endDate"value="">
 						</div>
 						<div class="top_title_area size35">
 							<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">
@@ -906,7 +619,6 @@
 						</div>
 						<div class="top_btn_area size25">
 							<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-							<input type="button" class="btn_normal btn_size_normal" value="수정"/>
 							<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
 						</div>
 					</div>
@@ -936,10 +648,10 @@
 							<col width="10%">
 							<col width="10%">
 							<col width="15%">
-							<col width="10%">
-							<col width="10%">
-							<col width="10%">
-							<col width="20%">
+							<col width="5%">
+							<col width="15%">
+							<col width="15%">
+							<col width="30%">
 						</colgroup>
 						<tbody>
 							<tr class="table_list_header">
@@ -958,12 +670,6 @@
 								<td>입사일</td>
 								<td>월급일</td>
 								<td>주소</td>
-								<td>은행명</td>
-								<td>계좌번호</td>
-								<td>예금주</td>
-								<td>이메일</td>
-								<td>메모</td>
-								<td>근무여부</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -981,12 +687,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1004,12 +704,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1027,12 +721,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1050,12 +738,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1073,12 +755,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1096,12 +772,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1119,12 +789,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1142,12 +806,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1165,12 +823,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 							<tr class="list_contents">
 								<td style="cursor : default;">
@@ -1188,12 +840,6 @@
 								<td>2020-01-07</td>
 								<td>2020-02-10</td>
 								<td>경기도 고양시 일산서구 고양대로 685 101동 204호</td>
-								<td>국민은행</td>
-								<td>244002-04-101268</td>
-								<td>홍길동</td>
-								<td>gudwns133@naver.com</td>
-								<td>비고</td>
-								<td>근무중</td>
 							</tr>
 						</tbody>
 					</table>

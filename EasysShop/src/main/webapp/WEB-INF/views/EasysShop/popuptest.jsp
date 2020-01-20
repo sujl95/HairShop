@@ -309,9 +309,9 @@
 								<option>담당자</option>
 								<option>예약내용</option>
 							</select>
-							<input class="input_size pxsize150" name="datemove" id="startDate" type="date" value="">
+							<input class="input_size pxsize150" name="startDate" id="startDate" type="date" value="">
 							~
-							<input class="input_size pxsize150" type="date" id="endDate"value="">
+							<input class="input_size pxsize150" type="date" name="endDate" id="endDate"value="">
 						</div>
 						<div class="top_title_area size35">
 							<input class="input_size pxsize200" type="text" placeholder="예약자/연락처/담당자/예약내용">

@@ -425,7 +425,6 @@
 						</div>
 						<div class="top_btn_area size25">
 							<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-							<input type="button" class="btn_normal btn_size_normal" value="수정"/>
 							<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
 						</div>
 					</div>
@@ -451,13 +450,12 @@
 						<colgroup>
 							<col width="5%">
 							<col width="5%">
-							<col width="5%">
 							<col width="10%">
 							<col width="10%">
 							<col width="15%">
 							<col width="10%">
 							<col width="10%">
-							<col width="10%">
+							<col width="15%">
 							<col width="20%">
 						</colgroup>
 						<tbody>
@@ -469,7 +467,6 @@
 									</div>
 								</td>
 								<td>수정</td>
-								<td>삭제</td>
 								<td>NO</td>
 								<td>예약일</td>
 								<td>예약시간</td>
@@ -486,7 +483,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>1</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -503,7 +499,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>2</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -520,7 +515,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>3</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -537,7 +531,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>4</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -554,7 +547,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>5</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -571,7 +563,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>6</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -588,7 +579,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>7</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -605,7 +595,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>8</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -622,7 +611,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>9</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>
@@ -639,7 +627,6 @@
 									</div>
 								</td>
 								<td style="cursor : default;"><input type="button" value="수정"/></td>
-								<td style="cursor : default;"><input type="button" value="삭제"/></td>
 								<td>10</td>
 								<td>2019-12-02</td>
 								<td>오후 5:40</td>

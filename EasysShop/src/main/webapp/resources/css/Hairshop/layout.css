@@ -647,6 +647,7 @@ tr {
 	border-top: 2px solid #27a7df;
 	margin-left : 10px;
 }
+
 .down_table_area > table {
 	width: 1050px;
 	border-collapse: collapse; /* 셀 테두리 합치기 */
@@ -702,12 +703,15 @@ tr {
 	vertical-align : top;
 	display:inline-block;
 }
+<<<<<<< HEAD
 .detail_botttom_area{
 	width:auto;
 	height:auto;
 	vertical-align : top;
 	display:inline-block;
 }
+=======
+>>>>>>> branch 'master' of https://github.com/sujl950620/HairShop
 
 .dta2{
 	width:370px;
@@ -759,4 +763,9 @@ tr {
 	text-align : left;
 	font-size : 8pt !important;
 	color : #4641D9;
+}
+
+.detail_td_span {
+	font-size: 12pt;
+	color: #333333;
 }
