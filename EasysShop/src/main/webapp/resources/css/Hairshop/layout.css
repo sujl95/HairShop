@@ -697,9 +697,12 @@ tr {
 .detail_botttom_area{
 	width:auto;
 	height:auto;
+	width:810px;
+	height:270px;
 	vertical-align : top;
 	display:inline-block;
 }
+
 .dta2{
 	width:370px;
 	height:270px;

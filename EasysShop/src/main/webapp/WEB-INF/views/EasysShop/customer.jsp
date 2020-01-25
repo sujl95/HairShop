@@ -108,13 +108,13 @@
 
 .ttr{
 	font-size : 10pt;
-	border : 1px solid #d9d9d9;
+	border : 1px solid #cacaca;
 }
 .tbl{
-	border-left : 1px solid #d9d9d9;
+	border-left : 1px solid #cacaca;
 }
 .tbr{
-	border-right : 1px solid #d9d9d9;
+	border-right : 1px solid #cacaca;
 }
 table > thead {
 	font-weight : bold;
@@ -233,7 +233,7 @@ table > thead {
 		</div>
 	</div>
 	<!-- 고객 목록  -->
-	<div class="pop_wrap">
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Customer_Code pop_white">
 				<div class="pop_title_area">
@@ -250,7 +250,6 @@ table > thead {
 						<tr>
 							<td colspan = "4" class="field_contents size100">
 								<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-								<input type="button" class="btn_normal btn_size_normal" value="수정"/>
 								<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
 							</td>
 						</tr>
@@ -272,10 +271,11 @@ table > thead {
 					</tbody>
 				</table>
 				<div class="pop_customer_list widthscroll">
-				<table class="table_list tborder pxsize1650 " id="pop_Procedure_list" >
+				<table class="table_list tborder pxsize1650 " id="pop_customer_list" >
 					<colgroup>
 						<col width="3%">
 						<col width="4%">
+						<col width="4%">
 						<col width="3%">
 						<col width="6%">
 						<col width="6%">
@@ -287,17 +287,18 @@ table > thead {
 						<col width="8%">
 						<col width="10%">
 						<col width="10%">
-						<col width="18%">
+						<col width="14%">
 					</colgroup>
 					<thead>
 					<tr class="table_list_header padding0a10" >
 						<td>
 							<div class="squaredOne_h">
-								<input type="checkbox" value="None" style="display : none;" id="pop_CP_checkall"  />
-								<label for="pop_CP_checkall"  ></label> <!-- squaredOne 같이? -->
+								<input type="checkbox" value="None" style="display : none;" id="pop_CT_checkall"  />
+								<label for="pop_CT_checkall"  ></label> <!-- squaredOne 같이? -->
 							</div>
 						</td>
 						<td>선택</td>
+						<td>수정</td>
 						<td>NO</td>
 						<td>고객명</td>
 						<td>담당자</td>
@@ -314,10 +315,11 @@ table > thead {
 					</thead>
 				</table>
 				
-				<table class="table_list tborder pxsize1650" id="pop_Procedure_list" style="table-layout: fixed" >
+				<table class="table_list tborder pxsize1650" id="pop_customer_list" style="table-layout: fixed" >
 					<colgroup>
 						<col width="3%">
 						<col width="4%">
+						<col width="4%">
 						<col width="3%">
 						<col width="6%">
 						<col width="6%">
@@ -329,17 +331,18 @@ table > thead {
 						<col width="8%">
 						<col width="10%">
 						<col width="10%">
-						<col width="18%">
+						<col width="14%">
 					</colgroup>
 					<tbody>
 						<tr class="list_contents padding0a10">
 							<td style="cursor : default;">
 								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display : none;" id="pop_CP_squaredOne1" name="pop_CP_check" />
-									<label for="pop_CP_squaredOne1"></label>
+									<input type="checkbox" value="None" style="display : none;" id="pop_CT_squaredOne1" name="pop_CT_check" />
+									<label for="pop_CT_squaredOne1"></label>
 								</div>
 							</td>
 							<td style="cursor : default;"><input type="button" value="선택"/></td>	
+							<td style="cursor : default;"><input type="button" value="수정"/></td>	
 							<td>1</td>					
 							<td>괴물죄</td>					
 							<td>괴물죄</td>					
@@ -356,11 +359,12 @@ table > thead {
 						<tr class="list_contents padding0a10">
 							<td style="cursor : default;">
 								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display : none;" id="pop_CP_squaredOne2" name="pop_CP_check" />
-									<label for="pop_CP_squaredOne2"></label>
+									<input type="checkbox" value="None" style="display : none;" id="pop_CT_squaredOne2" name="pop_CT_check" />
+									<label for="pop_CT_squaredOne2"></label>
 								</div>
 							</td>
 							<td style="cursor : default;"><input type="button" value="선택"/></td>	
+							<td style="cursor : default;"><input type="button" value="수정"/></td>	
 							<td>1</td>					
 							<td>괴물죄</td>					
 							<td>괴물죄</td>					
@@ -380,7 +384,7 @@ table > thead {
 		</div>
 	</div>
 	<!-- 상세정보 -->
-	<div class="pop_wrap pop_off">
+	<div class="pop_wrap">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_customer_detail pop_white">
 			<div class="pop_title_area">
@@ -498,10 +502,10 @@ table > thead {
 					<div class="detail_top_title_area1 size40" style="vertical-align: bottom;">
 						<input type="button" class="btn_date pxsize50" id="today"
 							value="오늘" /> 
-							<input type="button" class="detail_btn_date pxsize50" id="3days" value="3일" /> <input type="button"
-							class="detail_btn_date pxsize50" id="7days" value="7일" /> 
-							<input type="button" class="detail_btn_date pxsize50" id="15days" value="15일" />
-						<input type="button" class="detail_btn_date pxsize50" id="month" value="한달" /> <input type="button" class="btn_date pxsize50" id="total" value="전체" />
+							<input type="button" class="btn_date pxsize50" id="3days" value="3일" /> <input type="button"
+							class="btn_date pxsize50" id="7days" value="7일" /> 
+							<input type="button" class="btn_date pxsize50" id="15days" value="15일" />
+						<input type="button" class="btn_date pxsize50" id="month" value="한달" /> <input type="button" class="btn_date pxsize50" id="total" value="전체" />
 					</div>
 				</div>
 				</td>
@@ -539,7 +543,7 @@ table > thead {
 				</div>
 				
 				<div class = "dta">
-				<table class = "detail_down_table">
+				<table class = "detail_down_table widthscroll">
 				<colgroup>
 					<col width = "40px"/>
 					<col width = "150px"/>
@@ -552,14 +556,14 @@ table > thead {
 					<col width = "150px"/>
 				</colgroup>
 					<thead>
-						<tr class = "ttr">
+						<tr class = "ttr table_list_header">
 							<td class = "tbr"rowspan = "2">NO</td>
 							<td class = "tbr"rowspan = "2">시술날짜</td>
 							<td class = "tbr"colspan = "2">시술정보</td>
 							<td class = "tbr"colspan = "4">요금정보</td>
 							<td rowspan = "2">메모</td>
 						</tr>
-						<tr class = "ttr">
+						<tr class = "ttr table_list_header">
 							<td class = "tbr">시술명</td>
 							<td class = "tbr">디자이너</td>
 							<td class = "tbr">구분</td>
@@ -585,7 +589,7 @@ table > thead {
 				</table>
 				</div>
 				<div class = "dta2">
-				<table class = "detail_log_table">
+				<table class = "detail_log_table widthscroll">
 				<colgroup>
 					<col width = "100px"/>
 					<col width = "50px"/>
@@ -594,10 +598,10 @@ table > thead {
 				</colgroup>
 					<thead>
 						<tr class = "ttr">
-							<td class = "status1">DETAIL LOG</td>
-							<td class = "status2"colspan = "3">시술 총 현황</td>
+							<td class = "status1 table_list_header">DETAIL LOG</td>
+							<td class = "status2 table_list_header"colspan = "3">시술 총 현황</td>
 						</tr>
-						<tr class = "ttr">
+						<tr class = "ttr table_list_header">
 							<td class = "tbr">시술명</td>
 							<td class = "tbr">총횟수</td>
 							<td class = "tbr">경과일</td>
@@ -616,17 +620,17 @@ table > thead {
 				</table>
 				</div>
 				<div class = "dta3">
-				<table class = "detail_down_table">
+				<table class = "detail_down_table widthscroll">
 				
 					<thead>
-						<tr class = "ttr">
+						<tr class = "ttr table_list_header">
 							<td  class = "tbr"rowspan = "2">NO</td>
 							<td  class = "tbr"colspan = "2">판매정보</td>
 							<td  class = "tbr"colspan = "2">고객정보</td>
 							<td  class = "tbr"colspan = "4">요금정보</td>
 							<td rowspan = "2">메모</td>
 						</tr>
-						<tr class = "ttr">
+						<tr class = "ttr table_list_header">
 							<td class = "tbr">판매일</td>
 							<td class = "tbr">담당자</td>
 							<td class = "tbr">고객명</td>
@@ -714,7 +718,7 @@ table > thead {
 				</table>
 			</div>
 			<div class = "dta4">
-				<table class = "detail_down_table">
+				<table class = "detail_down_table widthscroll">
 				<colgroup>
 					<col width = "50px"/>
 					<col width = "200px"/>
@@ -724,7 +728,7 @@ table > thead {
 					<col width = "100px"/>
 				</colgroup>
 					<thead>
-						<tr class = "ttr">
+						<tr class = "ttr table_list_header">
 							<td class = "tbr">NO</td>
 							<td class = "tbr">일시</td>
 							<td class = "tbr">회원명</td>
@@ -734,6 +738,30 @@ table > thead {
 						</tr>
 					</thead>
 						<tbody>
+							<tr class = "ttr">
+								<td>1</td>
+								<td>2019-01-02</td>
+								<td>바킈손</td>
+								<td>400000 결제</td>
+								<td>500000</td>
+								<td>500000</td>
+							</tr>
+							<tr class = "ttr">
+								<td>1</td>
+								<td>2019-01-02</td>
+								<td>바킈손</td>
+								<td>400000 결제</td>
+								<td>500000</td>
+								<td>500000</td>
+							</tr>
+							<tr class = "ttr">
+								<td>1</td>
+								<td>2019-01-02</td>
+								<td>바킈손</td>
+								<td>400000 결제</td>
+								<td>500000</td>
+								<td>500000</td>
+							</tr>
 							<tr class = "ttr">
 								<td>1</td>
 								<td>2019-01-02</td>
