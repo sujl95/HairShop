@@ -184,6 +184,21 @@ html, body {
 	text-indent: 20px;
 }
 
+.person_area {
+    display: inline-block;
+    vertical-align: top;
+    width: 240px;
+    height: 50px;
+    padding: 5px 10px;
+    box-sizing: content-box;
+}
+
+.person_area > div {
+    display: inline-block;
+    vertical-align: top;
+    height: 50px;
+    box-sizing: content-box;
+}
 .btn_area {
 	display: inline-block;
 	vertical-align: top;

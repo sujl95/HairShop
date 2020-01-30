@@ -79,7 +79,7 @@ $(document).ready(function() {
 	<div class="big_login_area">
 		<div class="login_blank"></div>
 		<div class="login_title">
-			<img src="resources/images/common/logo.png"> <span>Mango</span> CRM
+			<img src="resources/images/Eimages/EasysShopLogo.PNG"> <span>EASYSSHOP</span>
 		</div>
 		<form action="#" id="loginForm" method="post">
 			<input type="text" class="login_id" name="id" placeholder="ID" /> <br />
