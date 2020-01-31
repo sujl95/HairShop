@@ -101,6 +101,7 @@ public class EController {
 		List<HashMap<String, String>> plan = iEService.getreslist(params);
 		
 		modelMap.put("plan",Utils.toLowerListMapKey(plan));
+		
 		System.out.println(plan);
 		return mapper.writeValueAsString(modelMap);
 	}
