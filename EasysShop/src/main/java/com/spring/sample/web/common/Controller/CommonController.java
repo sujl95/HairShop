@@ -128,6 +128,13 @@ public class CommonController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/calendar1")
+	public ModelAndView calendar(ModelAndView mav) {
+		mav.setViewName("common/calendar1");
+		
+		return mav;
+	}
+	
 	@RequestMapping({"/contentsTest"})
 	public ModelAndView contentsTest(HttpSession session, ModelAndView mav) {
 		mav.setViewName("common/contents");

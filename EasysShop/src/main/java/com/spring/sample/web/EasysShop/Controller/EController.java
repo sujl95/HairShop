@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.sample.common.service.IPagingService;
+import com.spring.sample.util.Utils;
 import com.spring.sample.web.EasysShop.service.IEService;
 
 @Controller
@@ -99,7 +100,7 @@ public class EController {
 		
 		List<HashMap<String, String>> plan = iEService.getreslist(params);
 		
-		modelMap.put("plan", plan);
+		modelMap.put("plan",Utils.toLowerListMapKey(plan));
 		System.out.println(plan);
 		return mapper.writeValueAsString(modelMap);
 	}
