@@ -97,7 +97,6 @@ public class EController {
 	public String reslistAjax(@RequestParam HashMap<String, String> params, HttpSession session) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		
 		List<HashMap<String, String>> plan = iEService.getreslist(params);
 		
 		modelMap.put("plan",Utils.toLowerListMapKey(plan));
