@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- 거래처 코드 목록  -->
 <div id="popup_wrap">
+<!-- 거래처 코드 목록  -->
 <div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Company_Code pop_white">

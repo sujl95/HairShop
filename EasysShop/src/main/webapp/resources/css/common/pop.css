@@ -51,6 +51,9 @@
 	height : 20px;
     width: 20px;
 }
+img {
+	vertical-align : baseline !important;
+}
 /* 팝업 닫기 영역 */
 .pop_close {
     display:inline-block;

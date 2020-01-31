@@ -74,7 +74,7 @@ $(document).ready(function() {
 				          top: jsEvent.pageY
 				        });
 				      
-				      $("#startDate").val(date.format());
+				      
 				      $("#startDate1").val(date.format());
 				      return false;
 				    });
@@ -99,9 +99,7 @@ $(document).ready(function() {
 //					      	.addClass("pop_off");
 //					    	return false;
 //				    });
-				  var $reservation_add =$("#reservation_add");
-				  var $calendar_add = $("#calendar_add");
-				  $reservation_add.on("click", function(e) {
+				  $("#reservation_add").on("click", function(e) {
 					  var html = "";
 						html += "<table class=\"pop_table\" >                                                                                        ";
 						html += "	<colgroup>                                                                                                       ";
@@ -197,20 +195,20 @@ $(document).ready(function() {
 						html += "		</tr>                                                                                                        ";
 						html += "	</tbody>                                                                                                         ";
 						html += "</table>";
-					  makeTwoBtnPopup(1, "예약 등록", html, true, 500, 450, null, "등록", function() {
-							makeAlert(2, "등록", "취소", null);
+						
+					 	makeTwoBtnPopup(1, "예약 등록", html, true, 500, 450, null, "등록", function() {
+							makeAlert(2, "등록", "등록되었습니다", null);
 						},"취소", function() {
 							closePopup(1);
 						}); 
-// 					  $("#popup_reservation")
-// 			      	    .removeClass("pop_off")
-// 				      	.addClass("pop_on"); 
-					 
+					 	$("#startDate").val(date.format());
 				  });
-				  $calendar_add.on("click", function(e) {
-				      $("#popup_calander")
-				        .removeClass("pop_off")
-				      	.addClass("pop_on");
+				  $("#calendar_add").on("click", function(e) {
+					  makeTwoBtnPopup(1, "일정 등록", html, true, 500, 450, null, "등록", function() {
+						makeAlert(2, "등록", "등록되었습니다", null);
+					  },"취소", function() {
+						closePopup(1);
+					  }); 
 				     
 				  });
 				 var $contextMenu = $("#contextMenu");
@@ -233,7 +231,19 @@ $(document).ready(function() {
 				    
 				   
 			},
-			events:res,
+			events: function(start, end, callback) { 
+		   		$.ajax({
+		   			type : "post",
+		   			url: '/reslistAjax', 
+		   			dataType: 'json', 
+		   			success: function(plan) {
+		   				var events = [];
+		   				$.each(plan,function(){
+		   					
+		   				});
+		   				} 
+		   		}); 
+	   		}, 
 			eventClick: function(event) {
 				alert(event.title);
 			}

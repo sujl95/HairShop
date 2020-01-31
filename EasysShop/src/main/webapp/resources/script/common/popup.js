@@ -22,7 +22,7 @@ function makeAlert(depth, title, contents, event) {
 		html += "<div class=\"pop pop_size_small\">";
 		html += "<div class=\"pop_title_area\">";
 		html += "<div class=\"pop_title_text\">";
-		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" />";
+		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" /> &nbsp;";
 		html += title;
 		html += "</div>";
 		html += "<div class=\"pop_close\">";
@@ -33,7 +33,7 @@ function makeAlert(depth, title, contents, event) {
 		html += contents;
 		html += "</div>";
 		html += "<div class=\"pop_btn_area\">";
-		html += "<div class=\"btn btn_yellow btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\" style=\"margin-right: 10px\">확인</div>";
+		html += "<div class=\"btn btn_normal btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\" style=\"margin-right: 10px\">확인</div>";
 		html += "</div>";
 		html += "</div>";
 		html += "</div>";
@@ -92,7 +92,7 @@ function makeNoBtnPopup(depth, title, contents, bgFlag, width, height, contentsE
 		html += "<div class=\"pop pop_size_small\">";
 		html += "<div class=\"pop_title_area\">";
 		html += "<div class=\"pop_title_text\">";
-		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" />";
+		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" /> &nbsp;";
 		html += title;
 		html += "</div>";
 		html += "<div class=\"pop_close\">";
@@ -164,7 +164,7 @@ function makeOneBtnPopup(depth, title, contents, bgFlag, width, height, contents
 		html += "<div class=\"pop pop_size_small\">";
 		html += "<div class=\"pop_title_area\">";
 		html += "<div class=\"pop_title_text\">";
-		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" />";
+		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" /> &nbsp;";
 		html += title;
 		html += "</div>";
 		html += "<div class=\"pop_close\">";
@@ -175,7 +175,7 @@ function makeOneBtnPopup(depth, title, contents, bgFlag, width, height, contents
 		html += contents;
 		html += "</div>";
 		html += "<div class=\"pop_btn_area\">";
-		html += "<div class=\"btn btn_yellow btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\" style=\"margin-right: 10px\">";
+		html += "<div class=\"btn btn_normal btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\" style=\"margin-right: 10px\">";
 		html += btnOneTitle + "</div>";
 		html += "</div>";
 		html += "</div>";
@@ -339,7 +339,7 @@ function makeThreeBtnPopup(depth, title, contents, bgFlag, width, height, conten
 		html += "<div class=\"pop pop_size_small\">";
 		html += "<div class=\"pop_title_area\">";
 		html += "<div class=\"pop_title_text\">";
-		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" />";
+		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" /> &nbsp;";
 		html += title;
 		html += "</div>";
 		html += "<div class=\"pop_close\">";
@@ -350,11 +350,11 @@ function makeThreeBtnPopup(depth, title, contents, bgFlag, width, height, conten
 		html += contents;
 		html += "</div>";
 		html += "<div class=\"pop_btn_area\">";
-		html += "<div class=\"btn btn_yellow btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\">";
+		html += "<div class=\"btn btn_normal btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\">";
 		html += btnOneTitle + "</div>";
-		html += "<div class=\"btn btn_yellow btn_size_normal\" id=\"popupWrap" + depth + "BtnTwo\">";
+		html += "<div class=\"btn btn_normal btn_size_normal\" id=\"popupWrap" + depth + "BtnTwo\">";
 		html += btnTwoTitle + "</div>";
-		html += "<div class=\"btn btn_yellow btn_size_normal\" id=\"popupWrap" + depth + "BtnThree\" style=\"margin-right: 10px\">";
+		html += "<div class=\"btn btn_normal btn_size_normal\" id=\"popupWrap" + depth + "BtnThree\" style=\"margin-right: 10px\">";
 		html += btnThreeTitle + "</div>";
 		html += "</div>";
 		html += "</div>";
