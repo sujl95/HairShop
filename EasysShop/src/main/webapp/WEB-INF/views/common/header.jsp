@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- Favicon -->
-<link rel="shortcut icon" href="resources/favicon/favicon.png">
+<link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
 <!-- jQuery UI CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui.css" />
 <!-- 메인 CSS -->
@@ -12,7 +12,9 @@
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/btn.css" />
 <!-- input 스타일 CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/Hairshop/input.css" />
-<!-- 팝업 스타일 CSS -->
+<!-- 팝업 CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/pop.css" />
+<!-- <!-- 팝업 스타일 CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/common/pop.css" />
 <!-- 웹폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Gothic+A1:300&display=swap"	rel="stylesheet" />

@@ -41,7 +41,7 @@ $(document).ready(function() {
 </head>
 <body>
 	<c:import url="/topLeft">
-		<c:param name="menuNo">5</c:param>
+		<c:param name="menuNo">2</c:param>
 	</c:import>
 	<div class="title_area">Main Title</div>
 	<div class="content_area">

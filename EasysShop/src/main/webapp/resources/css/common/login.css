@@ -17,14 +17,14 @@
 	margin-top: 10px;
 	
 }
-.login_footer{
-	height: 100px;
+.login_footer, .join_area{
+	height: 50px;
 	font-weight: bold;
 	font-size : 25pt;
 	/* background-color:green; */
 	margin-top : 30px;
 }
-.login_footer >div{
+.login_footer >div, .join_area > div{
 	display : inline-block;
 	width : 300px;
 	height : 50px;
@@ -36,7 +36,7 @@
 	border-radius:5px;
 }
 
-.login_footer >div:hover {
+.login_footer >div:hover, .join_area >div:hover {
    background-color: #F2CB07;
    color: #595959;
    cursor : pointer;

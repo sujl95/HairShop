@@ -31,7 +31,7 @@
     font-size: 0;
 
     color: #f2f2f2;
-    background-color: #272727;
+    background-color: #27aae1;
 }
 /* 팝업의 제목 텍스트 */
 .pop_title_text {
@@ -48,7 +48,7 @@
 .pop_icon {
     position: relative;
     top: 4px;
-
+	height : 20px;
     width: 20px;
 }
 /* 팝업 닫기 영역 */

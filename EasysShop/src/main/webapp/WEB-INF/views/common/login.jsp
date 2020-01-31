@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MangoCRM - 로그인</title>
+<title>EASYSSHOP - 로그인</title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="resources/favicon/favicon.png">
 <!-- 메인 CSS -->
@@ -72,6 +72,10 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	
+	$(".join_area").on("click", function() {
+		location.href = "join";
+	});
 });
 </script>
 </head>
@@ -87,6 +91,9 @@ $(document).ready(function() {
 		</form>
 		<div class="login_footer">
 			<div>로그인</div>
+		</div>
+		<div class="join_area">
+			<div>회원가입</div>
 		</div>
 	</div>
 </body>

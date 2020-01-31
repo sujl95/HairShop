@@ -18,15 +18,9 @@
 	</select>
 	
 	<select id="loginCheck" parameterType="hashmap" resultType="hashmap">
-		SELECT E.EMP_NO, E.EMP_NAME, E.AUTHOR_NO, T.TEAM_NO, D.DEPART_DIV, T.TEAM_NAME, EP.EMP_POSI_NAME
-		FROM EMP_INFO E INNER JOIN TEAM T
-		                        ON E.TEAM_NO = T.TEAM_NO
-		                INNER JOIN DEPART D
-                        		ON T.DEPART_NO = D.DEPART_NO
-		                INNER JOIN EMP_POSI EP
-		                        ON E.EMP_POSI_NO = EP.EMP_POSI_NO
-		WHERE E.EMP_RESIGN_DATE IS NULL
-		AND E.EMP_ID = #{id}
-		AND E.EMP_PW = #{pw}
+		SELECT *
+		FROM MEMBER
+		WHERE MEM_ID = #{id}
+		AND MEM_PW = #{pw}
 	</select>
 </mapper>

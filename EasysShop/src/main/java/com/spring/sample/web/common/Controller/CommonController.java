@@ -41,7 +41,7 @@ public class CommonController {
 	
 	@RequestMapping({ "/login", "/" })
 	public ModelAndView commonLogin(HttpSession session, ModelAndView mav) {
-		if(session.getAttribute("sEmpNo") != null) {
+		if(session.getAttribute("sMemNo") != null) {
 			mav.setViewName("redirect:contentsTest");
 		} else {
 			mav.setViewName("common/login");
@@ -63,13 +63,13 @@ public class CommonController {
 			HashMap<String, String> data = iCommonService.loginCheck(params);
 			
 			if(data != null && !data.isEmpty()) {
-				session.setAttribute("sEmpNo", data.get("EMP_NO"));
-				session.setAttribute("sEmpName", data.get("EMP_NAME"));
-				session.setAttribute("sAuthorNo", data.get("AUTHOR_NO"));
-				session.setAttribute("sDepartDiv", data.get("DEPART_DIV"));
-				session.setAttribute("sTeamNo", data.get("TEAM_NO"));
-				session.setAttribute("sTeamName", data.get("TEAM_NAME"));
-				session.setAttribute("sEmpPosiName", data.get("EMP_POSI_NAME"));
+				session.setAttribute("sMemNo", data.get("MEM_NO"));
+//				session.setAttribute("sEmpName", data.get("EMP_NAME"));
+//				session.setAttribute("sAuthorNo", data.get("AUTHOR_NO"));
+//				session.setAttribute("sDepartDiv", data.get("DEPART_DIV"));
+//				session.setAttribute("sTeamNo", data.get("TEAM_NO"));
+//				session.setAttribute("sTeamName", data.get("TEAM_NAME"));
+//				session.setAttribute("sEmpPosiName", data.get("EMP_POSI_NAME"));
 				
 				modelMap.put("res", "SUCCESS");
 			} else {
@@ -93,6 +93,13 @@ public class CommonController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/join")
+	public ModelAndView join(ModelAndView mav) {
+		mav.setViewName("common/join");
+		
+		return mav;
+	}
+	
 	@RequestMapping(value = "/header")
 	public ModelAndView header(ModelAndView mav) {
 		mav.setViewName("common/header");
@@ -110,6 +117,13 @@ public class CommonController {
 	@RequestMapping(value = "/bottom")
 	public ModelAndView bottom(ModelAndView mav) {
 		mav.setViewName("common/bottom");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/pop")
+	public ModelAndView popup(ModelAndView mav) {
+		mav.setViewName("common/pop");
 		
 		return mav;
 	}

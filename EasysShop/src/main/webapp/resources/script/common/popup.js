@@ -247,7 +247,7 @@ function makeTwoBtnPopup(depth, title, contents, bgFlag, width, height, contents
 		html += "<div class=\"pop pop_size_small\">";
 		html += "<div class=\"pop_title_area\">";
 		html += "<div class=\"pop_title_text\">";
-		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" />";
+		html += "<img src=\"resources/images/common/logo.png\" alt=\"\" class=\"pop_icon\" /> &nbsp";
 		html += title;
 		html += "</div>";
 		html += "<div class=\"pop_close\">";
@@ -258,9 +258,9 @@ function makeTwoBtnPopup(depth, title, contents, bgFlag, width, height, contents
 		html += contents;
 		html += "</div>";
 		html += "<div class=\"pop_btn_area\">";
-		html += "<div class=\"btn btn_yellow btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\">";
+		html += "<div class=\"btn btn_normal btn_size_normal\" id=\"popupWrap" + depth + "BtnOne\">";
 		html += btnOneTitle + "</div>";
-		html += "<div class=\"btn btn_yellow btn_size_normal\" id=\"popupWrap" + depth + "BtnTwo\" style=\"margin-right: 10px\">";
+		html += "<div class=\"btn btn_normal btn_size_normal\" id=\"popupWrap" + depth + "BtnTwo\" style=\"margin-right: 10px\">";
 		html += btnTwoTitle + "</div>";
 		html += "</div>";
 		html += "</div>";
