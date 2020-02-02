@@ -14,8 +14,4 @@ public class EService implements IEService {
 	@Autowired
 	public IEDao iEDao;
 
-	@Override
-	public List<HashMap<String, String>> getreslist(HashMap<String, String> params) throws Throwable {
-		return iEDao.getreslist(params);
-	}
 }

@@ -91,7 +91,7 @@ $(document).ready(function() {
     	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
     	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
     	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-    	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
+//    	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
     });
     $("#month").click(function(){
     	setDays(30);
@@ -227,3 +227,29 @@ function setDate() {
 	$("input[name=endDate]").val(yyyy+"-"+mm+"-"+dd);
 	$("input[name=startDate]").val(yyyy+"-"+mm+"-"+"01");
 }
+
+//전화번호 텍스트 포맷팅
+$(".txt_client_ph, .txt_client_ln, .txt_client_fax").on("keyup", function() {
+	 inputNumberFormat(this);
+});
+
+//전화번호셋팅
+function numberFormat(inputNumber) {
+	
+	   return inputNumber.toString().replace(/\B(?=(\d{3}-\d{3,4}-\d{4})+(?!\d))/g, ",");
+	}
+
+function inputNumberFormat(obj) {
+ obj.value = comma(uncomma(obj.value));
+}
+
+function comma(str) {
+ str = String(str);
+ return str.replace(/(\d)(?=(?:\d{4})+(?!\d))/g, '$1-');
+}
+
+function uncomma(str) {
+ str = String(str);
+ return str.replace(/[^\d]+/g, '');
+}
+//전화번호셋팅 end

@@ -1,9 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reservation">
+	<!-- 예약 리스트 가져오기 -->
 	<select id="getreslist" parameterType="hashmap" resultType="hashmap">
 		SELECT *
 		FROM RESERVATION
 	</select>
 	
+	<!-- 예약 등록 -->
+	<insert id="reserinsertData" parameterType="hashmap">
+		INSERT INTO RESERVATION(RV_NO, RV_DATE, CT_NO, RV_PH, EMP_NO, RV_COLOR, RV_CON) 
+		VALUES(RV_SEQ.NEXTVAL, TO_DATE(#{startDate} || ' ' || #{restime},'YYYY-MM-DD HH24:MI:SS') , #{txt_client_name},#{txt_client_ph}, #{txt_emp_name},#{edit-color},#{txt_RV_CON})
+	</insert>
+	
+	<!-- 일정 리스트 가져오기 -->
+	<select id="getschelist" parameterType="hashmap" resultType="hashmap">
+		SELECT *
+		FROM SCHEDULE 
+	</select>
+	
+	<!-- 일정 등록 -->
+	<insert id="scheinsertData" parameterType="hashmap">
+		INSERT INTO SCHEDULE(SCD_NO,SCD_SDATE
+		<if test="endDate != null and endDate != ''">,SCD_EDATE</if>
+		,EMP_NO,SCD_COLOR,SCD_CON) 
+		VALUES(SC_SEQ.NEXTVAL, 
+		TO_DATE(#{startDate} || ' ' || #{scheSHtime} || ':' || #{scheSMtime},'YYYY-MM-DD HH24:MI:SS')
+		<if test="endDate != null and endDate != ''">
+		,TO_DATE(#{endDate} || ' ' || #{scheEHtime} || ':' || #{scheEMtime},'YYYY-MM-DD HH24:MI:SS')</if>
+		, #{txt_emp_name},#{edit-color},#{txt_SCD_CON})
+	</insert>
+	
+	<!-- 월간 일정 목록 카운트-->
+	<select id="getreservationCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT
+		FROM(SELECT RE.RV_NO , TO_CHAR(RE.RV_DATE,'YYYY-MM-DD') AS RDATE
+		                    , TO_CHAR(RE.RV_DATE,'HH24:MI') AS RTIME, C.CT_NM, RE.RV_PH
+		                    , E.EMP_NM,RE.RV_CON, ROW_NUMBER() OVER(ORDER BY RE.RV_NO) AS RNUM
+		    FROM RESERVATION RE INNER JOIN CUSTOMER C
+		                                ON RE.CT_NO = C.CT_NO
+		                        INNER JOIN EMPLOYEE E 
+		                                ON RE.EMP_NO = E.EMP_NO
+		                                ) 
+		    WHERE 1=1
+		    <if test="searchTxt == '' and startDate != null and startDate != ''">
+		    	AND RDATE BETWEEN #{startDate} AND #{endDate} 
+		    </if>
+    		<if test="searchTxt != null and searchTxt != ''">
+			AND RDATE BETWEEN #{startDate} AND #{endDate}  
+				<choose>
+			      <when test="searchGbn == 0">
+				      AND CT_NM LIKE '%'||#{searchTxt}||'%'
+				      OR RV_PH LIKE '%'||#{searchTxt}||'%'
+				      OR EMP_NM LIKE '%'||#{searchTxt}||'%'
+				      OR RV_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 1">
+      			  	  AND CT_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 2">
+      			  	  AND RV_PH LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 3">
+      			  	  AND EMP_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 4">
+      			  	  AND RV_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			 </choose>
+      		</if>
+	</select>
+	
+	<!-- 월간 일정 목록 -->
+	<select id="getreservationList" parameterType="hashmap" resultType="hashmap">
+		SELECT RV_NO, RDATE, RTIME, CT_NM, RV_PH, EMP_NM,RV_CON
+		FROM(SELECT RE.RV_NO , TO_CHAR(RE.RV_DATE,'YYYY-MM-DD') AS RDATE
+		                    , TO_CHAR(RE.RV_DATE,'HH24:MI') AS RTIME, C.CT_NM, RE.RV_PH
+		                    , E.EMP_NM,RE.RV_CON, ROW_NUMBER() OVER(ORDER BY RE.RV_NO) AS RNUM
+		    FROM RESERVATION RE INNER JOIN CUSTOMER C
+		                                ON RE.CT_NO = C.CT_NO
+		                        INNER JOIN EMPLOYEE E 
+		                                ON RE.EMP_NO = E.EMP_NO
+            <if test="searchTxt == '' and startDate != null and startDate != ''">
+		    	AND  TO_CHAR(RE.RV_DATE,'YYYY-MM-DD')  BETWEEN #{startDate} AND #{endDate} 
+		    </if>
+		    order by RE.RV_DATE
+		                                ) 
+		    WHERE 1=1
+		    
+		    <if test="searchTxt != null and searchTxt != ''">
+				AND RDATE BETWEEN #{startDate} AND #{endDate}  
+				<choose>
+			      <when test="searchGbn == 0">
+				      AND CT_NM LIKE '%'||#{searchTxt}||'%'
+				      OR RV_PH LIKE '%'||#{searchTxt}||'%'
+				      OR EMP_NM LIKE '%'||#{searchTxt}||'%'
+				      OR RV_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 1">
+      			  	  AND CT_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 2">
+      			  	  AND RV_PH LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 3">
+      			  	  AND EMP_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 4">
+      			  	  AND RV_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			 </choose>
+      		</if>
+		    
+		    AND RNUM BETWEEN #{startCnt} AND #{endCnt}
+	</select>
+	
+	<!-- 월간 예약  수정 데이터 가져오기-->
+	<select id="getresdata" parameterType="hashmap" resultType="hashmap">
+		SELECT RE.RV_NO , TO_CHAR(RE.RV_DATE,'YYYY-MM-DD') AS RDATE
+                    , TO_CHAR(RE.RV_DATE,'HH24:MI') AS RTIME,RE.CT_NO, C.CT_NM, RE.RV_PH
+                    ,RE.EMP_NO,RE.RV_COLOR , E.EMP_NM,RE.RV_CON
+		    FROM RESERVATION RE INNER JOIN CUSTOMER C
+		                                ON RE.CT_NO = C.CT_NO
+		                        INNER JOIN EMPLOYEE E 
+		                                ON RE.EMP_NO = E.EMP_NO
+		WHERE RE.RV_NO = #{res_no}
+	</select>
+	<!-- 월간 예약 수정 -->
+	<update id="resupdateData" parameterType="hashmap">
+		UPDATE RESERVATION SET RV_DATE = TO_DATE(#{startDate}|| ' ' ||#{restime},'YYYY-MM-DD HH24:MI'),
+		CT_NO =#{txt_client_no}, RV_PH=#{txt_client_ph},EMP_NO =#{emp_no},RV_COLOR=#{edit-color},
+		RV_CON = #{txt_RV_CON}
+		WHERE RV_NO = #{res_no}
+	</update>
+	
+	<!-- 월간 예약 삭제 -->
+	<delete id="resdeleteData" parameterType="hashmap">
+		DELETE FROM RESERVATION WHERE RV_NO = #{res_no}
+	</delete>
 </mapper>

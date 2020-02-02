@@ -30,7 +30,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	var data = [
-        {
+      	  {
             title: 'All Day Event',
             start: '2019-01-01',
             color : 'yellow', // 기타 옵션들

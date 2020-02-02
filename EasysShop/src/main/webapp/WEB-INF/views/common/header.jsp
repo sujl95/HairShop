@@ -28,8 +28,10 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-ui.js"></script>
 <!-- 슬림 스크롤 js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery.slimscroll.js"></script>
-<!-- 메인 js 파일 -->
+<!-- 공통 메인 js 파일 -->
 <script type="text/javascript" src="resources/script/common/Main.js"></script>
+<!-- 메인 js 파일 -->
+<script type="text/javascript" src="resources/script/jquery/Main.js"></script>
 <!-- 버튼 js 파일 -->
 <script type="text/javascript" src="resources/script/common/btn.js"></script>
 <!-- 팝업 js 파일 -->

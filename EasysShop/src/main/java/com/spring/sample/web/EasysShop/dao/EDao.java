@@ -12,8 +12,4 @@ public class EDao implements IEDao {
 	@Autowired
 	public SqlSession sqlSession;
 
-	@Override
-	public List<HashMap<String, String>> getreslist(HashMap<String, String> params) throws Throwable {
-		return sqlSession.selectList("reservation/getreslist",params);
-	}
 }
