@@ -147,6 +147,21 @@
     cursor: pointer;
     border-radius: 3px;
 }
+.btn_paging_on {
+	display: inline-block;
+    margin: 0 1px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #ffffff;
+    color: #27aae1;
+    font-size: 10pt;
+    cursor: pointer;
+    border-radius: 3px;
+    border : 1px solid #e5e5e5;
+}
 .btn_paging:hover {
     background-color: #1d95c9;
 }
@@ -164,6 +179,14 @@
 .btn_size_w60h30 {
     width: 60px;
     height: 30px;
+    line-height: 30px;
+    margin-left: 0;
+    
+/* 가로 40px 세로 20px 버튼 크기 */
+.btn_size_w40h20 {
+	font-size: 8pt;
+    width: 40px;
+    height: 20px;
     line-height: 30px;
     margin-left: 0;
 
@@ -235,14 +258,10 @@
 	line-height : 38px;
 }
 
-<<<<<<< HEAD
 .detail_srch_btn:hover{
 	cursor: pointer;
 	background-color: #1D95C9;
 }
-=======
->>>>>>> branch 'master' of https://github.com/sujl950620/HairShop
-
 
 /* ------------------------------------------------------------------ 김현 버튼 스타일 ----------------------------------------------------------------------------------- */
 /* 팝업 검색 버튼 스타일 현 */

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="common">
+	<select id="getLeftMenu" parameterType="hashmap" resultType="hashmap">
+		SELECT M.MENU_NO, M.MENU_NAME, M.TOP_MENU_NO, M.MENU_ADDR, M.MENU_DEPTH, M.CNT, M.MENU_FLOW 
+		FROM (
+		SELECT M.MENU_NO, M.MENU_NAME, M.TOP_MENU_NO, M.MENU_ADDR, M.MENU_DEPTH, NVL(TM.CNT, 
+		0) AS CNT, SUBSTR(SYS_CONNECT_BY_PATH(M.MENU_NO, ','), 2) AS MENU_FLOW FROM MENU M LEFT OUTER JOIN (SELECT  TOP_MENU_NO, COUNT(*) AS CNT 
+		FROM MENU GROUP BY TOP_MENU_NO) TM ON M.MENU_NO = TM.TOP_MENU_NO WHERE 1 = 1 START WITH MENU_DEPTH = 1 CONNECT 
+		BY PRIOR M.MENU_NO = M.TOP_MENU_NO) M
+	</select>
+	
+	<select id="menuAuthorCheck" parameterType="hashmap" resultType="hashmap">
+		SELECT AUTHOR_TYPE_NO
+		FROM MENU_AUTHOR
+		WHERE AUTHOR_NO = #{authorNo}
+		AND MENU_NO = #{menuNo}
+	</select>
+	
+	<select id="loginCheck" parameterType="hashmap" resultType="hashmap">
+		SELECT *
+		FROM MEMBER
+		WHERE MEM_ID = #{id}
+		AND MEM_PW = #{pw}
+	</select>
+</mapper>

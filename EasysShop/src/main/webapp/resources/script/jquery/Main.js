@@ -92,7 +92,7 @@ $(document).ready(function() {
     	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
     	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
     	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
-    });
+    });    
     $("#month").click(function(){
     	setDays(30);
     });
@@ -106,6 +106,31 @@ $(document).ready(function() {
     });
     
     $("#3days").click(function(){
+    	setDays(3);
+    });
+    //팝업용
+    $("#total2").click(function(){
+    	$("#startDate2").val("2011"+"-"+"01"+"-"+"01");
+    	var date = new Date();
+    	var yyyy = date.getFullYear();
+    	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
+    	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
+    	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+    	$("#endDate2").val(yyyy+"-"+mm+"-"+dd);
+    });
+    $("#month2").click(function(){
+    	setDays(30);
+    });
+    
+    $("#15days2").click(function(){
+    	setDays(15);
+    });
+    
+    $("#7days2").click(function(){
+    	setDays(7);
+    });
+    
+    $("#3days2").click(function(){
     	setDays(3);
     });
     $('#Sales_Sales_Money').on("keyup", function() {
@@ -199,6 +224,7 @@ function uncomma(str) {
 
 function setDays(daysago) {
 	var endDatearr = $("input[name=endDate]").val().split("-");
+	var endDatearr = $("input[name=endDate2]").val().split("-");
 	let startDateD = new Date(endDatearr[0], endDatearr[1]-1,endDatearr[2] );
 	var oldday = new Date(startDateD-(3600000*24*daysago));
 	var endDate1 = oldday.toLocaleString();
@@ -207,6 +233,7 @@ function setDays(daysago) {
 	endDate1[1] = endDate1[1] > 9 ? endDate1[1] : '0' + endDate1[1];
 	endDate1[2] = endDate1[2] > 9 ? endDate1[2] : '0' + endDate1[2];
 	$("input[name=startDate]").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
+	$("input[name=startDate2]").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
 }
 function popsetDays() {
 	let startDateD = new Date();
@@ -225,5 +252,33 @@ function setDate() {
 	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
 	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
 	$("input[name=endDate]").val(yyyy+"-"+mm+"-"+dd);
+	$("input[name=endDate2]").val(yyyy+"-"+mm+"-"+dd);
 	$("input[name=startDate]").val(yyyy+"-"+mm+"-"+"01");
+	$("input[name=startDate2]").val(yyyy+"-"+mm+"-"+"01");
 }
+
+//전화번호 텍스트 포맷팅
+$(".txt_client_ph, .txt_client_ln, .txt_client_fax").on("keyup", function() {
+	 inputNumberFormat(this);
+});
+
+//전화번호셋팅
+function numberFormat(inputNumber) {
+	
+	   return inputNumber.toString().replace(/\B(?=(\d{3}-\d{3,4}-\d{4})+(?!\d))/g, ",");
+	}
+
+function inputNumberFormat(obj) {
+ obj.value = comma(uncomma(obj.value));
+}
+
+function comma(str) {
+ str = String(str);
+ return str.replace(/(\d)(?=(?:\d{4})+(?!\d))/g, '$1-');
+}
+
+function uncomma(str) {
+ str = String(str);
+ return str.replace(/[^\d]+/g, '');
+}
+//전화번호셋팅 end

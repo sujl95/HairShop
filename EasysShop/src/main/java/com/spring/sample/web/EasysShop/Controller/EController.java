@@ -1,11 +1,24 @@
 package com.spring.sample.web.EasysShop.Controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.spring.sample.common.bean.PagingBean;
 import com.spring.sample.common.service.IPagingService;
+import com.spring.sample.util.Utils;
 import com.spring.sample.web.EasysShop.service.IEService;
 
 @Controller
@@ -73,6 +86,11 @@ public class EController {
 		return mav;
 	}
 	
+	@RequestMapping(value = {"/schedule_fullcalendar3"})
+	public ModelAndView schedule_fullcalendar3(ModelAndView mav) {
+		mav.setViewName("EasysShop/schedule_fullcalendar3");
+		return mav;
+	}
 	
 	@RequestMapping(value = {"/popupsample"})
 	public ModelAndView popupsample(ModelAndView mav) {
