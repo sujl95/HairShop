@@ -42,8 +42,8 @@
 				$(this).width($(this).width() + (10 * leng_diff) + "px");
 			}
 		})
-		 
-		  
+		
+		
 	});
 </script>
 <style type="text/css">

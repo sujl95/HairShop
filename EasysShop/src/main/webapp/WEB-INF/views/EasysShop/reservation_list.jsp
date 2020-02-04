@@ -56,7 +56,6 @@ $(document).ready(function() {
 			// {키: 값, 키:값, ...} - > json
 			
 			success : function(result){
-				console.log(result.data);
 				
 				var html = "";
 				html += `<form action="#" id="reserForm" method="post">`;
@@ -92,7 +91,7 @@ $(document).ready(function() {
 				html += "			<td class=\"field_name first_field_name\">담당자</td>                                                    ";
 				html += "			<td class=\"field_contents\">                                                                            ";
 				html += "				<input class=\"input_size size70\" id=\"txt_emp_name\" name=\"txt_emp_name\" type=\"text\" value=\"${data.EMP_NM}\">                                                    ";
-				html += `				<input type="hidden" name="emp_no" id="emp_no" value="${data.EMP_NO}">                                                    `;
+				html += `				<input type="hidden" name="txt_emp_no" id="txt_emp_no" value="${data.EMP_NO}">                                                    `;
 				html += "				<input type=\"button\" class=\"btn_normal btn_size_normal\" value=\"검색\"/>                         ";
 				html += "			</td>                                                                                                    ";
 				html += "		</tr>                                                                                                        ";
@@ -186,11 +185,14 @@ $(document).ready(function() {
 				$("#txt_client_no").val(result.data.CT_NO);
 				$("#txt_client_name").val(result.data.CT_NM);
 				$("#txt_client_ph").val(result.data.RV_PH);
-				$("#emp_no").val(result.data.EMP_NO);
+				$("#txt_emp_no").val(result.data.EMP_NO);
 				$("#txt_emp_name").val(result.data.EMP_NM);
 				$("#txt_RV_CON").val(result.data.RV_CON);
 				$("#edit-color").val(result.data.RV_COLOR);
-				
+				//설렉트 색깔 바꿔주기
+			 	$("#edit-color").change(function() {
+			 		$("#edit-color").css("color",$(this).val());
+		 		});
 			} , 
 			error : function(request,status,error) {
 				console.log("status : "+request.status);
@@ -290,7 +292,7 @@ $(document).ready(function() {
 			html += "		<tr>                                                                                                         ";
 			html += "			<td class=\"field_name first_field_name\">색상</td>                                                      ";
 			html += "			<td class=\"field_contents\">                                                                            ";
-			html += "				 <select class=\"input_normal inputModal\" name=\"edit-color\" id=\"edit-color\">                         ";
+			html += "				 <select class=\"input_normal inputModal\" style=\"color:#D25565;\" name=\"edit-color\" id=\"edit-color\">                         ";
             html += "                  <option value=\"#D25565\" style=\"color:#D25565;\">빨간색</option>                                ";
             html += "                  <option value=\"#9775fa\" style=\"color:#9775fa;\">보라색</option>                                ";
             html += "                  <option value=\"#ffa94d\" style=\"color:#ffa94d;\">주황색</option>                                ";
@@ -373,7 +375,10 @@ $(document).ready(function() {
 			$(".txt_client_ph").on("keyup", function() {
 				inputNumberFormat(this);
 			});
-		 	
+			//설렉트 색깔 바꿔주기
+		 	$("#edit-color").change(function() {
+		 		$("#edit-color").css("color",$(this).val());
+	 		});
 			$("#restime").val('12:00');
 	  });
 });
@@ -435,7 +440,6 @@ function drawresList(list) {
 }
 //Paging draw
 function drawListPaging(pb) {
-	console.log(pb);
 	var html = "";
 	html += "<div class=\"btn_paging\" name=\"1\">&lt;&lt;</div>";
 
@@ -497,7 +501,7 @@ function resaddpopset() {
 							<input type="button" class="btn_date pxsize50" id="7days" value="7일"/>
 							<input type="button" class="btn_date pxsize50" id="15days" value="15일"/>
 							<input type="button" class="btn_date pxsize50" id="month" value="한달"/>
-							<input type="button" class="btn_date pxsize50" id="total" value="전체"/>
+							<input type="button" class="btn_date pxsize50" id="mtotal" value="전체"/>
 						</div>
 						<div class="top_btn_area size60">
 						</div>
@@ -575,9 +579,24 @@ function resaddpopset() {
 								<td>예약내용</td>
 							</tr>
 						</thead>
-						<tbody>
-						</tbody>
 					</table>
+					<div class="sscroll">
+						<table class="table_list">
+							<colgroup>
+								<col width="5%">
+								<col width="10%">
+								<col width="10%">
+								<col width="10%">
+								<col width="10%">
+								<col width="10%">
+								<col width="10%">
+								<col width="15%">
+								<col width="20%">
+							</colgroup>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
 					</form>
 					<div class="list_paging_area">
            			 </div>

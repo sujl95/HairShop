@@ -68,4 +68,19 @@ public class ScheService implements IScheService {
 	public void resdeleteData(HashMap<String, String> params) throws Throwable {
 		iScheDao.resdeleteData(params);		
 	}
+
+	@Override
+	public int getcalendarCnt(HashMap<String, String> params) throws Throwable {
+		return iScheDao.getcalendarCnt(params);		
+	}
+
+	@Override
+	public List<HashMap<String, String>> getcalendarList(HashMap<String, String> params) throws Throwable {
+		return iScheDao.getcalendarList(params);		
+	}
+
+	@Override
+	public HashMap<String, String> getcaldata(HashMap<String, String> params) throws Throwable {
+		return iScheDao.getcaldata(params);	
+	}
 }

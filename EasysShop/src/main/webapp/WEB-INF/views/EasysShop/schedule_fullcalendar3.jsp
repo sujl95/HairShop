@@ -136,6 +136,7 @@ function getreservationlist() {
 //						      	.addClass("pop_off");
 //						    	return false;
 //					    });
+// 					  예약 등록
 					  $("#reservation_add").on("click", function(e) {
 						  var html = "";
 						  	html += `<form action="#" id="reserForm" method="post">`;
@@ -177,7 +178,7 @@ function getreservationlist() {
 							html += "		<tr>                                                                                                         ";
 							html += "			<td class=\"field_name first_field_name\">색상</td>                                                      ";
 							html += "			<td class=\"field_contents\">                                                                            ";
-							html += "				 <select class=\"input_normal inputModal\" name=\"edit-color\" id=\"edit-color\">                         ";
+							html += "				 <select class=\"input_normal inputModal\" name=\"edit-color\" style=\"color:#D25565;\" id=\"edit-color\">                         ";
 			                html += "                  <option value=\"#D25565\" style=\"color:#D25565;\">빨간색</option>                                ";
 			                html += "                  <option value=\"#9775fa\" style=\"color:#9775fa;\">보라색</option>                                ";
 			                html += "                  <option value=\"#ffa94d\" style=\"color:#ffa94d;\">주황색</option>                                ";
@@ -263,9 +264,13 @@ function getreservationlist() {
 							$(".txt_client_ph").on("keyup", function() {
 								inputNumberFormat(this);
 							});
-						 	
+							//설렉트 색깔 바꿔주기
+						 	$("#edit-color").change(function() {
+						 		$("#edit-color").css("color",$(this).val());
+					 		});
 							$("#restime").val('12:00');
 					  });
+// 					  일정 등록
 					  $("#calendar_add").on("click", function(e) {
 						var html ="";
 						html += `<form action="#" id="scheForm" method="post">`; 
@@ -275,15 +280,6 @@ function getreservationlist() {
 						html += `		<col width="80%">                                                                                 `;
 						html += `	</colgroup>                                                                                           `;
 						html += `	<tbody>                                                                                               `;
-						html += `		<tr>                                                                                              `;
-						html += `			<td class="field_name first_field_name">일정구분</td>                                         `;
-						html += `			<td class="field_contents">                                                                   `;
-						html += `				<select class="input_size pxsize100">                                                     `;
-						html += `					<option selected="selected">일별일정</option>                                         `;
-						html += `					<option>월별일정</option>                                                             `;
-						html += `				</select>                                                                                 `;
-						html += `			</td>                                                                                         `;
-						html += `		</tr>                                                                                             `;
 						html += `		<tr>                                                                                              `;
 						html += `			<td class="field_name first_field_name">일정 시작일</td>                                             `;
 						html += `			<td class="field_contents">                                                                   `;
@@ -375,7 +371,7 @@ function getreservationlist() {
 						html += `		<tr>                                                                                              `;
 						html += `			<td class="field_name first_field_name">색상</td>                                             `;
 						html += `			<td class="field_contents">                                                                   `;
-						html += `				 <select class="input_normal inputModal" name="edit-color" id="edit-color">                    `;
+						html += `				 <select class="input_normal inputModal" style="color:#D25565;" name="edit-color" style="" id="edit-color">                    `;
 		                html += `                    <option value="#D25565" style="color:#D25565;">빨간색</option>                       `;
 		                html += `                    <option value="#9775fa" style="color:#9775fa;">보라색</option>                       `;
 		                html += `                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>                       `;
@@ -452,7 +448,13 @@ function getreservationlist() {
 						}); 
 					 	$("#startDate, #endDate").val(date.format());
 					 	//전화번호 텍스트 포맷팅
+					 	//설렉트 색깔 바꿔주기
+					 	$("#edit-color").change(function() {
+					 		$("#edit-color").css("color",$(this).val());
+				 		});
+
 					 	
+
 // 						$("#endDate").val('12:00');
 					  });
 					 var $contextMenu = $("#contextMenu");

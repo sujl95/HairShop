@@ -55,7 +55,6 @@
 	border-spacing: 0px;
 	font-size: 10pt;
 	border-top: 2px solid #27a7df;
-	margin-left : 10px;
 }
 
 td {
@@ -110,7 +109,9 @@ td {
 <div id="popup_wrap">
 <%@include file="test.html" %> 
 </div>
-	<div class="pop_wrap">
+	
+	<!------------------------------------직원 상세정보 시작----------------------------------->
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_customer_detail pop_white">
 			<div class="pop_title_area">
@@ -340,6 +341,97 @@ td {
 		</div>
 	</div>
 	</div>
+	<!------------------------------------직원 상세정보 끝----------------------------------->
+	
+	<!------------------------------------직원 등록 시작----------------------------------->
+	<div class="pop_wrap">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_staff_insert pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 직원 등록
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<!-- 내용입력 -->
+			<div class="pop_detail_top_area">
+				<!-- 상단 버튼 -->
+				<div class="pop_detail_top1">
+				<input type="button" class="btn_normal btn_size_normal" value="등록"/>
+				<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+				</div>
+				<div class="pop_detail_top2">
+				</div>
+			</div>
+			<div class="pop_mid_area">
+				<table style="width: 100%;">
+					<colgroup>
+						<col width="15%" />
+						<col width="35%" />
+						<col width="15%" />
+						<col width="35%" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<td class="table_header_td">직원명</td>
+							<td><input type="text" class="input_normal" value=""></td>
+							<td class="table_header_td">직급</td>
+							<td>
+								<input type="text" class="input_normal" style="width: 60%;" value="">
+								<div class="btn_normal btn_size_w40h20">검색</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="table_header_td">주민번호</td>
+							<td><input type="text" class="input_normal" value=""></td>
+							<td class="table_header_td">휴대폰</td>
+							<td><input type="text" class="input_normal" value=""></td>
+						</tr>
+						<tr>
+							<td class="table_header_td">생일</td>
+							<td><input type="date" class="input_normal" value=""></td>
+							<td class="table_header_td">성별</td>
+							<td><input type="text" class="input_normal" value=""></td>
+						</tr>
+						<tr>
+							<td class="table_header_td">이메일</td>
+							<td colspan="3"><input type="text" class="input_normal" value=""></td>
+						</tr>
+						<tr>
+							<td class="table_header_td">주소</td>
+							<td colspan="3"><input type="text" class="input_normal" value=""></td>
+						</tr>
+						<tr>
+							<td class="table_header_td">입사일</td>
+							<td><input type="date" class="input_normal" value=""></td>
+							<td class="table_header_td">월급일</td>
+							<td><input type="text" class="input_normal" value=""></td>
+						</tr>
+						<tr>
+							<td class="table_header_td">메모</td>
+							<td colspan="3"><input type="text" class="input_normal" value=""></td>
+						</tr>
+						<tr>
+							<td class="table_header_td">은행명</td>
+							<td colspan="3"><input type="text" class="input_normal" value=""></td>
+						</tr>
+						<tr>
+							<td class="table_header_td">계좌번호</td>
+							<td><input type="text" class="input_normal" value=""></td>
+							<td class="table_header_td">예금주</td>
+							<td><input type="text" class="input_normal" value=""></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!------------------------------------직원 등록 끝----------------------------------->
+	
 	<div class="left_wrap">
 		<div class="logo_wrap">
 			<div>

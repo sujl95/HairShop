@@ -50,6 +50,12 @@
 	text-align:center;
 }
 
+.pop_mid_area {
+	width: 95%;
+	height: 90%;
+	margin: 0 auto;
+}
+
 /* 일정 등록 팝업 크기 */
 .pop_size_schedule {
 	width: 500px;
@@ -138,10 +144,10 @@
 
 /* 근태 등록 팝업 크기*/
 .pop_size_dlWrite {
-	width: 700px;
-	height: 500px;
+	width: 500px;
+	height: 400px;
 	top: calc(50% - 200px);
-	left: calc(50% - 400px);
+	left: calc(50% - 300px);
 }
 
 
@@ -667,4 +673,13 @@
 	display:inline-block;
 	border-top-left-radius:3px;
 	border-bottom-left-radius:3px;
+}
+
+/* 직원 등록 팝업 사이즈 */
+.pop_size_staff_insert {
+	width: 600px;
+	height: 700px;
+	top: calc(50% - 350px);
+	left: calc(50% - 300px);
+	overflow: hidden;
 }

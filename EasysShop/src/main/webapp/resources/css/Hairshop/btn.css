@@ -181,7 +181,15 @@
     height: 30px;
     line-height: 30px;
     margin-left: 0;
-
+}
+/* 가로 40px 세로 20px 버튼 크기 */
+.btn_size_w40h20 {
+	font-size: 8pt;
+    width: 40px;
+    height: 20px;
+    line-height: 30px;
+    margin-left: 0;
+}
 /* 큰 버튼 크기 */
 .btn_size_big {
     width: 150px;
@@ -250,14 +258,10 @@
 	line-height : 38px;
 }
 
-<<<<<<< HEAD
 .detail_srch_btn:hover{
 	cursor: pointer;
 	background-color: #1D95C9;
 }
-=======
->>>>>>> branch 'master' of https://github.com/sujl950620/HairShop
-
 
 /* ------------------------------------------------------------------ 김현 버튼 스타일 ----------------------------------------------------------------------------------- */
 /* 팝업 검색 버튼 스타일 현 */
@@ -281,4 +285,5 @@
 .btn_search_normal_h:hover{
 	background-color: #1d95c9;	
 }
+
 /* ------------------------------------------------------------------ 김현 버튼 스타일 ----------------------------------------------------------------------------------- */

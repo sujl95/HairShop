@@ -30,4 +30,10 @@ public interface IScheDao {
 
 	void resdeleteData(HashMap<String, String> params) throws Throwable ;
 
+	int getcalendarCnt(HashMap<String, String> params) throws Throwable ;
+
+	List<HashMap<String, String>> getcalendarList(HashMap<String, String> params) throws Throwable ;
+
+	HashMap<String, String> getcaldata(HashMap<String, String> params) throws Throwable ;
+
 }

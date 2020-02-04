@@ -12,7 +12,12 @@ $(document).ready(function() {
 //
 //		}});
 	$("#popup_wrap").load("test.html");
-
+	
+	$(".sscroll").slimScroll({
+		width : "100%",
+		height: "350px"
+	});
+	
 	$(".content_area").slimScroll({
 		height: "100%"
 	});
@@ -91,7 +96,20 @@ $(document).ready(function() {
     	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
     	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
     	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-//    	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
+    	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
+    });   
+    $("#mtotal").click(function(){
+    	$("#startDate").val("2011"+"-"+"01"+"-"+"01");
+    	var date    = new Date();
+    	var month = date.getMonth() + 1;
+    	var yyyy = date.getFullYear();
+    	var last   = new Date( yyyy, month ); 
+    	     last   = new Date( last - 1 ); 
+    	var lastD = last.getDate();
+    	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
+    	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
+    	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+    	$("#endDate").val(yyyy+"-"+mm+"-"+lastD);
     });
     $("#month").click(function(){
     	setDays(30);
@@ -106,6 +124,31 @@ $(document).ready(function() {
     });
     
     $("#3days").click(function(){
+    	setDays(3);
+    });
+    //팝업용
+    $("#total2").click(function(){
+    	$("#startDate2").val("2011"+"-"+"01"+"-"+"01");
+    	var date = new Date();
+    	var yyyy = date.getFullYear();
+    	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
+    	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
+    	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+    	$("#endDate2").val(yyyy+"-"+mm+"-"+dd);
+    });
+    $("#month2").click(function(){
+    	setDays(30);
+    });
+    
+    $("#15days2").click(function(){
+    	setDays(15);
+    });
+    
+    $("#7days2").click(function(){
+    	setDays(7);
+    });
+    
+    $("#3days2").click(function(){
     	setDays(3);
     });
     $('#Sales_Sales_Money').on("keyup", function() {
@@ -198,7 +241,8 @@ function uncomma(str) {
 
 
 function setDays(daysago) {
-	var endDatearr = $("input[name=endDate]").val().split("-");
+	var endDatearr = ($("input[name=endDate2]").length > 0) ? $("input[name=endDate2]").val().split("-") : $("input[name=endDate]").val().split("-");
+	
 	let startDateD = new Date(endDatearr[0], endDatearr[1]-1,endDatearr[2] );
 	var oldday = new Date(startDateD-(3600000*24*daysago));
 	var endDate1 = oldday.toLocaleString();
@@ -206,7 +250,7 @@ function setDays(daysago) {
 	var oldday = startDateD.toLocaleString();
 	endDate1[1] = endDate1[1] > 9 ? endDate1[1] : '0' + endDate1[1];
 	endDate1[2] = endDate1[2] > 9 ? endDate1[2] : '0' + endDate1[2];
-	$("input[name=startDate]").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
+	var endDatearr = ($("input[name=startDate2]").length > 0) ? $("input[name=startDate2]").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]) : $("input[name=startDate]").val(endDate1[0]+"-"+endDate1[1]+"-"+endDate1[2]);
 }
 function popsetDays() {
 	let startDateD = new Date();
@@ -225,7 +269,9 @@ function setDate() {
 	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
 	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
 	$("input[name=endDate]").val(yyyy+"-"+mm+"-"+dd);
+	$("input[name=endDate2]").val(yyyy+"-"+mm+"-"+dd);
 	$("input[name=startDate]").val(yyyy+"-"+mm+"-"+"01");
+	$("input[name=startDate2]").val(yyyy+"-"+mm+"-"+"01");
 }
 
 //전화번호 텍스트 포맷팅
