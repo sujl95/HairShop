@@ -97,15 +97,9 @@ public class EController {
 		mav.setViewName("EasysShop/popupsample");
 		return mav;
 	}
-	@RequestMapping(value = {"/customer"})
-	public ModelAndView customer(ModelAndView mav) {
-		mav.setViewName("EasysShop/customer");
-		return mav;
-	}
-	
-	@RequestMapping(value = {"/proc_admin_list"})
-	public ModelAndView proc_admin_list(ModelAndView mav) {
-		mav.setViewName("EasysShop/proc_admin_list");
+	@RequestMapping(value = {"/customerList"})
+	public ModelAndView customerList(ModelAndView mav) {
+		mav.setViewName("EasysShop/customerList");
 		return mav;
 	}
 	
@@ -130,6 +124,30 @@ public class EController {
 	@RequestMapping(value = {"/popuptest2"})
 	public ModelAndView popuptest2(ModelAndView mav) {
 		mav.setViewName("EasysShop/popuptest2");
+		return mav;
+	}
+	
+	@RequestMapping(value = {"/sampleKH"})
+	public ModelAndView sampleKH(ModelAndView mav) {
+		mav.setViewName("EasysShop/sampleKH");
+		return mav;
+	}
+	
+	@RequestMapping(value = {"/sampleKH2"})
+	public ModelAndView sampleKH2(ModelAndView mav) {
+		mav.setViewName("EasysShop/sampleKH2");
+		return mav;
+	}
+	
+	@RequestMapping(value = {"/sampleKH3"})
+	public ModelAndView sampleKH3(ModelAndView mav) {
+		mav.setViewName("EasysShop/sampleKH3");
+		return mav;
+	}
+	
+	@RequestMapping(value = {"/sampleKH4"})
+	public ModelAndView sampleKH4(ModelAndView mav) {
+		mav.setViewName("EasysShop/sampleKH4");
 		return mav;
 	}
 }

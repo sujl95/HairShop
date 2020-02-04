@@ -181,7 +181,7 @@
     height: 30px;
     line-height: 30px;
     margin-left: 0;
-    
+}
 /* 가로 40px 세로 20px 버튼 크기 */
 .btn_size_w40h20 {
 	font-size: 8pt;
@@ -189,7 +189,7 @@
     height: 20px;
     line-height: 30px;
     margin-left: 0;
-
+}
 /* 큰 버튼 크기 */
 .btn_size_big {
     width: 150px;
@@ -285,4 +285,5 @@
 .btn_search_normal_h:hover{
 	background-color: #1d95c9;	
 }
+
 /* ------------------------------------------------------------------ 김현 버튼 스타일 ----------------------------------------------------------------------------------- */

@@ -66,4 +66,19 @@ public class ScheDao implements IScheDao {
 	public void resdeleteData(HashMap<String, String> params) throws Throwable {
 		sqlSession.delete("reservation.resdeleteData",params);
 	}
+
+	@Override
+	public int getcalendarCnt(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("reservation.getcalendarCnt",params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> getcalendarList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("reservation.getcalendarList",params);
+	}
+
+	@Override
+	public HashMap<String, String> getcaldata(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("reservation.getcaldata",params);
+	}
 }

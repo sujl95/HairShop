@@ -143,9 +143,9 @@ public class PagingService implements IPagingService{
 	@Override
 	public int getEndPcount(int page, int maxCount,int viewCnt, int pageCnt){
 		int endPcount = 0;
-		int maxPcount = getMaxPcount(maxCount);
+		int maxPcount = getMaxPcount(maxCount, viewCnt);
 		
-		endPcount = getStartPcount(page) + pageCnt - 1;
+		endPcount = getStartPcount(page ,pageCnt) + pageCnt - 1;
 		
 		if(endPcount >= maxPcount){
 			endPcount = maxPcount;

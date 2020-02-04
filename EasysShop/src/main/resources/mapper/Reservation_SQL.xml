@@ -31,7 +31,7 @@
 		, #{txt_emp_name},#{edit-color},#{txt_SCD_CON})
 	</insert>
 	
-	<!-- 월간 일정 목록 카운트-->
+	<!-- 월간 예약 목록 카운트-->
 	<select id="getreservationCnt" parameterType="hashmap" resultType="Integer">
 		SELECT COUNT(*) AS CNT
 		FROM(SELECT RE.RV_NO , TO_CHAR(RE.RV_DATE,'YYYY-MM-DD') AS RDATE
@@ -71,7 +71,7 @@
       		</if>
 	</select>
 	
-	<!-- 월간 일정 목록 -->
+	<!-- 월간 예약 목록 -->
 	<select id="getreservationList" parameterType="hashmap" resultType="hashmap">
 		SELECT RV_NO, RDATE, RTIME, CT_NM, RV_PH, EMP_NM,RV_CON
 		FROM(SELECT RE.RV_NO , TO_CHAR(RE.RV_DATE,'YYYY-MM-DD') AS RDATE
@@ -129,7 +129,7 @@
 	<!-- 월간 예약 수정 -->
 	<update id="resupdateData" parameterType="hashmap">
 		UPDATE RESERVATION SET RV_DATE = TO_DATE(#{startDate}|| ' ' ||#{restime},'YYYY-MM-DD HH24:MI'),
-		CT_NO =#{txt_client_no}, RV_PH=#{txt_client_ph},EMP_NO =#{emp_no},RV_COLOR=#{edit-color},
+		CT_NO =#{txt_client_no}, RV_PH=#{txt_client_ph},EMP_NO =#{txt_emp_no},RV_COLOR=#{edit-color},
 		RV_CON = #{txt_RV_CON}
 		WHERE RV_NO = #{res_no}
 	</update>
@@ -138,4 +138,72 @@
 	<delete id="resdeleteData" parameterType="hashmap">
 		DELETE FROM RESERVATION WHERE RV_NO = #{res_no}
 	</delete>
+	
+	<!-- 월간 일정 목록 카운트-->
+	<select id="getcalendarCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT
+		FROM(SELECT SC.SCD_NO, TO_CHAR(SC.SCD_SDATE,'YYYY-MM-DD') AS SDATE, TO_CHAR(SC.SCD_SDATE, 'HH24:MI') AS STIME ,E.EMP_NO, E.EMP_NM,SC.SCD_CON, ROW_NUMBER() OVER(ORDER BY SC.SCD_NO) AS RNUM
+			FROM SCHEDULE SC INNER JOIN EMPLOYEE E 
+                         ON SC.EMP_NO = E.EMP_NO) 
+		    WHERE 1=1
+		    <if test="searchTxt == '' and startDate != null and startDate != ''">
+		    	AND SDATE BETWEEN #{startDate} AND #{endDate} 
+		    </if>
+    		<if test="searchTxt != null and searchTxt != ''">
+			AND SDATE BETWEEN #{startDate} AND #{endDate}  
+				<choose>
+			      <when test="searchGbn == 0">
+				      AND EMP_NM LIKE '%'||#{searchTxt}||'%'
+				      OR SCD_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 1">
+      			  	  AND EMP_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 2">
+      			  	  AND SCD_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			 </choose>
+      		</if>
+	</select>
+	
+	<!-- 월간 일정 목록 -->
+	<select id="getcalendarList" parameterType="hashmap" resultType="hashmap">
+		SELECT SCD_NO, SDATE, STIME,EMP_NO, EMP_NM,SCD_CON
+		FROM(SELECT SC.SCD_NO, TO_CHAR(SC.SCD_SDATE,'YYYY-MM-DD') AS SDATE, TO_CHAR(SC.SCD_SDATE, 'HH24:MI') AS STIME ,E.EMP_NO, E.EMP_NM,SC.SCD_CON, ROW_NUMBER() OVER(ORDER BY SC.SCD_NO) AS RNUM
+			FROM SCHEDULE SC INNER JOIN EMPLOYEE E 
+                         ON SC.EMP_NO = E.EMP_NO
+            <if test="searchTxt == '' and startDate != null and startDate != ''">
+		    	AND  TO_CHAR(SC.SCD_SDATE,'YYYY-MM-DD')  BETWEEN #{startDate} AND #{endDate} 
+		    </if>
+		    order by SC.SCD_SDATE
+		                                ) 
+            WHERE 1=1
+    		<if test="searchTxt != null and searchTxt != ''">
+			AND SDATE BETWEEN #{startDate} AND #{endDate}  
+				<choose>
+			      <when test="searchGbn == 0">
+				      AND EMP_NM LIKE '%'||#{searchTxt}||'%'
+				      OR SCD_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 1">
+      			  	  AND EMP_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 2">
+      			  	  AND SCD_CON LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			 </choose>
+      		</if>
+		    	
+		    AND RNUM BETWEEN #{startCnt} AND #{endCnt}
+	</select>
+	
+	<!-- 월간 일정  수정 데이터 가져오기-->
+	<select id="getcaldata" parameterType="hashmap" resultType="hashmap">
+		SELECT SCD.SCD_NO , TO_CHAR(SCD.SCD_SDATE,'YYYY-MM-DD') AS SDATE
+                    , TO_CHAR(SCD.SCD_SDATE,'HH24:MI') AS STIME, E.EMP_PH
+                    ,SCD.SCD_COLOR ,SCD.EMP_NO, E.EMP_NM,SCD.SCD_CON
+    	FROM SCHEDULE SCD INNER JOIN EMPLOYEE E 
+                            ON SCD.EMP_NO = E.EMP_NO
+		WHERE SCD.SCD_NO =  #{cal_no}
+	</select>
 </mapper>

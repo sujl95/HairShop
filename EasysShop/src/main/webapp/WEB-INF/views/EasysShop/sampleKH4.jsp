@@ -54,14 +54,14 @@
 </script>
 </head>
 <body>
-	<!-- 장부 등록 팝업  -->
-	<div class="pop_wrap ">
+	<!-- 입고 등록 팝업  -->
+	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_Books pop_white">
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
-						class="pop_icon"> 장부 등록
+						class="pop_icon"> 입고 등록
 				</div>
 				<div class="pop_close">
 					<img src="resources/images/Eimages/button/icon_del_white.png"
@@ -77,38 +77,26 @@
 				</colgroup>
 				<tbody>
 					<tr class="height50">
-						<td class="field_name ">거래일자<span class="important_text">*</span></td>
-						<td class="text_align_left "><input type="date"
+						<td class="field_name ">입고일<span class="important_text">*</span></td>
+						<td class="text_align_left " colspan="3"><input type="date"
 							class="input_size ml10" /></td>
-						<td class="field_name">계정<span class="important_text">*</span></td>
-						<td class="text_align_left "><select
-							class="input_size pxsize100 ml10">
-								<option selected="selected">분류</option>
-								<option>기타경비</option>
-								<option>기타매출</option>
-								<option>기타잡비</option>
-								<option>시술매출</option>
-								<option>상품매출</option>
-								<option>상품매입</option>
-								<option>식비</option>
-								<option>급료</option>
-								<option>임차료</option>
-								<option>자산매입</option>
-								<option>자산매각</option>
-						</select> <input type="button" class="btn_normal btn_size_normal ml10"
-							value="검색" /></td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">거래처</td>
+						<td class="field_name">상품명</td>
 						<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize400 ml10" type="text"> <input
+							class="input_size pxsize395 ml10" type="text"> <input
 							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
 						</td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">거래내용<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize495 ml10" type="text"></td>
+						<td class="field_name">그룹명</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize195 ml10" type="text">
+						</td>
+						<td class="field_name">단위</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize195 ml10" type="text">
+						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name ">수량<span class="important_text">*</span></td>
@@ -134,16 +122,11 @@
 						</td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">비고<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><select
-							class="input_size pxsize150 ml10">
-								<option selected="selected">분류를 선택해주세요</option>
-								<option>신용카드</option>
-								<option>영수증</option>
-								<option>현금연수증</option>
-								<option>세금계산서</option>
-								<option>기타</option>
-						</select></td>
+						<td class="field_name">거래처</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize395 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name">메모</td>
@@ -158,14 +141,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- 장부 수정 팝업  -->
+	<!-- 입고 수정 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_Books pop_white">
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
-						class="pop_icon"> 장부 수정
+						class="pop_icon"> 입고 수정
 				</div>
 				<div class="pop_close">
 					<img src="resources/images/Eimages/button/icon_del_white.png"
@@ -181,38 +164,26 @@
 				</colgroup>
 				<tbody>
 					<tr class="height50">
-						<td class="field_name ">거래일자<span class="important_text">*</span></td>
-						<td class="text_align_left "><input type="date"
+						<td class="field_name ">입고일<span class="important_text">*</span></td>
+						<td class="text_align_left " colspan="3"><input type="date"
 							class="input_size ml10" /></td>
-						<td class="field_name">계정<span class="important_text">*</span></td>
-						<td class="text_align_left "><select
-							class="input_size pxsize100 ml10">
-								<option selected="selected">분류</option>
-								<option>기타경비</option>
-								<option>기타매출</option>
-								<option>기타잡비</option>
-								<option>시술매출</option>
-								<option>상품매출</option>
-								<option>상품매입</option>
-								<option>식비</option>
-								<option>급료</option>
-								<option>임차료</option>
-								<option>자산매입</option>
-								<option>자산매각</option>
-						</select> <input type="button" class="btn_normal btn_size_normal ml10"
-							value="검색" /></td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">거래처</td>
+						<td class="field_name">상품명</td>
 						<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize400 ml10" type="text"> <input
+							class="input_size pxsize395 ml10" type="text"> <input
 							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
 						</td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">거래내용<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize495 ml10" type="text"></td>
+						<td class="field_name">그룹명</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize195 ml10" type="text">
+						</td>
+						<td class="field_name">단위</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize195 ml10" type="text">
+						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name ">수량<span class="important_text">*</span></td>
@@ -238,16 +209,11 @@
 						</td>
 					</tr>
 					<tr class="height50">
-						<td class="field_name">비고<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><select
-							class="input_size pxsize150 ml10">
-								<option selected="selected">분류를 선택해주세요</option>
-								<option>신용카드</option>
-								<option>영수증</option>
-								<option>현금연수증</option>
-								<option>세금계산서</option>
-								<option>기타</option>
-						</select></td>
+						<td class="field_name">거래처</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize395 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
 					</tr>
 					<tr class="height50">
 						<td class="field_name">메모</td>
@@ -262,14 +228,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- 장부 삭제 팝업  -->
+	<!-- 입고 삭제 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_small pop_white">
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
-						class="pop_icon"> 장부 삭제
+						class="pop_icon"> 입고 삭제
 				</div>
 				<div class="pop_close">
 					<img src="resources/images/Eimages/button/icon_del_white.png"
@@ -277,7 +243,32 @@
 				</div>
 			</div>
 			<div class="pop_middle_area">
-			선택한 장부를 정말 삭제하시겠습니까?
+			선택한 입고를 정말 삭제하시겠습니까?
+			</div>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="삭제" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	
+	<!-- 상품 삭제 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_small pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 상품 삭제
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<div class="pop_middle_area">
+			선택한 상품을 정말 삭제하시겠습니까?
 			</div>
 			<div class="pop_btn_bottom_area">
 				<input type="button" class="btn_normal btn_size_normal mr20"
@@ -288,14 +279,14 @@
 	</div>
 	
 	
-	<!-- 거래처 등록 팝업  -->
+	<!-- 상품 등록 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
-		<div class="pop pop_size_account_register pop_white">
+		<div class="pop pop_size_product_register pop_white">
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
-						class="pop_icon"> 거래처 등록
+						class="pop_icon"> 상품 등록
 				</div>
 				<div class="pop_close">
 					<img src="resources/images/Eimages/button/icon_del_white.png"
@@ -310,80 +301,70 @@
 					<col width="35%">
 				</colgroup>
 				<tbody>
-					<tr class="height50">	
-						<td class="field_name">거래처 구분<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left ">
-							<label>
-								<input type="radio" name="accout_div" value="0">매출처
-								<input type="radio" name="accout_div" value="1">매입처
-								<input type="radio" name="accout_div" value="2">기타거래처
-							</label>
+					<tr class="height50">
+						<td class="field_name">상품명</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">상품단위</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
 						</td>
 					</tr>
-					<tr class="height50">	
-							<td class="field_name">거래처명<span class="important_text">*</span></td>
-							<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize495 ml10" type="text"></td>
-					</tr>
-					<tr class="height50">	
-						<td class="field_name">사업자 번호<span class="important_text">*</span></td>
-						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
-						<td class="field_name">대표자<span class="important_text">*</span></td>
-						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
-					</tr>
-					<tr class="height50">	
-						<td class="field_name">업태<span class="important_text">*</span></td>
-						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
-						<td class="field_name">종목<span class="important_text">*</span></td>
-						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
-					</tr>
-					<tr class="height50">	
-						<td class="field_name">주소<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left ">
-							<input type="text" class="input_size ml10 mt10" placeholder="우편번호"><div class="btn_normal btn_size_normal mt10">검색</div>
-							<input type="text" class="input_size pxsize495 ml10 mt10 dis_block" placeholder="주소">
-							<input type="text" class="input_size pxsize495 ml10 mt10 mb10 dis_block" placeholder="상세주소">
+					<tr class="height50">
+						<td class="field_name">매입처</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
 						</td>
 					</tr>
-					<tr class="height50">	
-						<td class="field_name">전화1<span class="important_text">*</span></td>
+						<tr class="height50">
+						<td class="field_name">판매단가<span class="important_text">*</span></td>
 						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
-						<td class="field_name">전화2<span class="important_text">*</span></td>
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+						<td colspan="2">
+							<div class="size100 text_align_left text_indent50">
+								공급가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								부가세<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								판매가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">매입단가<span class="important_text">*</span></td>
 						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+						<td colspan="2">
+							<div class="size100 text_align_left text_indent50">
+								공급가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								부가세<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								판매가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+						</td>
 					</tr>
-					<tr class="height50">	
-						<td class="field_name">핸드폰<span class="important_text">*</span></td>
+					<tr class="height50">
+						<td class="field_name">현금적립포인트</td>
 						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
-						<td class="field_name">FAX<span class="important_text">*</span></td>
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">카드적립포인트</td>
 						<td class="text_align_left "><input
-							class="input_size pxsize190 ml10" type="text"></td>
-					</tr>
-					<tr class="height50">	
-						   <td class="field_name">이메일<span class="important_text">*</span></td>
-							<td colspan="3" class="text_align_left "><input
-							class="input_size pxsize495 ml10" type="text"></td>
-					</tr>
-					<tr class="height50">	
-						<td class="field_name">홈페이지<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><input
-						class="input_size pxsize495 ml10" type="text"></td>
-					</tr>
-					<tr class="height50">	
-						<td class="field_name">담당자<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><input
-						class="input_size pxsize495 ml10" type="text"></td>
-					</tr>
-					<tr class="height50">	
-						<td class="field_name">메모<span class="important_text">*</span></td>
-						<td colspan="3" class="text_align_left "><textarea
-						class="textarea_noresize ml10 pxsize495"></textarea></td>
+							class="input_size pxsize190 ml10" type="text">
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -395,14 +376,111 @@
 		</div>
 	</div>
 	
-	<!-- 거래처 관리 팝업  -->
+	<!-- 상품 수정 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_product_register pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 상품 수정
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<table class="pop_table table_list tborder">
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tbody>
+					<tr class="height50">
+						<td class="field_name">상품명</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">상품단위</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">매입처</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+						<tr class="height50">
+						<td class="field_name">판매단가<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+						<td colspan="2">
+							<div class="size100 text_align_left text_indent50">
+								공급가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								부가세<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								판매가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">매입단가<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+						<td colspan="2">
+							<div class="size100 text_align_left text_indent50">
+								공급가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								부가세<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								판매가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">현금적립포인트</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">카드적립포인트</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="수정" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	
+	<!-- 상품 관리 팝업  -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_account_manage pop_white">
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
-						class="pop_icon"> 거래처를 선택해주세요.
+						class="pop_icon"> 상품을 선택해주세요.
 				</div>
 				<div class="pop_close">
 					<img src="resources/images/Eimages/button/icon_del_white.png"
@@ -445,15 +523,351 @@
 								</div>
 							</td>
 							<td>수정</td>
-							<td>거래처 구분</td>
-							<td>거래처명</td>
+							<td>판매단가</td>
+							<td>판매가(VAT포함)</td>
+							<td>매입단가</td>
+							<td>매입가(VAT포함)</td>
+							<td>적립POINT(현금)</td>
+							<td>적립POINT(카드)</td>
+							<td>매입처</td>
+							<td>단위</td>
+							<td>등록일</td>
+						</tr>
+						</thead>
+						<tbody>
+							<tr class="list_contents">
+								<td style="cursor : default;">
+									<div class="squaredOne">
+										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" />
+										<label for="table_procedure_squaredOne1"></label>
+									</div>
+								</td>
+								<td style="cursor : default;"><input type="button" value="수정"/></td>
+							<td>매입처</td>
+							<td>구디아카데미</td>
 							<td>대표자</td>
 							<td>업태</td>
 							<td>종목</td>
-							<td>핸드폰</td>
-							<td>전화</td>
-							<td>이메일</td>
+							<td>010-4823-7703</td>
+							<td>031-683-9134</td>
+							<td>kimhyun153@naver.com</td>
 							<td>담당자</td>
+							</tr>
+						</tbody>
+				<!-- 테이블 상단 부분 끝-->
+					</table>
+					</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 재고 등록 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_product_register pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 재고 등록
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<table class="pop_table table_list tborder">
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tbody>
+					<tr class="height50">
+						<td class="field_name">상품명</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">매입처</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">그룹명</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">단위</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">현재수량</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">적정수량</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">메모</td>
+						<td colspan="3"><textarea class="size80 textarea_normal"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="등록" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	
+	<!-- 출고 등록 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_release_register pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 출고 등록
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<table class="pop_table table_list tborder">
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tbody>
+					<tr class="height50">
+						<td class="field_name ">출고일<span class="important_text">*</span></td>
+						<td class="text_align_left " colspan="3"><input type="date"
+							class="input_size ml10" /></td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">상품명</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">그룹명</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">단위</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">출고수량<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+						<td class="field_name">단가<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">금액</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td colspan="2">
+							<div class="size100 text_align_left text_indent50">
+								공급가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								부가세<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">출고처</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">메모</td>
+						<td colspan="3"><textarea class="size80 textarea_normal"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="등록" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	
+	<!-- 출고 수정 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_release_register pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 출고 수정
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<table class="pop_table table_list tborder">
+				<colgroup>
+					<col width="15%">
+					<col width="35%">
+					<col width="15%">
+					<col width="35%">
+				</colgroup>
+				<tbody>
+					<tr class="height50">
+						<td class="field_name ">출고일<span class="important_text">*</span></td>
+						<td class="text_align_left " colspan="3"><input type="date"
+							class="input_size ml10" /></td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">상품명</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">그룹명</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td class="field_name">단위</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">출고수량<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+						<td class="field_name">단가<span class="important_text">*</span></td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10 text_align_right" type="text"></td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">금액</td>
+						<td class="text_align_left "><input
+							class="input_size pxsize190 ml10" type="text">
+						</td>
+						<td colspan="2">
+							<div class="size100 text_align_left text_indent50">
+								공급가<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+							<div class="size100 text_align_left text_indent50">
+								부가세<input type="text"
+									class="input_small_size ml10 text_align_right pxsize190" />
+							</div>
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">출고처</td>
+						<td colspan="3" class="text_align_left "><input
+							class="input_size pxsize390 ml10" type="text"> <input
+							type="button" class="btn_normal btn_size_normal ml10" value="검색" />
+						</td>
+					</tr>
+					<tr class="height50">
+						<td class="field_name">메모</td>
+						<td colspan="3"><textarea class="size80 textarea_normal"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="pop_btn_bottom_area">
+				<input type="button" class="btn_normal btn_size_normal mr20"
+					value="수정" /> <input type="button"
+					class="btn_normal btn_size_normal mr20" value="취소" />
+			</div>
+		</div>
+	</div>
+	
+		<!-- 출고 관리 팝업  -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+		<div class="pop pop_size_account_manage pop_white">
+			<div class="pop_title_area">
+				<div class="pop_title_text">
+					<img src="resources/images/Eimages/EasysShopLogo.PNG"
+						class="pop_icon"> 출고하실 제품을 선택해주세요.
+				</div>
+				<div class="pop_close">
+					<img src="resources/images/Eimages/button/icon_del_white.png"
+						class="BtnPopClose" />
+				</div>
+			</div>
+			<div class="pop_middle_area lh0 ">
+				<div class="pop_btn_bottom_area text_align_left">
+				<input type="button" class="btn_normal btn_size_normal ml10" value="등록" /> 
+				<input type="button" class="btn_normal btn_size_normal ml10" value="취소" />
+				<input type="button" class="btn_normal btn_size_normal ml10" value="삭제" />
+				</div>
+				<div class="pop_search_area_h">
+					<div class="search_title_h pxsize80 ver_middle">전체</div>
+					<input type="text" class="input_size height40 b_r0"/>
+					<input type="button" class="btn_search_normal_h height40 pxsize80" value="검색"/>
+ 				</div>
+ 				
+ 				<div class="widthscroll height612">
+ 				<table class="table_list tborder mt30 " id="pop_Procedure_list" >
+						<colgroup>
+							<col width="100">
+							<col width="100">
+							<col width="600">
+							<col width="100">
+							<col width="100">
+							<col width="100">
+							<col width="600">
+							<col width="600">
+							<col width="600">
+							<col width="600">
+							<col width="100">
+						</colgroup>
+						<thead>
+						<tr class="table_list_header" style="height: 30px; !important"  >
+							<td>
+								<div class="squaredOne_h">
+									<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />
+									<label for="pop_PC_checkall"></label>
+								</div>
+							</td>
+							<td>수정</td>
+							<td>상품명</td>
+							<td>단위</td>
+							<td>남은수량</td>
+							<td>매입처</td>
+							<td>변동일</td>
+							<td>현금적립POINT</td>
+							<td>카드적립POINT</td>
+							<td>금액</td>
+							<td>메모</td>
 						</tr>
 						</thead>
 						<tbody>
@@ -852,14 +1266,15 @@
 					</div>
 					<div class="top_btn_area size60"></div>
 				</div>
+				<!-- 출고 화면 -->
 				<div class="table_top_area">
 					<div class="top_title_area size40" style="vertical-align: top;">
 						<select class="input_size pxsize100">
 							<option selected="selected">전체</option>
-							<option>계정</option>
-							<option>거래처</option>
-							<option>거래내용</option>
-							<option>비고</option>
+							<option>그룹명</option>
+							<option>제품명</option>
+							<option>단위</option>
+							<option>매입처</option>
 						</select> <input class="input_size pxsize150" name="startDate"
 							id="startDate" type="date" value=""> ~ <input
 							class="input_size pxsize150" type="date" id="endDate" name="endDate" value="">
@@ -906,25 +1321,16 @@
 							</td>
 							<td rowspan="2">수정</td>
 							<td rowspan="2">NO</td>
-							<td rowspan="2">거래일</td>
-							<td rowspan="2">계정</td>
-							<td rowspan="2">거래처</td>
-							<td rowspan="2">거래내용</td>							
-							<td colspan="3">수입(매출)</td>
-							<td colspan="3">비용(원가관련매입포함)</td>
-							<td colspan="3">고정자산증감(매매)</td>
-							<td rowspan="2">비고</td>
+							<td rowspan="2">변경일</td>
+							<td rowspan="2">그룹명</td>
+							<td colspan="5">제품정보</td>
 						</tr>
 						<tr class="table_list_header">
-							<td>합계액</td>
-							<td>공급가</td>
-							<td>부가세</td>
-							<td>합계액</td>
-							<td>공급가</td>
-							<td>부가세</td>
-							<td>합계액</td>
-							<td>공급가</td>
-							<td>부가세</td>
+							<td>제품명</td>
+							<td>단위</td>
+							<td>수량</td>
+							<td>금액</td>
+							<td>매출처</td>
 						</tr>
 						<tr class="list_contents">
 							<td style="cursor: default;">
@@ -942,13 +1348,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -966,13 +1365,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -990,13 +1382,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -1014,13 +1399,23 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
+							</tr>
+							<tr class="list_contents">
+							<td style="cursor: default;">
+								<div class="squaredOne">
+									<input type="checkbox" value="None" style="display: none;"
+										id="squaredOne10" name="check" /> <label for="squaredOne10"></label>
+								</div>
+							</td>
+							<td style="cursor: default;"><input type="button" value="수정" /></td>
+							<td class="t_o">10</td>
+							<td class="t_o">2019-12-02</td>
+							<td class="t_o">오후 5:40</td>
 							<td class="t_o">홍길동</td>
+							<td class="t_o">01012341234</td>
+							<td class="t_o">합계액</td>
+							<td class="t_o">공급가</td>
+							<td class="t_o">부가세</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -1038,13 +1433,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -1062,13 +1450,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -1086,13 +1467,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -1110,13 +1484,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 							<tr class="list_contents">
 							<td style="cursor: default;">
@@ -1134,37 +1501,6 @@
 							<td class="t_o">합계액</td>
 							<td class="t_o">공급가</td>
 							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
-						</tr>
-							<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne10" name="check" /> <label for="squaredOne10"></label>
-								</div>
-							</td>
-							<td style="cursor: default;"><input type="button" value="수정" /></td>
-							<td class="t_o">10</td>
-							<td class="t_o">2019-12-02</td>
-							<td class="t_o">오후 5:40</td>
-							<td class="t_o">홍길동</td>
-							<td class="t_o">01012341234</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">합계액</td>
-							<td class="t_o">공급가</td>
-							<td class="t_o">부가세</td>
-							<td class="t_o">홍길동</td>
 						</tr>
 					</tbody>
 				</table>

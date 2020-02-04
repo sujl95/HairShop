@@ -162,9 +162,8 @@ tr {
     overflow-x: auto;
     white-space: nowrap; 
     text-overflow: ellipsis; 
-    overflow: hidden; 
-/*      */
-/*     width: 90% */
+    overflow: hidden;
+/*     width: 100%; */
 }
 /* 리스트 테이블 헤더 */
 .table_list_header {
@@ -768,3 +767,14 @@ tr {
 	background-color: #EAEAEA;
 	width: auto;
 }
+/* slimScroll 조건 */
+.tbody_scroll {
+    display:block;
+}
+
+.thead_scroll, .tbody_scroll tr {
+    display:table;
+    width:100%;
+    table-layout: fixed;
+}
+/* slimScroll 끝 */
