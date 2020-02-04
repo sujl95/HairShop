@@ -83,4 +83,14 @@ public class ScheService implements IScheService {
 	public HashMap<String, String> getcaldata(HashMap<String, String> params) throws Throwable {
 		return iScheDao.getcaldata(params);	
 	}
+
+	@Override
+	public void calupdateData(HashMap<String, String> params) throws Throwable {
+		iScheDao.calupdateData(params);				
+	}
+
+	@Override
+	public void caldeleteData(HashMap<String, String> params) throws Throwable {
+		iScheDao.caldeleteData(params);				
+	}
 }

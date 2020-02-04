@@ -168,10 +168,14 @@
 	
 	<!-- 월간 일정 목록 -->
 	<select id="getcalendarList" parameterType="hashmap" resultType="hashmap">
-		SELECT SCD_NO, SDATE, STIME,EMP_NO, EMP_NM,SCD_CON
-		FROM(SELECT SC.SCD_NO, TO_CHAR(SC.SCD_SDATE,'YYYY-MM-DD') AS SDATE, TO_CHAR(SC.SCD_SDATE, 'HH24:MI') AS STIME ,E.EMP_NO, E.EMP_NM,SC.SCD_CON, ROW_NUMBER() OVER(ORDER BY SC.SCD_NO) AS RNUM
+		SELECT SCD_NO, SDATE, STIME,EDATE,ETIME,EMP_NO, EMP_NM,EMP_PH,SCD_CON
+		FROM(SELECT SC.SCD_NO, TO_CHAR(SC.SCD_SDATE,'YYYY-MM-DD') AS SDATE
+                , TO_CHAR(SC.SCD_SDATE, 'HH24:MI') AS STIME
+                , TO_CHAR(SC.SCD_EDATE,'YYYY-MM-DD') AS EDATE
+                , TO_CHAR(SC.SCD_EDATE, 'HH24:MI') AS ETIME
+                , E.EMP_NO, E.EMP_NM,E.EMP_PH,SC.SCD_CON, ROW_NUMBER() OVER(ORDER BY SC.SCD_NO) AS RNUM
 			FROM SCHEDULE SC INNER JOIN EMPLOYEE E 
-                         ON SC.EMP_NO = E.EMP_NO
+			ON SC.EMP_NO = E.EMP_NO
             <if test="searchTxt == '' and startDate != null and startDate != ''">
 		    	AND  TO_CHAR(SC.SCD_SDATE,'YYYY-MM-DD')  BETWEEN #{startDate} AND #{endDate} 
 		    </if>
@@ -200,10 +204,28 @@
 	<!-- 월간 일정  수정 데이터 가져오기-->
 	<select id="getcaldata" parameterType="hashmap" resultType="hashmap">
 		SELECT SCD.SCD_NO , TO_CHAR(SCD.SCD_SDATE,'YYYY-MM-DD') AS SDATE
-                    , TO_CHAR(SCD.SCD_SDATE,'HH24:MI') AS STIME, E.EMP_PH
+                    , TO_CHAR(SCD.SCD_SDATE,'HH24') AS SHTIME
+                    , TO_CHAR(SCD.SCD_SDATE,'MI') AS SMTIME
+                    , TO_CHAR(SCD.SCD_EDATE,'YYYY-MM-DD') AS EDATE
+                    , TO_CHAR(SCD.SCD_EDATE,'HH24') AS EHTIME
+                    , TO_CHAR(SCD.SCD_EDATE,'MI') AS EMTIME,
+                    E.EMP_PH
                     ,SCD.SCD_COLOR ,SCD.EMP_NO, E.EMP_NM,SCD.SCD_CON
-    	FROM SCHEDULE SCD INNER JOIN EMPLOYEE E 
-                            ON SCD.EMP_NO = E.EMP_NO
+	    FROM SCHEDULE SCD INNER JOIN EMPLOYEE E 
+	                            ON SCD.EMP_NO = E.EMP_NO
 		WHERE SCD.SCD_NO =  #{cal_no}
 	</select>
+	<!-- 월간 예약 수정 -->
+	<update id="calupdateData" parameterType="hashmap">
+		UPDATE SCHEDULE SET SCD_SDATE = TO_DATE(#{startDate}|| ' ' ||#{scheSHtime}|| ':' || #{scheSMtime},'YYYY-MM-DD HH24:MI'),
+                    SCD_EDATE = TO_DATE(#{endDate}|| ' ' ||#{scheEHtime}|| ':' || #{scheEMtime},'YYYY-MM-DD HH24:MI'),
+		EMP_NO = #{txt_emp_name} ,SCD_COLOR=#{edit-color},
+		SCD_CON = #{txt_SCD_CON}
+		WHERE SCD_NO = #{cal_no}
+	</update>
+	
+	<!-- 월간 예약 삭제 -->
+	<delete id="caldeleteData" parameterType="hashmap">
+		DELETE FROM SCHEDULE WHERE SCD_NO = #{cal_no}
+	</delete>
 </mapper>

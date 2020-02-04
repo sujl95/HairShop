@@ -284,7 +284,7 @@ function getreservationlist() {
 						html += `			<td class="field_name first_field_name">일정 시작일</td>                                             `;
 						html += `			<td class="field_contents">                                                                   `;
 						html += `				<input class="input_size pxsize130" name="startDate" id="startDate" type="date" value="">`;
-						html += `				<select class="input_size pxsize100" name="scheSHtime">                                                     `;
+						html += `				<select class="input_size pxsize100" name="scheSHtime" id="scheSHtime" >                                                     `;
 						html += `					<option value="00" selected="selected" >오전 12시</option>                                        `;
 						html += `					<option value="01">오전 01시</option>                                                            `;
 						html += `					<option value="02">오전 02시</option>                                                            `;
@@ -310,7 +310,7 @@ function getreservationlist() {
 						html += `					<option value="22">오후 10시</option>                                                            `;
 						html += `					<option value="23">오후 11시</option>                                                            `;
 						html += `				</select>                                                                                 `;
-						html += `				<select class="input_size pxsize100" name="scheSMtime">                                                     `;
+						html += `				<select class="input_size pxsize100" name="scheSMtime" id="scheSMtime">                                                     `;
 						html += `					<option value="00" selected="selected" >00분</option>                                             `;
 						html += `					<option value="10">10분</option>                                                                 `;
 						html += `					<option value="20">20분</option>                                                                 `;
@@ -324,7 +324,7 @@ function getreservationlist() {
 						html += `			<td class="field_name first_field_name">일정 종료일</td>                                             `;
 						html += `			<td class="field_contents">                                                                   `;
 						html += `				<input class="input_size pxsize130" name="endDate" id="endDate" type="date" value="">`;
-						html += `				<select class="input_size pxsize100 "  name="scheEHtime">                                                     `;
+						html += `				<select class="input_size pxsize100 "  name="scheEHtime" id="scheEHtime">                                                     `;
 						html += `					<option value="00" selected="selected">오전 12시</option>                                        `;
 						html += `					<option value="01">오전 01시</option>                                                            `;
 						html += `					<option value="02">오전 02시</option>                                                            `;
@@ -350,7 +350,7 @@ function getreservationlist() {
 						html += `					<option value="22">오후 10시</option>                                                            `;
 						html += `					<option value="23">오후 11시</option>                                                            `;
 						html += `				</select>                                                                                 `;
-						html += `				<select class="input_size pxsize100"  id="scheEMtime"name="scheEMtime">                                                     `;
+						html += `				<select class="input_size pxsize100"  id="scheEMtime" name="scheEMtime">                                                     `;
 						html += `					<option value="00" selected="selected">00분</option>                                             `;
 						html += `					<option value="10">10분</option>                                                                 `;
 						html += `					<option value="20">20분</option>                                                                 `;
@@ -395,16 +395,20 @@ function getreservationlist() {
 						html += `</table>                                                                                                 `;
 						html += `</form>`;  
 					  makeTwoBtnPopup(1, "일정 등록", html, true, 500, 450, null, "등록", function() {
-					 		if(checkEmpty("#startDate")) {
+//					  	날짜비교
+				 		var startDate = new Date($("#startDate").val()+' '+$("#scheSHtime").val()+':'+$("#scheSMtime").val());
+				 		var endDate = new Date($("#endDate").val()+' '+$("#scheEHtime").val()+':'+$("#scheEMtime").val());
+				 		console.log(startDate);
+				 		console.log(endDate);
+				 		var dcnt = parseFloat(startDate.getTime() - endDate.getTime())/ (1000*60*60);
+						  if(checkEmpty("#startDate")) {
 					 			makeAlert(2, "등록 안내", "날짜를 입력해 주세요.", function() {
 									$("#startDate").focus();
 								});
-							} 
-// 					 		else if(checkEmpty("#restime")) {
-// 								makeAlert(2, "등록 안내", "시간를 입력해 주세요.", function() {
-// 									$(".restime").focus();
-// 								});
-// 							} 
+							} else if(dcnt > 0  ) {
+								makeAlert(2, "등록 안내", "시작일이 종료일보다 클수없습니다", function() {
+								});
+							}  
 					 		else if(checkEmpty("#txt_emp_name")) {
 								makeAlert(2, "등록 안내", "담당자를 입력해 주세요.", function() {
 								});

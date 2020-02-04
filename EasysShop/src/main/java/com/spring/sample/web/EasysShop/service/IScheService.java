@@ -33,4 +33,8 @@ public interface IScheService {
 
 	HashMap<String, String> getcaldata(HashMap<String, String> params) throws Throwable;
 
+	void calupdateData(HashMap<String, String> params) throws Throwable;
+
+	void caldeleteData(HashMap<String, String> params) throws Throwable;
+
 }

@@ -229,45 +229,46 @@ public class ScheController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
-////	월간 예약 수정
-//	@RequestMapping(value = "/calUpdateAjax",
-//			method = RequestMethod.POST,
-//			produces = "test/json;charset=UTF-8")
-//	@ResponseBody 
-//	public String calUpdateAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
-//		ObjectMapper mapper= new ObjectMapper();
-//		Map<String,Object> modelMap = new HashMap<String,Object>();
-//		try {
-//			iScheService.calupdateData(params);
-//			modelMap.put("res","SUCCESS");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			modelMap.put("res", "Failed");
-//		}
-//		return mapper.writeValueAsString(modelMap);
-//	}
-//	
-////	월간 예약 삭제 Delete
-//	@RequestMapping(value="/caldelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
-//	@ResponseBody
-//	public String caldelAjax(@RequestParam HashMap<String, String> params, @RequestParam("cal_check") List<String> cal_check, ModelAndView mav) throws Throwable {
-//		ObjectMapper mapper = new ObjectMapper();
-//		Map<String, Object> modelMap = new HashMap<String, Object>();
-//		String res = "";
-//		try {
-//			for(int i = 0 ; i < res_check.size(); i++) {
-//				params.put("cal_no",res_check.get(i));
-//				iScheService.caldeleteData(params);
-//			}
-//			res = "SUCCESS";
-//		}
-//		catch(Exception e) {
-//			res = "FAILED";
-//		}
-//		
-//		modelMap.put("res", res);
-//		
-//		return mapper.writeValueAsString(modelMap);
-//	}
+//	월간 예약 수정
+	@RequestMapping(value = "/calUpdateAjax",
+			method = RequestMethod.POST,
+			produces = "test/json;charset=UTF-8")
+	@ResponseBody 
+	public String calUpdateAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper= new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		try {
+			iScheService.calupdateData(params);
+			modelMap.put("res","SUCCESS");
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelMap.put("res", "Failed");
+		}
+		return mapper.writeValueAsString(modelMap);
+	}
+	
+//	월간 예약 삭제 Delete
+	@RequestMapping(value="/caldelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String caldelAjax(@RequestParam HashMap<String, String> params, @RequestParam("cal_check") List<String> cal_check, ModelAndView mav) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		System.out.println("param"+params);
+		String res = "";
+		try {
+			for(int i = 0 ; i < cal_check.size(); i++) {
+				params.put("cal_no",cal_check.get(i));
+				iScheService.caldeleteData(params);
+			}
+			res = "SUCCESS";
+		}
+		catch(Exception e) {
+			res = "FAILED";
+		}
+		
+		modelMap.put("res", res);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 
 }

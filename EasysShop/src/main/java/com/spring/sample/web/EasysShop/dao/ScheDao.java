@@ -81,4 +81,14 @@ public class ScheDao implements IScheDao {
 	public HashMap<String, String> getcaldata(HashMap<String, String> params) throws Throwable {
 		return sqlSession.selectOne("reservation.getcaldata",params);
 	}
+
+	@Override
+	public void calupdateData(HashMap<String, String> params) throws Throwable {
+		sqlSession.update("reservation.calupdateData",params);		
+	}
+
+	@Override
+	public void caldeleteData(HashMap<String, String> params) throws Throwable {
+		sqlSession.delete("reservation.caldeleteData",params);		
+	}
 }
