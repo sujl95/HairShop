@@ -24,8 +24,68 @@ $(document).ready(function() {
 			$("#locationForm").attr("action", $(this).attr("addr"));
 			
 			$("#locationForm").submit();
+		} else if ($(this).attr("menuno") == 15) {
+// 			$("#Customer_Grade_list").removeClass("pop_off").addClass("pop_on");
+// 			$("#btn_Customer_Grade_add").on("click", function() {
+// 				$("#Customer_Grade_add").removeClass("pop_off").addClass("pop_on");
+// 			});
+// 			$("#btn_cus_code_add").on("click",function() {
+// 				console.log("1");
+// 			});
+			var html = "";
+			html += `<table class="pop_table">`;
+			html += `	<colgroup>            `;
+			html += `		<col width="20%"> `;
+			html += `		<col width="80%"> `;
+			html += `	</colgroup>           `;
+			html += `	<tbody>               `;
+			html += `		<tr>              `;
+			html += `			<td class="field_name first_field_name">검색어</td> `;
+			html += `			<td class="field_contents">                         `;
+			html += `				<input class="input_size size60" type="text">   `;
+			html += `				<input type="button" class="btn_normal btn_size_normal" value="검색"/>`;
+			html += `			</td>`;
+			html += `		</tr> `;
+			html += `	</tbody>  `;
+			html += `</table>     `;
+				html += `<table class="table_list">                `;
+				html += `	<thead class="thead_scroll">           `;
+				html += `		<tr class="table_list_header">     `;
+				html += `			<td  width="100px" nowrap>      `;
+				html += `				<div class="squaredOne_h"> `;
+				html += `					<input type="checkbox" value="None" class="list_chbox" style="display : none;" id="pop_chk_all"  />`;
+				html += `					<label for="pop_chk_all"  ></label>`; <!-- squaredOne 같이? -->
+				html += `				</div>`;
+				html += `			</td>`;
+				html += `			<td  width="130px" nowrap>등급명</td>             `;
+				html += `			<td  width="75px" nowrap>레벨</td>               `;
+				html += `			<td  width="75px" nowrap>수정</td>     `;
+				html += `		</tr>                                              `;
+				html += `	</thead>                                               `;
+				html += `	<tbody class="tbody_scroll">                           `;
+				html += `	</tbody>                                               `;
+				html += `</table>                                                  `;
+			makeThreeBtnPopup(1, "고객 등급 코드", html, false, 400, 600, null
+			, "코드등록", function() {
+				closePopup(1);
+			},"삭제", function() {
+				closePopup(1);
+			},"취소", function() {
+				closePopup(1);
+			});
+		} else if ($(this).attr("menuno") == 16) {
+			console.log(1);
+		} else if ($(this).attr("menuno") == 17) {
+			console.log(1);
+		} else if ($(this).attr("menuno") == 18) {
+			console.log(1);
+		} else if ($(this).attr("menuno") == 19) {
+			console.log(1);
+		} else if ($(this).attr("menuno") == 20) {
+			console.log(1);
 		}
-	})
+	});
+	
 });
 
 function getLeftMenu() {
@@ -68,11 +128,22 @@ function drawLeftMenu(menu) {
 				for(var j = 0 ; j < menu.length ; j++) {
 					if(menu[i].MENU_NO == menu[j].TOP_MENU_NO) {
 						if(menu[j].MENU_NO == $("#menuNo").val()) { //현재 메뉴 구분
-							html += "<div class=\"second_menu_on\" menuno=\"" + menu[j].MENU_NO + "\" addr=\"" + menu[j].MENU_ADDR + "\">";
+							html += "<div class=\"second_menu_on\" menuno=\"" + menu[j].MENU_NO + "\" ";
+							if(typeof menu[j].MENU_ADDR != "undefined") { 
+								html += " addr=\"" + menu[j].MENU_ADDR + "\">";
+							} else {
+								html += ">";
+							}
+							
 							html += "<div>" + menu[j].MENU_NAME + "</div>";
 							html += "</div>";
 						} else {
-							html += "<div class=\"second_menu\" menuno=\"" + menu[j].MENU_NO + "\" addr=\"" + menu[j].MENU_ADDR + "\">";
+							html += "<div class=\"second_menu\" menuno=\"" + menu[j].MENU_NO + "\" ";
+							if(typeof menu[j].MENU_ADDR != "undefined") { 
+								html += " addr=\"" + menu[j].MENU_ADDR + "\">";
+							} else {
+								html += ">";
+							}
 							html += "<div>" + menu[j].MENU_NAME + "</div>";
 							html += "</div>";
 						}
@@ -81,6 +152,7 @@ function drawLeftMenu(menu) {
 				html += "</div>";
 				
 				html += "</div>";
+				
 			} else { //하위메뉴 없을 시
 				if(menu[i].MENU_NO == $("#menuNo").val()) { //현재 메뉴 구분
 					html += "<div class=\"first_menu_on\" menuno=\"" + menu[i].MENU_NO + "\" addr=\"" + menu[i].MENU_ADDR + "\">";

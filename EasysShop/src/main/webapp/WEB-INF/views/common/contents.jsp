@@ -36,10 +36,14 @@ $(document).ready(function() {
 			closePopup(1);
 		});
 	});
+	
+	
+	
 });
 </script>
 </head>
 <body>
+	<c:import url="/pop"></c:import>
 	<c:import url="/topLeft">
 		<c:param name="menuNo">2</c:param>
 	</c:import>

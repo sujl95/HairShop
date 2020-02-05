@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div id="popup_wrap">
+<div class="popup_wrap">
 <!-- 거래처 코드 목록  -->
 <div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -778,7 +778,7 @@
 		</div>
 	</div>
 	<!-- 고객 등급 목록 팝업  -->
-	<div class="pop_wrap pop_off">
+	<div class="pop_wrap pop_off" id="Customer_Grade_list">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Customer_Grade pop_white">
 				<div class="pop_title_area">
@@ -918,15 +918,15 @@
 					</table>
 					</div>
 					<div class="pop_btn_bottom_area">
-						<input type="button" class="btn_normal btn_size_normal" value="코드등록"/>
+						<input type="button" class="btn_normal btn_size_normal" id="btn_Customer_Grade_add" value="코드등록"/>
 						<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
-						<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+						<input type="button" class="btn_normal btn_size_normal btn_cancel" value="취소"/>
 					</div>
 				</div>
 			</div>
 	</div>
 	<!-- 고객 등급 목록 팝업 - 등록,수정팝업 -->
-	<div class="pop_wrap pop_off">
+	<div class="pop_wrap pop_off"  id="Customer_Grade_add">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Customer_Grade_add pop_white">
 				<div class="pop_title_area">
@@ -956,7 +956,7 @@
 					</table>
 				<div class="pop_btn_bottom_area">
 					<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-					<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+					<input type="button" class="btn_normal btn_size_normal btn_cancel" value="취소"/>
 				</div>
 			</div>
 		</div>

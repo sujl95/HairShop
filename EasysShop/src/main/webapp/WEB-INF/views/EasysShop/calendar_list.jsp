@@ -84,35 +84,7 @@ $(document).ready(function() {
 	});	
 	/* 일정삭제 */
 	$("#calendar_del").on("click", function() {
-		listdel("일정",400,200,dataForm,"caldelAjax","getcalList()" );
-// 		if($(".table_list tbody .list_chbox:checked").length > 0){
-// 			makeTwoBtnPopup(1, "일정 삭제 경고", "정말 삭제하시겠습니까?", false, 400, 200, null, "확인", function() {
-// 				var params = $("#dataForm").serialize();
-
-// 				$.ajax({
-// 					type: "post",
-// 					url: "caldelAjax",
-// 					dataType: "json",
-// 					data: params,
-// 					success: function(result) {
-// 						getcalList();
-// 					},
-// 					error : function(request, status, error) {
-// 						console.log("status : " + request.status);
-// 						console.log("text : " + request.responseTest);
-// 						console.log("error : " + error);
-// 					}
-// 				});
-				
-// 				makeAlert(1, "삭제 성공", "삭제 성공", null);	
-// 				closePopup(1);
-// 			}, "취소", function() {
-// 				closePopup(1);
-// 			});
-					
-// 		} else{
-// 			makeAlert(1, "삭제 오류", "1개이상 체크를 해주세요", null);
-// 		}
+		listdel("일정",400,200,"dataForm","caldelAjax",getcalList );
 	});
 	
 	/* 일정등록 */
@@ -176,52 +148,6 @@ function drawresList(list) {
 		$(".list_paging_area").html("");
 	}
 	$(".table_list>tbody").html(html);
-}
-//Paging draw
-function drawListPaging(pb) {
-	var html = "";
-	html += "<div class=\"btn_paging\" name=\"1\">&lt;&lt;</div>";
-
-	html += "<div class=\"btn_paging\"name=\"";
-	html += ($("#page").val() == "1")? "1" : ($("#page").val() * 1 - 1);
-	html += "\">&lt;</div>";
-
-	for(var i = pb.startPcount; i <= pb.endPcount; i++) {		
-		html += "<div class=\"btn_paging";
-		html += ($("#page").val() == i)? "_on\">" : "\" name=\"" + i + "\">";
-		html += i + "</div>";
-	}
-	
-	html += "<div class=\"btn_paging\"name=\"";
-	html += ($("#page").val() == (pb.maxPcount))? pb.maxPcount : ($("#page").val() * 1 + 1);
-	html += "\">&gt;</div>";
-
-	html += "<div class=\"btn_paging\" name=\"" + pb.maxPcount + "\">&gt;&gt;</div>";
-	
-	$(".list_paging_area").html(html);
-	
-}
-//마지막일 계산
-function lastday() {
-	var date    = new Date();
-	var month = date.getMonth() + 1;
-	var yyyy = date.getFullYear();
-	var last   = new Date( yyyy, month ); 
-	     last   = new Date( last - 1 ); 
-	var lastD = last.getDate();
-	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
-	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
-	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-	$("#endDate").val(yyyy+"-"+mm+"-"+lastD);
-}
-function caladdpopset() {
-	var date = new Date();
-	var yyyy = date.getFullYear();
-	var mm = date.getMonth()+1 > 9 ? date.getMonth()+1 : '0' + (date.getMonth()+1);
-	var mm1 = date.getMonth()+1 > 9 ? date.getMonth() : '0' + (date.getMonth()+1);
-	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-	$("#startDate").val(yyyy+"-"+mm+"-"+dd);
-	
 }
 function make_calendar_pop(ck, str ,result1) {
 	
@@ -454,45 +380,6 @@ function caladdpopset() {
 	$("#startDate").val(yyyy+"-"+mm+"-"+dd);
 	$("#endDate").val(yyyy+"-"+mm+"-"+dd);
 	
-}
-
-function listdel(title,width,height,Form,Ajax,ListLoad ) {
-	console.log(ListLoad);
-	var str = ""+getcalList()+"";
-	var List = new getcalList()
-	console.log(List);
-	console.log(List.__proto__.constructor);
-	console.log(str);
-	if($(".table_list tbody .list_chbox:checked").length > 0){
-		makeTwoBtnPopup(1, title+" 삭제 경고", "정말 삭제하시겠습니까?", false, width, height, null, "확인", function() {
-// 			var params = $("#dataForm").serialize();
-			var params = $("#"+Form+"").serialize();
-			
-			$.ajax({
-				type: "post",
-// 				url: "caldelAjax",
-				url: Ajax,
-				dataType: "json",
-				data: params,
-				success: function(result) {
-					List.__proto__.constructor;
-				},
-				error : function(request, status, error) {
-					console.log("status : " + request.status);
-					console.log("text : " + request.responseTest);
-					console.log("error : " + error);
-				}
-			});
-			
-			makeAlert(1, "삭제 성공", "삭제 성공", null);	
-			closePopup(1);
-		}, "취소", function() {
-			closePopup(1);
-		});
-				
-	} else{
-		makeAlert(1, "삭제 오류", "1개이상 체크를 해주세요", null);
-	}
 }
 </script>
 </head>
