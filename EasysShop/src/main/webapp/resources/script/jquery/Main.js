@@ -39,6 +39,7 @@ $(document).ready(function() {
 	});
 	setDate();
 	popsetDays();
+	
 	//최상단 체크박스 클릭
     $("#checkall").click(function(){
         //클릭되었으면
@@ -164,11 +165,11 @@ $(document).ready(function() {
     	.removeClass("pop_on")
     	.addClass("pop_off");
     });
-    
-    $(".btn_cancel").on("click", function() {
-    	$(this).parents("div.pop_btn_bottom_area").parents("div.pop_schedule_contents")
-    	.parents("div.pop").parents("div.pop_wrap").removeClass("pop_on").addClass("pop_off");
-    });
+//    
+//    $(".btn_cancel").on("click", function() {
+//    	$(this).parents("div.pop_btn_bottom_area").parents("div.pop_schedule_contents")
+//    	.parents("div.pop").parents("div.pop_wrap").removeClass("pop_on").addClass("pop_off");
+//    });
 });
 function numberFormat(inputNumber) {
 	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

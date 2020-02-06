@@ -19,7 +19,6 @@
 <!-- 웹폰트 -->
 <link href="https://fonts.googleapis.com/css?family=Gothic+A1:300&display=swap"	rel="stylesheet" />
 
-
 <!-- jQuery js 파일 -->
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <!-- jQuery Form -->
@@ -38,3 +37,5 @@
 <script type="text/javascript" src="resources/script/common/popup.js"></script>
 <!-- Util js 파일 -->
 <script type="text/javascript" src="resources/script/common/util.js"></script>
+<!-- 주소 API -->
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>

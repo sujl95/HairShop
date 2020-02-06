@@ -84,7 +84,8 @@ $(document).ready(function() {
 	});	
 	/* 일정삭제 */
 	$("#calendar_del").on("click", function() {
-		listdel("일정",400,200,"dataForm","caldelAjax",getcalList );
+		console.log($("#dataForm").serialize());
+		listdel(1,"일정",400,200,"dataForm","caldelAjax",getcalList );
 	});
 	
 	/* 일정등록 */

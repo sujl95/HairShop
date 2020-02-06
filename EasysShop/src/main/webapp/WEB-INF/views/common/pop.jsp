@@ -25,9 +25,6 @@
 							<td class="field_contents">
 								<input class="input_size pxsize200" type="text">
 								<input type="button" class="btn_normal btn_size_normal" value="검색"/>&nbsp; &nbsp; &nbsp; &nbsp;
-								<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-<!-- 								<input type="button" class="btn_normal btn_size_normal" value="수정"/> -->
-								<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
 							</td>
 						</tr>
 					</tbody>
@@ -177,105 +174,95 @@
 						<tbody>
 							
 							 <tr>
-			                    <td class="field_name first_field_name">관리그룹명</td>
+			                    <td class="field_name first_field_name">
+			                     	관리그룹명<span class="acc_txt"> *</span>
+			                    </td>
 								<td class="field_contents">
 									<input class="input_normal"   type="text">
 								</td>
-			                    <td class="field_name">담당자</td>
+			                    <td class="field_name">
+			                    	담당자<span class="acc_txt"> *</span>
+			                    </td>
 			                    <td class="field_contents">
 			                    	<input class="input_size size40" type="text">
-									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+									<input type="button" class="btn_normal btn_size_normal " value="검색"/>
 			                    </td>
 			                </tr>
 							<tr>
-								<td class="field_name first_field_name">거래처 구분</td>
+								<td class="field_name first_field_name">
+									거래처 구분<span class="acc_txt"> *</span>
+								</td>
 								<td class="field_contents" colspan="3">
-									<label><input type="radio" value="매출처" name="Sales_VAT_radio">매출처</label>
+									<label><input type="radio" value="매출처" checked="checked" name="Sales_VAT_radio">매출처</label>
 									<label><input type="radio" value="매입처" name="Sales_VAT_radio">매입처</label>
 									<label><input type="radio" value="기타거래처" name="Sales_VAT_radio">기타거래처</label>
 								</td>
 							</tr>
 							<tr>
-								<td class="field_name first_field_name">거래처명</td>
+								<td class="field_name first_field_name">거래처명<span class="acc_txt"> *</span></td>
 								<td class="field_contents" colspan="3">
-									<input class="input_normal  backcolorred"   type="text">
+									<input class="input_normal"   type="text">
 								</td>
 							</tr>
 							<tr>
-								<td class="field_name first_field_name">사업자번호</td>
+								<td class="field_name first_field_name">사업자번호<span class="acc_txt"> *</span></td>
 								<td class="field_contents">
 									 <input type="text" class="input_size size20" maxlength="3" />
 			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="5"/>
+			                        <input type="text" class="input_size size30" maxlength="2"/>
 			                        <span>- </span>
 			                        <input type="text" class="input_size size30" maxlength="5"/>
 								</td>
-								<td class="field_name first_field_name">대표자</td>
-								<td>
+								<td class="field_name first_field_name">대표자<span class="acc_txt"> *</span></td>
+								<td class="field_contents">
 									<input class="input_normal " type="text">
 								</td>
 							</tr>
 							<tr>
-								<td class="field_name first_field_name">업태</td>
+								<td class="field_name first_field_name">업태<span class="acc_txt"> *</span></td>
 								<td class="field_contents">
 									<input class="input_normal" type="text">
 								</td>
-								<td class="field_name first_field_name">종목</td>
-								<td>
+								<td class="field_name first_field_name">종목<span class="acc_txt"> *</span></td>
+								<td class="field_contents">
 									<input class="input_normal " type="text">
 								</td>
 							</tr>
 							 <tr>
-			                    <td class="field_name first_field_name">주소</td>
+			                    <td class="field_name first_field_name">주소<span class="acc_txt"> *</span></td>
 			                    <td class="field_contents" colspan="3">
 			                        <div class="address_margin">
-			                            <input type="text" class="input_short input_readonly" readonly="readonly" placeholder="우편번호"/>
-			                            <div class="btn btn_black btn_size_normal">검색</div>
+			                            <input type="text" class="input_short input_readonly postcodify_postcode5" readonly="readonly" placeholder="우편번호"/>
+			                            <div class="btn_normal btn_size_normal" id="searchAddrBtn">검색</div>
 			                        </div>
 			                        <div class="address_margin">
-			                            <input type="text" class="input_normal input_readonly" readonly="readonly" placeholder="주소"/>
+			                            <input type="text" class="input_normal input_readonly postcodify_address" readonly="readonly" placeholder="주소"/>
 			                        </div>
-			                        <div><input type="text" class="input_normal" placeholder="상세주소"/></div>
+			                        <div><input type="text" class="input_normal postcodify_details" placeholder="상세주소"/></div>
 			                    </td>
 		                	</tr>
 							 <tr>
 			                    <td class="field_name first_field_name">전화1
 			                    <td class="field_contents">
-			                        <input type="text" class="input_size size20" maxlength="4" />
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
+			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
 			                    </td>
 			                    <td class="field_name">전화2</td>
 			                    <td class="field_contents">
-			                         <input type="text" class="input_size size20" maxlength="4"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
+			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
 			                    </td>
 			                </tr>
 							 <tr>
-			                    <td class="field_name first_field_name">핸드폰
+			                    <td class="field_name first_field_name">핸드폰<span class="acc_txt"> *</span>
 			                    <td class="field_contents">
-			                        <input type="text" class="input_size size20" maxlength="4"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
+			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
 			                    </td>
 			                    <td class="field_name">FAX</td>
 			                    <td class="field_contents">
-			                         <input type="text" class="input_size size20" maxlength="4"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="4"/>
+			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
 			                    </td>
 			                </tr>
 			                <tr>
-			                    <td class="field_name first_field_name">이메일</td>
+			                    <td class="field_name first_field_name">이메일<span class="acc_txt"> *</span></td>
 			                    <td class="field_contents">
 			                       <input type="text" class="input_normal" />
 			                    </td>

@@ -395,8 +395,8 @@ function makeThreeBtnPopup(depth, title, contents, bgFlag, width, height, conten
 
 		$("#popupWrap" + depth + "BtnThree").off("click");
 		$("#popupWrap" + depth + "BtnThree").on("click", function(){
-			if(btnTwoEvent != null) {
-				btnTwoEvent.call();
+			if(btnThreeEvent != null) {
+				btnThreeEvent.call();
 			}
 		});
 		

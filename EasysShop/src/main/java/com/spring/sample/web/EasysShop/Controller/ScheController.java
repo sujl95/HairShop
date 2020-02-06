@@ -253,7 +253,6 @@ public class ScheController {
 	public String caldelAjax(@RequestParam HashMap<String, String> params, @RequestParam("cal_check") List<String> cal_check, ModelAndView mav) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		System.out.println("param"+params);
 		String res = "";
 		try {
 			for(int i = 0 ; i < cal_check.size(); i++) {

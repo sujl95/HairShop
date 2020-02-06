@@ -430,7 +430,10 @@ tr {
 .pxsize1650{
 	width:1650px;
 }
-
+/* 1760px */
+.pxsize1760{
+	width:1760px;
+}
 /* 필수입력 사항 *(별포) 스타일 */
 .important_text {
 	color: #ff3737;

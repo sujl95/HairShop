@@ -46,10 +46,15 @@ function drawListPaging(pb) {
 }
 
 //목록 삭제
-function listdel(title,width,height,Form,Ajax,ListLoad ) {
+function listdel(depth,title,width,height,Form,Ajax,ListLoad,pop ) {
 	if($(".table_list tbody .list_chbox:checked").length > 0){
-		makeTwoBtnPopup(1, title+" 삭제 경고", "정말 삭제하시겠습니까?", false, width, height, null, "확인", function() {
-			var params = $("#"+Form+"").serialize();
+		makeTwoBtnPopup(depth, title+" 삭제 경고", "정말 삭제하시겠습니까?", false, width, height, null, "확인", function() {
+			if (pop != null) {
+				var params = pop; 
+			}else {
+				var params = $("#"+Form+"").serialize();
+			}
+			console.log(Form);
 			console.log(params);
 			$.ajax({
 				type: "post",
@@ -57,7 +62,12 @@ function listdel(title,width,height,Form,Ajax,ListLoad ) {
 				dataType: "json",
 				data: params,
 				success: function(result) {
-					ListLoad();
+					if (ListLoad != null) {
+						ListLoad() 
+					} else if (ListLoad == getlist(1)) {
+						getlist(1);
+					}
+					closePopup(depth);
 				},
 				error : function(request, status, error) {
 					console.log("status : " + request.status);
@@ -65,14 +75,11 @@ function listdel(title,width,height,Form,Ajax,ListLoad ) {
 					console.log("error : " + error);
 				}
 			});
-			
-			makeAlert(1, "삭제 성공", "삭제 성공", null);	
-			closePopup(1);
 		}, "취소", function() {
-			closePopup(1);
+			closePopup(depth);
 		});
 				
 	} else{
-		makeAlert(1, "삭제 오류", "1개이상 체크를 해주세요", null);
+		makeAlert(depth, "삭제 오류", "1개이상 체크를 해주세요", null);
 	}
 }

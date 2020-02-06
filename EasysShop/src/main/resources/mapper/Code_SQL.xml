@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="code">
+<!-- 	고객 등급 리스트 가져오기 -->
+	<select id="getcustgradeList" parameterType="hashmap" resultType="hashmap">
+		SELECT * 
+		FROM CUSTOMER_GRADE
+		where 1=1
+		<if test="searchTxt != null and searchTxt != ''">
+		      AND GRADE_LEVEL LIKE '%'||#{searchTxt}||'%'
+		      OR GRADE_NM LIKE '%'||#{searchTxt}||'%'
+   		</if>
+   		ORDER BY GRADE_LEVEL ASC
+	</select>
+	
+<!-- 	고객 등급 데이터 가져오기 -->
+	<select id="getcustgradedata" parameterType="hashmap" resultType="hashmap">
+		SELECT * 
+		FROM CUSTOMER_GRADE
+		WHERE GRADE_NO = #{cust_g_no}
+	</select>
+	
+<!-- 	고객 등급 등록 -->
+	<insert id="custcodeAdd" parameterType="hashmap">
+		INSERT INTO CUSTOMER_GRADE(GRADE_NO, GRADE_LEVEL,GRADE_NM) 
+		VALUES(CS_GRADE_SEQ.NEXTVAL,#{cust_grade_lvl}, #{cust_grade_nm} )
+	</insert>
+	
+<!-- 	고객 등급 수정 -->
+	<update id="custcodeUpdate" parameterType="hashmap">
+		UPDATE CUSTOMER_GRADE SET 
+		GRADE_NM = #{cust_grade_nm}, GRADE_LEVEL = #{cust_grade_lvl}
+		WHERE GRADE_NO = #{cust_g_no}
+	</update>
+	
+<!-- 	고객 등급 삭제 -->
+	<delete id="custgradedel" parameterType="hashmap">
+		DELETE  FROM CUSTOMER_GRADE WHERE GRADE_NO = #{cust_g_no}
+	</delete>
+	
+	<!-- 	직원 등급 리스트 가져오기 -->
+	<select id="getempgradeList" parameterType="hashmap" resultType="hashmap">
+		SELECT * 
+		FROM EMPLOYEE_GRADE
+		where 1=1
+		<if test="searchTxt != null and searchTxt != ''">
+		      AND GRADE_LEVEL LIKE '%'||#{searchTxt}||'%'
+		      OR GRADE_NM LIKE '%'||#{searchTxt}||'%'
+   		</if>
+   		ORDER BY GRADE_LEVEL ASC
+	</select>
+	
+<!-- 	직원 등급 데이터 가져오기 -->
+	<select id="getempgradedata" parameterType="hashmap" resultType="hashmap">
+		SELECT * 
+		FROM EMPLOYEE_GRADE
+		WHERE GRADE_NO = #{emp_g_no}
+	</select>
+	
+<!-- 	직원 등급 등록 -->
+	<insert id="empcodeAdd" parameterType="hashmap">
+		INSERT INTO EMPLOYEE_GRADE(GRADE_NO, GRADE_LEVEL,GRADE_NM) 
+		VALUES(EMP_GRADE_SEQ.NEXTVAL,#{emp_grade_lvl}, #{emp_grade_nm} )
+	</insert>
+	
+<!-- 	직원 등급 수정 -->
+	<update id="empcodeUpdate" parameterType="hashmap">
+		UPDATE EMPLOYEE_GRADE SET 
+		GRADE_NM = #{emp_grade_nm}, GRADE_LEVEL = #{emp_grade_lvl}
+		WHERE GRADE_NO = #{emp_g_no}
+	</update>
+	
+<!-- 	직원 등급 삭제 -->
+	<delete id="empgradedel" parameterType="hashmap">
+		DELETE  FROM EMPLOYEE_GRADE WHERE GRADE_NO = #{emp_g_no}
+	</delete>
+	
+	
+	<!-- 	거래처  리스트 가져오기 -->
+	<select id="getcompcodeList" parameterType="hashmap" resultType="hashmap">
+		SELECT E.EMP_NM,CP.CP_NO, CP.CP_TYPE, CP.CP_NM, 
+		CP.CP_BIZ_NO, CP.CP_BIZ_NM, CP.CP_BIZ, CP.CP_EVENT, 
+		CP.CP_ADD_NO, CP.CP_ADD, CP.CP_ADD_DETAIL, CP.CP_PH1,
+		CP.CP_PH2, CP.CP_PH, CP.CP_FAX, CP.CP_EMAIL, 
+		CP.CP_WEBSITE, CP.EMP_NO, CP.CP_MEMO ,TO_CHAR(CP.CP_DATE, 'YYYY-MM-DD') AS CP_DATE, 
+		NVL(W.TDATE, '없음') AS TDATE
+		FROM COMPANY_CODE CP INNER JOIN EMPLOYEE E
+		                             ON CP.EMP_NO = E.EMP_NO
+		                      LEFT JOIN (SELECT CP_NO , TDATE
+										 FROM (SELECT CP_NO ,TO_CHAR(WH_DATE, 'YYYY-MM-DD') AS TDATE, RANK()OVER (ORDER BY (TO_CHAR(WH_DATE, 'YYYY-MM-DD')) DESC) AS RNK
+										 	   FROM WAREHOUSING 
+										       GROUP BY CP_NO ,TO_CHAR(WH_DATE, 'YYYY-MM-DD') 
+										 ) WHERE RNK = 1) W
+		                             ON CP.CP_NO = W.CP_NO
+            
+		where 1=1
+   		<if test="searchTxt != null and searchTxt != ''">
+				<choose>
+			      <when test="searchGbn == 0">
+				      AND CP_TYPE LIKE '%'||#{searchTxt}||'%'
+				      OR CP_NM LIKE '%'||#{searchTxt}||'%'
+				      OR CP_BIZ_NO LIKE '%'||#{searchTxt}||'%'
+				      OR CP_BIZ_NM LIKE '%'||#{searchTxt}||'%'
+				      OR CP_BIZ LIKE '%'||#{searchTxt}||'%'
+				      OR CP_EVENT LIKE '%'||#{searchTxt}||'%'
+				      OR CP_ADD_NO LIKE '%'||#{searchTxt}||'%'
+				      OR CP_ADD LIKE '%'||#{searchTxt}||'%'
+				      OR CP_ADD_DETAIL LIKE '%'||#{searchTxt}||'%'
+				      OR CP_PH1 LIKE '%'||#{searchTxt}||'%'
+				      OR CP_PH2 LIKE '%'||#{searchTxt}||'%'
+				      OR CP_PH LIKE '%'||#{searchTxt}||'%'
+				      OR CP_FAX LIKE '%'||#{searchTxt}||'%'
+				      OR CP_PH LIKE '%'||#{searchTxt}||'%'
+				      OR CP_EMAIL LIKE '%'||#{searchTxt}||'%'
+				      OR CP_WEBSITE LIKE '%'||#{searchTxt}||'%'
+				      OR EMP_NM LIKE '%'||#{searchTxt}||'%'
+				      OR CP_MEMO LIKE '%'||#{searchTxt}||'%'
+				      OR CP_DATE LIKE '%'||#{searchTxt}||'%'
+				      OR TDATE LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 1">
+      			  	  AND CP_TYPE LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 2">
+      			  	  AND CP_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			  <when test="searchGbn == 3">
+      			  	  AND EMP_NM LIKE '%'||#{searchTxt}||'%'
+      			  </when>
+      			 </choose>
+      		</if>
+   		ORDER BY TDATE ASC
+	</select>
+	
+<!-- 	거래처  데이터 가져오기 -->
+	<select id="getcompdata" parameterType="hashmap" resultType="hashmap">
+		SELECT * 
+		FROM EMPLOYEE_GRADE
+		WHERE GRADE_NO = #{emp_g_no}
+	</select>
+	
+<!-- 	거래처  등록 -->
+	<insert id="compcodeAdd" parameterType="hashmap">
+		INSERT INTO EMPLOYEE_GRADE(GRADE_NO, GRADE_LEVEL,GRADE_NM) 
+		VALUES(EMP_GRADE_SEQ.NEXTVAL,#{emp_grade_lvl}, #{emp_grade_nm} )
+	</insert>
+	
+<!-- 	거래처  수정 -->
+	<update id="compcodeUpdate" parameterType="hashmap">
+		UPDATE EMPLOYEE_GRADE SET 
+		GRADE_NM = #{emp_grade_nm}, GRADE_LEVEL = #{emp_grade_lvl}
+		WHERE GRADE_NO = #{emp_g_no}
+	</update>
+	
+<!-- 	거래처  삭제 -->
+	<delete id="compdel" parameterType="hashmap">
+		DELETE  FROM EMPLOYEE_GRADE WHERE GRADE_NO = #{emp_g_no}
+	</delete>
+</mapper>
