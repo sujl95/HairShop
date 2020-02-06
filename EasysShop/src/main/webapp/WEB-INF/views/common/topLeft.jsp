@@ -22,6 +22,8 @@ $(document).ready(function() {
 		var ph_num = num.replace(/[^0-9]/g, "").replace(/([0-9]{3})([0-9]{2})([0-9]{5})/,"$1-$2-$3").replace("--", "-");
 		$(this).val(ph_num);
 	}); */
+
+	
 	
 	//Left Menu Location Event
 	$(".menu_wrap").on("click", ".first_menu, .second_menu", function() {
