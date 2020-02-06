@@ -62,10 +62,14 @@ function listdel(depth,title,width,height,Form,Ajax,ListLoad,pop ) {
 				dataType: "json",
 				data: params,
 				success: function(result) {
-					if (ListLoad != null) {
-						ListLoad() 
-					} else if (ListLoad == getlist(1)) {
+					if (ListLoad == "getlist1") {
 						getlist(1);
+					} else if (ListLoad == "getlist2") {
+						getlist(2);
+					} else if (ListLoad == "getlist3") {
+						getlist(3);
+					} else if (ListLoad != null) {
+						ListLoad() 
 					}
 					closePopup(depth);
 				},

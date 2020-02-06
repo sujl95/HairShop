@@ -386,7 +386,7 @@ public class EController {
 		String res = "";
 		try {
 			for(int i = 0 ; i < pop_check.size(); i++) {
-				params.put("comp_g_no",pop_check.get(i));
+				params.put("comp_no",pop_check.get(i));
 				iEService.compdel(params);
 			}
 			res = "SUCCESS";

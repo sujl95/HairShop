@@ -164,122 +164,122 @@
 					</div>
 				</div>
 				<div class="pop_schedule_contents">
-					<table class="pop_table">
-						<colgroup>
-							<col width="15%">
-							<col width="35%">
-							<col width="15%">
-							<col width="35%">
-						</colgroup>
-						<tbody>
-							
-							 <tr>
-			                    <td class="field_name first_field_name">
-			                     	관리그룹명<span class="acc_txt"> *</span>
-			                    </td>
-								<td class="field_contents">
-									<input class="input_normal"   type="text">
-								</td>
-			                    <td class="field_name">
-			                    	담당자<span class="acc_txt"> *</span>
-			                    </td>
-			                    <td class="field_contents">
-			                    	<input class="input_size size40" type="text">
-									<input type="button" class="btn_normal btn_size_normal " value="검색"/>
-			                    </td>
-			                </tr>
-							<tr>
-								<td class="field_name first_field_name">
-									거래처 구분<span class="acc_txt"> *</span>
-								</td>
-								<td class="field_contents" colspan="3">
-									<label><input type="radio" value="매출처" checked="checked" name="Sales_VAT_radio">매출처</label>
-									<label><input type="radio" value="매입처" name="Sales_VAT_radio">매입처</label>
-									<label><input type="radio" value="기타거래처" name="Sales_VAT_radio">기타거래처</label>
-								</td>
-							</tr>
-							<tr>
-								<td class="field_name first_field_name">거래처명<span class="acc_txt"> *</span></td>
-								<td class="field_contents" colspan="3">
-									<input class="input_normal"   type="text">
-								</td>
-							</tr>
-							<tr>
-								<td class="field_name first_field_name">사업자번호<span class="acc_txt"> *</span></td>
-								<td class="field_contents">
-									 <input type="text" class="input_size size20" maxlength="3" />
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="2"/>
-			                        <span>- </span>
-			                        <input type="text" class="input_size size30" maxlength="5"/>
-								</td>
-								<td class="field_name first_field_name">대표자<span class="acc_txt"> *</span></td>
-								<td class="field_contents">
-									<input class="input_normal " type="text">
-								</td>
-							</tr>
-							<tr>
-								<td class="field_name first_field_name">업태<span class="acc_txt"> *</span></td>
-								<td class="field_contents">
-									<input class="input_normal" type="text">
-								</td>
-								<td class="field_name first_field_name">종목<span class="acc_txt"> *</span></td>
-								<td class="field_contents">
-									<input class="input_normal " type="text">
-								</td>
-							</tr>
-							 <tr>
-			                    <td class="field_name first_field_name">주소<span class="acc_txt"> *</span></td>
-			                    <td class="field_contents" colspan="3">
-			                        <div class="address_margin">
-			                            <input type="text" class="input_short input_readonly postcodify_postcode5" readonly="readonly" placeholder="우편번호"/>
-			                            <div class="btn_normal btn_size_normal" id="searchAddrBtn">검색</div>
-			                        </div>
-			                        <div class="address_margin">
-			                            <input type="text" class="input_normal input_readonly postcodify_address" readonly="readonly" placeholder="주소"/>
-			                        </div>
-			                        <div><input type="text" class="input_normal postcodify_details" placeholder="상세주소"/></div>
-			                    </td>
-		                	</tr>
-							 <tr>
-			                    <td class="field_name first_field_name">전화1
-			                    <td class="field_contents">
-			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
-			                    </td>
-			                    <td class="field_name">전화2</td>
-			                    <td class="field_contents">
-			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
-			                    </td>
-			                </tr>
-							 <tr>
-			                    <td class="field_name first_field_name">핸드폰<span class="acc_txt"> *</span>
-			                    <td class="field_contents">
-			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
-			                    </td>
-			                    <td class="field_name">FAX</td>
-			                    <td class="field_contents">
-			                        <input type="text" class="input_normal txt_client_ph" maxlength="12"/>
-			                    </td>
-			                </tr>
-			                <tr>
-			                    <td class="field_name first_field_name">이메일<span class="acc_txt"> *</span></td>
-			                    <td class="field_contents">
-			                       <input type="text" class="input_normal" />
-			                    </td>
-			                    <td class="field_name">홈페이지</td>
-			                    <td class="field_contents">
-			                         <input type="text" class="input_normal" />
-			                    </td>
-			                </tr>
-			               
-			                <tr>
-			                    <td class="field_name first_field_name">메모</td>
-			                    <td class="field_contents" colspan="3">
-			                        <textarea class="textarea_normal"></textarea>
-			                    </td>
-			                </tr>
-						</tbody>
-					</table>
+					<form id="compForm" action="#" method="post"> 
+						<input name="comp_g_no" id="comp_g_no" type="hidden">
+						<table class="pop_table">
+							<colgroup>
+								<col width="15%">
+								<col width="35%">
+								<col width="15%">
+								<col width="35%">
+							</colgroup>
+							<tbody>
+								 <tr>
+				                    <td class="field_name first_field_name">
+				                     	관리그룹명<span class="acc_txt"> *</span>
+				                    </td>
+									<td class="field_contents">
+										<input class="input_normal" id="cp_type" name="cp_type" type="text">
+									</td>
+				                    <td class="field_name">
+				                    	담당자<span class="acc_txt"> *</span>
+				                    </td>
+				                    <td class="field_contents">
+				                    	<input class="input_size size40" type="text" id="emp_nm" name="emp_nm">
+				                    	<input type="hidden" id="emp_no" name="emp_no">
+										<input type="button" class="btn_normal btn_size_normal" id="cust_Search_btn" value="검색"/>
+				                    </td>
+				                </tr>
+								<tr>
+									<td class="field_name first_field_name">
+										거래처 구분<span class="acc_txt"> *</span>
+									</td>
+									<td class="field_contents" colspan="3">
+										<label><input type="radio" value="매출처" checked="checked" name="Comp_VAT_radio">매출처</label>
+										<label><input type="radio" value="매입처" name="Comp_VAT_radio">매입처</label>
+										<label><input type="radio" value="기타거래처" name="Comp_VAT_radio">기타거래처</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="field_name first_field_name">거래처명<span class="acc_txt"> *</span></td>
+									<td class="field_contents" colspan="3">
+										<input class="input_normal" id="cp_nm" name="cp_nm"  type="text">
+									</td>
+								</tr>
+								<tr>
+									<td class="field_name first_field_name">사업자번호<span class="acc_txt"> *</span></td>
+									<td class="field_contents">
+										 <input type="text" class="input_normal" id="cp_biz_no" name="cp_biz_no" maxlength="12" />
+									</td>
+									<td class="field_name first_field_name">대표자명<span class="acc_txt"> *</span></td>
+									<td class="field_contents">
+										<input class="input_normal" id="cp_biz_nm" name="cp_biz_nm" type="text">
+									</td>
+								</tr>
+								<tr>
+									<td class="field_name first_field_name">업태<span class="acc_txt"> *</span></td>
+									<td class="field_contents">
+										<input class="input_normal" type="text" id="cp_biz" name="cp_biz">
+									</td>
+									<td class="field_name first_field_name">종목<span class="acc_txt"> *</span></td>
+									<td class="field_contents">
+										<input class="input_normal" type="text" id="cp_event" name="cp_event">
+									</td>
+								</tr>
+								 <tr>
+				                    <td class="field_name first_field_name">주소<span class="acc_txt"> *</span></td>
+				                    <td class="field_contents" colspan="3">
+				                        <div class="address_margin">
+				                            <input type="text" class="input_short input_readonly postcodify_postcode5" id="cp_add_no" name="cp_add_no" readonly="readonly" placeholder="우편번호"/>
+				                            <input type="button" class="btn_normal btn_size_normal " id="searchAddrBtn" value="검색"/>
+				                        </div>
+				                        <div class="address_margin">
+				                            <input type="text" class="input_normal input_readonly postcodify_address" id="cp_add" name="cp_add" readonly="readonly" placeholder="주소"/>
+				                        </div>
+				                        <div>
+				                        	<input type="text" class="input_normal postcodify_details" id="cp_add_detail" name="cp_add_detail" placeholder="상세주소"/>
+			                        	</div>
+				                    </td>
+			                	</tr>
+								 <tr>
+				                    <td class="field_name first_field_name">전화1
+				                    <td class="field_contents">
+				                        <input type="text" class="input_normal txt_client_ph" id="cp_ph1" name="cp_ph1" maxlength="12"/>
+				                    </td>
+				                    <td class="field_name">전화2</td>
+				                    <td class="field_contents">
+				                        <input type="text" class="input_normal txt_client_ph" id="cp_ph2" name="cp_ph2" maxlength="12"/>
+				                    </td>
+				                </tr>
+								 <tr>
+				                    <td class="field_name first_field_name">핸드폰<span class="acc_txt"> *</span>
+				                    <td class="field_contents">
+				                        <input type="text" class="input_normal txt_client_ph" id="cp_ph" name="cp_ph" maxlength="12"/>
+				                    </td>
+				                    <td class="field_name">FAX</td>
+				                    <td class="field_contents">
+				                        <input type="text" class="input_normal txt_client_ph" id="cp_fax" name="cp_fax" maxlength="12"/>
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td class="field_name first_field_name">이메일<span class="acc_txt"> *</span></td>
+				                    <td class="field_contents">
+				                       <input type="text" class="input_normal" id="cp_email" name="cp_email"/>
+				                    </td>
+				                    <td class="field_name">홈페이지</td>
+				                    <td class="field_contents">
+				                         <input type="text" class="input_normal" id="cp_website" name="cp_website" />
+				                    </td>
+				                </tr>
+				                <tr>
+				                    <td class="field_name first_field_name">메모</td>
+				                    <td class="field_contents" colspan="3">
+				                        <textarea class="textarea_normal" id="cp_memo" name="cp_memo"></textarea>
+				                    </td>
+				                </tr>
+							</tbody>
+						</table>
+					</form>
 				<div class="pop_btn_bottom_area">
 					<input type="button" class="btn_normal btn_size_normal" value="확인"/>
 					<input type="button" class="btn_normal btn_size_normal" value="취소"/>

@@ -15,16 +15,6 @@ $(document).ready(function() {
 		location.href = "contentsTest";
 	});
 	
-	$("#searchAddrBtn").postcodifyPopUp();	
-	
-	/* $("#emp_ph").on("keyup keypress", function() {
-		var num = $(this).val();
-		var ph_num = num.replace(/[^0-9]/g, "").replace(/([0-9]{3})([0-9]{2})([0-9]{5})/,"$1-$2-$3").replace("--", "-");
-		$(this).val(ph_num);
-	}); */
-
-	
-	
 	//Left Menu Location Event
 	$(".menu_wrap").on("click", ".first_menu, .second_menu", function() {
 		if($(this).is("[addr]")) {
@@ -50,16 +40,9 @@ $(document).ready(function() {
 		// 조건X 검색 버튼 클릭 Event
 		$("#pop_Search_Btn").on("click", function a(str) {
 			var str = $(this).attr("name");
-			console.log(str);
-			
-// 			function a(str) { 
-// 				str();
-// 			}
-// 			a(str);
-// 			console.log(e.attr("name"));
-// 			str();
 	 		if (str == "getcustgradelist") getlist(1);
 	 		if (str == "getempgradelist") getlist(2);
+	 		if (str == "getcomplist") getlist(3);
 		});
 		
 		$("input[name=searchTxt]").on("keypress", function() {
@@ -67,8 +50,6 @@ $(document).ready(function() {
 				$("#pop_Search_Btn").click();
 				return false;
 			}
-// 			if()
-// 			console.log($(this).attr("id"));
 		});
 		
 		/* 체크박스 영역 제외하고 나머지tr부분 이벤트 적용 고객등급*/
@@ -81,6 +62,8 @@ $(document).ready(function() {
 				ajax = "getcustgdataAjax";
 			} else if($(this).attr("id") == "emp_g_no") {
 				ajax = "getempgdataAjax";
+			} else if($(this).attr("id") == "comp_no") {
+				ajax = "getcompdataAjax";
 			}
 			console.log(params);
 			$.ajax({
@@ -95,7 +78,9 @@ $(document).ready(function() {
 					if (ajax == "getcustgdataAjax") {
 						make_custgrade_pop(2,"고객 등급 수정",result1);
 					} else if (ajax == "getempgdataAjax") {
-						make_custgrade_pop(4,"직원 등급 수정",result1);
+						make_custgrade_pop(4,"직원 등급수정",result1);
+					} else if (ajax == "getcompdataAjax") {
+						make_comp_pop(2,"거래처 수정",result1);
 					}
 				} , 
 				error : function(request,status,error) {
@@ -110,7 +95,6 @@ $(document).ready(function() {
 		$("#pop_chk_all").click(function(){
 	    	if($("#pop_chk_all").prop("checked")){
 	    		$("input[name=pop_check]").prop("checked",true);
-	    		//클릭이 안되있으면
 	    	}else{
 	    		$("input[name=pop_check]").prop("checked",false);
 	    	}
@@ -209,10 +193,19 @@ function Gradefun (ck) {
 		getlist(ck);
 	}
 	, "등록", function() {
-		make_custgrade_pop(1,"고객 등급 등록");
+		if (ck == 1) {
+			make_custgrade_pop(1,"고객 등급 등록");
+		} else if( ck == 2) {
+			make_custgrade_pop(3,"직원 등급 등록");
+		}
+		
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-		listdel(2,"고객 등급",400,200,"popactionForm","custgradedelAjax",getlist(1),params);
+		if (ck == 1) {
+			listdel(2,"고객 등급",400,200,"popactionForm","custgradedelAjax","getlist1",params);
+		} else if( ck == 2) {
+			listdel(2,"직원 등급",400,200,"popactionForm","empgradedelAjax","getlist2",params);
+		}
 	},"취소", function() {
 		closePopup(1);
 	});
@@ -237,7 +230,7 @@ function Compfun () {
 	html += `					<option value="2">거래처명</option>                                  `;
 	html += `					<option value="3">담당자</option>                                `;
 	html += `				</select>                                                              `;
-	html += `				<input class="input_size size60" type="text" id="getcustgradelist" name="searchTxt">   `;
+	html += `				<input class="input_size size60" type="text" id="getcomplist" name="searchTxt">   `;
 	html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getcomplist" value="검색"/>`;
 	html += `			</td>`;
 	html += `		</tr> `;
@@ -289,10 +282,10 @@ function Compfun () {
 		});
 	}
 	, "등록", function() {
-		make_comp_pop(1, "등록");
+		make_comp_pop(1, "거래처 등록");
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-		listdel(2,"고객 등급",400,200,"popactionForm","custgradedelAjax",getlist(1),params);
+		listdel(2,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
 	},"취소", function() {
 		closePopup(1);
 	});
@@ -312,7 +305,7 @@ function drawcompList(list) {
 			html += `			<label class="chbox_lbl" for="chk_`+list[i].CP_NO+`"></label>                                                                         `;
 			html += `		</div>                                                                                                                `;
 			html += `	</td>                                                                                                                     `;
-			html += `	<td  width="95px" nowrap style="cursor : default;"><input name="`+list[i].CP_NO+`"type="button" class="pop_update" id="comp_g_no" value="수정"/></td>                                `;
+			html += `	<td  width="95px" nowrap style="cursor : default;"><input name="`+list[i].CP_NO+`"type="button" class="pop_update" id="comp_no" value="수정"/></td>                                `;
 			html += `			<td width="120px" nowrap>`+list[i].EMP_NM+`</td>   `;
 			html += `			<td width="120px" nowrap>`+list[i].CP_TYPE+`</td>`;
 			html += `			<td width="130px" nowrap>`+list[i].CP_NM+`</td>`;
@@ -344,7 +337,7 @@ function drawcompList(list) {
 	
 	$(".sscroll").slimScroll({
 		width : "100%",
-		height: "350px"
+		height: "450px"
 	});
 }
 
@@ -353,57 +346,145 @@ function drawcompList(list) {
 function make_comp_pop(ck, str ,result1) {
 	var ajax = "";
 	if (ck == 1) {
-		ajax = "custcodeAddAjax";
+		ajax = "compcodeAddAjax";
 	} else if (ck == 2) {
-		ajax = "custcodeUpdateAjax";
+		ajax = "compcodeUpdateAjax";
 	} 
 	console.log(result1);
 	var html ="";
-		html += `<form action="#" id="compForm" method="post">                                      `;
-		html += `	<input name="comp_g_no" id="comp_g_no" type="hidden"> `;
-		html += `	<table class="pop_table"> `;
-		html += `		<colgroup>            `;
-		html += `			<col width="20%"> `;
-		html += `			<col width="30%"> `;
-		html += `			<col width="20%"> `;
-		html += `			<col width="30%"> `;
-		html += `		</colgroup>           `;
-		html += `		<tbody>               `;
-		html += `			<tr>              `;
-		html += `				<td class="field_name first_field_name">등급명</td>                                    `;
-		html += `				<td class="field_contents">                                                            `;
-		if (ck == 1 || ck == 2) {
-			html += `<input class="input_normal" id="cust_grade_nm" name="cust_grade_nm" placeholder="등급명" type="text" >                     `;
-		} else if (ck == 3 || ck == 4) {
-			html += `<input class="input_normal" id="emp_grade_nm" name="emp_grade_nm" placeholder="등급명" type="text" >                     `;
-		}
-		html += `				</td>                                                                                  `;
-		html += `				<td class="field_name">등급 레벨</td>                                                  `;
-		html += `				<td class="field_contents">                                                            `;
-		if (ck == 1 || ck == 2) {
-			html += `<input class="input_normal" id="cust_grade_lvl" name="cust_grade_lvl" placeholder="레벨" type="text" >                   `;
-		} else if (ck == 3 || ck == 4) {
-			html += `<input class="input_normal" id="emp_grade_lvl" name="emp_grade_lvl" placeholder="레벨" type="text" >                   `;
-		}
-		html += `				</td> `;                                                                               
-		html += `			</tr>     `;
-		html += `		</tbody>      `;
-		html += `	</table>          `;
-		html += `</form>              `;
-		makeTwoBtnPopup(2, str, html, true, 500, 200, function() {
+		html += `	<form id="compForm" action="#" method="post"> `
+		html += `		<input name="comp_no" id="comp_no" type="hidden">`
+		html += `		<table class="pop_table">`
+		html += `			<colgroup>`
+		html += `				<col width="15%">`
+		html += `				<col width="35%">`
+		html += `				<col width="15%">`
+		html += `				<col width="35%">`
+		html += `			</colgroup>`
+		html += `			<tbody>`
+		html += `				 <tr>`
+		html += `                    <td class="field_name first_field_name">`
+		html += `                     	관리그룹명<span class="acc_txt"> *</span>`
+		html += `                    </td>`
+		html += `					<td class="field_contents">`
+		html += `						<input class="input_normal" id="cp_type" name="cp_type" type="text">`
+		html += `					</td>`
+		html += `                    <td class="field_name">`
+		html += `                    	담당자<span class="acc_txt"> *</span>`
+		html += `                    </td>`
+		html += `                    <td class="field_contents">`
+		html += `                    	<input class="input_size size40" type="text" id="emp_nm" name="emp_nm">`
+		html += `                    	<input type="hidden" id="emp_no" name="emp_no">`
+		html += `						<input type="button" class="btn_normal btn_size_normal" id="cust_Search_btn" value="검색"/>`
+		html += `                    </td>`
+		html += `                </tr>`
+		html += `				<tr>`
+		html += `					<td class="field_name first_field_name">`
+		html += `						거래처 구분<span class="acc_txt"> *</span>`
+		html += `					</td>`
+		html += `					<td class="field_contents" colspan="3">`
+		html += `						<label><input type="radio" value="매출처" checked="checked" name="comp_VAT_radio">매출처</label>`
+		html += `						<label><input type="radio" value="매입처" name="comp_VAT_radio">매입처</label>`
+		html += `						<label><input type="radio" value="기타거래처" name="comp_VAT_radio">기타거래처</label>`
+		html += `					</td>`
+		html += `				</tr>`
+		html += `				<tr>`
+		html += `					<td class="field_name first_field_name">거래처명<span class="acc_txt"> *</span></td>`
+		html += `					<td class="field_contents" colspan="3">`
+		html += `						<input class="input_normal" id="cp_nm" name="cp_nm"  type="text">`
+		html += `					</td>`
+		html += `				</tr>`
+		html += `				<tr>`
+		html += `					<td class="field_name first_field_name">사업자번호<span class="acc_txt"> *</span></td>`
+		html += `					<td class="field_contents">`
+		html += `						 <input type="text" class="input_normal" id="cp_biz_no" name="cp_biz_no" maxlength="12" />`
+		html += `					</td>`
+		html += `					<td class="field_name first_field_name">대표자명<span class="acc_txt"> *</span></td>`
+		html += `					<td class="field_contents">`
+		html += `						<input class="input_normal" id="cp_biz_nm" name="cp_biz_nm" type="text">`
+		html += `					</td>`
+		html += `				</tr>`
+		html += `				<tr>`
+		html += `					<td class="field_name first_field_name">업태<span class="acc_txt"> *</span></td>`
+		html += `					<td class="field_contents">`
+		html += `						<input class="input_normal" type="text" id="cp_biz" name="cp_biz">`
+		html += `					</td>`
+		html += `					<td class="field_name first_field_name">종목<span class="acc_txt"> *</span></td>`
+		html += `					<td class="field_contents">`
+		html += `						<input class="input_normal" type="text" id="cp_event" name="cp_event">`
+		html += `					</td>`
+		html += `				</tr>`
+		html += `				 <tr>`
+		html += `                    <td class="field_name first_field_name">주소<span class="acc_txt"> *</span></td>`
+		html += `                    <td class="field_contents" colspan="3">`
+		html += `                        <div class="address_margin">`
+		html += `                            <input type="text" class="input_short input_readonly postcodify_postcode5" id="cp_add_no" name="cp_add_no" readonly="readonly" placeholder="우편번호"/>`
+		html += `                            <input type="button" class="btn_normal btn_size_normal " id="searchAddrBtn" value="검색"/>`
+		html += `                        </div>`
+		html += `                        <div class="address_margin">`
+		html += `                            <input type="text" class="input_normal input_readonly postcodify_address" id="cp_add" name="cp_add" readonly="readonly" placeholder="주소"/>`
+		html += `                        </div>`
+		html += `                        <div>`
+		html += `                        	<input type="text" class="input_normal postcodify_details" id="cp_add_detail" name="cp_add_detail" placeholder="상세주소"/>`
+	    html += `                    	</div>`
+		html += `                    </td>`
+	    html += `            	</tr>`
+		html += `				 <tr>`
+		html += `                    <td class="field_name first_field_name">전화1</td>`
+		html += `                    <td class="field_contents">`
+		html += `                        <input type="text" class="input_normal txt_client_ph" id="cp_ph1" name="cp_ph1" maxlength="14"/>`
+		html += `                    </td>`
+		html += `                    <td class="field_name">전화2</td>`
+		html += `                    <td class="field_contents">`
+		html += `                        <input type="text" class="input_normal txt_client_ph" id="cp_ph2" name="cp_ph2" maxlength="14"/>`
+		html += `                    </td>`
+		html += `                </tr>`
+		html += `				 <tr>`
+		html += `                    <td class="field_name first_field_name">핸드폰<span class="acc_txt"> *</span>`
+		html += `                    <td class="field_contents">`
+		html += `                        <input type="text" class="input_normal txt_client_ph" id="cp_ph" name="cp_ph" maxlength="14"/>`
+		html += `                    </td>`
+		html += `                    <td class="field_name">FAX</td>`
+		html += `                    <td class="field_contents">`
+		html += `                        <input type="text" class="input_normal txt_client_ph" id="cp_fax" name="cp_fax" maxlength="14"/>`
+		html += `                    </td>`
+		html += `                </tr>`
+		html += `                <tr>`
+		html += `                    <td class="field_name first_field_name">이메일<span class="acc_txt"> *</span></td>`
+		html += `                    <td class="field_contents">`
+		html += `                       <input type="text" class="input_normal" id="cp_email" name="cp_email"/>`
+		html += `                    </td>`
+		html += `                    <td class="field_name">홈페이지</td>`
+		html += `                    <td class="field_contents">`
+		html += `                         <input type="text" class="input_normal" id="cp_website" name="cp_website" />`
+		html += `                    </td>`
+		html += `                </tr>`
+		html += `                <tr>`
+		html += `                    <td class="field_name first_field_name">메모</td>`
+		html += `                    <td class="field_contents" colspan="3">`
+		html += `                        <textarea class="textarea_normal" id="cp_memo" name="cp_memo"></textarea>`
+		html += `                    </td>`
+		html += `                </tr>`
+		html += `			</tbody>`
+		html += `		</table>`
+		html += `	</form>`
+		makeTwoBtnPopup(2, str, html, true, 700, 800, function() {
+			$("#cp_biz_no").on("keyup keypress", function() {
+				var num = $(this).val();
+				var ph_num = num.replace(/[^0-9]/g, "").replace(/([0-9]{3})([0-9]{2})([0-9]{5})/,"$1-$2-$3").replace("--", "-");
+				$(this).val(ph_num);
+			}); 
 			//텍스트 숫자 포맷팅
 			$("#cust_grade_lvl").on("keyup", function() {
 				 $(this).val($(this).val().replace(/[^0-9]/g,""));
 			});
-			// 버튼 크기 자동 조절
-		    $('.btn').each(function() {
-		        if($(this).html().length > 2) {
-		            var leng_diff = $(this).html().length - 2;
-		            $(this).width($(this).width() + (10 * leng_diff) + "px");  
-		        }
-		    });
+			//전화번호 텍스트 포맷팅
+			$(".txt_client_ph").on("keyup", function() {
+				inputNumberFormat(this);
+			});
+		    $("#searchAddrBtn").postcodifyPopUp();	
 		}, str , function() {
-				var params = $("#ctgForm").serialize();
+				var params = $("#compForm").serialize();
 			
 				$.ajax({
 					type : "post", //데이터 전송방식
@@ -416,7 +497,7 @@ function make_comp_pop(ck, str ,result1) {
 						if(result.res == "SUCCESS"){
 							closePopup(2);
 							makeAlert(2, str+" 성공", str+"되었습니다.", null);
-							getlist(1);
+							getlist(3);
 						} else{
 							makeAlert(2, str+" 오류", str+"에 실패하였습니다.", null);
 						}
@@ -433,14 +514,27 @@ function make_comp_pop(ck, str ,result1) {
 		}); 
 	 	
 	 	if(ck == 2) {
-	 		$("#cust_g_no").val(result1.data.GRADE_NO);
-			$("#cust_grade_nm").val(result1.data.GRADE_NM);
-			$("#cust_grade_lvl").val(result1.data.GRADE_LEVEL);
-	 	} else if(ck == 4) {
-	 		$("#emp_g_no").val(result1.data.GRADE_NO);
-			$("#emp_grade_nm").val(result1.data.GRADE_NM);
-			$("#emp_grade_lvl").val(result1.data.GRADE_LEVEL);
-	 	}
+	 		$("#comp_no").val(result1.data.CP_NO);
+	 		$("#cp_type").val(result1.data.CP_TYPE);
+	 		$("#emp_nm").val(result1.data.EMP_NM);
+	 		$("#emp_no").val(result1.data.EMP_NO);
+	 		$("#comp_VAT_radio").val(result1.data.COMP_VAT_RADIO);
+	 		$("#cp_nm").val(result1.data.CP_NM);
+	 		$("#cp_biz_no").val(result1.data.CP_BIZ_NO);
+	 		$("#cp_biz_nm").val(result1.data.CP_BIZ_NM);
+	 		$("#cp_biz").val(result1.data.CP_BIZ);
+	 		$("#cp_event").val(result1.data.CP_EVENT);
+	 		$("#cp_add_no").val(result1.data.CP_ADD_NO);
+	 		$("#cp_add").val(result1.data.CP_ADD);
+	 		$("#cp_add_detail").val(result1.data.CP_ADD_DETAIL);
+	 		$("#cp_ph1").val(result1.data.CP_PH1);
+	 		$("#cp_ph2").val(result1.data.CP_PH2);
+	 		$("#cp_ph").val(result1.data.CP_PH);
+	 		$("#cp_fax").val(result1.data.CP_FAX);
+	 		$("#cp_email").val(result1.data.CP_EMAIL);
+	 		$("#cp_website").val(result1.data.CP_WEBSITE);
+	 		$("#cp_memo").val(result1.data.CP_MEMO);
+	 	} 
 	 	
 }
 
@@ -557,7 +651,11 @@ function make_custgrade_pop(ck, str ,result1) {
 						if(result.res == "SUCCESS"){
 							closePopup(2);
 							makeAlert(2, str+" 성공", str+"되었습니다.", null);
-							getlist(1);
+							if (ck == 1 || ck == 2) {
+								getlist(1);
+							} else if (ck == 3 || ck == 4) {
+								getlist(2);
+							}
 						} else{
 							makeAlert(2, str+" 오류", str+"에 실패하였습니다.", null);
 						}
