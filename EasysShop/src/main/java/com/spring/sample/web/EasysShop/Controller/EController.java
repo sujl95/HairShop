@@ -109,47 +109,14 @@ public class EController {
 		return mav;
 	}
 	
-	@RequestMapping(value = {"/product_sell_list"})
-	public ModelAndView product_sell_list(ModelAndView mav) {
-		mav.setViewName("EasysShop/product_sell_list");
-		return mav;
-	}
-	
-	@RequestMapping(value = {"/point_list"})
-	public ModelAndView point_list(ModelAndView mav) {
-		mav.setViewName("EasysShop/point_list");
-		return mav;
-	}
-	
 	@RequestMapping(value = {"/popuptest2"})
 	public ModelAndView popuptest2(ModelAndView mav) {
 		mav.setViewName("EasysShop/popuptest2");
 		return mav;
 	}
 	
-	@RequestMapping(value = {"/sampleKH"})
-	public ModelAndView sampleKH(ModelAndView mav) {
-		mav.setViewName("EasysShop/sampleKH");
-		return mav;
-	}
 	
-	@RequestMapping(value = {"/sampleKH2"})
-	public ModelAndView sampleKH2(ModelAndView mav) {
-		mav.setViewName("EasysShop/sampleKH2");
-		return mav;
-	}
-	
-	@RequestMapping(value = {"/sampleKH3"})
-	public ModelAndView sampleKH3(ModelAndView mav) {
-		mav.setViewName("EasysShop/sampleKH3");
-		return mav;
-	}
-	
-	@RequestMapping(value = {"/sampleKH4"})
-	public ModelAndView sampleKH4(ModelAndView mav) {
-		mav.setViewName("EasysShop/sampleKH4");
-		return mav;
-	}
+
 //	----------------------------------팝업시작--------------------------------
 //	고객 등급 코드 코드 리스트 가져오기
 	@RequestMapping(value="/getcustgradelistAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")

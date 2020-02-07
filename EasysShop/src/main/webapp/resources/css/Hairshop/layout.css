@@ -414,6 +414,10 @@ tr {
 .pxsize280{
 	width:280px;
 }
+/* 310px */
+.pxsize310{
+	width:310px;
+}
 /* 400px */
 .pxsize400{
 	width:400px;
@@ -467,9 +471,6 @@ tr {
 }
 .ml10{
 	margin-left:15px;
-}
-.ml27{
-	margin-left:27px;
 }
 
 /* margin-top */
@@ -781,3 +782,12 @@ tr {
     table-layout: fixed;
 }
 /* slimScroll 끝 */
+.w60{
+	width: 60px;
+}
+.w70{
+	width: 70px;
+}
+.w80{
+	width: 80px;
+}

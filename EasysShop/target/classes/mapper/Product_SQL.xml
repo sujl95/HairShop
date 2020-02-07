@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Product">
+	<select id="getSellList" parameterType="hashmap" resultType="hashmap">
+		SELECT S.SAL_NO, S.SAL_DATE, E.EMP_NM, C.CT_NM, IC.IT_NM, S.SAL_MONEY_TYPE, S.SAL_AMT, P.PT_SAVE, P.PT_DD, S.SAL_MEMO
+		FROM SALE S INNER JOIN EMPLOYEE E
+		                    ON S.EMP_NO = E.EMP_NO
+		            INNER JOIN CUSTOMER C
+		                    ON S.CT_NO = C.CT_NO                    
+		            INNER JOIN ITEM_CODE IC
+		                    ON S.IT_NO = IC.IT_NO
+		            INNER JOIN POINT P
+		                    ON S.PT_NO = P.PT_NO
+	</select>
+</mapper>

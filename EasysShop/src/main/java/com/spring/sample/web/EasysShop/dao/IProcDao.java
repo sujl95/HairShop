@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface IProcDao {
 
+	public List<HashMap<String, String>> getProcList(HashMap<String, String> params) throws Throwable;
+
 }

@@ -42,12 +42,12 @@ public class ProcController {
 	@ResponseBody 
 	public String procListAjax(@RequestParam HashMap<String,String> params,
 					ModelAndView mav, HttpSession session) throws Throwable{
-	
 	ObjectMapper mapper = new ObjectMapper();
 	Map<String,Object> modelMap = new HashMap<String,Object>();
 	
+	List<HashMap<String, String>> list = iProcService.getProcList(params);
 	
-		
+	modelMap.put("list", list);
 	return mapper.writeValueAsString(modelMap);
 }
 	

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Point">
+	<select id="getPointList" parameterType="hashmap" resultType="hashmap">
+		SELECT PT.PT_NO, TO_CHAR(PT.PT_DATE,'YY/MM/DD') AS PT_DATE, CT.CT_NM, PT.PT_BRD, PT.PT_SAVE, PT.PT_DD
+		FROM POINT PT INNER JOIN CUSTOMER CT
+		                      ON PT.CT_NO = CT.CT_NO
+		                      AND PT.DEL_YN = 1
+	</select>
+</mapper>

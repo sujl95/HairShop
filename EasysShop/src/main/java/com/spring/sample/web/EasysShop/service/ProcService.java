@@ -14,4 +14,10 @@ public class ProcService implements IProcService {
 	@Autowired
 	public IProcDao iProcDao;
 
+	@Override
+	public List<HashMap<String, String>> getProcList(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iProcDao.getProcList(params);
+	}
+
 }

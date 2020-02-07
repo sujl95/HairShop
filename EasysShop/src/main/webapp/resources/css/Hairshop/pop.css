@@ -683,3 +683,11 @@
 	left: calc(50% - 300px);
 	overflow: hidden;
 }
+
+.pop_size_product_register{
+	width: 600px;
+	height: 400px;
+	top: calc(50% - 200px);
+	left: calc(50% - 300px); 
+	overflow: hidden;
+}

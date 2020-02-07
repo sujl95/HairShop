@@ -12,4 +12,10 @@ public class ProcDao implements IProcDao {
 	@Autowired
 	public SqlSession sqlSession;
 
+	@Override
+	public List<HashMap<String, String>> getProcList(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Proc.getProcList",params);
+	}
+
 }
