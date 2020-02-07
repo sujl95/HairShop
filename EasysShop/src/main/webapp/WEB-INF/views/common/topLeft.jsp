@@ -30,7 +30,7 @@ $(document).ready(function() {
 		} else if ($(this).attr("menuno") == 17) {
 			Gradefun(2);
 		} else if ($(this).attr("menuno") == 18) {
-			console.log(1);
+			$("#item_code_add").removeClass("pop_off").addClass("pop_on");
 		} else if ($(this).attr("menuno") == 19) {
 			console.log(1);
 		} else if ($(this).attr("menuno") == 20) {
@@ -104,6 +104,10 @@ $(document).ready(function() {
 		
 	});
 	
+	//거래처 코드 검색
+	$("#CP_Search_btn").on("click", function () {
+		Compfun();
+	});
 	
 });
 //리스트 Get
@@ -212,7 +216,7 @@ function Gradefun (ck) {
 }
 
 //거래처 메서드
-function Compfun () {
+function Compfun (ck) {
 	var html = "";
 	html += `<form id="popactionForm" action="#" method="post">`;
 	html += `<table class="pop_table">`;
@@ -272,8 +276,12 @@ function Compfun () {
 	html += `	</tbody>                                               `;
 	html += `</table>                                                  `;
 	html += `</form>`;
-	
-	makeThreeBtnPopup(1, "거래처 코드 관리", html, false, 900, 700, function() {
+	if (ck == null) {
+		ck = 1;
+	} else {
+		
+	}
+	makeThreeBtnPopup(ck, "거래처 코드 관리", html, false, 900, 700, function() {
 		getlist(3);
 		$("#popdataForm").slimScroll({
 			width : "880px",
@@ -285,9 +293,19 @@ function Compfun () {
 		make_comp_pop(1, "거래처 등록");
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-		listdel(2,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
+		if (ck == null) {
+			ck = 2;
+		} else {
+			ck += 1;
+		}
+		listdel(ck,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
 	},"취소", function() {
-		closePopup(1);
+		if (ck == null) {
+			ck = 1;
+		} else {
+			ck += 1;
+		}
+		closePopup(ck);
 	});
 	
 	

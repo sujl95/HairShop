@@ -153,17 +153,37 @@ $(document).ready(function() {
     	setDays(3);
     });
     $('#Sales_Sales_Money').on("keyup", function() {
-    	inputNumberFormat(this);
-    	Salesformat(this);
+    	inputmoneyFormat(this);
+    	if($("input[name=IT_VAT_CK]:checked").val() == "VAT포함") {
+    		Salesformat(this,1);
+    	} else {
+    		Salesformat(this,2);
+    	}
     });
     $('#Purchase_Sales_Money').on("keyup",function() {
-    	inputNumberFormat(this);
-    	Purchaseformat(this);
+    	inputmoneyFormat(this);
+    	if($("input[name=IT_VAT_CK]:checked").val() == "VAT포함") {
+    		Purchaseformat(this,1);
+    	} else {
+    		Purchaseformat(this,2);
+    	}
     });
     $(".pop_wrap").on("click", ".pop>.pop_title_area>.pop_close" , function() {
     	$(this).parents("div.pop_title_area").parents("div.pop").parents("div.pop_wrap")
     	.removeClass("pop_on")
     	.addClass("pop_off");
+    });
+    
+    //라디오 버튼 변경시 이벤트
+    $("input[name='IT_VAT_CK']:radio").change(function () {
+    	if($("input[name=IT_VAT_CK]:checked").val() == "VAT포함") {
+			Purchaseformat(this,1);
+			Salesformat(this,1);
+    	} else if($("input[name=IT_VAT_CK]:checked").val() == "VAT미포함") {
+				Purchaseformat(this,2);
+				Salesformat(this,2);
+//    		}
+    	}
     });
 //    
 //    $(".btn_cancel").on("click", function() {
@@ -173,73 +193,73 @@ $(document).ready(function() {
 });
 function numberFormat(inputNumber) {
 	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
 
-function Salesformat(obj) {
-	
-	if(("#Sales_Sales_Money") != null ) {
-		var Sales_Sales_Money = document.getElementById("Sales_Sales_Money").value;
-		var Sales_Supply_Money = document.getElementById("Sales_Supply_Money").value;
-		var Sales_VAT_Money = document.getElementById("Sales_VAT_Money").value;
-		var Sales_Total_Money = document.getElementById("Sales_Total_Money").value;
-		Sales_Sales_Money = Sales_Sales_Money.replace(/,/gi, "") * 1;
-		Sales_Supply_Money =  Sales_Sales_Money / 1.1;
-		Sales_VAT_Money = Math.floor(Sales_Sales_Money) - Math.floor(Sales_Supply_Money);
-		$("#Sales_Supply_Money").val(Math.floor(Sales_Supply_Money));
-		$("#Sales_VAT_Money").val(Math.floor(Sales_VAT_Money));
-		$("#Sales_Total_Money").val(Math.floor(Sales_Sales_Money));
-		var Sales_Supply_Money = document.getElementById("Sales_Supply_Money").value;
-		var Sales_VAT_Money = document.getElementById("Sales_VAT_Money").value;
-		var Sales_Total_Money = document.getElementById("Sales_Total_Money").value;
-		Sales_Supply_Money = Sales_Supply_Money*1;
-		Sales_VAT_Money = Sales_VAT_Money*1;
-		Sales_Total_Money = Sales_Total_Money*1;
-    	$("#Sales_Sales_Money").val(Sales_Sales_Money.toLocaleString());
-		$("#Sales_Supply_Money").val(Sales_Supply_Money.toLocaleString());
-		$("#Sales_VAT_Money").val(Sales_VAT_Money.toLocaleString());
-		$("#Sales_Total_Money").val(Sales_Total_Money.toLocaleString());
 	}
-	
+function number_format(num){
+	if(!isFinite(num)) return num;
+    var num_str = num.toString();
+    var result = "";
+    for(var i=0; i<num_str.length; i++){
+        var tmp = num_str.length - (i+1);
+        if(((i%3)==0) && (i!=0))    result = ',' + result;
+        result = num_str.charAt(tmp) + result;
+    }
+    return result;
 }
-function Purchaseformat(obj) {
-	
-	if(("#Purchase_Sales_Money") != null ) {
-		var Purchase_Sales_Money = document.getElementById("Purchase_Sales_Money").value;
-		var Purchase_Supply_Money = document.getElementById("Purchase_Supply_Money").value;
-		var Purchase_VAT_Money = document.getElementById("Purchase_VAT_Money").value;
-		var Purchase_Total_Money = document.getElementById("Purchase_Total_Money").value;
-		Purchase_Sales_Money = Purchase_Sales_Money.replace(/,/gi, "") * 1
-		Purchase_Supply_Money =  Purchase_Sales_Money / 1.1;
-		Purchase_VAT_Money = Math.floor(Purchase_Sales_Money) - Math.floor(Purchase_Supply_Money);
-		$("#Purchase_Supply_Money").val(Math.floor(Purchase_Supply_Money));
-		$("#Purchase_VAT_Money").val(Math.floor(Purchase_VAT_Money));
-		$("#Purchase_Total_Money").val(Math.floor(Purchase_Sales_Money));
-		var Purchase_Supply_Money = document.getElementById("Purchase_Supply_Money").value;
-		var Purchase_VAT_Money = document.getElementById("Purchase_VAT_Money").value;
-		var Purchase_Total_Money = document.getElementById("Purchase_Total_Money").value;
-		Purchase_Supply_Money = Purchase_Supply_Money*1;
-		Purchase_VAT_Money = Purchase_VAT_Money*1;
-		Purchase_Total_Money = Purchase_Total_Money*1;
-    	$("#Purchase_Sales_Money").val(Purchase_Sales_Money.toLocaleString());
-		$("#Purchase_Supply_Money").val(Purchase_Supply_Money.toLocaleString());
-		$("#Purchase_VAT_Money").val(Purchase_VAT_Money.toLocaleString());
-		$("#Purchase_Total_Money").val(Purchase_Total_Money.toLocaleString());
+function Salesformat(obj,ck) {
+	if(ck == 1) {
+		var Sales_Sales_Money = $("#Sales_Sales_Money").val();
+		var Sales_Sales_Money1 = $("#Sales_Sales_Money").val();
+		Sales_Sales_Money = Sales_Sales_Money.replace(/,/g, "");
+		var Sales_Supply_Money = Math.round(Sales_Sales_Money/1.1);
+		var Sales_VAT_Money = Math.round(Sales_Sales_Money/11);
+		$("#Sales_Supply_Money").val(number_format(Sales_Supply_Money));
+		$("#Sales_VAT_Money").val(number_format(Sales_VAT_Money));
+		$("#Sales_Total_Money").val(Sales_Sales_Money1);
+	} else if (ck == 2){
+		var Sales_Sales_Money= $("#Sales_Sales_Money").val();
+		var Sales_Sales_Money1= $("#Sales_Sales_Money").val();
+		Sales_Sales_Money = Sales_Sales_Money.replace(/,/g, "");
+		Sales_Total_Money  = Math.round(Sales_Sales_Money * 1.1);
+		Sales_VAT_Money  = Math.round(Sales_Total_Money - Sales_Sales_Money);
+		$("#Sales_Supply_Money").val(number_format(Sales_Sales_Money1));
+		$("#Sales_Total_Money").val(number_format(Sales_Total_Money));
+		$("#Sales_VAT_Money").val(number_format(Sales_VAT_Money));
 	}
-	
 }
-
-
-function inputNumberFormat(obj) {
-    obj.value = comma(uncomma(obj.value));
+function Purchaseformat(obj,ck) {
+	if(ck == 1) {
+		var Purchase_Sales_Money=$("#Purchase_Sales_Money").val();
+		var Purchase_Sales_Money1=$("#Purchase_Sales_Money").val();
+		Purchase_Sales_Money = Purchase_Sales_Money.replace(/,/g, "");
+		var Purchase_Supply_Money = Math.round(Purchase_Sales_Money/1.1);
+		var Purchase_VAT_Money = Math.round(Purchase_Sales_Money/11);
+		$("#Purchase_Supply_Money").val(number_format(Purchase_Supply_Money));
+		$("#Purchase_VAT_Money").val(number_format(Purchase_VAT_Money));
+		$("#Purchase_Total_Money").val(Purchase_Sales_Money1);
+	} else if (ck == 2){
+		var Purchase_Sales_Money= $("#Purchase_Sales_Money").val();
+		var Purchase_Sales_Money1= $("#Purchase_Sales_Money").val();
+		Purchase_Sales_Money = Purchase_Sales_Money.replace(/,/g, "");
+		Purchase_Total_Money  = Math.round(Purchase_Sales_Money * 1.1);
+		Purchase_VAT_Money  = Math.round(Purchase_Total_Money - Purchase_Sales_Money);
+		$("#Purchase_Supply_Money").val(number_format(Purchase_Sales_Money1));
+		$("#Purchase_Total_Money").val(number_format(Purchase_Total_Money));
+		$("#Purchase_VAT_Money").val(number_format(Purchase_VAT_Money));
+	}
 }
 
-function comma(str) {
+function inputmoneyFormat(obj) {
+    obj.value = m_comma(m_uncomma(obj.value));
+}
+
+function m_comma(str) {
     str = String(str);
     return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 //    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 }
 
-function uncomma(str) {
+function m_uncomma(str) {
     str = String(str);
     return str.replace(/[^\d]+/g, '');
 }

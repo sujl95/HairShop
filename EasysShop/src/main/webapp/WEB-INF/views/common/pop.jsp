@@ -288,13 +288,13 @@
 		</div>
 	</div>
 	<!-- 상품 코드 목록 팝업  -->
-	<div class="pop_wrap pop_off">
+	<div class="pop_wrap pop_off" id="item_code_list">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Company_Code pop_white">
 				<div class="pop_title_area">
 					<div class="pop_title_text">
 						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						거래처 등록
+						상품 코드 목록
 					</div>
 					<div class="pop_close">
 						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
@@ -427,13 +427,13 @@
 		</div>
 	</div>
 	<!-- 상품 코드 목록 팝업 - 등록,수정팝업 -->
-	<div class="pop_wrap pop_off">
+	<div class="pop_wrap pop_off" id="item_code_add">
 		<div class="pop_bg"></div>
 			<div class="pop pop_size_Sales_Code_add pop_white">
 				<div class="pop_title_area">
 					<div class="pop_title_text">
 						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
-						시술 코드
+						상품코드 코드
 					</div>
 					<div class="pop_close">
 						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
@@ -442,60 +442,72 @@
 				<div class="pop_schedule_contents">
 					<table class="pop_table">
 						<colgroup>
-							<col width="20%">
-							<col width="30%">
-							<col width="20%">
-							<col width="30%">
+							<col width="15%">
+							<col width="35%">
+							<col width="15%">
+							<col width="35%">
 						</colgroup>
 						<tbody>
-							
 							<tr>
-								<td class="field_name first_field_name">분류</td>
-								<td class="field_contents colorred" >
-									<input class="input_normal  backcolorred" type="text">
+								<td class="field_name first_field_name">상품명</td>
+								<td class="field_contents" >
+									<input class="input_normal" id="IT_NM" name="IT_NM" type="text">
 								</td>
-								<td class="field_name first_field_name">상품규격</td>
-								<td>
-									<input class="input_normal" type="text">
-								</td>
-							</tr>
-								<tr>
 								<td class="field_name first_field_name">매입처</td>
 								<td class="field_contents">
-									<input class="input_normal" style="width: 70px;" type="text">
-									<input type="button" class="btn_normal pxsize60" value="검색"/>
+									<input class="input_normal size45" type="text" id="CP_NM" name="CP_NM">
+									<input type="hidden" id="CP_NO" name="CP_NO">
+									<input type="button" class="btn_normal btn_size_normal" id="CP_Search_btn" name="CP_Search_btn" value="검색"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">대분류 코드</td>
+								<td class="field_contents" >
+									<select class="input_normal" id="IT_M_GROUP_NO" name="IT_M_GROUP_NO">
+									</select>
+								</td>
+								<td class="field_name first_field_name">소분류 코드</td>
+								<td class="field_contents">
+									<select class="input_normal size45" type="text" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">
+									</select>
+<!-- 									<input type="hidden" id="CP_NO" name="CP_NO"> -->
+									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">상품규격</td>
+								<td class="field_contents" >
+									<input class="input_normal" id="IT_STD" name="IT_STD" type="text">
 								</td>
 								<td class="field_name first_field_name">상품단위</td>
-								<td>
-									<input class="input_normal" type="text">
+								<td class="field_contents" >
+									<input class="input_normal" id="IT_UNIT" name="IT_UNIT" type="text">
 								</td>
 							</tr>
 							<tr>
 								<td class="field_name first_field_name">VAT포함여부</td>
 								<td class="field_contents">
-									
-									<label><input type="radio" value="VAT포함" name="Sales_VAT_radio">VAT포함</label>
-									
-									<label><input type="radio" value="VAT미포함" name="Sales_VAT_radio">VAT미포함</label>
+									<label><input type="radio" value="VAT포함" checked="checked" name="IT_VAT_CK">VAT포함</label>
+									<label><input type="radio" value="VAT미포함" name="IT_VAT_CK">VAT미포함</label>
 								</td>
 								<td class="colorred"colspan="2">단가에 부가세 포함여부를 선택해주세요</td>
 							</tr>
 							<tr>
 								<td class="field_name first_field_name" rowspan="2" >판매단가</td>
 								<td class="field_contents" rowspan="2" >
-									<input class="input_normal txtalignright" style="border-bottom : 0px;" value=""  id="Sales_Sales_Money" type="text">
+									<input class="input_normal txtalignright"  id="Sales_Sales_Money" name="Sales_Sales_Money" type="text">
 								</td>
 								<td class="field_name first_field_name backcolorwhite" rowspan="2">
 								</td>
 								<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">
 									<div class="Sale_Money_area">
-									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_Supply_Money" type="text">원
+									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_Supply_Money" name="Sales_Supply_Money" type="text">원
 									</div>
 									<div class="Sale_Money_area">
-									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_VAT_Money" type="text">원
+									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_VAT_Money" name="Sales_VAT_Money" type="text">원
 									</div>
 									<div class="Sale_Money_area">
-									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Sales_Total_Money" type="text">원
+									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_Total_Money" name="Sales_Total_Money" type="text">원
 									</div>
 								</td>
 							</tr>
@@ -504,19 +516,19 @@
 							<tr>
 								<td class="field_name first_field_name" rowspan="2" >매입단가</td>
 								<td class="field_contents" rowspan="2" >
-									<input class="input_normal txtalignright" style="border-bottom : 0px;"id="Purchase_Sales_Money" type="text">
+									<input class="input_normal txtalignright" id="Purchase_Sales_Money" type="text">
 								</td>
 								<td class="field_name first_field_name backcolorwhite" rowspan="2">
 								</td>
 								<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">
 									<div class="Sale_Money_area">
-									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_Supply_Money"  type="text">원
+									공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Supply_Money" name="Purchase_Supply_Money" type="text">원
 									</div>
 									<div class="Sale_Money_area">
-									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_VAT_Money" type="text">원
+									부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_VAT_Money" name="Purchase_VAT_Money" type="text">원
 									</div>
 									<div class="Sale_Money_area">
-									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" onkeyup="inputNumberFormat(this)" value="" id="Purchase_Total_Money" type="text">원
+									판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Total_Money" name="Purchase_Total_Money" type="text">원
 									</div>
 								</td>
 							</tr>
@@ -525,11 +537,11 @@
 							<tr>
 								<td class="field_name first_field_name">현금적립포인트</td>
 								<td class="field_contents">
-									<input class="input_normal txtalignright" onkeyup="inputNumberFormat(this)"  type="text">
+									<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)"  type="text">
 								</td>
 								<td class="field_name first_field_name">카드적립포인트</td>
-								<td>
-									<input class="input_normal txtalignright" onkeyup="inputNumberFormat(this)"  type="text">
+								<td class="field_contents" >
+									<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)"  type="text">
 								</td>
 							</tr>
 						</tbody>
