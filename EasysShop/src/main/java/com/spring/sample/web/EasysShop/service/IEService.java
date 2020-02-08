@@ -39,6 +39,16 @@ public interface IEService {
 	void compcodeUpdate(HashMap<String, String> params) throws Throwable;
 
 	void compdel(HashMap<String, String> params) throws Throwable;
+
+	List<HashMap<String, String>> getitemcodeList(HashMap<String, String> params) throws Throwable;
+
+	HashMap<String, String> getitemcodedata(HashMap<String, String> params) throws Throwable;
+
+	void itemcodeAdd(HashMap<String, String> params) throws Throwable;
+
+	void itemcodeUpdate(HashMap<String, String> params) throws Throwable;
+
+	void itemcodedel(HashMap<String, String> params) throws Throwable;
 	
 	
 }

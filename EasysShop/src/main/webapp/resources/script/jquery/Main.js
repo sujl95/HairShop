@@ -3,16 +3,6 @@
  * create date : 2019.09.19
  */
 $(document).ready(function() {
-//	$("#popup_wrap").load("text.html");
-//	$.ajax({url:"test.html",
-//
-//		success:function(result) {
-//
-//		$("#popup_wrap").html(result);
-//
-//		}});
-	$("#popup_wrap").load("test.html");
-	
 	$(".sscroll").slimScroll({
 		width : "100%",
 		height: "350px"
@@ -191,10 +181,16 @@ $(document).ready(function() {
 //    	.parents("div.pop").parents("div.pop_wrap").removeClass("pop_on").addClass("pop_off");
 //    });
 });
-function numberFormat(inputNumber) {
-	   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-	}
+
+//금액 포맷팅
+function numberFormat(inputNumber) {
+   return inputNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+//숫자만
+function onlynumberFormat() {
+	this.value=this.value.replace(/[^0-9]/g,'');
+}
 function number_format(num){
 	if(!isFinite(num)) return num;
     var num_str = num.toString();
@@ -249,8 +245,11 @@ function Purchaseformat(obj,ck) {
 	}
 }
 
+//금액 포맷팅
 function inputmoneyFormat(obj) {
-    obj.value = m_comma(m_uncomma(obj.value));
+    
+	console.log(obj);
+	return obj.value = m_comma(m_uncomma(obj.value));
 }
 
 function m_comma(str) {

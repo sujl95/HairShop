@@ -366,4 +366,86 @@ public class EController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	
+//	상품 코드 리스트 가져오기
+	@RequestMapping(value="/getitemcodelistAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String getitemcodelistAjax(@RequestParam HashMap<String, String> params, ModelAndView mav, HttpSession session) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		List<HashMap<String, String>> list = iEService.getitemcodeList(params);
+		modelMap.put("list", list);
+		return mapper.writeValueAsString(modelMap);
+	}
+//	상품 데이터 가져오기
+	@RequestMapping(value = "/getitemcodedataAjax",
+			method = RequestMethod.POST,
+			produces = "test/json;charset=UTF-8")
+	@ResponseBody 
+	public String getitemcodedataAjax(@RequestParam HashMap<String, String>params,HttpSession session, ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper= new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		HashMap<String, String> data = iEService.getitemcodedata(params);
+		
+		modelMap.put("data",data);
+		return mapper.writeValueAsString(modelMap);
+	}
+//	상품 등록 
+	@RequestMapping(value = "/itemcodeAddAjax",
+			method = RequestMethod.POST,
+			produces = "test/json;charset=UTF-8")
+	@ResponseBody 
+	public String itemcodeAddAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper= new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		try {
+			iEService.itemcodeAdd(params);
+			modelMap.put("res","SUCCESS");
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelMap.put("res", "Failed");
+		}
+		return mapper.writeValueAsString(modelMap);
+	}
+	
+//	상품 수정
+	@RequestMapping(value = "/itemcodeUpdateAjax",
+			method = RequestMethod.POST,
+			produces = "test/json;charset=UTF-8")
+	@ResponseBody 
+	public String itemcodeUpdateAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper= new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		try {
+			iEService.itemcodeUpdate(params);
+			modelMap.put("res","SUCCESS");
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelMap.put("res", "Failed");
+		}
+		return mapper.writeValueAsString(modelMap);
+	}
+	
+//	상품 삭제 
+	@RequestMapping(value="/itemdelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String itemdelAjax(@RequestParam HashMap<String, String> params, @RequestParam("pop_check") List<String> pop_check, ModelAndView mav) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		String res = "";
+		try {
+			for(int i = 0 ; i < pop_check.size(); i++) {
+				params.put("item_no",pop_check.get(i));
+				iEService.itemcodedel(params);
+			}
+			res = "SUCCESS";
+		}
+		catch(Exception e) {
+			res = "FAILED";
+		}
+		
+		modelMap.put("res", res);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 }

@@ -87,4 +87,29 @@ public class EDao implements IEDao {
 		sqlSession.delete("code.compdel", params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getitemcodeList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("code.getitemcodeList", params);
+	}
+
+	@Override
+	public HashMap<String, String> getitemcodedata(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("code.getitemcodedata", params);
+	}
+
+	@Override
+	public void itemcodeAdd(HashMap<String, String> params) throws Throwable {
+		sqlSession.insert("code.itemcodeAdd", params);		
+	}
+
+	@Override
+	public void itemcodeUpdate(HashMap<String, String> params) throws Throwable {
+		sqlSession.update("code.itemcodeUpdate", params);		
+	}
+
+	@Override
+	public void itemcodedel(HashMap<String, String> params) throws Throwable {
+		sqlSession.delete("code.itemcodedel", params);		
+	}
+
 }

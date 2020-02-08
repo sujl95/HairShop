@@ -89,4 +89,29 @@ public class EService implements IEService {
 		iEDao.compdel(params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getitemcodeList(HashMap<String, String> params) throws Throwable {
+		return iEDao.getitemcodeList(params);
+	}
+
+	@Override
+	public HashMap<String, String> getitemcodedata(HashMap<String, String> params) throws Throwable {
+		return iEDao.getitemcodedata(params);
+	}
+
+	@Override
+	public void itemcodeAdd(HashMap<String, String> params) throws Throwable {
+		iEDao.itemcodeAdd(params);		
+	}
+
+	@Override
+	public void itemcodeUpdate(HashMap<String, String> params) throws Throwable {
+		iEDao.itemcodeUpdate(params);		
+	}
+
+	@Override
+	public void itemcodedel(HashMap<String, String> params) throws Throwable {
+		iEDao.itemcodedel(params);		
+	}
+
 }

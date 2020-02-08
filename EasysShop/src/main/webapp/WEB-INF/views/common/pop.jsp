@@ -468,7 +468,7 @@
 								</td>
 								<td class="field_name first_field_name">소분류 코드</td>
 								<td class="field_contents">
-									<select class="input_normal size45" type="text" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">
+									<select class="input_normal size45" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">
 									</select>
 <!-- 									<input type="hidden" id="CP_NO" name="CP_NO"> -->
 									<input type="button" class="btn_normal btn_size_normal" value="검색"/>
@@ -481,7 +481,7 @@
 								</td>
 								<td class="field_name first_field_name">상품단위</td>
 								<td class="field_contents" >
-									<input class="input_normal" id="IT_UNIT" name="IT_UNIT" type="text">
+									<input class="input_normal" id="IT_UNIT" name="IT_UNIT" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text">
 								</td>
 							</tr>
 							<tr>
