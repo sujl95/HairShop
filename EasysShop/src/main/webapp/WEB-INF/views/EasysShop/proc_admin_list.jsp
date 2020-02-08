@@ -45,6 +45,7 @@ $(document).ready(function() {
 	
 	$("#btn_reg").on("click",function(){
 		var html = "";
+		html += `<form action="#" method="post" id="popForm">`
 		html += `<table class="pop_table table_list tborder">`
 		html += `	<colgroup>`
 		html += `		<col width="15%">`
@@ -95,15 +96,13 @@ $(document).ready(function() {
 		html += `		<tr class="height50">`
 		html += `			<td class="field_name ">시술명<span class="important_text">*</span></td>`
 		html += `			<td colspan="3" class="text_align_left">`
-		html += `				<select class="input_size pxsize150 ml10">`
-		html += `					<option>시술분류</option>`
-		html += `					<option>드라이</option>`
-		html += `					<option>컷</option>`
+		html += `				<select class="input_size pxsize100 ml10" id="mCate" name="mCate">`
+		html += `					<option value="-1" selected="selected" >시술분류</option>`
 		html += `				</select>`
-		html += `				<select class="input_size pxsize150 ml10">`
-		html += `					<option>시술명</option>`
-		html += `					<option>매직드라이</option>`															
+		html += `				<select class="input_size pxsize100 ml10" id="sCate" name="sCate">`
+		html += `					<option value="-1">시술명</option>`
 		html += `				</select>`
+		html += `				<input type="button" class="btn_normal btn_size_normal ml10" id="btn_srchEmp"  value="검색" />`
 		html += `			</td>`
 		html += `		</tr>`
 		html += `		<tr class="height50">`
@@ -129,8 +128,14 @@ $(document).ready(function() {
 		html += `		</tr>`
 		html += `	</tbody>`
 		html += `</table>`
+		html += `</form>`
 		
-		makeTwoBtnPopup(1, "시술코드 등록", html, true, 430, 510, null, "등록", function() {
+		makeTwoBtnPopup(1, "시술코드 등록", html, true, 430, 510, function(){
+			procCate();
+			$("#mCate").change(function(){
+				procCate();
+			});
+		}, "등록", function() {
 			makeAlert(2, "하이", "내용임", null);
 		},"취소", function() {
 			closePopup(1);
@@ -209,7 +214,53 @@ function reloadClient(){
 	});
 }
 
-function drawClient(){
+function drawClient(mList, sList){
+	 
+}
+
+function procCate(){
+	var params = $("#popForm").serialize();
+	$.ajax({
+		type : "post",
+		url : "procCateAjax",
+		dataType : "json",
+		data : params,
+		success : function(result) {
+			if($("#mCate").val() >= 0){
+				drawSCate(result.sList);
+			} else {
+				drawMCate(result.mList);
+			};
+		},
+		error : function(request, status, error) {
+			console.log("text : " + request.responseText);
+			console.log("error : " + error);
+		}
+	});
+}
+
+function drawMCate(mList){
+	var html = "";
+	
+	html += `					<option value="-1">시술분류</option>`
+	for(var i in mList){
+		html += `					<option value="` + mList[i].CODE_S_CATE + `">` + mList[i].CODE_NAME + `</option>`
+	}
+	
+	$("#mCate").html(html);
+	
+}
+
+function drawSCate(sList){
+	var html = "";
+	
+	html += `					<option>시술명</option>`
+		
+	for(var i in sList){
+		html += `					<option>` + sList[i].CODE_NAME + `</option>`
+	}
+		
+	$("#sCate").html(html);
 	
 }
 

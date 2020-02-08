@@ -20,4 +20,16 @@ public class ProcService implements IProcService {
 		return iProcDao.getProcList(params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getProcMCate() throws Throwable {
+		// TODO Auto-generated method stub
+		return iProcDao.getProcMCate();
+	}
+
+	@Override
+	public List<HashMap<String, String>> getProcSCate(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return iProcDao.getProcSCate(params);
+	}
+
 }
