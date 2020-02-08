@@ -43,12 +43,29 @@ public class ProcController {
 	public String procListAjax(@RequestParam HashMap<String,String> params,
 					ModelAndView mav, HttpSession session) throws Throwable{
 	ObjectMapper mapper = new ObjectMapper();
-	Map<String,Object> modelMap = new HashMap<String,Object>();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		
+		List<HashMap<String, String>> list = iProcService.getProcList(params);
+		
+		modelMap.put("list", list);
+		return mapper.writeValueAsString(modelMap);
+	}
 	
-	List<HashMap<String, String>> list = iProcService.getProcList(params);
-	
-	modelMap.put("list", list);
-	return mapper.writeValueAsString(modelMap);
-}
-	
+	@RequestMapping(value = "/procCateAjax",
+			method = RequestMethod.POST,
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String procCateAjax(@RequestParam HashMap<String,String> params,
+				ModelAndView mav, HttpSession session) throws Throwable{
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		List<HashMap<String, String>> mList = iProcService.getProcMCate();
+		
+		modelMap.put("mList", mList);
+		if(!params.get("mCate").equals("-1")) {
+			List<HashMap<String, String>> sList = iProcService.getProcSCate(params);
+			modelMap.put("sList", sList);
+		}
+		return mapper.writeValueAsString(modelMap);
+	}
 }
