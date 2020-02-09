@@ -11,6 +11,11 @@
 .table_list_header > td, .list_contents td {
 	padding: 0 !important;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -114,7 +119,7 @@ $(document).ready(function() {
 		html += `		<tr class="height50">`
 		html += `			<td class="field_name">금액<span class="important_text">*</span></td>`
 		html += `			<td class="text_align_left "><input`
-		html += `				class="input_size size80 ml10 text_align_right" type="text"></td>`
+		html += `				class="input_size size80 ml10 text_align_right" type="number" id="price"></td>`
 		html += `			<td colspan="2">`
 		html += `				<div class="size100 text_align_left text_indent50">`
 		html += `					공급가<input type="text"`
@@ -132,7 +137,34 @@ $(document).ready(function() {
 		html += `	</tbody>`
 		html += `</table>`
 		
-		makeTwoBtnPopup(1, "판매 등록", html,  true, 600, 510, null, "등록", function() {
+		makeTwoBtnPopup(1, "판매 등록", html,  true, 600, 510, function(){
+// 			$("#price").on("keydown",function(){
+// 				setTimeout(function(){
+// 					var str = "";
+// 					var c = parseInt($("#price").val().length);
+// 					var a = parseInt($("#price").val().length / 3);
+// 					var b = $("#price").val().length % 3;
+// 					if(a > 0){
+// 						//a = 0, b = 0 일 때 100 
+// 						if(b > 0){
+// 							str += $("#price").val().substr(0, b);
+// 						}
+// 						for(var i = 0 ; i < a ; i++){
+// 							console.log(a);
+// 							console.log(b);
+// 							str += "," + $("#price").val().substr(b + (i * 3), (b + ((i + 1) * 3))) +"]";
+// 						}
+// 					} else {
+// 						str = $("#price").val().substr(0, b);
+// 					}
+					
+// 					// , 의 개수는 length / 3 수
+// 					// 나머지가 0 이면 -1
+// 					//
+// 					console.log(str);
+// 				},1);
+// 			});
+		}, "등록", function() {
 			makeAlert(2, "하이", "내용임", null);
 		},"취소", function() {
 			closePopup(1);

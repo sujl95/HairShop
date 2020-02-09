@@ -338,12 +338,12 @@
 	font-size: 0;
 }
 /* 팝업 크기 관련 */
-.pop_size_small {
-	width: 400px;
-	height: 200px;
-	top: calc(50% - 100px);
-	left: calc(50% - 200px);
-}
+/* .pop_size_small { */
+/* 	width: 400px; */
+/* 	height: 200px; */
+/* 	top: calc(50% - 100px); */
+/* 	left: calc(50% - 200px); */
+/* } */
 
 /* 
     밑 CSS는 주소 검색과 관련된 팝업입니다.

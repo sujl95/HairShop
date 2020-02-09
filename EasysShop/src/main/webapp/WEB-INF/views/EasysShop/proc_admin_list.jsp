@@ -102,7 +102,7 @@ $(document).ready(function() {
 		html += `				<select class="input_size pxsize100 ml10" id="sCate" name="sCate">`
 		html += `					<option value="-1">시술명</option>`
 		html += `				</select>`
-		html += `				<input type="button" class="btn_normal btn_size_normal ml10" id="btn_srchEmp"  value="검색" />`
+		html += `				<input type="button" class="btn_normal btn_size_normal ml10" id="btn_srchProc"  value="검색" />`
 		html += `			</td>`
 		html += `		</tr>`
 		html += `		<tr class="height50">`
@@ -135,6 +135,7 @@ $(document).ready(function() {
 			$("#mCate").change(function(){
 				procCate();
 			});
+			
 		}, "등록", function() {
 			makeAlert(2, "하이", "내용임", null);
 		},"취소", function() {
@@ -146,6 +147,10 @@ $(document).ready(function() {
 		});
 		$("#btn_srchEmp").on("click",function(){
 			makeAlert(2, "하이", "내용임", null);
+		});
+		
+		$("#btn_srchProc").on("click",function(){
+			procSrch();
 		});
 		
 	});
@@ -179,7 +184,7 @@ function redrawList(list) {
 			html += `			<label for="table_procedure_squaredOne1"></label>`;
 			html += `		</div>`;
 			html += `	</td>`;
-			html += `	<td class="w60"><input type="button" value="수정"/></td>`;
+			html += `	<td class="w60"><input type="button" value="수정" id="btn_procModify"/></td>`;
 			html += `	<td class="w60">` + list[i].PROC_NO + `</td>`;
 			html += `	<td>` + list[i].PROC_DATE + `</td>`;
 			html += `	<td class="w70">` + list[i].CT_NM +`</td>`;
@@ -195,6 +200,114 @@ function redrawList(list) {
 		}
 	}
 	$(".tbody_scroll").html(html);
+	
+	$("tr").on("click","#btn_procModify",function(){
+		console.log($(this).attr("id"));
+		var html = "";
+		html += `<form action="#" method="post" id="popForm">`
+		html += `<table class="pop_table table_list tborder">`
+		html += `	<colgroup>`
+		html += `		<col width="15%">`
+		html += `		<col width="50%">`
+		html += `		<col width="15%">`
+		html += `		<col width="35%">`
+		html += `	</colgroup>`
+		html += `	<tbody>`
+		html += `		<tr class="height50">`
+		html += `			<td class="field_name ">시술날짜<span class="important_text">*</span></td>`
+		html += `			<td colspan="3" class="text_align_left ">`
+		html += `				<input type="date" class="input_size ml10" />`
+		html += `				<select class="input_size pxsize60 ml10">`
+		html += `					<option>시</option>`
+		html += `					<option>1시</option>`
+		html += `					<option>2시</option>`
+		html += `					<option>3시</option>`
+		html += `					<option>4시</option>`
+		html += `					<option>5시</option>`
+		html += `					<option>6시</option>`
+		html += `				</select>`
+		html += `				<select class="input_size pxsize60 ml10">`
+		html += `					<option>분</option>`
+		html += `					<option>10분</option>`
+		html += `					<option>20분</option>`
+		html += `					<option>30분</option>`
+		html += `					<option>40분</option>`
+		html += `					<option>50분</option>`
+		html += `				</select>`
+		html += `			</td>`
+		html += `		</tr>`
+		html += `		<tr class="height50">`
+		html += `			<td class="field_name">고객명</td>`
+		html += `			<td colspan="1" class="text_align_left ">`
+		html += `				<input class="input_size pxsize100 ml10" type="text">` 
+		html += `				<input type="button" class="btn_normal btn_size_normal ml10" id="btn_srchCt" value="검색" />`
+		html += `			</td>`
+		html += `			<td colspan="2" rowspan="2" class="pxsize120">`
+		html += `			</td>`
+		html += `		</tr>`
+		html += `		<tr class="height50">`
+		html += `			<td class="field_name">디자이너<span class="important_text">*</span></td>`
+		html += `			<td colspan="1" class="text_align_left ">`
+		html += `				<input class="input_size pxsize100 ml10" type="text">`
+		html += `				<input type="button" class="btn_normal btn_size_normal ml10" id="btn_srchEmp"  value="검색" />`
+		html += `			</td>`
+		html += `		</tr>`
+		html += `		<tr class="height50">`
+		html += `			<td class="field_name ">시술명<span class="important_text">*</span></td>`
+		html += `			<td colspan="3" class="text_align_left">`
+		html += `				<select class="input_size pxsize100 ml10" id="mCate" name="mCate">`
+		html += `					<option value="-1" selected="selected" >시술분류</option>`
+		html += `				</select>`
+		html += `				<select class="input_size pxsize100 ml10" id="sCate" name="sCate">`
+		html += `					<option value="-1">시술명</option>`
+		html += `				</select>`
+		html += `				<input type="button" class="btn_normal btn_size_normal ml10" id="btn_srchProc"  value="검색" />`
+		html += `			</td>`
+		html += `		</tr>`
+		html += `		<tr class="height50">`
+		html += `			<td class="field_name">요금구분<span class="important_text">*</span></td>`
+		html += `			<td class="text_align_left" colspan="3">`
+		html += `				<select class="input_size pxsize310 ml10">`
+		html += `					<option selected="selected">분류를 선택해주세요</option>`
+		html += `					<option>현금</option>`
+		html += `					<option>신용카드</option>`
+		html += `					<option>서비스</option>`
+		html += `				</select>`
+		html += `			</td>`
+		html += `		</tr>`
+		html += `		<tr class="height50">`
+		html += `			<td class="field_name">금액<span class="important_text">*</span></td>`
+		html += `			<td class="text_align_left" colspan="3">`
+		html += `				<input class="input_size pxsize310 ml10 text_align_right" type="text">`
+		html += `			</td>`
+		html += `		</tr>`
+		html += `		<tr class="height50">`
+		html += `			<td class="field_name">메모</td>`
+		html += `			<td colspan="3"><textarea class="size80 textarea_normal"></textarea></td>`
+		html += `		</tr>`
+		html += `	</tbody>`
+		html += `</table>`
+		html += `</form>`
+		
+		makeTwoBtnPopup(1, "시술코드 등록", html, true, 430, 510, function(){
+			procCate();
+			$("#mCate").change(function(){
+				procCate();
+			});
+			
+			$("#btn_srchProc").on("click",function(){
+				procSrch();
+			});
+		}, "수정", function() {
+			makeAlert(2, "하이", "내용임", null);
+		},"취소", function() {
+			closePopup(1);
+		});
+		
+	});
+	
+	
+	
 }
 
 function reloadClient(){
@@ -264,13 +377,258 @@ function drawSCate(sList){
 	
 }
 
+function procSrch(){
+	var html = "";
+	html += `<div class="pop_btn_bottom_area">`
+	html += `	<input type="button" class="btn_normal btn_size_normal" value="등록"/>`
+	html += `	<input type="button" class="btn_normal btn_size_normal" value="수정"/>`
+	html += `	<input type="button" class="btn_normal btn_size_normal" value="삭제"/>`
+	html += `	<input type="button" class="btn_normal btn_size_normal pxsize200" value="적립 포인트 일괄 변경"/>`
+	html += `</div>`
+	html += `<table class="pop_table">`
+	html += `	<colgroup>`
+	html += `		<col width="20%">`
+	html += `		<col width="80%">`
+	html += `	</colgroup>`
+	html += `	<tbody>`
+	html += `		<tr>`
+	html += `			<td class="field_name first_field_name">검색어</td>`
+	html += `			<td class="field_contents">`
+	html += `				<input class="input_size size60" type="text">`
+	html += `				<input type="button" class="btn_normal btn_size_normal" value="검색"/>`
+	html += `			</td>`
+	html += `		</tr>`
+	html += `	</tbody>`
+	html += `</table>`
+	html += `<table class="table_list tborder" id="pop_Procedure_list" >`
+	html += `	<colgroup>`
+	html += `		<col width="8%">`
+	html += `		<col width="17%">`
+	html += `		<col width="25%">`
+	html += `		<col width="15%">`
+	html += `		<col width="20%">`
+	html += `		<col width="20%">`
+	html += `	</colgroup>`
+	html += `	<thead>`
+	html += `	<tr class="table_list_header" >`
+	html += `		<td rowspan="2">`
+	html += `			<div class="squaredOne_h">`
+	html += `				<input type="checkbox" value="None" style="display : none;" id="pop_PC_checkall"  />`
+	html += `				<label for="pop_PC_checkall"  ></label> <!-- squaredOne 같이? -->`
+	html += `			</div>`
+	html += `		</td>`
+	html += `		<td rowspan="2">그룹명</td>`
+	html += `		<td colspan="2">기본정보</td>`
+	html += `		<td colspan="2">적립정보</td>`
+	html += `	</tr>`
+	html += `	<tr class="table_list_header" >`
+	html += `		<td>시술명</td>`
+	html += `		<td>요금</td>`
+	html += `		<td>현금적립금</td>`
+	html += `		<td>카드적립금</td>`
+	html += `	</tr>`
+	html += `	</thead>`
+	html += `</table>`
+	html += `<div class="pop_schedule_contents">`
+	html += `<div class="pop_Procedure_list">`
+	html += `<table class="table_list tborder" id="pop_Procedure_list" >`
+	html += `	<colgroup>`
+	html += `		<col width="8%">`
+	html += `		<col width="17%">`
+	html += `		<col width="25%">`
+	html += `		<col width="15%">`
+	html += `		<col width="20%">`
+	html += `		<col width="20%">`
+	html += `	</colgroup>`
+	html += `	<tbody>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne1" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne1"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td rowspan="3">기타</td>`
+	html += `			<td>기타</td>`
+	html += `			<td>10,000</td>`
+	html += `			<td>0</td>`
+	html += `			<td>0</td>`
+	html += `		</tr>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne2" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne2"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td>붙임머리</td>`
+	html += `			<td>75,000</td>`
+	html += `			<td>7,500</td>`
+	html += `			<td>3,750</td>`
+	html += `		</tr>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne3" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne3"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td>올림머리</td>`
+	html += `			<td>30,000</td>`
+	html += `			<td>3,000</td>`
+	html += `			<td>1,500</td>`
+	html += `		</tr>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne4" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne4"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td rowspan="3">드라이</td>`
+	html += `			<td>드라이</td>`
+	html += `			<td>15,000</td>`
+	html += `			<td>0</td>`
+	html += `			<td>0</td>`
+	html += `		</tr>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne5" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne5"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td>매직드라이</td>`
+	html += `			<td>15,000</td>`
+	html += `			<td>1,500</td>`
+	html += `			<td>750</td>`
+	html += `		</tr>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne6" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne6"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td>웨이브드라이</td>`
+	html += `			<td>10,000</td>`
+	html += `			<td>1,000</td>`
+	html += `			<td>500</td>`
+	html += `		</tr>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne4" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne4"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td rowspan="3">드라이</td>`
+	html += `			<td>드라이</td>`
+	html += `			<td>15,000</td>`
+	html += `			<td>0</td>`
+	html += `			<td>0</td>`
+	html += `		</tr>`
+	html += `		<tr class="list_contents">`
+	html += `			<td style="cursor: default;">`
+	html += `				<div class="squaredOne">`
+	html += `					<input type="checkbox" value="None" style="display: none;"`
+	html += `						id="pop_PC_squaredOne5" name="pop_PC_check" /> <label`
+	html += `						for="pop_PC_squaredOne5"></label>`
+	html += `				</div>`
+	html += `			</td>`
+	html += `			<td>매직드라이</td>`
+	html += `			<td>15,000</td>`
+	html += `			<td>1,500</td>`
+	html += `			<td>750</td>`
+	html += `		</tr>`
+	html += `	</tbody>`
+	html += `</table>`
+	html += `</div>`
+	html += `</div>`
+	
+	makeNoBtnPopup(2, "시술 코드 목록", html, true, 600, 600, false);
+}
 </script>
 </head>
 <body>
 	<c:import url="/topLeft">
 		<c:param name="menuNo">4</c:param>
 	</c:import>
-	
+	<!-- 시술 코드 목록 팝업 - 등록,수정팝업 -->
+	<div class="pop_wrap pop_off">
+		<div class="pop_bg"></div>
+			<div class="pop pop_size_Procedure_Code_add pop_white">
+				<div class="pop_title_area">
+					<div class="pop_title_text">
+						<img src="resources/images/Eimages/EasysShopLogo.PNG" class="pop_icon"> 
+						시술 코드
+					</div>
+					<div class="pop_close">
+						<img src="resources/images/Eimages/button/icon_del_white.png" class="BtnPopClose"/>
+					</div>
+				</div>
+				<div class="pop_schedule_contents">
+					<table class="pop_table">
+						<colgroup>
+							<col width="20%">
+							<col width="30%">
+							<col width="25%">
+							<col width="25%">
+						</colgroup>
+						<tbody>
+							
+							<tr>
+								<td class="field_name first_field_name">분류</td>
+								<td class="field_contents colorred" colspan="3">
+									<select class="input_size pxsize150 backcolorred"> 
+										<option selected="selected">분류를 선택해주세요</option>
+										<option>드라이</option>
+										<option>컷</option>
+										<option>펌</option>
+										<option>염색</option>
+										<option>크리닉</option>
+										<option>기타</option>
+									</select>
+									해당 분류가 없으면 직접 입력해 주세요
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">시술명</td>
+								<td class="field_contents">
+									<input class="input_normal  backcolorred" type="text">
+								</td>
+								<td class="field_name first_field_name">현금적립포인트</td>
+								<td>
+									<input class="input_normal txtalignright" type="text">
+								</td>
+							</tr>
+							<tr>
+								<td class="field_name first_field_name">요금</td>
+								<td class="field_contents">
+									<input class="input_normal txtalignright" type="text">
+								</td>
+								<td class="field_name first_field_name">카드적립포인트</td>
+								<td>
+									<input class="input_normal txtalignright" type="text">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				<div class="pop_btn_bottom_area">
+					<input type="button" class="btn_normal btn_size_normal" value="확인"/>
+					<input type="button" class="btn_normal btn_size_normal" value="취소"/>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 시술 등급 목록 팝업  -->
 	<div class="title_area">시술 관리</div>
 	<div class="content_area">
 		<div class="list_wrap">
@@ -359,29 +717,6 @@ function drawSCate(sList){
 				<!-- 테이블 상단 부분 끝-->
 				<!-- 테이블 내용 부분 시작 -->
 						<tbody class="tbody_scroll sscroll">
-<!-- 							<tr class="list_contents"> -->
-<!-- 								<td style="cursor : default;" class="w60"> -->
-<!-- 									<div class="squaredOne"> -->
-<!-- 										<input type="checkbox" value="None" style="display : none;" id="table_procedure_squaredOne1" name="pop_PC_check" /> -->
-<!-- 										<label for="table_procedure_squaredOne1"></label> -->
-<!-- 									</div> -->
-<!-- 								</td> -->
-<!-- 								<td class="w60"><input type="button" value="수정"/></td> -->
-<!-- 								<td class="w60">1</td> -->
-<!-- 								<td>2019-12-22</td> -->
-<!-- 								<td class="w70">박희재</td> -->
-<!-- 								<td>매직스트레이트(펌)</td> -->
-<!-- 								<td>박희재</td> -->
-<!-- 								<td>현금</td> -->
-<!-- 								<td>100,000</td> -->
-<!-- 								<td>1,000</td> -->
-<!-- 								<td>1,000</td> -->
-<!-- 								<td>100,000</td> -->
-<!-- 								<td>220일</td> -->
-<!-- 							</tr> -->
-<!-- 							<tr class="list_contents"> -->
-<!-- 								<td colspan="13" style="height: 120px;">조회된 데이터가 없습니다.</td> -->
-<!-- 							</tr> -->
 						</tbody>
 					</table>
 				</div>
