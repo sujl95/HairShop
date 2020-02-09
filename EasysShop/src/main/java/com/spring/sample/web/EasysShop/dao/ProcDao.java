@@ -18,4 +18,16 @@ public class ProcDao implements IProcDao {
 		return sqlSession.selectList("Proc.getProcList",params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getProcMCate() throws Throwable {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Proc.getProcMCate");
+	}
+
+	@Override
+	public List<HashMap<String, String>> getProcSCate(HashMap<String, String> params) throws Throwable {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Proc.getProcSCate",params);
+	}
+
 }

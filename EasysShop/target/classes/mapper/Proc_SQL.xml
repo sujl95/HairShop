@@ -14,4 +14,16 @@
 		                  INNER JOIN POINT PT
 		                          ON PR.PT_NO = PT.PT_NO
 	</select>
+	<select id="getProcMCate" resultType="hashmap">
+		SELECT CC.CODE_L_CATE, CC.CODE_M_CATE, CC.CODE_S_CATE, CC.CODE_NAME
+		FROM COMMON_CODE CC
+		WHERE CODE_M_CATE = 2
+		AND CODE_L_CATE = 0
+	</select>
+	<select id="getProcSCate" parameterType="hashmap" resultType="hashmap">
+		SELECT CC.CODE_L_CATE, CC.CODE_M_CATE, CC.CODE_S_CATE, CC.CODE_NAME
+		FROM COMMON_CODE CC
+		WHERE CODE_M_CATE = #{mCate}
+		AND CODE_L_CATE = 2
+	</select>
 </mapper>
