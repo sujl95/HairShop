@@ -334,6 +334,7 @@ public class EController {
 		ObjectMapper mapper= new ObjectMapper();
 		Map<String,Object> modelMap = new HashMap<String,Object>();
 		try {
+			System.out.println("params"+params);
 			iEService.compcodeUpdate(params);
 			modelMap.put("res","SUCCESS");
 		} catch (Exception e) {
@@ -398,6 +399,7 @@ public class EController {
 	public String itemcodeAddAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
 		ObjectMapper mapper= new ObjectMapper();
 		Map<String,Object> modelMap = new HashMap<String,Object>();
+		System.out.println("params" + params);
 		try {
 			iEService.itemcodeAdd(params);
 			modelMap.put("res","SUCCESS");
@@ -448,4 +450,31 @@ public class EController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	
+//	상품 카데고리 가져오기
+	@RequestMapping(value="/getitemcateAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String getitemcateAjax(@RequestParam HashMap<String, String> params, ModelAndView mav, HttpSession session) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		List<HashMap<String, String>> Mlist = iEService.getitemcateList(params);
+		modelMap.put("Mlist", Mlist);
+		if(!params.get("IT_M_GROUP_NO").equals("-1")) {
+			List<HashMap<String, String>> Slist = iEService.getitemScateList(params);
+			modelMap.put("Slist", Slist);
+		}
+		
+		return mapper.writeValueAsString(modelMap);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

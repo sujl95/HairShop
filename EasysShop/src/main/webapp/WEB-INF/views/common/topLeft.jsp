@@ -30,8 +30,7 @@ $(document).ready(function() {
 		} else if ($(this).attr("menuno") == 17) {
 			Gradefun(2);
 		} else if ($(this).attr("menuno") == 18) {
-			Itemfun();
-// 			$("#item_code_add").removeClass("pop_off").addClass("pop_on");
+			Itemfun(1);
 		} else if ($(this).attr("menuno") == 19) {
 			console.log(1);
 		} else if ($(this).attr("menuno") == 20) {
@@ -44,6 +43,7 @@ $(document).ready(function() {
 	 		if (str == "getcustgradelist") getlist(1);
 	 		if (str == "getempgradelist") getlist(2);
 	 		if (str == "getcomplist") getlist(3);
+	 		if (str == "getitemcodelist") getlist(4);
 		});
 		
 		$("input[name=searchTxt]").on("keypress", function() {
@@ -65,7 +65,9 @@ $(document).ready(function() {
 				ajax = "getempgdataAjax";
 			} else if($(this).attr("id") == "comp_no") {
 				ajax = "getcompdataAjax";
-			}
+			} else if($(this).attr("id") == "IT_CODE_NO") {
+				ajax = "getitemcodedataAjax";
+			} 
 			console.log(params);
 			$.ajax({
 				type : "post", //데이터 전송방식
@@ -81,8 +83,12 @@ $(document).ready(function() {
 					} else if (ajax == "getempgdataAjax") {
 						make_custgrade_pop(4,"직원 등급수정",result1);
 					} else if (ajax == "getcompdataAjax") {
-						make_comp_pop(2,"거래처 수정",result1);
-					}
+						make_comp_pop(2,"거래처 수정",3,result1);
+					} else if (ajax == "getitemcodedataAjax") {
+						make_item_pop(2,"상품 코드 수정",3,result1);
+					} 
+					
+					
 				} , 
 				error : function(request,status,error) {
 					console.log("status : "+request.status);
@@ -222,7 +228,7 @@ function Gradefun (ck) {
 }
 
 //거래처 메서드
-function Compfun (ck) {
+function Compfun (depth) {
 	var html = "";
 	html += `<form id="popactionForm" action="#" method="post">`;
 	html += `<table class="pop_table">`;
@@ -282,12 +288,12 @@ function Compfun (ck) {
 	html += `	</tbody>                                               `;
 	html += `</table>                                                  `;
 	html += `</form>`;
-	if (ck == null) {
-		ck = 1;
+	if (depth == null) {
+		depth = 1;
 	} else {
 		
 	}
-	makeThreeBtnPopup(ck, "거래처 코드 목록", html, false, 900, 700, function() {
+	makeThreeBtnPopup(depth, "거래처 코드 목록", html, false, 900, 700, function() {
 		getlist(3);
 		$("#popdataForm").slimScroll({
 			width : "880px",
@@ -296,29 +302,29 @@ function Compfun (ck) {
 		});
 	}
 	, "등록", function() {
-		make_comp_pop(1, "거래처 등록");
+		make_comp_pop(1, "거래처 등록",depth+1);
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-		if (ck == null) {
-			ck = 2;
+		if (depth == null) {
+			depth = 2;
 		} else {
-			ck += 1;
+			depth += 1;
 		}
-		listdel(ck,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
+		listdel(depth,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
 	},"취소", function() {
-		if (ck == null) {
-			ck = 1;
+		if (depth == null) {
+			depth = 1;
 		} else {
-			ck += 1;
+// 			depth += 1;
 		}
-		closePopup(ck);
+		closePopup(depth);
 	});
 	
 	
 }
 
 //상품 코드 목록 메서드
-function Itemfun (ck) {
+function Itemfun (depth) {
 	var html = "";
 	html += `<form id="popactionForm" action="#" method="post">`;
 	html += `<table class="pop_table">`;
@@ -330,12 +336,6 @@ function Itemfun (ck) {
 	html += `		<tr>              `;
 	html += `			<td class="field_name first_field_name">검색어</td> `;
 	html += `			<td class="field_contents">                         `;
-// 	html += `				<select class="input_size pxsize100" name="searchGbn" id="searchGbn">  `;
-// 	html += `					<option value="0" selected="selected">전체</option>                `;
-// 	html += `					<option value="1">거래처 구분</option>                                  `;
-// 	html += `					<option value="2">거래처명</option>                                  `;
-// 	html += `					<option value="3">담당자</option>                                `;
-// 	html += `				</select>                                                              `;
 	html += `				<input class="input_size size60" type="text" id="getcomplist" name="searchTxt">   `;
 	html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getitemcodelist" value="검색"/>`;
 	html += `			</td>`;
@@ -361,49 +361,45 @@ function Itemfun (ck) {
 	html += `			<td width="110px" nowrap>판매단가</td>    `;
 	html += `			<td width="150px" nowrap>판매가(VAT포함)</td>    `;
 	html += `			<td width="110px" nowrap>매입단가</td>   `;
-	html += `			<td width="110px" nowrap>매입가(VAT포함)</td>      `;
+	html += `			<td width="150px" nowrap>매입가(VAT포함)</td>      `;
 	html += `			<td width="150px" nowrap>적립POINT(현금)</td>   `;
 	html += `			<td width="150px" nowrap>적립POINT(카드)</td>  `;
 	html += `			<td width="120px" nowrap>매입처</td>`;
 	html += `			<td width="100px" nowrap>규격</td>   `;
 	html += `			<td width="100px" nowrap>단위</td>     `;
-	html += `			<td width="100px" nowrap>등록일</td>     `;
+	html += `			<td width="120px" nowrap>등록일</td>     `;
 	html += `		</tr>                                              `;
 	html += `	</thead>                                               `;
 	html += `	<tbody class="tbody_scroll sscroll">                           `;
 	html += `	</tbody>                                               `;
 	html += `</table>                                                  `;
 	html += `</form>`;
-	if (ck == null) {
-		ck = 1;
-	} else {
-		
-	}
-	makeThreeBtnPopup(ck, "상품 코드 목록", html, false, 900, 700, function() {
+	makeThreeBtnPopup(depth = (depth == null) ? 1 : depth, "상품 코드 목록", html, false, 900, 700, function() {
 		getlist(4);
 		$("#popdataForm").slimScroll({
 			width : "880px",
 			height: "500px",
 			axis: 'both'
 		});
+		
 	}
 	, "등록", function() {
-// 		make_comp_pop(1, "거래처 등록");
+		make_item_pop(1, "상품 코드 등록",depth = (depth == null) ? 1 : depth+1);
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-		if (ck == null) {
-			ck = 2;
-		} else {
-			ck += 1;
-		}
-// 		listdel(ck,"거래처 ",400,200,"popactionForm","compdelAjax","getlist4",params);
+// 		if (depth == null) {
+// 			depth = 2;
+// 		} else {
+// 			depth += 1;
+// 		}
+		listdel(depth = (depth == null) ? 1 : depth,"거래처 ",400,200,"popactionForm","compdelAjax","getlist4",params);
 	},"취소", function() {
-		if (ck == null) {
-			ck = 1;
-		} else {
-			ck += 1;
-		}
-		closePopup(ck);
+// 		if (depth == null) {
+// 			depth = 1;
+// 		} else {
+// 			depth += 1;
+// 		}
+		closePopup(depth = (depth == null) ? 1 : depth	);
 	});
 	
 	
@@ -421,29 +417,20 @@ function drawitemcodeList(list) {
 			html += `			<label class="chbox_lbl" for="chk_`+list[i].IT_NO+`"></label>                                                                         `;
 			html += `		</div>                                                                                                                `;
 			html += `	</td>                                                                                                                     `;
-			html += `	<td  width="95px" nowrap style="cursor : default;"><input name="`+list[i].IT_NO+`"type="button" class="pop_update" id="item_no" value="수정"/></td>                                `;
+			html += `	<td  width="95px" nowrap style="cursor : default;"><input name="`+list[i].IT_NO+`"type="button" class="pop_update" id="IT_CODE_NO" value="수정"/></td>                                `;
 			html += `			<td width="150px" nowrap>`+list[i].IT_NM+`</td>   `;
 			html += `			<td width="140px" nowrap>`+list[i].CODE_NAME+`</td>`;
-			if (list[i].IT_VAT_CK == "VAT포함") {
-				html += `			<td width="100px" nowrap>YES</td>`;
-			} else {
-				html += `			<td width="100px" nowrap>NO</td>`;
-			}
-// 			html += `			<td width="100px" nowrap>`+list[i].IT_VAT_CK+`</td>`;
-			var IT_SAL_U_PRICE = list[i].IT_SAL_U_PRICE * 1;
-			var a = inputmoneyFormat(IT_SAL_U_PRICE);
-			console.log(IT_SAL_U_PRICE);
-			console.log(inputmoneyFormat(IT_SAL_U_PRICE));
-			html += `			<td width="110px" nowrap>`+IT_SAL_U_PRICE+`</td>    `;
-			html += `			<td width="150px" nowrap>`+list[i].IT_SAL_U_PRICE_VAT+`</td>    `;
-			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_W_PRICE+`</td>   `;
-			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_W_PRICE_VAT+`</td>      `;
-			html += `			<td width="150px" nowrap>`+list[i].IT_MONEY_PT+`</td>`
-			html += `			<td width="150px" nowrap>`+list[i].IT_CARD_PT+`</td>  `;
+			html += `			<td width="100px" nowrap>`+list[i].IT_VAT_CK+`</td>`;
+			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_U_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>    `;
+			html += `			<td width="150px" nowrap>`+list[i].IT_SAL_U_PRICE_VAT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>    `;
+			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_W_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>   `;
+			html += `			<td width="150px" nowrap>`+list[i].IT_SAL_W_PRICE_VAT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>      `;
+			html += `			<td width="150px" nowrap>`+list[i].IT_MONEY_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>`
+			html += `			<td width="150px" nowrap>`+list[i].IT_CARD_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>  `;
 			html += `			<td width="120px" nowrap>`+list[i].CP_NM+`</td>`;
 			html += `			<td width="100px" nowrap>`+list[i].IT_STD+`</td>   `;
 			html += `			<td width="100px" nowrap>`+list[i].IT_UNIT+`</td>     `;
-			html += `			<td width="100px" nowrap>`+list[i].IT_DATE+`</td>     `;
+			html += `			<td width="120px" nowrap>`+list[i].IT_DATE+`</td>     `;
 			html += `</tr>                                                                                                                        `
 		}            
 		$("input[type=checkbox]").prop("checked",false);
@@ -462,7 +449,7 @@ function drawitemcodeList(list) {
 	});
 }
 //상품 코드 등록 수정
-function make_Item_pop(ck, str ,result1) {
+function make_item_pop(ck, str ,depth,result1) {
 	var html = "";
 	var ajax = "";
 	if (ck == 1) {
@@ -483,26 +470,26 @@ function make_Item_pop(ck, str ,result1) {
 	html += `				<td class="field_name first_field_name">상품명</td>                         `
 	html += `				<td class="field_contents" >                                                `
 	html += `					<input class="input_normal" id="IT_NM" name="IT_NM" type="text">        `
+	html += `					<input id="IT_CODE_NO" name="IT_CODE_NO" type="hidden">        `
 	html += `				</td>                                                                       `
 	html += `				<td class="field_name first_field_name">매입처</td>                         `
 	html += `				<td class="field_contents">                                                 `
-	html += `					<input class="input_normal size45" type="text" id="CP_NM" name="CP_NM"> `
+	html += `					<input class="input_normal size60" readonly="readonly" type="text" id="CP_NM" name="CP_NM"> `
 	html += `					<input type="hidden" id="CP_NO" name="CP_NO">                           `
-	html += `					<input type="button" class="btn_normal btn_size_normal" id="CP_Search_btn" name="CP_Search_btn" value="검색"/>`
+	html += `					<input type="button" class="btn_normal btn_size_normal pxsize60"  id="CP_Search_btn" name="CP_Search_btn" value="검색"/>`
 	html += `				</td> `
 	html += `			</tr>     `
 	html += `			<tr>      `
-	html += `				<td class="field_name first_field_name">대분류 코드</td>                             `
-	html += `				<td class="field_contents" >                                                         `
-	html += `					<select class="input_normal" id="IT_M_GROUP_NO" name="IT_M_GROUP_NO">            `
+	html += `				<td class="field_name first_field_name">상품 코드</td>                             `
+	html += `				<td class="field_contents" colspan="3" >                                                         `
+	html += `					<select class="input_normal size30" id="IT_M_GROUP_NO" name="IT_M_GROUP_NO">            `
+	html += `						<option value="-1" selected="selected" >상품분류</option>`
 	html += `					</select>                                                                        `
+	html += `					<select class="input_normal size30" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">     `
+	html += `						<option value="-1" selected="selected" >상품명</option>`
+	html += `					</select>                                                                        `
+	html += `					<input type="button" class="btn_normal btn_size_normal pxsize50" value="등록"/>           `
 	html += `				</td>                                                                                `
-	html += `				<td class="field_name first_field_name">소분류 코드</td>                             `
-	html += `				<td class="field_contents">                                                          `
-	html += `					<select class="input_normal size45" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">     `
-	html += `					</select>                                                                        `
-	html += `					<input type="button" class="btn_normal btn_size_normal" value="검색"/>           `
-	html += `				</td> `
 	html += `			</tr>     `
 	html += `			<tr>      `
 	html += `				<td class="field_name first_field_name">상품규격</td>                     `
@@ -525,7 +512,7 @@ function make_Item_pop(ck, str ,result1) {
 	html += `			<tr>                                                                                                  `
 	html += `				<td class="field_name first_field_name" rowspan="2" >판매단가</td>                                `
 	html += `				<td class="field_contents" rowspan="2" >                                                          `
-	html += `					<input class="input_normal txtalignright"  id="Sales_Sales_Money" name="Sales_Sales_Money" type="text">  `
+	html += `					<input class="input_normal txtalignright" onkeyup="Salesfunc()" id="Sales_Sales_Money" name="Sales_Sales_Money" type="text">  `
 	html += `				</td>                                                                                                        `
 	html += `				<td class="field_name first_field_name backcolorwhite" rowspan="2">                                          `
 	html += `				</td>                                                                                                        `
@@ -546,7 +533,7 @@ function make_Item_pop(ck, str ,result1) {
 	html += `			<tr>           `                                                                                   
 	html += `				<td class="field_name first_field_name" rowspan="2" >매입단가</td>                             `
 	html += `				<td class="field_contents" rowspan="2" >                                                       `
-	html += `					<input class="input_normal txtalignright" id="Purchase_Sales_Money" type="text">           `
+	html += `					<input class="input_normal txtalignright" onkeyup="Purchasefunc()" id="Purchase_Sales_Money" name="Purchase_Sales_Money" type="text">           `
 	html += `				</td>                                                                                          `
 	html += `				<td class="field_name first_field_name backcolorwhite" rowspan="2">                            `
 	html += `				</td>                                                                                          `
@@ -567,21 +554,81 @@ function make_Item_pop(ck, str ,result1) {
 	html += `			<tr>           `
 	html += `				<td class="field_name first_field_name">현금적립포인트</td>                                       `
 	html += `				<td class="field_contents">                                                                       `
-	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)"  type="text">      `
+	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)" id="IT_MONEY_PT" name="IT_MONEY_PT" type="text">      `
 	html += `				</td>                                                                                             `
 	html += `				<td class="field_name first_field_name">카드적립포인트</td>                                       `
 	html += `				<td class="field_contents" >                                                                      `
-	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)"  type="text">      `
+	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)" id="IT_CARD_PT" name="IT_CARD_PT"  type="text">      `
 	html += `				</td>`
 	html += `			</tr>    `
 	html += `		</tbody>     `
 	html += `	</table>         `
 	html += `</form>`
-		makeTwoBtnPopup(ck, str, html, true, 700, 800, function() {
+		makeTwoBtnPopup(depth, str, html, true, 700, 600, function() {
+			// 버튼 크기 자동 조절
+		    $('.btn').each(function() {
+		        if($(this).html().length > 2) {
+		            var leng_diff = $(this).html().length - 2;
+		            $(this).width($(this).width() + (10 * leng_diff) + "px");  
+		        }
+		    });
+		    getitemcate();
+			$("#IT_M_GROUP_NO").change(function() {
+				 getitemcate();
+			});
 			
+			/* 거래처 목록 팝업 오픈 */
+			$("#CP_Search_btn ,  #CP_NM").on("click", function() {
+				Compfun(depth+1);
+				$(".pop_list>tbody").on("click", "tr", function() {
+					var arr = [] ;
+					arr = $(this).attr("name").split("_");
+					$("#CP_NO").val(arr[0]);
+					$("#CP_NM").val(arr[1]);
+					closePopup(depth+1);
+				});
+			});
+			
+			itemVATradio();
+			
+			if(ck == 2) {
+		 		$("#IT_CODE_NO").val(result1.data.IT_NO);
+		 		$("#IT_NM").val(result1.data.IT_NM);
+		 		$("#CP_NO").val(result1.data.CP_NO);
+		 		$("#CP_NM").val(result1.data.CP_NM);
+// 		 		$("#IT_M_GROUP_NO").val(1).attr("selected","selected");
+// 		 		$("#IT_M_GROUP_NO").val("1");
+		 		console.log($("#IT_M_GROUP_NO").val());
+// 		 		console.log($("#IT_M_GROUP_NO").val("1"));
+// 		 		$("#IT_M_GROUP_NO").val(result1.data.IT_M_GROUP_NO).prop("selected",true);
+// 		 		$("#IT_M_GROUP_NO > option[value='"+result1.data.IT_M_GROUP_NO+"']").attr("selected",true);
+		 		$("#IT_M_GROUP_NO > option[value="+0+"]").attr("selected",true);
+// 		 		$("#IT_S_GROUP_NO > option[value='"+result1.data.IT_S_GROUP_NO+"']").attr("selected",true);
+		 		$("#IT_STD").val(result1.data.IT_STD);
+		 		$("#IT_UNIT").val(result1.data.IT_UNIT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 		//라디오 버튼 체크
+		 		$("input:radio[name ='IT_VAT_CK']:input[value='"+result1.data.IT_VAT_CK+"']").attr("checked", true);
+		 		//공급 , 부가, 판매가 셋팅
+		 		if($("input[name=IT_VAT_CK]:checked").val() == "VAT포함") {
+		    		Salesformat($("#Sales_Sales_Money").val(result1.data.IT_SAL_U_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),1);
+		    		Purchaseformat($("#Purchase_Sales_Money").val(result1.data.IT_SAL_W_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),1);
+		    	} else {
+		    		Salesformat($("#Sales_Sales_Money").val(result1.data.IT_SAL_U_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),2);
+		    		Purchaseformat($("#Purchase_Sales_Money").val(result1.data.IT_SAL_W_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),2);
+		    	}
+		 		$("#IT_MONEY_PT").val(result1.data.IT_MONEY_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 		$("#IT_CARD_PT").val(result1.data.IT_CARD_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 	} 
 		}, str , function() {
-				var params = $("#itemForm").serialize();
+				var params = $("#itemForm").serialize() + 
+							"&Sales_Sales_Money1="+$("#Sales_Sales_Money").val().replace(/[^0-9]/g, "") +
+							"&Purchase_Sales_Money1="+$("#Purchase_Sales_Money").val().replace(/[^0-9]/g, "") +
+							"&IT_UNIT1="+$("#IT_UNIT").val().replace(/[^0-9]/g, "") +
+							"&IT_MONEY_PT1="+$("#IT_MONEY_PT").val().replace(/[^0-9]/g, "") +
+							"&IT_CARD_PT1="+$("#IT_CARD_PT").val().replace(/[^0-9]/g, "") 
+							;
 			
+				console.log(params);
 				$.ajax({
 					type : "post", //데이터 전송방식
 					url : ajax , //주소
@@ -591,11 +638,11 @@ function make_Item_pop(ck, str ,result1) {
 					
 					success : function(result){
 						if(result.res == "SUCCESS"){
-							closePopup(2);
-							makeAlert(2, str+" 성공", str+"되었습니다.", null);
+							closePopup(depth);
+							makeAlert(depth+1, str+" 성공", str+"되었습니다.", null);
 							getlist(4);
 						} else{
-							makeAlert(2, str+" 오류", str+"에 실패하였습니다.", null);
+							makeAlert(depth+1, str+" 오류", str+"에 실패하였습니다.", null);
 						}
 					} , 
 					error : function(request,status,error) {
@@ -606,38 +653,65 @@ function make_Item_pop(ck, str ,result1) {
 					
 				});
 		},"취소", function() {
-			closePopup(2);
+			closePopup(depth);
 		}); 
 	 	
-	 	if(ck == 2) {
-	 		$("#comp_no").val(result1.data.CP_NO);
-	 		$("#cp_type").val(result1.data.CP_TYPE);
-	 		$("#emp_nm").val(result1.data.EMP_NM);
-	 		$("#emp_no").val(result1.data.EMP_NO);
-	 		$("#comp_VAT_radio").val(result1.data.COMP_VAT_RADIO);
-	 		$("#cp_nm").val(result1.data.CP_NM);
-	 		$("#cp_biz_no").val(result1.data.CP_BIZ_NO);
-	 		$("#cp_biz_nm").val(result1.data.CP_BIZ_NM);
-	 		$("#cp_biz").val(result1.data.CP_BIZ);
-	 		$("#cp_event").val(result1.data.CP_EVENT);
-	 		$("#cp_add_no").val(result1.data.CP_ADD_NO);
-	 		$("#cp_add").val(result1.data.CP_ADD);
-	 		$("#cp_add_detail").val(result1.data.CP_ADD_DETAIL);
-	 		$("#cp_ph1").val(result1.data.CP_PH1);
-	 		$("#cp_ph2").val(result1.data.CP_PH2);
-	 		$("#cp_ph").val(result1.data.CP_PH);
-	 		$("#cp_fax").val(result1.data.CP_FAX);
-	 		$("#cp_email").val(result1.data.CP_EMAIL);
-	 		$("#cp_website").val(result1.data.CP_WEBSITE);
-	 		$("#cp_memo").val(result1.data.CP_MEMO);
-	 	} 
 }
+
+//상품 분류데이터 가져오기 
+function getitemcate () {
+	 var params = $("#itemForm").serialize();
+		
+		$.ajax({
+			type : "post", //데이터 전송방식
+			url : "getitemcateAjax" , //주소
+			dataType : "json", //데이터 전송 규격
+			data : params, //보낼 데이터
+			// {키: 값, 키:값, ...} - > json
+			
+			success : function(result){
+				if($("#IT_M_GROUP_NO").val() >= 0){
+					drawitemScate(result.Slist);
+				} else {
+					drawitemMcate(result.Mlist);
+				};
+			} , 
+			error : function(request,status,error) {
+				console.log("status : "+request.status);
+				console.log("text : "+request.responseText);
+				console.log("error : "+error);
+			}
+			
+		});
+}
+//상품 코드 Draw
+function drawitemMcate(Mlist,ck) {
+	var html ="";
+	
+	html += `<option value="-1">상품분류</option>`
+	for(var i in Mlist){
+		html += `<option value="` + Mlist[i].CODE_M_CATE + `">` + Mlist[i].CODE_NAME + `</option>`
+	}
+	$("#IT_M_GROUP_NO").html(html);
+}
+//상품 코드 Draw
+function drawitemScate(Slist) {
+	var html ="";
+	
+	html += `<option value="-1">상품명</option>`
+	for(var i in Slist){
+		html += `<option value="` + Slist[i].CODE_S_CATE + `">` + Slist[i].CODE_NAME + `</option>`
+	}
+	
+	$("#IT_S_GROUP_NO").html(html);
+}
+
 //거래처 리스트 Draw
 function drawcompList(list) {
 	var html = "";
 	if(list.length > 0) {
 		for(var i in list) {
-			html += `<tr class="list_contents" name="`+list[i].CP_NO+`">                                                                              `;
+			html += `<tr class="list_contents" name="`+list[i].CP_NO+`_`+list[i].CP_NM+`">                                                                              `;
 			html += `	<td width="80px" nowrap style="cursor : default;" class="chk_td">                                                                             `;
 			html += `		<div class="squaredOne">                                                                                              `;
 			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].CP_NO+`" style="display : none;" id="chk_`+list[i].CP_NO+`" name="pop_check" />   `;
@@ -682,7 +756,7 @@ function drawcompList(list) {
 
 
 //거래처 등록, 수정 
-function make_comp_pop(ck, str ,result1) {
+function make_comp_pop(ck, str,depth ,result1) {
 	var ajax = "";
 	if (ck == 1) {
 		ajax = "compcodeAddAjax";
@@ -700,12 +774,10 @@ function make_comp_pop(ck, str ,result1) {
 		html += `				<col width="35%">`
 		html += `			</colgroup>`
 		html += `			<tbody>`
-		html += `				 <tr>`
-		html += `                    <td class="field_name first_field_name">`
-		html += `                     	관리그룹명<span class="acc_txt"> *</span>`
-		html += `                    </td>`
+		html += `				<tr>`
+		html += `					<td class="field_name first_field_name">거래처명<span class="acc_txt"> *</span></td>`
 		html += `					<td class="field_contents">`
-		html += `						<input class="input_normal" id="cp_type" name="cp_type" type="text">`
+		html += `						<input class="input_normal" id="cp_nm" name="cp_nm"  type="text">`
 		html += `					</td>`
 		html += `                    <td class="field_name">`
 		html += `                    	담당자<span class="acc_txt"> *</span>`
@@ -715,21 +787,15 @@ function make_comp_pop(ck, str ,result1) {
 		html += `                    	<input type="hidden" id="emp_no" name="emp_no">`
 		html += `						<input type="button" class="btn_normal btn_size_normal" id="cust_Search_btn" value="검색"/>`
 		html += `                    </td>`
-		html += `                </tr>`
+		html += `				</tr>`
 		html += `				<tr>`
 		html += `					<td class="field_name first_field_name">`
 		html += `						거래처 구분<span class="acc_txt"> *</span>`
 		html += `					</td>`
-		html += `					<td class="field_contents" colspan="3">`
-		html += `						<label><input type="radio" value="매출처" checked="checked" name="comp_VAT_radio">매출처</label>`
-		html += `						<label><input type="radio" value="매입처" name="comp_VAT_radio">매입처</label>`
-		html += `						<label><input type="radio" value="기타거래처" name="comp_VAT_radio">기타거래처</label>`
-		html += `					</td>`
-		html += `				</tr>`
-		html += `				<tr>`
-		html += `					<td class="field_name first_field_name">거래처명<span class="acc_txt"> *</span></td>`
-		html += `					<td class="field_contents" colspan="3">`
-		html += `						<input class="input_normal" id="cp_nm" name="cp_nm"  type="text">`
+		html += `					<td class="field_contents" colspan="3" >`
+		html += `						<label><input type="radio" value="매출처" checked="checked" name="cp_type">매출처</label>`
+		html += `						<label><input type="radio" value="매입처"  name="cp_type">매입처</label>`
+		html += `						<label><input type="radio" value="기타거래처" name="cp_type">기타거래처</label>`
 		html += `					</td>`
 		html += `				</tr>`
 		html += `				<tr>`
@@ -806,7 +872,7 @@ function make_comp_pop(ck, str ,result1) {
 		html += `			</tbody>`
 		html += `		</table>`
 		html += `	</form>`
-		makeTwoBtnPopup(2, str, html, true, 700, 800, function() {
+		makeTwoBtnPopup(depth, str, html, true, 700, 700, function() {
 			$("#cp_biz_no").on("keyup keypress", function() {
 				var num = $(this).val();
 				var ph_num = num.replace(/[^0-9]/g, "").replace(/([0-9]{3})([0-9]{2})([0-9]{5})/,"$1-$2-$3").replace("--", "-");
@@ -820,7 +886,14 @@ function make_comp_pop(ck, str ,result1) {
 			$(".txt_client_ph").on("keyup", function() {
 				inputNumberFormat(this);
 			});
-		    $("#searchAddrBtn").postcodifyPopUp();	
+			// 주소api
+		    $("#searchAddrBtn").postcodifyPopUp();
+			
+			$("input[name=cp_type]:radio").change(function() {
+				var value = $('input:radio[name="cp_type"]:checked').val();
+				console.log(value);
+				console.log($("input[name=cp_type]:checked").val());
+			});
 		}, str , function() {
 				var params = $("#compForm").serialize();
 			
@@ -833,11 +906,11 @@ function make_comp_pop(ck, str ,result1) {
 					
 					success : function(result){
 						if(result.res == "SUCCESS"){
-							closePopup(2);
-							makeAlert(2, str+" 성공", str+"되었습니다.", null);
+							closePopup(depth);
+							makeAlert(depth+1, str+" 성공", str+"되었습니다.", null);
 							getlist(3);
 						} else{
-							makeAlert(2, str+" 오류", str+"에 실패하였습니다.", null);
+							makeAlert(depth+1, str+" 오류", str+"에 실패하였습니다.", null);
 						}
 					} , 
 					error : function(request,status,error) {
@@ -848,15 +921,14 @@ function make_comp_pop(ck, str ,result1) {
 					
 				});
 		},"취소", function() {
-			closePopup(2);
+			closePopup(depth);
 		}); 
 	 	
 	 	if(ck == 2) {
 	 		$("#comp_no").val(result1.data.CP_NO);
-	 		$("#cp_type").val(result1.data.CP_TYPE);
 	 		$("#emp_nm").val(result1.data.EMP_NM);
 	 		$("#emp_no").val(result1.data.EMP_NO);
-	 		$("#comp_VAT_radio").val(result1.data.COMP_VAT_RADIO);
+	 		$('input:radio[name="cp_type"][value="+result1.data.CP_TYPE+"]').attr('checked', true);
 	 		$("#cp_nm").val(result1.data.CP_NM);
 	 		$("#cp_biz_no").val(result1.data.CP_BIZ_NO);
 	 		$("#cp_biz_nm").val(result1.data.CP_BIZ_NM);
@@ -965,7 +1037,7 @@ function make_custgrade_pop(ck, str ,result1) {
 		html += `</form>              `;
 		makeTwoBtnPopup(2, str, html, true, 500, 200, function() {
 			//텍스트 숫자 포맷팅
-			$("#cust_grade_lvl").on("keyup", function() {
+			$("#cust_grade_lvl, #emp_grade_lvl").on("keyup", function() {
 				 $(this).val($(this).val().replace(/[^0-9]/g,""));
 			});
 			// 버튼 크기 자동 조절

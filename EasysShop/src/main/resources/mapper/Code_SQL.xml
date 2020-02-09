@@ -177,19 +177,23 @@
 	
 	<!-- 	상품 코드  리스트 가져오기 -->
 	<select id="getitemcodeList" parameterType="hashmap" resultType="hashmap">
-		SELECT I.IT_NO, I.IT_NM,SQ.CODE_NAME,I.IT_VAT_CK,NVL(I.IT_SAL_U_PRICE,0) AS IT_SAL_U_PRICE,
-		       ROUND(I.IT_SAL_U_PRICE*1.1) AS IT_SAL_U_PRICE_VAT, 
+		SELECT *
+		FROM(
+		SELECT I.IT_NO, I.IT_NM,SQ.CODE_NAME,CASE WHEN I.IT_VAT_CK='VAT포함' THEN 'YES' ELSE 'NO' END AS IT_VAT_CK ,NVL(I.IT_SAL_U_PRICE,0) AS IT_SAL_U_PRICE,
+		       NVL(CASE WHEN I.IT_VAT_CK='VAT포함' THEN I.IT_SAL_U_PRICE
+               ELSE ROUND(I.IT_SAL_U_PRICE*1.1) END,0) AS IT_SAL_U_PRICE_VAT, 
 		       NVL(I.IT_SAL_W_PRICE, 0) AS IT_SAL_W_PRICE , 
-		       ROUND(NVL(I.IT_SAL_W_PRICE, 0)*1.1) AS IT_SAL_W_PRICE_VAT,
-		       I.IT_MONEY_PT,I.IT_CARD_PT,I.CP_NO, CP.CP_NM, I.IT_STD,I.IT_UNIT,
+               NVL(CASE WHEN I.IT_VAT_CK='VAT포함' THEN I.IT_SAL_W_PRICE
+               ELSE ROUND(I.IT_SAL_W_PRICE*1.1) END,0) AS IT_SAL_W_PRICE_VAT,
+		       NVL(I.IT_MONEY_PT,0) AS IT_MONEY_PT,NVL(I.IT_CARD_PT,0) AS IT_CARD_PT,I.CP_NO, CP.CP_NM,NVL(I.IT_STD, 0) AS IT_STD,NVL(I.IT_UNIT, 0) AS IT_UNIT,
 		       TO_CHAR(I.IT_DATE, 'YYYY-MM-DD') AS IT_DATE  
 		FROM ITEM_CODE I INNER JOIN COMPANY_CODE CP 
                          ON I.CP_NO = CP.CP_NO
                  		 INNER JOIN (SELECT CODE_M_CATE,CODE_S_CATE,CODE_NAME
 		                             FROM COMMON_CODE 
-		                             WHERE CODE_L_CATE = 1 AND CODE_S_CATE = 0) SQ
+		                             WHERE CODE_L_CATE = 1) SQ
                          ON I.IT_M_GROUP_NO = SQ.CODE_M_CATE
-                         AND I.IT_S_GROUP_NO = SQ.CODE_S_CATE
+                         AND I.IT_S_GROUP_NO = SQ.CODE_S_CATE)
 		where 1=1
    		<if test="searchTxt != null and searchTxt != ''">
 		      AND IT_NM LIKE '%'||#{searchTxt}||'%'
@@ -210,39 +214,39 @@
 	</select>
 	
 <!-- 	상품 코드  데이터 가져오기 -->
-	<select id="getitemdata" parameterType="hashmap" resultType="hashmap">
-		SELECT E.EMP_NM,CP.CP_NO, CP.CP_TYPE, CP.CP_NM, 
-		CP.CP_BIZ_NO, CP.CP_BIZ_NM, CP.CP_BIZ, CP.CP_EVENT, 
-		CP.CP_ADD_NO, CP.CP_ADD, CP.CP_ADD_DETAIL, CP.CP_PH1,
-		CP.CP_PH2, CP.CP_PH, CP.CP_FAX, CP.CP_EMAIL, 
-		CP.CP_WEBSITE, CP.EMP_NO, CP.CP_MEMO ,TO_CHAR(CP.CP_DATE, 'YYYY-MM-DD') AS CP_DATE, 
-		NVL(W.TDATE, '없음') AS TDATE
-		FROM COMPANY_CODE CP INNER JOIN EMPLOYEE E
-		                             ON CP.EMP_NO = E.EMP_NO
-		                      LEFT JOIN (SELECT CP_NO , TDATE
-										 FROM (SELECT CP_NO ,TO_CHAR(WH_DATE, 'YYYY-MM-DD') AS TDATE, RANK()OVER (ORDER BY (TO_CHAR(WH_DATE, 'YYYY-MM-DD')) DESC) AS RNK
-										 	   FROM WAREHOUSING 
-										       GROUP BY CP_NO ,TO_CHAR(WH_DATE, 'YYYY-MM-DD') 
-										 ) WHERE RNK = 1) W
-		                             ON CP.CP_NO = W.CP_NO
-		WHERE CP.CP_NO = #{item_no}
+	<select id="getitemcodedata" parameterType="hashmap" resultType="hashmap">
+		SELECT I.IT_NO, I.IT_NM,SQ.CODE_NAME,I.IT_VAT_CK,NVL(I.IT_SAL_U_PRICE,0) AS IT_SAL_U_PRICE,
+		       ROUND(I.IT_SAL_U_PRICE*1.1) AS IT_SAL_U_PRICE_VAT, 
+		       NVL(I.IT_SAL_W_PRICE, 0) AS IT_SAL_W_PRICE , 
+		       ROUND(NVL(I.IT_SAL_W_PRICE, 0)*1.1) AS IT_SAL_W_PRICE_VAT,
+		       I.IT_MONEY_PT,I.IT_CARD_PT,I.CP_NO, CP.CP_NM, I.IT_STD,I.IT_UNIT,
+		       TO_CHAR(I.IT_DATE, 'YYYY-MM-DD') AS IT_DATE,I.IT_M_GROUP_NO,I.IT_S_GROUP_NO  
+		FROM ITEM_CODE I INNER JOIN COMPANY_CODE CP 
+                         ON I.CP_NO = CP.CP_NO
+                 		 INNER JOIN (SELECT CODE_M_CATE,CODE_S_CATE,CODE_NAME
+		                             FROM COMMON_CODE 
+		                             WHERE CODE_L_CATE = 1) SQ
+                         ON I.IT_M_GROUP_NO = SQ.CODE_M_CATE
+                         AND I.IT_S_GROUP_NO = SQ.CODE_S_CATE
+		WHERE I.IT_NO = #{IT_CODE_NO}
 	</select>
 	
 <!-- 	상품 코드  등록 -->
 	<insert id="itemcodeAdd" parameterType="hashmap">
-		INSERT INTO COMPANY_CODE(CP_NO, CP_TYPE, CP_NM, CP_BIZ_NO, CP_BIZ_NM, CP_BIZ, CP_EVENT, CP_ADD_NO, CP_ADD, CP_ADD_DETAIL, CP_PH1, CP_PH2, CP_PH, CP_FAX, CP_EMAIL, CP_WEBSITE, EMP_NO, CP_MEMO)
-		VALUES(CP_CODE_SEQ.NEXTVAL,#{cp_type},#{cp_nm},#{cp_biz_no},#{cp_biz_nm},#{cp_biz},#{cp_event},#{cp_add_no},#{cp_add},#{cp_add_detail},#{cp_ph1},#{cp_ph2},#{cp_ph},#{cp_fax},#{cp_email},#{cp_website},#{emp_no},#{cp_memo})
+		INSERT INTO ITEM_CODE(IT_NO, IT_NM,CP_NO,IT_STD,IT_UNIT,
+		IT_VAT_CK,IT_SAL_U_PRICE,IT_MONEY_PT,IT_CARD_PT,IT_DATE,
+		IT_M_GROUP_NO,IT_S_GROUP_NO,IT_SAL_W_PRICE) 
+		VALUES(ITEM_CODE_SEQ.NEXTVAL, #{IT_NM}, #{CP_NO}, #{IT_STD}, #{IT_UNIT1},#{IT_VAT_CK},
+	   #{Sales_Sales_Money1},#{IT_MONEY_PT1},#{IT_CARD_PT1},SYSDATE,#{IT_M_GROUP_NO},#{IT_S_GROUP_NO},#{Purchase_Sales_Money1})
 	</insert>
 	
 <!-- 	상품 코드  수정 -->
 	<update id="itemcodeUpdate" parameterType="hashmap">
-		UPDATE COMPANY_CODE SET
-		CP_TYPE = #{cp_type}, CP_NM = #{cp_nm}, CP_BIZ_NO =#{cp_biz_no}, CP_BIZ_NM =#{cp_biz_nm},
-		CP_BIZ =#{cp_biz}, CP_EVENT = #{cp_biz},
-		CP_ADD_NO = #{cp_add_no}, CP_ADD=#{cp_add}, CP_ADD_DETAIL = #{cp_add_detail}, CP_PH1 = #{cp_ph1}, 
-		CP_PH2 = #{cp_ph2}, CP_PH = #{cp_ph}, CP_FAX = #{cp_fax}, CP_EMAIL =#{cp_email}, CP_WEBSITE = #{cp_website}, 
-		EMP_NO = #{emp_no}, CP_MEMO = #{cp_memo}
-		WHERE CP_NO = #{item_no}
+		UPDATE ITEM_CODE SET
+		IT_NM=#{IT_NM},CP_NO=#{CP_NO},IT_STD=#{IT_STD},IT_UNIT=#{IT_UNIT1},
+		IT_VAT_CK=#{IT_VAT_CK},IT_SAL_U_PRICE=#{Sales_Sales_Money1},IT_MONEY_PT=#{IT_MONEY_PT1},IT_CARD_PT=#{IT_CARD_PT1},
+		IT_M_GROUP_NO,IT_S_GROUP_NO,IT_SAL_W_PRICE=#{Purchase_Sales_Money1}
+		WHERE IT_NO = #{IT_CODE_NO}
 	</update>
 	
 <!-- 	상품 코드  삭제 -->
@@ -250,5 +254,18 @@
 		DELETE FROM COMPANY_CODE WHERE CP_NO = #{item_no}
 	</delete>
 	
-	
+<!-- 	상품 대분류 코드 가져오기 -->
+	<select id="getitemcateList" parameterType="hashmap" resultType="hashmap">
+			SELECT *
+			FROM COMMON_CODE 
+			WHERE CODE_L_CATE = 1
+			AND CODE_S_CATE =0
+	</select>
+<!-- 	상품 소분류 코드 가져오기 -->
+	<select id="getitemScateList" parameterType="hashmap" resultType="hashmap">
+			SELECT *
+			FROM COMMON_CODE 
+			WHERE CODE_L_CATE = 1
+			AND CODE_M_CATE = #{IT_M_GROUP_NO}
+	</select>
 </mapper>

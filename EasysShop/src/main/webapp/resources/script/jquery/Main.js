@@ -172,7 +172,6 @@ $(document).ready(function() {
     	} else if($("input[name=IT_VAT_CK]:checked").val() == "VAT미포함") {
 				Purchaseformat(this,2);
 				Salesformat(this,2);
-//    		}
     	}
     });
 //    
@@ -201,6 +200,39 @@ function number_format(num){
         result = num_str.charAt(tmp) + result;
     }
     return result;
+}
+function Salesfunc() {
+	 $('#Sales_Sales_Money').on("keyup", function() {
+    	inputmoneyFormat(this);
+    	if($("input[name=IT_VAT_CK]:checked").val() == "VAT포함") {
+    		Salesformat(this,1);
+    	} else {
+    		Salesformat(this,2);
+    	}
+    });
+}
+function Purchasefunc() {
+   $('#Purchase_Sales_Money').on("keyup",function() {
+    	inputmoneyFormat(this);
+    	if($("input[name=IT_VAT_CK]:checked").val() == "VAT포함") {
+    		Purchaseformat(this,1);
+    	} else {
+    		Purchaseformat(this,2);
+    	}
+    });
+}
+
+function itemVATradio() {
+	 //라디오 버튼 변경시 이벤트
+    $("input[name='IT_VAT_CK']:radio").change(function () {
+    	if($("input[name=IT_VAT_CK]:checked").val() == "VAT포함") {
+			Purchaseformat(this,1);
+			Salesformat(this,1);
+    	} else if($("input[name=IT_VAT_CK]:checked").val() == "VAT미포함") {
+				Purchaseformat(this,2);
+				Salesformat(this,2);
+    	}
+    });
 }
 function Salesformat(obj,ck) {
 	if(ck == 1) {
@@ -247,8 +279,6 @@ function Purchaseformat(obj,ck) {
 
 //금액 포맷팅
 function inputmoneyFormat(obj) {
-    
-	console.log(obj);
 	return obj.value = m_comma(m_uncomma(obj.value));
 }
 

@@ -112,4 +112,14 @@ public class EDao implements IEDao {
 		sqlSession.delete("code.itemcodedel", params);		
 	}
 
+	@Override
+	public List<HashMap<String, String>> getitemcateList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("code.getitemcateList", params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> getitemScateList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("code.getitemScateList", params);
+	}
+
 }
