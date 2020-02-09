@@ -177,6 +177,8 @@
 	
 	<!-- 	상품 코드  리스트 가져오기 -->
 	<select id="getitemcodeList" parameterType="hashmap" resultType="hashmap">
+		SELECT *
+		FROM(
 		SELECT I.IT_NO, I.IT_NM,SQ.CODE_NAME,I.IT_VAT_CK,NVL(I.IT_SAL_U_PRICE,0) AS IT_SAL_U_PRICE,
 		       ROUND(I.IT_SAL_U_PRICE*1.1) AS IT_SAL_U_PRICE_VAT, 
 		       NVL(I.IT_SAL_W_PRICE, 0) AS IT_SAL_W_PRICE , 
@@ -189,7 +191,7 @@
 		                             FROM COMMON_CODE 
 		                             WHERE CODE_L_CATE = 1 AND CODE_S_CATE = 0) SQ
                          ON I.IT_M_GROUP_NO = SQ.CODE_M_CATE
-                         AND I.IT_S_GROUP_NO = SQ.CODE_S_CATE
+                         AND I.IT_S_GROUP_NO = SQ.CODE_S_CATE)
 		where 1=1
    		<if test="searchTxt != null and searchTxt != ''">
 		      AND IT_NM LIKE '%'||#{searchTxt}||'%'
@@ -211,20 +213,19 @@
 	
 <!-- 	상품 코드  데이터 가져오기 -->
 	<select id="getitemdata" parameterType="hashmap" resultType="hashmap">
-		SELECT E.EMP_NM,CP.CP_NO, CP.CP_TYPE, CP.CP_NM, 
-		CP.CP_BIZ_NO, CP.CP_BIZ_NM, CP.CP_BIZ, CP.CP_EVENT, 
-		CP.CP_ADD_NO, CP.CP_ADD, CP.CP_ADD_DETAIL, CP.CP_PH1,
-		CP.CP_PH2, CP.CP_PH, CP.CP_FAX, CP.CP_EMAIL, 
-		CP.CP_WEBSITE, CP.EMP_NO, CP.CP_MEMO ,TO_CHAR(CP.CP_DATE, 'YYYY-MM-DD') AS CP_DATE, 
-		NVL(W.TDATE, '없음') AS TDATE
-		FROM COMPANY_CODE CP INNER JOIN EMPLOYEE E
-		                             ON CP.EMP_NO = E.EMP_NO
-		                      LEFT JOIN (SELECT CP_NO , TDATE
-										 FROM (SELECT CP_NO ,TO_CHAR(WH_DATE, 'YYYY-MM-DD') AS TDATE, RANK()OVER (ORDER BY (TO_CHAR(WH_DATE, 'YYYY-MM-DD')) DESC) AS RNK
-										 	   FROM WAREHOUSING 
-										       GROUP BY CP_NO ,TO_CHAR(WH_DATE, 'YYYY-MM-DD') 
-										 ) WHERE RNK = 1) W
-		                             ON CP.CP_NO = W.CP_NO
+		SELECT I.IT_NO, I.IT_NM,SQ.CODE_NAME,I.IT_VAT_CK,NVL(I.IT_SAL_U_PRICE,0) AS IT_SAL_U_PRICE,
+		       ROUND(I.IT_SAL_U_PRICE*1.1) AS IT_SAL_U_PRICE_VAT, 
+		       NVL(I.IT_SAL_W_PRICE, 0) AS IT_SAL_W_PRICE , 
+		       ROUND(NVL(I.IT_SAL_W_PRICE, 0)*1.1) AS IT_SAL_W_PRICE_VAT,
+		       I.IT_MONEY_PT,I.IT_CARD_PT,I.CP_NO, CP.CP_NM, I.IT_STD,I.IT_UNIT,
+		       TO_CHAR(I.IT_DATE, 'YYYY-MM-DD') AS IT_DATE  
+		FROM ITEM_CODE I INNER JOIN COMPANY_CODE CP 
+                         ON I.CP_NO = CP.CP_NO
+                 		 INNER JOIN (SELECT CODE_M_CATE,CODE_S_CATE,CODE_NAME
+		                             FROM COMMON_CODE 
+		                             WHERE CODE_L_CATE = 1 AND CODE_S_CATE = 0) SQ
+                         ON I.IT_M_GROUP_NO = SQ.CODE_M_CATE
+                         AND I.IT_S_GROUP_NO = SQ.CODE_S_CATE
 		WHERE CP.CP_NO = #{item_no}
 	</select>
 	

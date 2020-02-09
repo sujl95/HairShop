@@ -334,6 +334,7 @@ public class EController {
 		ObjectMapper mapper= new ObjectMapper();
 		Map<String,Object> modelMap = new HashMap<String,Object>();
 		try {
+			System.out.println("params"+params);
 			iEService.compcodeUpdate(params);
 			modelMap.put("res","SUCCESS");
 		} catch (Exception e) {
@@ -448,4 +449,19 @@ public class EController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

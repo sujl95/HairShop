@@ -30,7 +30,7 @@ $(document).ready(function() {
 		} else if ($(this).attr("menuno") == 17) {
 			Gradefun(2);
 		} else if ($(this).attr("menuno") == 18) {
-			Itemfun();
+			Itemfun(1);
 // 			$("#item_code_add").removeClass("pop_off").addClass("pop_on");
 		} else if ($(this).attr("menuno") == 19) {
 			console.log(1);
@@ -44,6 +44,7 @@ $(document).ready(function() {
 	 		if (str == "getcustgradelist") getlist(1);
 	 		if (str == "getempgradelist") getlist(2);
 	 		if (str == "getcomplist") getlist(3);
+	 		if (str == "getitemcodelist") getlist(4);
 		});
 		
 		$("input[name=searchTxt]").on("keypress", function() {
@@ -65,6 +66,8 @@ $(document).ready(function() {
 				ajax = "getempgdataAjax";
 			} else if($(this).attr("id") == "comp_no") {
 				ajax = "getcompdataAjax";
+			} else if($(this).attr("id") == "item_no") {
+				ajax = "getitemcodedataAjax";
 			}
 			console.log(params);
 			$.ajax({
@@ -82,7 +85,11 @@ $(document).ready(function() {
 						make_custgrade_pop(4,"직원 등급수정",result1);
 					} else if (ajax == "getcompdataAjax") {
 						make_comp_pop(2,"거래처 수정",result1);
+					} else if (ajax == "getitemcodedataAjax") {
+						make_item_pop(2,"거래처 수정",3,result1);
 					}
+					
+					
 				} , 
 				error : function(request,status,error) {
 					console.log("status : "+request.status);
@@ -318,8 +325,9 @@ function Compfun (ck) {
 }
 
 //상품 코드 목록 메서드
-function Itemfun (ck) {
+function Itemfun (ck1) {
 	var html = "";
+// 	const ck = ck1;
 	html += `<form id="popactionForm" action="#" method="post">`;
 	html += `<table class="pop_table">`;
 	html += `	<colgroup>            `;
@@ -361,49 +369,50 @@ function Itemfun (ck) {
 	html += `			<td width="110px" nowrap>판매단가</td>    `;
 	html += `			<td width="150px" nowrap>판매가(VAT포함)</td>    `;
 	html += `			<td width="110px" nowrap>매입단가</td>   `;
-	html += `			<td width="110px" nowrap>매입가(VAT포함)</td>      `;
+	html += `			<td width="150px" nowrap>매입가(VAT포함)</td>      `;
 	html += `			<td width="150px" nowrap>적립POINT(현금)</td>   `;
 	html += `			<td width="150px" nowrap>적립POINT(카드)</td>  `;
 	html += `			<td width="120px" nowrap>매입처</td>`;
 	html += `			<td width="100px" nowrap>규격</td>   `;
 	html += `			<td width="100px" nowrap>단위</td>     `;
-	html += `			<td width="100px" nowrap>등록일</td>     `;
+	html += `			<td width="120px" nowrap>등록일</td>     `;
 	html += `		</tr>                                              `;
 	html += `	</thead>                                               `;
 	html += `	<tbody class="tbody_scroll sscroll">                           `;
 	html += `	</tbody>                                               `;
 	html += `</table>                                                  `;
 	html += `</form>`;
-	if (ck == null) {
-		ck = 1;
-	} else {
+// 	if (ck1 == null) {
+// 		ck = 1;
+// 	} else {
 		
-	}
-	makeThreeBtnPopup(ck, "상품 코드 목록", html, false, 900, 700, function() {
+// 	}
+	makeThreeBtnPopup(ck = (ck1 == null) ? 1 : ck1, "상품 코드 목록", html, false, 900, 700, function() {
 		getlist(4);
 		$("#popdataForm").slimScroll({
 			width : "880px",
 			height: "500px",
 			axis: 'both'
 		});
+		
 	}
 	, "등록", function() {
-// 		make_comp_pop(1, "거래처 등록");
+		make_Item_pop(1, "상품 코드 등록",ck = (ck1 == null) ? 1 : ck1+1);
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-		if (ck == null) {
+		if (ck1 == null) {
 			ck = 2;
 		} else {
 			ck += 1;
 		}
 // 		listdel(ck,"거래처 ",400,200,"popactionForm","compdelAjax","getlist4",params);
 	},"취소", function() {
-		if (ck == null) {
+		if (ck1 == null) {
 			ck = 1;
 		} else {
 			ck += 1;
 		}
-		closePopup(ck);
+		closePopup(ck = (ck1 == null) ? 1 : ck1	);
 	});
 	
 	
@@ -430,20 +439,19 @@ function drawitemcodeList(list) {
 				html += `			<td width="100px" nowrap>NO</td>`;
 			}
 // 			html += `			<td width="100px" nowrap>`+list[i].IT_VAT_CK+`</td>`;
-			var IT_SAL_U_PRICE = list[i].IT_SAL_U_PRICE * 1;
-			var a = inputmoneyFormat(IT_SAL_U_PRICE);
-			console.log(IT_SAL_U_PRICE);
-			console.log(inputmoneyFormat(IT_SAL_U_PRICE));
-			html += `			<td width="110px" nowrap>`+IT_SAL_U_PRICE+`</td>    `;
-			html += `			<td width="150px" nowrap>`+list[i].IT_SAL_U_PRICE_VAT+`</td>    `;
-			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_W_PRICE+`</td>   `;
-			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_W_PRICE_VAT+`</td>      `;
-			html += `			<td width="150px" nowrap>`+list[i].IT_MONEY_PT+`</td>`
-			html += `			<td width="150px" nowrap>`+list[i].IT_CARD_PT+`</td>  `;
+// 			var IT_SAL_U_PRICE = list[i].IT_SAL_U_PRICE;
+// 			var IT_SAL_U_PRICE = list[i].IT_SAL_U_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_U_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>    `;
+			html += `			<td width="150px" nowrap>`+list[i].IT_SAL_U_PRICE_VAT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>    `;
+			html += `			<td width="110px" nowrap>`+list[i].IT_SAL_W_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>   `;
+			html += `			<td width="150px" nowrap>`+list[i].IT_SAL_W_PRICE_VAT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>      `;
+			html += `			<td width="150px" nowrap>`+list[i].IT_MONEY_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>`
+			html += `			<td width="150px" nowrap>`+list[i].IT_CARD_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");+`</td>  `;
 			html += `			<td width="120px" nowrap>`+list[i].CP_NM+`</td>`;
 			html += `			<td width="100px" nowrap>`+list[i].IT_STD+`</td>   `;
 			html += `			<td width="100px" nowrap>`+list[i].IT_UNIT+`</td>     `;
-			html += `			<td width="100px" nowrap>`+list[i].IT_DATE+`</td>     `;
+			html += `			<td width="120px" nowrap>`+list[i].IT_DATE+`</td>     `;
 			html += `</tr>                                                                                                                        `
 		}            
 		$("input[type=checkbox]").prop("checked",false);
@@ -462,7 +470,7 @@ function drawitemcodeList(list) {
 	});
 }
 //상품 코드 등록 수정
-function make_Item_pop(ck, str ,result1) {
+function make_Item_pop(ck, str ,depth,result1) {
 	var html = "";
 	var ajax = "";
 	if (ck == 1) {
@@ -577,7 +585,16 @@ function make_Item_pop(ck, str ,result1) {
 	html += `		</tbody>     `
 	html += `	</table>         `
 	html += `</form>`
-		makeTwoBtnPopup(ck, str, html, true, 700, 800, function() {
+		makeTwoBtnPopup(depth, str, html, true, 700, 600, function() {
+			// 버튼 크기 자동 조절
+		    $('.btn').each(function() {
+		        if($(this).html().length > 2) {
+		            var leng_diff = $(this).html().length - 2;
+		            $(this).width($(this).width() + (10 * leng_diff) + "px");  
+		        }
+		    });
+		   
+			
 			
 		}, str , function() {
 				var params = $("#itemForm").serialize();
@@ -591,11 +608,11 @@ function make_Item_pop(ck, str ,result1) {
 					
 					success : function(result){
 						if(result.res == "SUCCESS"){
-							closePopup(2);
-							makeAlert(2, str+" 성공", str+"되었습니다.", null);
+							closePopup(depth);
+							makeAlert(depth+1, str+" 성공", str+"되었습니다.", null);
 							getlist(4);
 						} else{
-							makeAlert(2, str+" 오류", str+"에 실패하였습니다.", null);
+							makeAlert(depth+1, str+" 오류", str+"에 실패하였습니다.", null);
 						}
 					} , 
 					error : function(request,status,error) {
@@ -606,7 +623,7 @@ function make_Item_pop(ck, str ,result1) {
 					
 				});
 		},"취소", function() {
-			closePopup(2);
+			closePopup(depth);
 		}); 
 	 	
 	 	if(ck == 2) {
@@ -631,6 +648,35 @@ function make_Item_pop(ck, str ,result1) {
 	 		$("#cp_website").val(result1.data.CP_WEBSITE);
 	 		$("#cp_memo").val(result1.data.CP_MEMO);
 	 	} 
+}
+
+//상품 분류데이터 가져오기 
+function getitemdivdata () {
+	 var params = $("#itemForm").serialize();
+		
+		$.ajax({
+			type : "post", //데이터 전송방식
+			url : ajax , //주소
+			dataType : "json", //데이터 전송 규격
+			data : params, //보낼 데이터
+			// {키: 값, 키:값, ...} - > json
+			
+			success : function(result){
+				if(result.res == "SUCCESS"){
+					closePopup(depth);
+					makeAlert(depth+1, str+" 성공", str+"되었습니다.", null);
+					getlist(4);
+				} else{
+					makeAlert(depth+1, str+" 오류", str+"에 실패하였습니다.", null);
+				}
+			} , 
+			error : function(request,status,error) {
+				console.log("status : "+request.status);
+				console.log("text : "+request.responseText);
+				console.log("error : "+error);
+			}
+			
+		});
 }
 //거래처 리스트 Draw
 function drawcompList(list) {
@@ -705,7 +751,7 @@ function make_comp_pop(ck, str ,result1) {
 		html += `                     	관리그룹명<span class="acc_txt"> *</span>`
 		html += `                    </td>`
 		html += `					<td class="field_contents">`
-		html += `						<input class="input_normal" id="cp_type" name="cp_type" type="text">`
+		html += `						<input class="input_normal" type="text">`
 		html += `					</td>`
 		html += `                    <td class="field_name">`
 		html += `                    	담당자<span class="acc_txt"> *</span>`
@@ -721,9 +767,9 @@ function make_comp_pop(ck, str ,result1) {
 		html += `						거래처 구분<span class="acc_txt"> *</span>`
 		html += `					</td>`
 		html += `					<td class="field_contents" colspan="3">`
-		html += `						<label><input type="radio" value="매출처" checked="checked" name="comp_VAT_radio">매출처</label>`
-		html += `						<label><input type="radio" value="매입처" name="comp_VAT_radio">매입처</label>`
-		html += `						<label><input type="radio" value="기타거래처" name="comp_VAT_radio">기타거래처</label>`
+		html += `						<label><input type="radio" value="매출처" checked="checked" name="cp_type">매출처</label>`
+		html += `						<label><input type="radio" value="매입처"  name="cp_type">매입처</label>`
+		html += `						<label><input type="radio" value="기타거래처" name="cp_type">기타거래처</label>`
 		html += `					</td>`
 		html += `				</tr>`
 		html += `				<tr>`
@@ -820,7 +866,14 @@ function make_comp_pop(ck, str ,result1) {
 			$(".txt_client_ph").on("keyup", function() {
 				inputNumberFormat(this);
 			});
-		    $("#searchAddrBtn").postcodifyPopUp();	
+			// 주소api
+		    $("#searchAddrBtn").postcodifyPopUp();
+			
+			$("input[name=cp_type]:radio").change(function() {
+				var value = $('input:radio[name="cp_type"]:checked').val();
+				console.log(value);
+				console.log($("input[name=cp_type]:checked").val());
+			});
 		}, str , function() {
 				var params = $("#compForm").serialize();
 			
@@ -853,10 +906,11 @@ function make_comp_pop(ck, str ,result1) {
 	 	
 	 	if(ck == 2) {
 	 		$("#comp_no").val(result1.data.CP_NO);
-	 		$("#cp_type").val(result1.data.CP_TYPE);
+// 	 		$("#cp_type").val(result1.data.CP_TYPE);
 	 		$("#emp_nm").val(result1.data.EMP_NM);
 	 		$("#emp_no").val(result1.data.EMP_NO);
-	 		$("#comp_VAT_radio").val(result1.data.COMP_VAT_RADIO);
+	 		$('input:radio[name="cp_type"][value="+result1.data.CP_TYPE+"]').attr('checked', true);
+
 	 		$("#cp_nm").val(result1.data.CP_NM);
 	 		$("#cp_biz_no").val(result1.data.CP_BIZ_NO);
 	 		$("#cp_biz_nm").val(result1.data.CP_BIZ_NM);
