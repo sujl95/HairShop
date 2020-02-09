@@ -348,7 +348,7 @@ tr {
 }
 /* 60px */
 .pxsize60{
-	width:60px;
+	width:60px !important;
 }
 /* 70px */
 .pxsize70{
