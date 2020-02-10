@@ -124,4 +124,29 @@ public class EService implements IEService {
 		return iEDao.getitemScateList(params);	
 	}
 
+	@Override
+	public List<HashMap<String, String>> getitemtypeList(HashMap<String, String> params) throws Throwable {
+		return iEDao.getitemtypeList(params);
+	}
+
+	@Override
+	public void itemtypedel(HashMap<String, String> params) throws Throwable {
+		iEDao.itemtypedel(params);
+	}
+
+	@Override
+	public int itemtypeck(HashMap<String, String> params) throws Throwable {
+		return iEDao.itemtypeck(params);
+	}
+
+	@Override
+	public int itemnmtypeck(HashMap<String, String> params) throws Throwable {
+		return iEDao.itemnmtypeck(params);
+	}
+
+	@Override
+	public void itemtypeadd(HashMap<String, String> params) throws Throwable {
+		iEDao.itemtypeadd(params);
+	}
+
 }

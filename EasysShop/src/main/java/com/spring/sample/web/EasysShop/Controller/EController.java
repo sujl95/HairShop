@@ -470,11 +470,65 @@ public class EController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
+//	상품 분류 코드 리스트 가져오기
+	@RequestMapping(value="/getitemtypelistAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String getitemtypelistAjax(@RequestParam HashMap<String, String> params, ModelAndView mav, HttpSession session) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		List<HashMap<String, String>> list = iEService.getitemtypeList(params);
+		modelMap.put("list", list);
+		return mapper.writeValueAsString(modelMap);
+	}
+	
+//	상품 분류 코드 중복검사
+	@RequestMapping(value = "/itemtypeckAjax",
+			method = RequestMethod.POST,
+			produces = "test/json;charset=UTF-8")
+	@ResponseBody 
+	public String itemtypeckAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper= new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		System.out.println("params" + params);
+		try {
+			int ck = iEService.itemtypeck(params);
+			int nmck = iEService.itemnmtypeck(params);
+			if(ck == 0 && nmck == 0) {
+				iEService.itemtypeadd(params);
+				modelMap.put("res","SUCCESS");
+			} else {
+				modelMap.put("res", "MFailed");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelMap.put("res", "Failed");
+		}
+		return mapper.writeValueAsString(modelMap);
+	}
 	
 	
-	
-	
-	
+//	상품 분류 코드 삭제 
+	@RequestMapping(value="/itemtypedelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String itemtypedelAjax(@RequestParam HashMap<String, String> params, @RequestParam("pop_check") List<String> pop_check, ModelAndView mav) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		String res = "";
+		try {
+			for(int i = 0 ; i < pop_check.size(); i++) {
+				params.put("IT_CODE_NM",pop_check.get(i));
+				iEService.itemtypedel(params);
+			}
+			res = "SUCCESS";
+		}
+		catch(Exception e) {
+			res = "FAILED";
+		}
+		
+		modelMap.put("res", res);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 	
 	
 	

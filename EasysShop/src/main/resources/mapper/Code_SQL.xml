@@ -268,4 +268,54 @@
 			WHERE CODE_L_CATE = 1
 			AND CODE_M_CATE = #{IT_M_GROUP_NO}
 	</select>
+	
+	
+	<!-- 상품 분류 리스트 가져오기 -->
+	<select id="getitemtypeList" parameterType="hashmap" resultType="hashmap">
+			SELECT *
+			FROM COMMON_CODE
+			WHERE CODE_L_CATE = 1
+	</select>
+	
+	<!-- 상품 분류 코드 삭제 -->
+	<delete id="itemtypedel" parameterType="hashmap">
+		DELETE FROM common_code 
+		WHERE CODE_L_CATE = 1 AND CODE_NAME =  #{IT_CODE_NM}
+	</delete>
+	
+	<!-- 상품 분류 중복 체크 -->
+	<select id="itemtypeck" parameterType="hashmap" resultType="Integer">
+		<if test="ck_val == 1">
+			SELECT COUNT(*)
+			FROM COMMON_CODE 
+			WHERE CODE_L_CATE = 1
+			AND CODE_M_CATE =  #{it_M_code}
+		</if>
+		<if test="ck_val == 0">
+			SELECT COUNT(*)
+			FROM COMMON_CODE 
+			WHERE CODE_L_CATE = 1
+			AND CODE_M_CATE =  #{IT_M_GROUP_NO}
+			AND CODE_S_CATE = #{it_S_code}
+		</if>
+	</select>
+	<!-- 상품 분류 코드 이름 중복 체크 -->
+	<select id="itemnmtypeck" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM COMMON_CODE 
+		WHERE CODE_L_CATE = 1
+		AND CODE_NAME =  #{it_NM_code}
+	</select>
+	
+	<!--  상품 대분류 코드 등록 -->
+	<select id="itemtypeadd" parameterType="hashmap">
+		<if test="ck_val == 1">
+			INSERT INTO COMMON_CODE(CODE_L_CATE,CODE_M_CATE,CODE_S_CATE,CODE_NAME)
+			VALUES(1, #{it_M_code} , 0 , #{it_NM_code})
+		</if>
+		<if test="ck_val == 0">
+			INSERT INTO COMMON_CODE(CODE_L_CATE,CODE_M_CATE,CODE_S_CATE,CODE_NAME)
+			VALUES(1, #{IT_M_GROUP_NO} , #{it_S_code} , #{it_NM_code})
+		</if>
+	</select>
 </mapper>

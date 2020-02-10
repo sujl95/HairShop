@@ -122,4 +122,29 @@ public class EDao implements IEDao {
 		return sqlSession.selectList("code.getitemScateList", params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getitemtypeList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("code.getitemtypeList", params);
+	}
+
+	@Override
+	public void itemtypedel(HashMap<String, String> params) throws Throwable {
+		sqlSession.delete("code.itemtypedel", params);				
+	}
+
+	@Override
+	public int itemtypeck(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("code.itemtypeck", params);
+	}
+
+	@Override
+	public int itemnmtypeck(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("code.itemnmtypeck", params);
+	}
+
+	@Override
+	public void itemtypeadd(HashMap<String, String> params) throws Throwable {
+		sqlSession.insert("code.itemtypeadd", params);				
+	}
+
 }

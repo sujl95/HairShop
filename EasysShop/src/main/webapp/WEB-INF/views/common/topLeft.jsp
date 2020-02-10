@@ -36,77 +36,8 @@ $(document).ready(function() {
 		} else if ($(this).attr("menuno") == 20) {
 			Compfun();
 		}
-			
-		// 조건X 검색 버튼 클릭 Event
-		$("#pop_Search_Btn").on("click", function a(str) {
-			var str = $(this).attr("name");
-	 		if (str == "getcustgradelist") getlist(1);
-	 		if (str == "getempgradelist") getlist(2);
-	 		if (str == "getcomplist") getlist(3);
-	 		if (str == "getitemcodelist") getlist(4);
-		});
 		
-		$("input[name=searchTxt]").on("keypress", function() {
-			if(event.keyCode == 13) {
-				$("#pop_Search_Btn").click();
-				return false;
-			}
-		});
-		
-		/* 체크박스 영역 제외하고 나머지tr부분 이벤트 적용 고객등급*/
-		$(".pop_list").on("click",".pop_update" ,function(e) {
-			
-// 			var params = "&cust_g_no=" + $(this).attr("name");
-			var params = "&"+$(this).attr("id")+"=" + $(this).attr("name");
-			var ajax = "";
-			if ($(this).attr("id") == "cust_g_no") {
-				ajax = "getcustgdataAjax";
-			} else if($(this).attr("id") == "emp_g_no") {
-				ajax = "getempgdataAjax";
-			} else if($(this).attr("id") == "comp_no") {
-				ajax = "getcompdataAjax";
-			} else if($(this).attr("id") == "IT_CODE_NO") {
-				ajax = "getitemcodedataAjax";
-			} 
-			console.log(params);
-			$.ajax({
-				type : "post", //데이터 전송방식
-				url : ajax, //주소
-				dataType : "json", //데이터 전송 규격
-				data : params, //보낼 데이터
-				// {키: 값, 키:값, ...} - > json
-				
-				success : function(result1){
-					console.log(result1);
-					if (ajax == "getcustgdataAjax") {
-						make_custgrade_pop(2,"고객 등급 수정",result1);
-					} else if (ajax == "getempgdataAjax") {
-						make_custgrade_pop(4,"직원 등급수정",result1);
-					} else if (ajax == "getcompdataAjax") {
-						make_comp_pop(2,"거래처 수정",3,result1);
-					} else if (ajax == "getitemcodedataAjax") {
-						make_item_pop(2,"상품 코드 수정",3,result1);
-					} 
-					
-					
-				} , 
-				error : function(request,status,error) {
-					console.log("status : "+request.status);
-					console.log("text : "+request.responseText);
-					console.log("error : "+error);
-				}
-				
-			});
-		});
-// 		체크 전체
-		$("#pop_chk_all").click(function(){
-	    	if($("#pop_chk_all").prop("checked")){
-	    		$("input[name=pop_check]").prop("checked",true);
-	    	}else{
-	    		$("input[name=pop_check]").prop("checked",false);
-	    	}
-	    });
-	    
+		load_event();
 		
 		
 	});
@@ -117,6 +48,84 @@ $(document).ready(function() {
 	});
 	
 });
+//로드시 이벤트적용
+function load_event() {
+	
+	// 조건X 검색 버튼 클릭 Event
+	$("#pop_Search_Btn").on("click", function a(str) {
+		var str = $(this).attr("name");
+ 		if (str == "getcustgradelist") getlist(1);
+ 		if (str == "getempgradelist") getlist(2);
+ 		if (str == "getcomplist") getlist(3);
+ 		if (str == "getitemcodelist") getlist(4);
+ 		if (str == "getitemtypelist") getlist(5);
+	});
+	
+	$("input[name=searchTxt]").on("keypress", function() {
+		if(event.keyCode == 13) {
+			$("#pop_Search_Btn").click();
+			return false;
+		}
+	});
+	
+	/* 체크박스 영역 제외하고 나머지tr부분 이벤트 적용 고객등급*/
+	$(".pop_list").on("click",".pop_update" ,function(e) {
+		var params = "&"+$(this).attr("id")+"=" + $(this).attr("name");
+		var ajax = "";
+		if ($(this).attr("id") == "cust_g_no") {
+			ajax = "getcustgdataAjax";
+		} else if($(this).attr("id") == "emp_g_no") {
+			ajax = "getempgdataAjax";
+		} else if($(this).attr("id") == "comp_no") {
+			ajax = "getcompdataAjax";
+		} else if($(this).attr("id") == "IT_CODE_NO") {
+			ajax = "getitemcodedataAjax";
+		} else if($(this).attr("id") == "IT_TYPE_NO") {
+			ajax = "getitemtypedataAjax";
+		} 
+		console.log(params);
+		$.ajax({
+			type : "post", //데이터 전송방식
+			url : ajax, //주소
+			dataType : "json", //데이터 전송 규격
+			data : params, //보낼 데이터
+			// {키: 값, 키:값, ...} - > json
+			
+			success : function(result1){
+				console.log(result1);
+				if (ajax == "getcustgdataAjax") {
+					make_custgrade_pop(2,"고객 등급 수정",result1);
+				} else if (ajax == "getempgdataAjax") {
+					make_custgrade_pop(4,"직원 등급수정",result1);
+				} else if (ajax == "getcompdataAjax") {
+					make_comp_pop(2,"거래처 수정",3,result1);
+				} else if (ajax == "getitemcodedataAjax") {
+					make_item_pop(2,"상품 코드 수정",3,result1);
+				} else if (ajax == "getitemtypedataAjax") {
+					make_it_type_pop(2,"상품 분류 코드 수정",3,result1);
+				} 
+				
+				
+			} , 
+			error : function(request,status,error) {
+				console.log("status : "+request.status);
+				console.log("text : "+request.responseText);
+				console.log("error : "+error);
+			}
+			
+		});
+	});
+//		체크 전체
+	$("#pop_chk_all").click(function(){
+    	if($("#pop_chk_all").prop("checked")){
+    		$("input[name=pop_check]").prop("checked",true);
+    	}else{
+    		$("input[name=pop_check]").prop("checked",false);
+    	}
+    });
+    
+}
+
 //리스트 Get
 function getlist(no) {
 	var params = $("#popactionForm").serialize();
@@ -129,6 +138,8 @@ function getlist(no) {
 		ajax = "getcomplistAjax";
 	} else if (no == 4) {
 		ajax = "getitemcodelistAjax";
+	} else if (no == 5) {
+		ajax = "getitemtypelistAjax";
 	} 
 	$.ajax({
 		type: "post",
@@ -144,6 +155,8 @@ function getlist(no) {
 				drawcompList(result.list);
 			} else if(ajax == "getitemcodelistAjax") {
 				drawitemcodeList(result.list);
+			} else if(ajax == "getitemtypelistAjax") {
+				drawitemtypeList(result.list);
 			}
 				
 		},
@@ -255,7 +268,7 @@ function Compfun (depth) {
 	html += `<br>`;
 	html += `</form>`;
 	html += `<form id="popdataForm" action="#" method="post">`;
-	html += `<table class="table_list pop_list widthscroll">                `;
+	html += `<table class="table_list pop_list widthscroll" id="comp_list">                `;
 	html += `	<thead class="thead_scroll ">           `;
 	html += `		<tr class="table_list_header">     `;
 	html += `			<td width="80px" nowrap>      `;
@@ -310,7 +323,7 @@ function Compfun (depth) {
 		} else {
 			depth += 1;
 		}
-		listdel(depth,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
+		listdel(depth ,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
 	},"취소", function() {
 		if (depth == null) {
 			depth = 1;
@@ -323,6 +336,7 @@ function Compfun (depth) {
 
 //상품 코드 목록 메서드
 function Itemfun (depth) {
+	const cdepth = depth;
 	var html = "";
 	html += `<form id="popactionForm" action="#" method="post">`;
 	html += `<table class="pop_table">`;
@@ -343,7 +357,7 @@ function Itemfun (depth) {
 	html += `<br>`;
 	html += `</form>`;
 	html += `<form id="popdataForm" action="#" method="post">`;
-	html += `<table class="table_list pop_list widthscroll">                `;
+	html += `<table class="table_list pop_list widthscroll" id="item_code_list">                `;
 	html += `	<thead class="thead_scroll ">           `;
 	html += `		<tr class="table_list_header">     `;
 	html += `			<td width="80px" nowrap>      `;
@@ -372,7 +386,7 @@ function Itemfun (depth) {
 	html += `	</tbody>                                               `;
 	html += `</table>                                                  `;
 	html += `</form>`;
-	makeThreeBtnPopup(depth = (depth == null) ? 1 : depth, "상품 코드 목록", html, false, 900, 700, function() {
+	makeThreeBtnPopup(depth = (depth == null) ? 1 : cdepth, "상품 코드 목록", html, false, 900, 700, function() {
 		getlist(4);
 		$("#popdataForm").slimScroll({
 			width : "880px",
@@ -381,16 +395,55 @@ function Itemfun (depth) {
 		});
 	}
 	, "등록", function() {
-		make_item_pop(1, "상품 코드 등록",depth = (depth == null) ? 1 : depth+1);
+		make_item_pop(1, "상품 코드 등록",depth = (depth == null) ? 1 : cdepth+1);
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-		listdel(depth = (depth == null) ? 1 : depth+1,"상품 ",400,200,"popactionForm","itemdelAjax","getlist4",params);
+		listdel(depth = (depth == null) ? 1 : cdepth+1,"상품 ",400,200,"popactionForm","itemdelAjax","getlist4",params);
 	},"취소", function() {
-		closePopup(depth = (depth == null) ? 1 : depth	);
+		console.log(depth);
+		closePopup(depth = (depth == null) ? 1 : cdepth	);
 	});
 	
 	
 }
+
+//상품분류코드 리스트 Draw
+function drawitemtypeList(list) {
+	var html = "";
+	if(list.length > 0) {
+		
+		for(var i in list) {
+			html += `<tr class="list_contents" name="`+list[i].CODE_NAME+`">                                                                              `;
+			html += `	<td width="60px" nowrap style="cursor : default;" class="chk_td">                                                                             `;
+			html += `		<div class="squaredOne">                                                                                              `;
+			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].CODE_NAME+`" style="display : none;" id="chk_`+list[i].CODE_NAME+`" name="pop_check" />   `;
+			html += `			<label class="chbox_lbl" for="chk_`+list[i].CODE_NAME+`"></label>                                                                         `;
+			html += `		</div>                                                                                                                `;
+			html += `	</td>                                                                                                                     `;
+			html += `	<td  width="85px" nowrap style="cursor : default;"><input name="`+list[i].CODE_NAME+`"type="button" class="pop_update" id="IT_TYPE_NM" value="수정"/></td>                                `;
+			html += `			<td width="85px" nowrap>`+list[i].CODE_M_CATE+`</td>   `;
+			html += `			<td width="85px" nowrap>`+list[i].CODE_S_CATE+`</td>   `;
+			html += `			<td width="130px" nowrap>`+list[i].CODE_NAME+`</td>`;
+			html += `</tr>                                                                                                                        `
+		}            
+// 		$("input[type=checkbox]").prop("checked",false);
+	}
+	else {
+		html += "<tr class=\"list_contents\" style=\"height: 350px;\">";
+		html += "<td colspan=\"4\">조회된 데이터가 없습니다.</td>";
+		html += "</tr>";
+	}
+	
+	$("#item_code_add_list tbody").html(html);
+	
+	$(".sscroll").slimScroll({
+		width : "100%",
+		height: "300px"
+	});
+}
+
+
+
 //상품코드 리스트 Draw
 function drawitemcodeList(list) {
 	var html = "";
@@ -428,7 +481,7 @@ function drawitemcodeList(list) {
 		html += "</tr>";
 	}
 	
-	$(".pop_list tbody").html(html);
+	$("#item_code_list tbody").html(html);
 	
 	$(".sscroll").slimScroll({
 		width : "100%",
@@ -437,6 +490,7 @@ function drawitemcodeList(list) {
 }
 //상품 코드 등록 수정
 function make_item_pop(ck, str ,depth,result1) {
+	const cdepth = depth;
 	var html = "";
 	var ajax = "";
 	if (ck == 1) {
@@ -444,118 +498,6 @@ function make_item_pop(ck, str ,depth,result1) {
 	} else if (ck == 2) {
 		ajax = "itemcodeUpdateAjax";
 	}
-// 	html += `	<form id="itemForm" action="#" method="post"> `
-// 	html += `	<table class="pop_table"> `
-// 	html += `		<colgroup>            `
-// 	html += `			<col width="15%"> `
-// 	html += `			<col width="35%"> `
-// 	html += `			<col width="15%"> `
-// 	html += `			<col width="35%"> `
-// 	html += `		</colgroup>           `
-// 	html += `		<tbody>               `
-// 	html += `			<tr>              `                                                             
-// 	html += `				<td class="field_name first_field_name">상품명</td>                         `
-// 	html += `				<td class="field_contents" >                                                `
-// 	html += `					<input class="input_normal" id="IT_NM" name="IT_NM" type="text" value=`+result1.data.IT_NM+`>        `
-// 	html += `					<input id="IT_CODE_NO" name="IT_CODE_NO" type="hidden" value=`+result1.data.IT_NO+`>        `
-// 	html += `				</td>                                                                       `
-// 	html += `				<td class="field_name first_field_name">매입처</td>                         `
-// 	html += `				<td class="field_contents">                                                 `
-// 	html += `					<input class="input_normal size60" readonly="readonly" type="text" id="CP_NM" name="CP_NM" value=`+result1.data.CP_NM+`> `
-// 	html += `					<input type="hidden" id="CP_NO" name="CP_NO" value=`+result1.data.CP_NO+`>                           `
-// 	html += `					<input type="button" class="btn_normal btn_size_normal pxsize60"  id="CP_Search_btn" name="CP_Search_btn" value="검색"/>`
-// 	html += `				</td> `
-// 	html += `			</tr>     `
-// 	html += `			<tr>      `
-// 	html += `				<td class="field_name first_field_name">상품 코드</td>                             `
-// 	html += `				<td class="field_contents" colspan="3" >                                                         `
-// 	html += `					<select class="input_normal size30" id="IT_M_GROUP_NO" name="IT_M_GROUP_NO">            `
-// 	html += `						<option value="-1" selected="selected" >상품분류</option>`
-// 	html += `					</select>                                                                        `
-// 	html += `					<select class="input_normal size30" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">     `
-// 	html += `						<option value="-1" selected="selected" >상품명</option>`
-// 	html += `					</select>                                                                        `
-// 	html += `					<input type="button" class="btn_normal btn_size_normal pxsize50" value="등록"/>           `
-// 	html += `				</td>                                                                                `
-// 	html += `			</tr>     `
-// 	html += `			<tr>      `
-// 	html += `				<td class="field_name first_field_name">상품규격</td>                     `
-// 	html += `				<td class="field_contents" >                                              `
-// 	html += `					<input class="input_normal" id="IT_STD" name="IT_STD" type="text" value=`+result1.data.IT_STD+`>    `
-// 	html += `				</td>                                                                     `
-// 	html += `				<td class="field_name first_field_name">상품단위</td>                     `
-// 	html += `				<td class="field_contents" >                                              `
-// 	html += `					<input class="input_normal" id="IT_UNIT" name="IT_UNIT" value=`+result1.data.IT_UNIT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+` onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text">`
-// 	html += `				</td>  `
-// 	html += `			</tr>      `
-// 	html += `			<tr>       `
-// 	html += `				<td class="field_name first_field_name">VAT포함여부</td>                                          `
-// 	html += `				<td class="field_contents">                                                                       `
-// 	if(result1.data.IT_VAT_CK == "VAT포함") {
-// 		html += `					<label><input type="radio" value="VAT포함" checked="checked" name="IT_VAT_CK">VAT포함</label> `
-// 		html += `					<label><input type="radio" value="VAT미포함" name="IT_VAT_CK">VAT미포함</label>               `
-//  	} else {
-//  		html += `					<label><input type="radio" value="VAT포함" name="IT_VAT_CK">VAT포함</label> `
-// 		html += `					<label><input type="radio" value="VAT미포함"  checked="checked" name="IT_VAT_CK">VAT미포함</label>               `
-//  	}
-// 	html += `				</td>                                                                                             `
-// 	html += `				<td class="colorred"colspan="2">단가에 부가세 포함여부를 선택해주세요</td>                        `
-// 	html += `			</tr>                                                                                                 `
-// 	html += `			<tr>                                                                                                  `
-// 	html += `				<td class="field_name first_field_name" rowspan="2" >판매단가</td>                                `
-// 	html += `				<td class="field_contents" rowspan="2" >                                                          `
-// 	html += `					<input class="input_normal txtalignright" onkeyup="Salesfunc()" id="Sales_Sales_Money" name="Sales_Sales_Money" type="text">  `
-// 	html += `				</td>                                                                                                        `
-// 	html += `				<td class="field_name first_field_name backcolorwhite" rowspan="2">                                          `
-// 	html += `				</td>                                                                                                        `
-// 	html += `				<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">                `
-// 	html += `					<div class="Sale_Money_area">                                                                            `
-// 	html += `					공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_Supply_Money" name="Sales_Supply_Money" type="text">원  `
-// 	html += `					</div>                                                                                                                                                  `
-// 	html += `					<div class="Sale_Money_area">                                                                                                                           `
-// 	html += `					부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_VAT_Money" name="Sales_VAT_Money" type="text">원        `
-// 	html += `					</div>                                                                                                                                                  `
-// 	html += `					<div class="Sale_Money_area">                                                                                                                           `
-// 	html += `					판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_Total_Money" name="Sales_Total_Money" type="text">원    `
-// 	html += `					</div> `
-// 	html += `				</td>      `
-// 	html += `			</tr>          `
-// 	html += `			<tr>           `
-// 	html += `			</tr>          `
-// 	html += `			<tr>           `                                                                                   
-// 	html += `				<td class="field_name first_field_name" rowspan="2" >매입단가</td>                             `
-// 	html += `				<td class="field_contents" rowspan="2" >                                                       `
-// 	html += `					<input class="input_normal txtalignright" onkeyup="Purchasefunc()" id="Purchase_Sales_Money" name="Purchase_Sales_Money" type="text">           `
-// 	html += `				</td>                                                                                          `
-// 	html += `				<td class="field_name first_field_name backcolorwhite" rowspan="2">                            `
-// 	html += `				</td>                                                                                          `
-// 	html += `				<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">  `
-// 	html += `					<div class="Sale_Money_area">                                                              `
-// 	html += `					공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Supply_Money" name="Purchase_Supply_Money" type="text">원  `
-// 	html += `					</div>                                                                                                                                                        `
-// 	html += `					<div class="Sale_Money_area">                                                                                                                                 `
-// 	html += `					부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_VAT_Money" name="Purchase_VAT_Money" type="text">원        `
-// 	html += `					</div>                                                                                                                                                        `
-// 	html += `					<div class="Sale_Money_area">                                                                                                                                 `
-// 	html += `					판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Total_Money" name="Purchase_Total_Money" type="text">원    `
-// 	html += `					</div> `
-// 	html += `				</td>      `
-// 	html += `			</tr>          `
-// 	html += `			<tr>           `
-// 	html += `			</tr>          `
-// 	html += `			<tr>           `
-// 	html += `				<td class="field_name first_field_name">현금적립포인트</td>                                       `
-// 	html += `				<td class="field_contents">                                                                       `
-// 	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)" id="IT_MONEY_PT" name="IT_MONEY_PT" value=`+result1.data.IT_MONEY_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+` type="text">      `
-// 	html += `				</td>                                                                                             `
-// 	html += `				<td class="field_name first_field_name">카드적립포인트</td>                                       `
-// 	html += `				<td class="field_contents" >                                                                      `
-// 	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)" id="IT_CARD_PT" name="IT_CARD_PT" value=`+result1.data.IT_CARD_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+` type="text">      `
-// 	html += `				</td>`
-// 	html += `			</tr>    `
-// 	html += `		</tbody>     `
-// 	html += `	</table>         `
-// 	html += `</form>`
 	html += `	<form id="itemForm" action="#" method="post"> `
 	html += `	<table class="pop_table"> `
 	html += `		<colgroup>            `
@@ -663,7 +605,7 @@ function make_item_pop(ck, str ,depth,result1) {
 	html += `		</tbody>     `
 	html += `	</table>         `
 	html += `</form>`
-		makeTwoBtnPopup(depth, str, html, true, 700, 600, function() {
+		makeTwoBtnPopup(cdepth, str, html, true, 700, 600, function() {
 			// 버튼 크기 자동 조절
 		    $('.btn').each(function() {
 		        if($(this).html().length > 2) {
@@ -678,17 +620,226 @@ function make_item_pop(ck, str ,depth,result1) {
 			
 			/* 거래처 목록 팝업 오픈 */
 			$("#CP_Search_btn ,  #CP_NM").on("click", function() {
-				Compfun(depth+1);
+				Compfun(cdepth+1);
 				$(".pop_list>tbody").on("click", "tr", function() {
 					var arr = [] ;
 					arr = $(this).attr("name").split("_");
 					$("#CP_NO").val(arr[0]);
 					$("#CP_NM").val(arr[1]);
-					closePopup(depth+1);
+					closePopup(cdepth+1);
 				});
 			});
 			
 			$("#IT_CODE_ADD").on("click", function() {
+				var html ="";
+				html += `<form id="popactionForm" action="#" method="post">`;
+				html += `<table class="pop_table">`;
+				html += `	<colgroup>            `;
+				html += `		<col width="20%"> `;
+				html += `		<col width="80%"> `;
+				html += `	</colgroup>           `;
+				html += `	<tbody>               `;
+				html += `		<tr>              `;
+				html += `			<td class="field_name first_field_name">등록 코드</td> `;
+				html += `			<td class="field_contents">                         `;
+				html += `						<label><input type="radio" value="대분류" checked="checked" name="it_type">대분류</label>`
+				html += `						<label><input type="radio" value="소분류"  name="it_type">소분류</label>`
+				html += `					<input type="button" class="btn_normal btn_size_normal pxsize50" id="IT_CODE_ADD" name="IT_CODE_ADD" value="등록"/>           `
+				html += `			</td>`;
+				html += `		</tr> `;
+				html += `			<tr>      `
+				html += `				<td class="field_name first_field_name">상품 코드</td>                             `
+				html += `				<td class="field_contents" colspan="2" id="it_code_txt">                                                         `
+				html += `				<input class="input_size size30" type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" id="it_M_code" name="it_M_code" placeholder="대분류코드">   `;
+				html += `				<input class="input_size size30" type="text" id="it_NM_code" name="it_NM_code" placeholder="코드이름">   `;
+				html += `				</td>                                                                                `
+				html += `			</tr>     `
+				html += `	</tbody>  `;
+				html += `</table>     `;
+				html += `<br>`;
+				html += `</form>`;
+				html += `<form id="popdataForm" action="#" method="post">`;
+				html += `<table class="table_list pop_list" id="item_code_add_list">                `;
+				html += `	<thead class="thead_scroll">           `;
+				html += `		<tr class="table_list_header">     `;
+				html += `			<td  width="60px" nowrap>      `;
+				html += `				<div class="squaredOne_h"> `;
+				html += `					<input type="checkbox" value="None" class="list_chbox" style="display : none;" id="pop_chk_all"  />`;
+				html += `					<label for="pop_chk_all"  ></label>`; 
+				html += `				</div>`;
+				html += `			</td>`;
+				html += `			<td  width="85px" nowrap>수정</td>     `;
+				html += `			<td  width="85px" nowrap>대분류</td>               `;
+				html += `			<td  width="85px" nowrap>소분류</td>               `;
+				html += `			<td  width="130px" nowrap>코드명</td>             `;
+				html += `		</tr>                                              `;
+				html += `	</thead>                                               `;
+				html += `	<tbody class="tbody_scroll sscroll" style="height : 300px !important">                           `;
+				html += `	</tbody>                                               `;
+				html += `</table>                                                  `;
+				html += `</form>`;
+				
+				makeTwoBtnPopup(cdepth+1, "상품 분류 코드 등록", html , true, 460, 600, function() {
+					//텍스트 박스 드로우
+					$("input[name=it_type]:radio").change(function() {
+						if($(this).val() == "대분류") {
+							var  html ="";
+							html += `				<input class="input_size size30" type="text" id="it_M_code" name="it_M_code" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="대분류코드">   `;
+							html += `				<input class="input_size size30" type="text" id="it_NM_code" name="it_NM_code" placeholder="코드이름">   `;
+						} else {
+							var  html ="";
+							html += `					<select class="input_normal size30" id="IT_M_GROUP_NO1" name="IT_M_GROUP_NO">            `
+							html += `						<option value="-1" selected="selected" >대분류선택</option>`
+							html += `					</select>                                                                        `
+			 				html += `				<input class="input_size size30" type="text" id="it_S_code" name="it_S_code" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="소분류코드">   `;
+							html += `				<input class="input_size size30" type="text" id="it_NM_code" name="it_NM_code" placeholder="코드이름">   `;
+						}
+						$("#it_code_txt").html(html);
+						getitemcate(null,1);
+						
+					});
+					//등록
+					$("#IT_CODE_ADD").on("click",function() {
+						
+						if($("input[name=it_type]:checked").val() == "대분류") {
+							if($.trim($("#it_M_code").val()) == "") {
+								makeAlert(cdepth+2, str+" 오류", "대분류 코드를 입력하세요", null);
+							} else if($.trim($("#it_NM_code").val()) == "")  {
+								makeAlert(cdepth+2, str+" 오류", "코드이름을 입력하세요", null);
+							} else {
+								var params = $("#popactionForm").serialize() + "&ck_val=" + "1";
+								$.ajax({
+									type : "post", //데이터 전송방식
+									url : "itemtypeckAjax" , //주소
+									dataType : "json", //데이터 전송 규격
+									data : params, //보낼 데이터
+									// {키: 값, 키:값, ...} - > json
+									
+									success : function(result){
+										if(result.res == "SUCCESS"){
+											closePopup(cdepth+1);
+											makeAlert(cdepth+2, str+" 성공", str+"되었습니다.", null);
+											getlist(5);
+										} else if(result.res == "MFailed"){
+											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다. 분류 코드 또는 코드이름이 중복입니다", null);
+										} else {
+											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다.", null);
+										}
+									} , 
+									error : function(request,status,error) {
+										console.log("status : "+request.status);
+										console.log("text : "+request.responseText);
+										console.log("error : "+error);
+									}
+									
+								});
+							}
+									
+						} else if ($("input[name=it_type]:checked").val() == "소분류"){
+							if ($("#IT_M_GROUP_NO1").val() == "-1"){
+								console.log($("#IT_M_GROUP_NO1").val());
+								makeAlert(cdepth+2, str+" 오류", "대분류 코드를 입력하세요", null);
+							} else if($.trim($("#it_S_code").val()) == "")  {
+								makeAlert(cdepth+2, str+" 오류", "소분류 코드를 입력하세요", null);
+							} else if($.trim($("#it_NM_code").val()) == "")  {
+								makeAlert(cdepth+2, str+" 오류", "코드이름을 입력하세요", null);
+							} else{
+								var params = $("#popactionForm").serialize() + "&ck_val=" + "0";
+								$.ajax({
+									type : "post", //데이터 전송방식
+									url : "itemtypeckAjax" , //주소
+									dataType : "json", //데이터 전송 규격
+									data : params, //보낼 데이터
+									// {키: 값, 키:값, ...} - > json
+									
+									success : function(result){
+										if(result.res == "SUCCESS"){
+											makeAlert(cdepth+2, str+" 성공", str+"되었습니다.", null);
+											getlist(5);
+										} else if(result.res == "MFailed"){
+											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다. 분류 코드 또는 코드이름이 중복입니다", null);
+										} else {
+											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다.", null);
+										}
+									} , 
+									error : function(request,status,error) {
+										console.log("status : "+request.status);
+										console.log("text : "+request.responseText);
+										console.log("error : "+error);
+									}
+									
+								});
+							}
+						} else if(typeof params != "undefined") {
+							console.log(params);
+							$.ajax({
+								type : "post", //데이터 전송방식
+								url : "itemtypeckAjax" , //주소
+								dataType : "json", //데이터 전송 규격
+								data : params, //보낼 데이터
+								// {키: 값, 키:값, ...} - > json
+								
+								success : function(result){
+									if(result.res == "SUCCESS"){
+										closePopup(cdepth+1);
+										makeAlert(cdepth+2, str+" 성공", str+"되었습니다.", null);
+										getlist(5);
+									} else if(result.res == "MFailed"){
+										makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다. 분류 코드 또는 코드이름이 중복입니다", null);
+									} else {
+										makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다.", null);
+									}
+								} , 
+								error : function(request,status,error) {
+									console.log("status : "+request.status);
+									console.log("text : "+request.responseText);
+									console.log("error : "+error);
+								}
+								
+							});
+						} 
+						
+							
+						
+						 
+// 						console.log($("#IT_M_GROUP_NO1").val());
+						
+						
+						
+// 						var params = $("#popactionForm").serialize() ;
+// 						console.log(params);
+// 						$.ajax({
+// 							type : "post", //데이터 전송방식
+// 							url : ajax , //주소
+// 							dataType : "json", //데이터 전송 규격
+// 							data : params, //보낼 데이터
+// 							// {키: 값, 키:값, ...} - > json
+							
+// 							success : function(result){
+// 								if(result.res == "SUCCESS"){
+// 									closePopup(cdepth);
+// 									makeAlert(cdepth+1, str+" 성공", str+"되었습니다.", null);
+// 									getlist(4);
+// 								} else{
+// 									makeAlert(cdepth+1, str+" 오류", str+"에 실패하였습니다.", null);
+// 								}
+// 							} , 
+// 							error : function(request,status,error) {
+// 								console.log("status : "+request.status);
+// 								console.log("text : "+request.responseText);
+// 								console.log("error : "+error);
+// 							}
+							
+// 						});
+					});
+					getlist(5);
+					load_event();
+				}, "삭제", function() {
+					var params = $("#popdataForm").serialize();
+					listdel(cdepth+2,"상품 분류 코드 삭제",400,200,"popactionForm","itemtypedelAjax","getlist5",params);
+				},"취소", function() {
+					closePopup(cdepth+1);
+				});
 				
 			});
 			
@@ -722,14 +873,14 @@ function make_item_pop(ck, str ,depth,result1) {
 		 	} 
 		}, str , function() {
 				if($.trim($("#IT_NM").val()) == ""){
-					makeAlert(depth+1, str+"오류", "상품명을 입력하세요", null);
+					makeAlert(cdepth+1, str+"오류", "상품명을 입력하세요", null);
 					$("#IT_NM").focus();
 				} else if($.trim($("#IT_M_GROUP_NO").val()) == "-1"){
-					makeAlert(depth+1, str+"오류", "상품분류를 입력하세요", null);
+					makeAlert(cdepth+1, str+"오류", "상품분류를 입력하세요", null);
 				} else if($.trim($("#IT_S_GROUP_NO").val()) == "-1"){
-					makeAlert(depth+1, str+"오류", "상품명을 입력하세요", null);
+					makeAlert(cdepth+1, str+"오류", "상품명을 입력하세요", null);
 				} else if(($.trim($("#Sales_Sales_Money").val()) == "") && ($.trim($("#Purchase_Sales_Money").val()) == "")){
-					makeAlert(depth+1, str+"오류", "판매단가 또는 매입단가를 입력하세요", null);
+					makeAlert(cdepth+1, str+"오류", "판매단가 또는 매입단가를 입력하세요", null);
 					$("#Sales_Sales_Money").focus();
 				} else {
 					var params = $("#itemForm").serialize() + 
@@ -750,11 +901,11 @@ function make_item_pop(ck, str ,depth,result1) {
 						
 						success : function(result){
 							if(result.res == "SUCCESS"){
-								closePopup(depth);
-								makeAlert(depth+1, str+" 성공", str+"되었습니다.", null);
+								closePopup(cdepth);
+								makeAlert(cdepth+1, str+" 성공", str+"되었습니다.", null);
 								getlist(4);
 							} else{
-								makeAlert(depth+1, str+" 오류", str+"에 실패하였습니다.", null);
+								makeAlert(cdepth+1, str+" 오류", str+"에 실패하였습니다.", null);
 							}
 						} , 
 						error : function(request,status,error) {
@@ -767,13 +918,13 @@ function make_item_pop(ck, str ,depth,result1) {
 				}
 				
 		},"취소", function() {
-			closePopup(depth);
+			closePopup(cdepth);
 		}); 
 	 	
 }
 
 //상품 분류데이터 가져오기 
-function getitemcate (result1) {
+function getitemcate (result1,ck) {
 	 if(result1 != null ){
 	 	var params = $("#itemForm").serialize() + "&NOW_M_CATE=" + result1.data.IT_M_GROUP_NO;
 	 } else {
@@ -787,14 +938,17 @@ function getitemcate (result1) {
 			// {키: 값, 키:값, ...} - > json
 			
 			success : function(result){
+				
 				if(result1 != null ){
 					drawitemMcate(result.Mlist,result1);
 					drawitemScate(result.Slist,result1);
+				} else if (ck == 1) {
+					drawitemMcate(result.Mlist,null,ck);
 				} else if($("#IT_M_GROUP_NO").val() >= 0){
 					drawitemScate(result.Slist);
 				} else {
 					drawitemMcate(result.Mlist);
-				};
+				} ;
 				
 			} , 
 			error : function(request,status,error) {
@@ -806,7 +960,7 @@ function getitemcate (result1) {
 		});
 }
 //상품 코드 Draw
-function drawitemMcate(Mlist,result1) {
+function drawitemMcate(Mlist,result1,ck) {
 	var html ="";
 	html += `<option value="-1">상품분류</option>`
 	for(var i in Mlist){
@@ -820,7 +974,11 @@ function drawitemMcate(Mlist,result1) {
 			html += `<option value="` + Mlist[i].CODE_M_CATE + `">` + Mlist[i].CODE_NAME + `</option>`
 		}
 	}
-	$("#IT_M_GROUP_NO").html(html);
+	if(ck == 1) {
+		$("#IT_M_GROUP_NO1").html(html);
+	} else if (ck == null){
+		$("#IT_M_GROUP_NO").html(html);
+	}
 }
 //상품 코드 Draw
 function drawitemScate(Slist,result1) {
@@ -882,7 +1040,7 @@ function drawcompList(list) {
 		html += "</tr>";
 	}
 	
-	$(".pop_list tbody").html(html);
+	$("#comp_list tbody").html(html);
 	
 	$(".sscroll").slimScroll({
 		width : "100%",

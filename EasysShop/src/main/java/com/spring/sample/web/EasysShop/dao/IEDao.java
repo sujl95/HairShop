@@ -52,4 +52,14 @@ public interface IEDao {
 
 	List<HashMap<String, String>> getitemScateList(HashMap<String, String> params) throws Throwable;
 
+	List<HashMap<String, String>> getitemtypeList(HashMap<String, String> params) throws Throwable;
+
+	void itemtypedel(HashMap<String, String> params) throws Throwable;
+
+	int itemtypeck(HashMap<String, String> params) throws Throwable;
+
+	int itemnmtypeck(HashMap<String, String> params) throws Throwable;
+
+	void itemtypeadd(HashMap<String, String> params) throws Throwable;
+
 }

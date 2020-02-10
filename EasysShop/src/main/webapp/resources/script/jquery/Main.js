@@ -174,11 +174,8 @@ $(document).ready(function() {
 				Salesformat(this,2);
     	}
     });
-//    
-//    $(".btn_cancel").on("click", function() {
-//    	$(this).parents("div.pop_btn_bottom_area").parents("div.pop_schedule_contents")
-//    	.parents("div.pop").parents("div.pop_wrap").removeClass("pop_on").addClass("pop_off");
-//    });
+
+    
 });
 
 
