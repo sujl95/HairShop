@@ -68,6 +68,8 @@ function listdel(depth,title,width,height,Form,Ajax,ListLoad,pop ) {
 						getlist(2);
 					} else if (ListLoad == "getlist3") {
 						getlist(3);
+					} else if (ListLoad == "getlist4") {
+						getlist(4);
 					} else if (ListLoad != null) {
 						ListLoad() 
 					}

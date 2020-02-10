@@ -77,7 +77,7 @@ $(document).ready(function() {
 				// {키: 값, 키:값, ...} - > json
 				
 				success : function(result1){
-					console.log(ajax);
+					console.log(result1);
 					if (ajax == "getcustgdataAjax") {
 						make_custgrade_pop(2,"고객 등급 수정",result1);
 					} else if (ajax == "getempgdataAjax") {
@@ -314,8 +314,6 @@ function Compfun (depth) {
 	},"취소", function() {
 		if (depth == null) {
 			depth = 1;
-		} else {
-// 			depth += 1;
 		}
 		closePopup(depth);
 	});
@@ -381,24 +379,13 @@ function Itemfun (depth) {
 			height: "500px",
 			axis: 'both'
 		});
-		
 	}
 	, "등록", function() {
 		make_item_pop(1, "상품 코드 등록",depth = (depth == null) ? 1 : depth+1);
 	},"삭제", function() {
 		var params = $("#popdataForm").serialize();
-// 		if (depth == null) {
-// 			depth = 2;
-// 		} else {
-// 			depth += 1;
-// 		}
-		listdel(depth = (depth == null) ? 1 : depth,"거래처 ",400,200,"popactionForm","compdelAjax","getlist4",params);
+		listdel(depth = (depth == null) ? 1 : depth+1,"상품 ",400,200,"popactionForm","itemdelAjax","getlist4",params);
 	},"취소", function() {
-// 		if (depth == null) {
-// 			depth = 1;
-// 		} else {
-// 			depth += 1;
-// 		}
 		closePopup(depth = (depth == null) ? 1 : depth	);
 	});
 	
@@ -457,6 +444,118 @@ function make_item_pop(ck, str ,depth,result1) {
 	} else if (ck == 2) {
 		ajax = "itemcodeUpdateAjax";
 	}
+// 	html += `	<form id="itemForm" action="#" method="post"> `
+// 	html += `	<table class="pop_table"> `
+// 	html += `		<colgroup>            `
+// 	html += `			<col width="15%"> `
+// 	html += `			<col width="35%"> `
+// 	html += `			<col width="15%"> `
+// 	html += `			<col width="35%"> `
+// 	html += `		</colgroup>           `
+// 	html += `		<tbody>               `
+// 	html += `			<tr>              `                                                             
+// 	html += `				<td class="field_name first_field_name">상품명</td>                         `
+// 	html += `				<td class="field_contents" >                                                `
+// 	html += `					<input class="input_normal" id="IT_NM" name="IT_NM" type="text" value=`+result1.data.IT_NM+`>        `
+// 	html += `					<input id="IT_CODE_NO" name="IT_CODE_NO" type="hidden" value=`+result1.data.IT_NO+`>        `
+// 	html += `				</td>                                                                       `
+// 	html += `				<td class="field_name first_field_name">매입처</td>                         `
+// 	html += `				<td class="field_contents">                                                 `
+// 	html += `					<input class="input_normal size60" readonly="readonly" type="text" id="CP_NM" name="CP_NM" value=`+result1.data.CP_NM+`> `
+// 	html += `					<input type="hidden" id="CP_NO" name="CP_NO" value=`+result1.data.CP_NO+`>                           `
+// 	html += `					<input type="button" class="btn_normal btn_size_normal pxsize60"  id="CP_Search_btn" name="CP_Search_btn" value="검색"/>`
+// 	html += `				</td> `
+// 	html += `			</tr>     `
+// 	html += `			<tr>      `
+// 	html += `				<td class="field_name first_field_name">상품 코드</td>                             `
+// 	html += `				<td class="field_contents" colspan="3" >                                                         `
+// 	html += `					<select class="input_normal size30" id="IT_M_GROUP_NO" name="IT_M_GROUP_NO">            `
+// 	html += `						<option value="-1" selected="selected" >상품분류</option>`
+// 	html += `					</select>                                                                        `
+// 	html += `					<select class="input_normal size30" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">     `
+// 	html += `						<option value="-1" selected="selected" >상품명</option>`
+// 	html += `					</select>                                                                        `
+// 	html += `					<input type="button" class="btn_normal btn_size_normal pxsize50" value="등록"/>           `
+// 	html += `				</td>                                                                                `
+// 	html += `			</tr>     `
+// 	html += `			<tr>      `
+// 	html += `				<td class="field_name first_field_name">상품규격</td>                     `
+// 	html += `				<td class="field_contents" >                                              `
+// 	html += `					<input class="input_normal" id="IT_STD" name="IT_STD" type="text" value=`+result1.data.IT_STD+`>    `
+// 	html += `				</td>                                                                     `
+// 	html += `				<td class="field_name first_field_name">상품단위</td>                     `
+// 	html += `				<td class="field_contents" >                                              `
+// 	html += `					<input class="input_normal" id="IT_UNIT" name="IT_UNIT" value=`+result1.data.IT_UNIT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+` onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text">`
+// 	html += `				</td>  `
+// 	html += `			</tr>      `
+// 	html += `			<tr>       `
+// 	html += `				<td class="field_name first_field_name">VAT포함여부</td>                                          `
+// 	html += `				<td class="field_contents">                                                                       `
+// 	if(result1.data.IT_VAT_CK == "VAT포함") {
+// 		html += `					<label><input type="radio" value="VAT포함" checked="checked" name="IT_VAT_CK">VAT포함</label> `
+// 		html += `					<label><input type="radio" value="VAT미포함" name="IT_VAT_CK">VAT미포함</label>               `
+//  	} else {
+//  		html += `					<label><input type="radio" value="VAT포함" name="IT_VAT_CK">VAT포함</label> `
+// 		html += `					<label><input type="radio" value="VAT미포함"  checked="checked" name="IT_VAT_CK">VAT미포함</label>               `
+//  	}
+// 	html += `				</td>                                                                                             `
+// 	html += `				<td class="colorred"colspan="2">단가에 부가세 포함여부를 선택해주세요</td>                        `
+// 	html += `			</tr>                                                                                                 `
+// 	html += `			<tr>                                                                                                  `
+// 	html += `				<td class="field_name first_field_name" rowspan="2" >판매단가</td>                                `
+// 	html += `				<td class="field_contents" rowspan="2" >                                                          `
+// 	html += `					<input class="input_normal txtalignright" onkeyup="Salesfunc()" id="Sales_Sales_Money" name="Sales_Sales_Money" type="text">  `
+// 	html += `				</td>                                                                                                        `
+// 	html += `				<td class="field_name first_field_name backcolorwhite" rowspan="2">                                          `
+// 	html += `				</td>                                                                                                        `
+// 	html += `				<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">                `
+// 	html += `					<div class="Sale_Money_area">                                                                            `
+// 	html += `					공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_Supply_Money" name="Sales_Supply_Money" type="text">원  `
+// 	html += `					</div>                                                                                                                                                  `
+// 	html += `					<div class="Sale_Money_area">                                                                                                                           `
+// 	html += `					부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_VAT_Money" name="Sales_VAT_Money" type="text">원        `
+// 	html += `					</div>                                                                                                                                                  `
+// 	html += `					<div class="Sale_Money_area">                                                                                                                           `
+// 	html += `					판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Sales_Total_Money" name="Sales_Total_Money" type="text">원    `
+// 	html += `					</div> `
+// 	html += `				</td>      `
+// 	html += `			</tr>          `
+// 	html += `			<tr>           `
+// 	html += `			</tr>          `
+// 	html += `			<tr>           `                                                                                   
+// 	html += `				<td class="field_name first_field_name" rowspan="2" >매입단가</td>                             `
+// 	html += `				<td class="field_contents" rowspan="2" >                                                       `
+// 	html += `					<input class="input_normal txtalignright" onkeyup="Purchasefunc()" id="Purchase_Sales_Money" name="Purchase_Sales_Money" type="text">           `
+// 	html += `				</td>                                                                                          `
+// 	html += `				<td class="field_name first_field_name backcolorwhite" rowspan="2">                            `
+// 	html += `				</td>                                                                                          `
+// 	html += `				<td class="field_name first_field_name backcolorwhite" style="font-weight: 300;" rowspan="2">  `
+// 	html += `					<div class="Sale_Money_area">                                                              `
+// 	html += `					공급가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Supply_Money" name="Purchase_Supply_Money" type="text">원  `
+// 	html += `					</div>                                                                                                                                                        `
+// 	html += `					<div class="Sale_Money_area">                                                                                                                                 `
+// 	html += `					부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_VAT_Money" name="Purchase_VAT_Money" type="text">원        `
+// 	html += `					</div>                                                                                                                                                        `
+// 	html += `					<div class="Sale_Money_area">                                                                                                                                 `
+// 	html += `					판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Total_Money" name="Purchase_Total_Money" type="text">원    `
+// 	html += `					</div> `
+// 	html += `				</td>      `
+// 	html += `			</tr>          `
+// 	html += `			<tr>           `
+// 	html += `			</tr>          `
+// 	html += `			<tr>           `
+// 	html += `				<td class="field_name first_field_name">현금적립포인트</td>                                       `
+// 	html += `				<td class="field_contents">                                                                       `
+// 	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)" id="IT_MONEY_PT" name="IT_MONEY_PT" value=`+result1.data.IT_MONEY_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+` type="text">      `
+// 	html += `				</td>                                                                                             `
+// 	html += `				<td class="field_name first_field_name">카드적립포인트</td>                                       `
+// 	html += `				<td class="field_contents" >                                                                      `
+// 	html += `					<input class="input_normal txtalignright" onkeyup="inputmoneyFormat(this)" id="IT_CARD_PT" name="IT_CARD_PT" value=`+result1.data.IT_CARD_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+` type="text">      `
+// 	html += `				</td>`
+// 	html += `			</tr>    `
+// 	html += `		</tbody>     `
+// 	html += `	</table>         `
+// 	html += `</form>`
 	html += `	<form id="itemForm" action="#" method="post"> `
 	html += `	<table class="pop_table"> `
 	html += `		<colgroup>            `
@@ -467,12 +566,12 @@ function make_item_pop(ck, str ,depth,result1) {
 	html += `		</colgroup>           `
 	html += `		<tbody>               `
 	html += `			<tr>              `                                                             
-	html += `				<td class="field_name first_field_name">상품명</td>                         `
+	html += `				<td class="field_name first_field_name">상품명<span class="acc_txt"> *</span></td>                         `
 	html += `				<td class="field_contents" >                                                `
 	html += `					<input class="input_normal" id="IT_NM" name="IT_NM" type="text">        `
 	html += `					<input id="IT_CODE_NO" name="IT_CODE_NO" type="hidden">        `
 	html += `				</td>                                                                       `
-	html += `				<td class="field_name first_field_name">매입처</td>                         `
+	html += `				<td class="field_name first_field_name">매입처<span class="acc_txt"> *</span></td>                         `
 	html += `				<td class="field_contents">                                                 `
 	html += `					<input class="input_normal size60" readonly="readonly" type="text" id="CP_NM" name="CP_NM"> `
 	html += `					<input type="hidden" id="CP_NO" name="CP_NO">                           `
@@ -480,7 +579,7 @@ function make_item_pop(ck, str ,depth,result1) {
 	html += `				</td> `
 	html += `			</tr>     `
 	html += `			<tr>      `
-	html += `				<td class="field_name first_field_name">상품 코드</td>                             `
+	html += `				<td class="field_name first_field_name">상품 코드<span class="acc_txt"> *</span></td>                             `
 	html += `				<td class="field_contents" colspan="3" >                                                         `
 	html += `					<select class="input_normal size30" id="IT_M_GROUP_NO" name="IT_M_GROUP_NO">            `
 	html += `						<option value="-1" selected="selected" >상품분류</option>`
@@ -488,7 +587,7 @@ function make_item_pop(ck, str ,depth,result1) {
 	html += `					<select class="input_normal size30" id="IT_S_GROUP_NO" name="IT_S_GROUP_NO">     `
 	html += `						<option value="-1" selected="selected" >상품명</option>`
 	html += `					</select>                                                                        `
-	html += `					<input type="button" class="btn_normal btn_size_normal pxsize50" value="등록"/>           `
+	html += `					<input type="button" class="btn_normal btn_size_normal pxsize50" id="IT_CODE_ADD" name="IT_CODE_ADD" value="등록"/>           `
 	html += `				</td>                                                                                `
 	html += `			</tr>     `
 	html += `			<tr>      `
@@ -510,7 +609,7 @@ function make_item_pop(ck, str ,depth,result1) {
 	html += `				<td class="colorred"colspan="2">단가에 부가세 포함여부를 선택해주세요</td>                        `
 	html += `			</tr>                                                                                                 `
 	html += `			<tr>                                                                                                  `
-	html += `				<td class="field_name first_field_name" rowspan="2" >판매단가</td>                                `
+	html += `				<td class="field_name first_field_name" rowspan="2" >판매단가<span class="acc_txt"> *</span></td>                                `
 	html += `				<td class="field_contents" rowspan="2" >                                                          `
 	html += `					<input class="input_normal txtalignright" onkeyup="Salesfunc()" id="Sales_Sales_Money" name="Sales_Sales_Money" type="text">  `
 	html += `				</td>                                                                                                        `
@@ -531,7 +630,7 @@ function make_item_pop(ck, str ,depth,result1) {
 	html += `			<tr>           `
 	html += `			</tr>          `
 	html += `			<tr>           `                                                                                   
-	html += `				<td class="field_name first_field_name" rowspan="2" >매입단가</td>                             `
+	html += `				<td class="field_name first_field_name" rowspan="2" >매입단가<span class="acc_txt"> *</span></td>                             `
 	html += `				<td class="field_contents" rowspan="2" >                                                       `
 	html += `					<input class="input_normal txtalignright" onkeyup="Purchasefunc()" id="Purchase_Sales_Money" name="Purchase_Sales_Money" type="text">           `
 	html += `				</td>                                                                                          `
@@ -545,7 +644,7 @@ function make_item_pop(ck, str ,depth,result1) {
 	html += `					부가세<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_VAT_Money" name="Purchase_VAT_Money" type="text">원        `
 	html += `					</div>                                                                                                                                                        `
 	html += `					<div class="Sale_Money_area">                                                                                                                                 `
-	html += `					판매가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Total_Money" name="Purchase_Total_Money" type="text">원    `
+	html += `					매입가<input class="txtalignright noborder size60 backcolorwhite" disabled="disabled" id="Purchase_Total_Money" name="Purchase_Total_Money" type="text">원    `
 	html += `					</div> `
 	html += `				</td>      `
 	html += `			</tr>          `
@@ -572,7 +671,7 @@ function make_item_pop(ck, str ,depth,result1) {
 		            $(this).width($(this).width() + (10 * leng_diff) + "px");  
 		        }
 		    });
-		    getitemcate();
+		    getitemcate(result1);
 			$("#IT_M_GROUP_NO").change(function() {
 				 getitemcate();
 			});
@@ -589,23 +688,21 @@ function make_item_pop(ck, str ,depth,result1) {
 				});
 			});
 			
+			$("#IT_CODE_ADD").on("click", function() {
+				
+			});
+			
 			itemVATradio();
 			
 			if(ck == 2) {
-		 		$("#IT_CODE_NO").val(result1.data.IT_NO);
+				$("#IT_CODE_NO").val(result1.data.IT_NO);
 		 		$("#IT_NM").val(result1.data.IT_NM);
 		 		$("#CP_NO").val(result1.data.CP_NO);
 		 		$("#CP_NM").val(result1.data.CP_NM);
-// 		 		$("#IT_M_GROUP_NO").val(1).attr("selected","selected");
-// 		 		$("#IT_M_GROUP_NO").val("1");
-		 		console.log($("#IT_M_GROUP_NO").val());
-// 		 		console.log($("#IT_M_GROUP_NO").val("1"));
-// 		 		$("#IT_M_GROUP_NO").val(result1.data.IT_M_GROUP_NO).prop("selected",true);
-// 		 		$("#IT_M_GROUP_NO > option[value='"+result1.data.IT_M_GROUP_NO+"']").attr("selected",true);
-		 		$("#IT_M_GROUP_NO > option[value="+0+"]").attr("selected",true);
-// 		 		$("#IT_S_GROUP_NO > option[value='"+result1.data.IT_S_GROUP_NO+"']").attr("selected",true);
 		 		$("#IT_STD").val(result1.data.IT_STD);
-		 		$("#IT_UNIT").val(result1.data.IT_UNIT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 		if(typeof result1.data.IT_UNIT != "undefined" ){
+		 			$("#IT_UNIT").val(result1.data.IT_UNIT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 		} 
 		 		//라디오 버튼 체크
 		 		$("input:radio[name ='IT_VAT_CK']:input[value='"+result1.data.IT_VAT_CK+"']").attr("checked", true);
 		 		//공급 , 부가, 판매가 셋팅
@@ -616,42 +713,59 @@ function make_item_pop(ck, str ,depth,result1) {
 		    		Salesformat($("#Sales_Sales_Money").val(result1.data.IT_SAL_U_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),2);
 		    		Purchaseformat($("#Purchase_Sales_Money").val(result1.data.IT_SAL_W_PRICE.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")),2);
 		    	}
-		 		$("#IT_MONEY_PT").val(result1.data.IT_MONEY_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-		 		$("#IT_CARD_PT").val(result1.data.IT_CARD_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 		if(typeof result1.data.IT_MONEY_PT != "undefined" ){
+		 			$("#IT_MONEY_PT").val(result1.data.IT_MONEY_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 		}
+		 		if(typeof result1.data.IT_CARD_PT != "undefined" ){
+		 			$("#IT_CARD_PT").val(result1.data.IT_CARD_PT.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+		 		}
 		 	} 
 		}, str , function() {
-				var params = $("#itemForm").serialize() + 
-							"&Sales_Sales_Money1="+$("#Sales_Sales_Money").val().replace(/[^0-9]/g, "") +
-							"&Purchase_Sales_Money1="+$("#Purchase_Sales_Money").val().replace(/[^0-9]/g, "") +
-							"&IT_UNIT1="+$("#IT_UNIT").val().replace(/[^0-9]/g, "") +
-							"&IT_MONEY_PT1="+$("#IT_MONEY_PT").val().replace(/[^0-9]/g, "") +
-							"&IT_CARD_PT1="+$("#IT_CARD_PT").val().replace(/[^0-9]/g, "") 
-							;
-			
-				console.log(params);
-				$.ajax({
-					type : "post", //데이터 전송방식
-					url : ajax , //주소
-					dataType : "json", //데이터 전송 규격
-					data : params, //보낼 데이터
-					// {키: 값, 키:값, ...} - > json
-					
-					success : function(result){
-						if(result.res == "SUCCESS"){
-							closePopup(depth);
-							makeAlert(depth+1, str+" 성공", str+"되었습니다.", null);
-							getlist(4);
-						} else{
-							makeAlert(depth+1, str+" 오류", str+"에 실패하였습니다.", null);
+				if($.trim($("#IT_NM").val()) == ""){
+					makeAlert(depth+1, str+"오류", "상품명을 입력하세요", null);
+					$("#IT_NM").focus();
+				} else if($.trim($("#IT_M_GROUP_NO").val()) == "-1"){
+					makeAlert(depth+1, str+"오류", "상품분류를 입력하세요", null);
+				} else if($.trim($("#IT_S_GROUP_NO").val()) == "-1"){
+					makeAlert(depth+1, str+"오류", "상품명을 입력하세요", null);
+				} else if(($.trim($("#Sales_Sales_Money").val()) == "") && ($.trim($("#Purchase_Sales_Money").val()) == "")){
+					makeAlert(depth+1, str+"오류", "판매단가 또는 매입단가를 입력하세요", null);
+					$("#Sales_Sales_Money").focus();
+				} else {
+					var params = $("#itemForm").serialize() + 
+					"&Sales_Sales_Money1="+$("#Sales_Sales_Money").val().replace(/[^0-9]/g, "") +
+					"&Purchase_Sales_Money1="+$("#Purchase_Sales_Money").val().replace(/[^0-9]/g, "") +
+					"&IT_UNIT1="+$("#IT_UNIT").val().replace(/[^0-9]/g, "") +
+					"&IT_MONEY_PT1="+$("#IT_MONEY_PT").val().replace(/[^0-9]/g, "") +
+					"&IT_CARD_PT1="+$("#IT_CARD_PT").val().replace(/[^0-9]/g, "") 
+					;
+	
+					console.log(params);
+					$.ajax({
+						type : "post", //데이터 전송방식
+						url : ajax , //주소
+						dataType : "json", //데이터 전송 규격
+						data : params, //보낼 데이터
+						// {키: 값, 키:값, ...} - > json
+						
+						success : function(result){
+							if(result.res == "SUCCESS"){
+								closePopup(depth);
+								makeAlert(depth+1, str+" 성공", str+"되었습니다.", null);
+								getlist(4);
+							} else{
+								makeAlert(depth+1, str+" 오류", str+"에 실패하였습니다.", null);
+							}
+						} , 
+						error : function(request,status,error) {
+							console.log("status : "+request.status);
+							console.log("text : "+request.responseText);
+							console.log("error : "+error);
 						}
-					} , 
-					error : function(request,status,error) {
-						console.log("status : "+request.status);
-						console.log("text : "+request.responseText);
-						console.log("error : "+error);
-					}
-					
-				});
+						
+					});
+				}
+				
 		},"취소", function() {
 			closePopup(depth);
 		}); 
@@ -659,9 +773,12 @@ function make_item_pop(ck, str ,depth,result1) {
 }
 
 //상품 분류데이터 가져오기 
-function getitemcate () {
-	 var params = $("#itemForm").serialize();
-		
+function getitemcate (result1) {
+	 if(result1 != null ){
+	 	var params = $("#itemForm").serialize() + "&NOW_M_CATE=" + result1.data.IT_M_GROUP_NO;
+	 } else {
+	    var params = $("#itemForm").serialize();
+	 }
 		$.ajax({
 			type : "post", //데이터 전송방식
 			url : "getitemcateAjax" , //주소
@@ -670,11 +787,15 @@ function getitemcate () {
 			// {키: 값, 키:값, ...} - > json
 			
 			success : function(result){
-				if($("#IT_M_GROUP_NO").val() >= 0){
+				if(result1 != null ){
+					drawitemMcate(result.Mlist,result1);
+					drawitemScate(result.Slist,result1);
+				} else if($("#IT_M_GROUP_NO").val() >= 0){
 					drawitemScate(result.Slist);
 				} else {
 					drawitemMcate(result.Mlist);
 				};
+				
 			} , 
 			error : function(request,status,error) {
 				console.log("status : "+request.status);
@@ -685,22 +806,37 @@ function getitemcate () {
 		});
 }
 //상품 코드 Draw
-function drawitemMcate(Mlist,ck) {
+function drawitemMcate(Mlist,result1) {
 	var html ="";
-	
 	html += `<option value="-1">상품분류</option>`
 	for(var i in Mlist){
-		html += `<option value="` + Mlist[i].CODE_M_CATE + `">` + Mlist[i].CODE_NAME + `</option>`
+		if (result1 != null) {
+			if (Mlist[i].CODE_M_CATE == result1.data.IT_M_GROUP_NO){
+				html += `<option value="` + Mlist[i].CODE_M_CATE + `" selected="selected" >` + Mlist[i].CODE_NAME + `</option>`
+			} else{
+				html += `<option value="` + Mlist[i].CODE_M_CATE + `">` + Mlist[i].CODE_NAME + `</option>`
+			}
+		} else {
+			html += `<option value="` + Mlist[i].CODE_M_CATE + `">` + Mlist[i].CODE_NAME + `</option>`
+		}
 	}
 	$("#IT_M_GROUP_NO").html(html);
 }
 //상품 코드 Draw
-function drawitemScate(Slist) {
+function drawitemScate(Slist,result1) {
 	var html ="";
-	
 	html += `<option value="-1">상품명</option>`
 	for(var i in Slist){
-		html += `<option value="` + Slist[i].CODE_S_CATE + `">` + Slist[i].CODE_NAME + `</option>`
+		if (result1 != null) {
+			if (Slist[i].CODE_S_CATE == result1.data.IT_S_GROUP_NO){
+				console.log("체크");
+				html += `<option value="` + Slist[i].CODE_S_CATE + `" selected="selected" >` + Slist[i].CODE_NAME + `</option>`
+			} else{
+				html += `<option value="` + Slist[i].CODE_S_CATE + `">` + Slist[i].CODE_NAME + `</option>`
+			} 
+		} else {
+			html += `<option value="` + Slist[i].CODE_S_CATE + `">` + Slist[i].CODE_NAME + `</option>`
+		}
 	}
 	
 	$("#IT_S_GROUP_NO").html(html);

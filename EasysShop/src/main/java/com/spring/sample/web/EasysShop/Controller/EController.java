@@ -437,7 +437,7 @@ public class EController {
 		String res = "";
 		try {
 			for(int i = 0 ; i < pop_check.size(); i++) {
-				params.put("item_no",pop_check.get(i));
+				params.put("IT_CODE_NO",pop_check.get(i));
 				iEService.itemcodedel(params);
 			}
 			res = "SUCCESS";
@@ -459,6 +459,9 @@ public class EController {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		List<HashMap<String, String>> Mlist = iEService.getitemcateList(params);
 		modelMap.put("Mlist", Mlist);
+		if(params.get("NOW_M_CATE") != null) {
+			params.put("IT_M_GROUP_NO", params.get("NOW_M_CATE"));			
+		}
 		if(!params.get("IT_M_GROUP_NO").equals("-1")) {
 			List<HashMap<String, String>> Slist = iEService.getitemScateList(params);
 			modelMap.put("Slist", Slist);

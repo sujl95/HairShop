@@ -245,13 +245,13 @@
 		UPDATE ITEM_CODE SET
 		IT_NM=#{IT_NM},CP_NO=#{CP_NO},IT_STD=#{IT_STD},IT_UNIT=#{IT_UNIT1},
 		IT_VAT_CK=#{IT_VAT_CK},IT_SAL_U_PRICE=#{Sales_Sales_Money1},IT_MONEY_PT=#{IT_MONEY_PT1},IT_CARD_PT=#{IT_CARD_PT1},
-		IT_M_GROUP_NO,IT_S_GROUP_NO,IT_SAL_W_PRICE=#{Purchase_Sales_Money1}
+		IT_M_GROUP_NO=#{IT_M_GROUP_NO},IT_S_GROUP_NO=#{IT_S_GROUP_NO},IT_SAL_W_PRICE=#{Purchase_Sales_Money1}
 		WHERE IT_NO = #{IT_CODE_NO}
 	</update>
 	
 <!-- 	상품 코드  삭제 -->
-	<delete id="itemdel" parameterType="hashmap">
-		DELETE FROM COMPANY_CODE WHERE CP_NO = #{item_no}
+	<delete id="itemcodedel" parameterType="hashmap">
+		DELETE FROM ITEM_CODE WHERE IT_NO = #{IT_CODE_NO}
 	</delete>
 	
 <!-- 	상품 대분류 코드 가져오기 -->
