@@ -451,9 +451,9 @@ td:hover {
 									<option>50단위</option>
 									<option>100단위</option>
 								</select>
-								<span id=list_cnt_all">#</span>
+								<span id="list_cnt_all">#</span>
 								개 항목중
-								<span id=list_cnt_select">#</span>
+								<span id="list_cnt_select">#</span>
 								개 선택
 							</div>
 						</div>
@@ -702,6 +702,5 @@ td:hover {
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

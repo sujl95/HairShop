@@ -147,4 +147,14 @@ public class EDao implements IEDao {
 		sqlSession.insert("code.itemtypeadd", params);				
 	}
 
+	@Override
+	public HashMap<String, String> getitemtypedata(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("code.getitemtypedata", params);
+	}
+
+	@Override
+	public void itemtypecodeUpdate(HashMap<String, String> params) throws Throwable {
+		sqlSession.update("code.itemtypecodeUpdate", params);	
+	}
+
 }

@@ -68,4 +68,19 @@ public class ProcController {
 		}
 		return mapper.writeValueAsString(modelMap);
 	}
+	
+	
+	@RequestMapping(value = "/procCodeListAjax",
+					method = RequestMethod.POST,
+					produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String procCodeListAjax(@RequestParam HashMap<String,String> params,
+								ModelAndView mav, HttpSession session) throws Throwable{
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		List<HashMap<String, String>> list = iProcService.getProcCodeList();
+		
+		modelMap.put("list", list);
+		return mapper.writeValueAsString(modelMap);
+	}
 }

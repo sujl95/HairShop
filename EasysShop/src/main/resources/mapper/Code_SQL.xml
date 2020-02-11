@@ -275,6 +275,7 @@
 			SELECT *
 			FROM COMMON_CODE
 			WHERE CODE_L_CATE = 1
+			ORDER BY CODE_M_CATE,CODE_S_CATE
 	</select>
 	
 	<!-- 상품 분류 코드 삭제 -->
@@ -318,4 +319,20 @@
 			VALUES(1, #{IT_M_GROUP_NO} , #{it_S_code} , #{it_NM_code})
 		</if>
 	</select>
+	
+	<!-- 상품 분류 코드 데이터 가져오기 -->
+	<select id="getitemtypedata" parameterType="hashmap" resultType="Hashmap">
+		SELECT * 
+		FROM COMMON_CODE 
+		WHERE CODE_NAME= #{IT_TYPE_NM}
+	</select>
+	
+	<!-- 상품 분류 코드 수정 -->
+	<update id="itemtypecodeUpdate" parameterType="hashmap">
+		UPDATE COMMON_CODE SET 
+		CODE_M_CATE = #{IT_M_GROUP_NO},	
+		CODE_S_CATE = #{it_S_code},
+		CODE_NAME = #{it_NM_code}
+		WHERE CODE_NAME = #{it_NM_type}
+	</update>
 </mapper>

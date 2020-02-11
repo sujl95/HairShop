@@ -46,7 +46,6 @@
 .pop_middle_area{
 	font-size:18px;
 	height:100px;
-	line-height:75px;
 	text-align:center;
 }
 
@@ -689,5 +688,18 @@
 	height: 400px;
 	top: calc(50% - 200px);
 	left: calc(50% - 300px); 
+	overflow: hidden;
+}
+
+.pop_size_emp_list {
+	top: calc(50% - 250px);
+	left: calc(50% - 475px);
+	overflow: hidden;
+}
+
+.pop_size_emp_insert {
+	height: 450px;
+	top: calc(50% - 250px);
+	left: calc(50% - 400px);
 	overflow: hidden;
 }

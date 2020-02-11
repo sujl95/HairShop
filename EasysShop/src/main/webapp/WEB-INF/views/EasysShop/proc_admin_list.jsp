@@ -15,6 +15,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	reloadList();
+	
 	$("#alertBtn").on("click", function() {
 		makeAlert(1, "하이", "내용임", null);
 	});
@@ -119,7 +120,7 @@ $(document).ready(function() {
 		html += `		<tr class="height50">`
 		html += `			<td class="field_name">금액<span class="important_text">*</span></td>`
 		html += `			<td class="text_align_left" colspan="3">`
-		html += `				<input class="input_size pxsize310 ml10 text_align_right" type="text">`
+		html += `				<input class="input_size pxsize310 ml10 text_align_right" type="text" id="proc_price">`
 		html += `			</td>`
 		html += `		</tr>`
 		html += `		<tr class="height50">`
@@ -134,6 +135,9 @@ $(document).ready(function() {
 			procCate();
 			$("#mCate").change(function(){
 				procCate();
+			});
+			$("#sCate").change(function(){
+				$("#proc_price").val($("#sCate option:selected").attr("id"));
 			});
 			
 		}, "등록", function() {
@@ -151,6 +155,7 @@ $(document).ready(function() {
 		
 		$("#btn_srchProc").on("click",function(){
 			procSrch();
+			
 		});
 		
 	});
@@ -188,7 +193,7 @@ function redrawList(list) {
 			html += `	<td class="w60">` + list[i].PROC_NO + `</td>`;
 			html += `	<td>` + list[i].PROC_DATE + `</td>`;
 			html += `	<td class="w70">` + list[i].CT_NM +`</td>`;
-			html += `	<td>` + list[i].CODE_NAME +`</td>`;
+			html += `	<td>` + list[i].PCC_NAME +`</td>`;
 			html += `	<td>` + list[i].EMP_NM +`</td>`;
 			html += `	<td>` + list[i].PROC_MONEY_TYPE +`</td>`;
 			html += `	<td>` + list[i].PROC_MONEY +`</td>`;
@@ -202,7 +207,6 @@ function redrawList(list) {
 	$(".tbody_scroll").html(html);
 	
 	$("tr").on("click","#btn_procModify",function(){
-		console.log($(this).attr("id"));
 		var html = "";
 		html += `<form action="#" method="post" id="popForm">`
 		html += `<table class="pop_table table_list tborder">`
@@ -294,6 +298,10 @@ function redrawList(list) {
 			$("#mCate").change(function(){
 				procCate();
 			});
+				
+			$("#sCate").change(function(){
+				$("#proc_price").val($("#sCate option:selected").attr("id"));
+			});
 			
 			$("#btn_srchProc").on("click",function(){
 				procSrch();
@@ -303,28 +311,24 @@ function redrawList(list) {
 		},"취소", function() {
 			closePopup(1);
 		});
-		
 	});
-	
-	
-	
 }
 
 function reloadClient(){
-	var params = $("#actionForm").serialize();
-	$.ajax({
-		type : "post",
-		url : "procListAjax",
-		dataType : "json",
-		data : params,
-		success : function(result) {
-			redrawList(result.list);
-		},
-		error : function(request, status, error) {
-			console.log("text : " + request.responseText);
-			console.log("error : " + error);
-		}
-	});
+// 	var params = $("#actionForm").serialize();
+// 	$.ajax({
+// 		type : "post",
+// 		url : "procListAjax",
+// 		dataType : "json",
+// 		data : params,
+// 		success : function(result) {
+// 			redrawList(result.list);
+// 		},
+// 		error : function(request, status, error) {
+// 			console.log("text : " + request.responseText);
+// 			console.log("error : " + error);
+// 		}
+// 	});
 }
 
 function drawClient(mList, sList){
@@ -357,7 +361,7 @@ function drawMCate(mList){
 	
 	html += `					<option value="-1">시술분류</option>`
 	for(var i in mList){
-		html += `					<option value="` + mList[i].CODE_S_CATE + `">` + mList[i].CODE_NAME + `</option>`
+		html += `					<option value="` + mList[i].PCC_S_CATE + `">` + mList[i].PCC_NAME + `</option>`
 	}
 	
 	$("#mCate").html(html);
@@ -370,7 +374,7 @@ function drawSCate(sList){
 	html += `					<option>시술명</option>`
 		
 	for(var i in sList){
-		html += `					<option>` + sList[i].CODE_NAME + `</option>`
+		html += `					<option value="` + sList[i].PCC_S_CATE + `" id="` + sList[i].PCC_PRICE + `">` + sList[i].PCC_NAME + `</option>`
 	}
 		
 	$("#sCate").html(html);
@@ -381,9 +385,7 @@ function procSrch(){
 	var html = "";
 	html += `<div class="pop_btn_bottom_area">`
 	html += `	<input type="button" class="btn_normal btn_size_normal" value="등록"/>`
-	html += `	<input type="button" class="btn_normal btn_size_normal" value="수정"/>`
 	html += `	<input type="button" class="btn_normal btn_size_normal" value="삭제"/>`
-	html += `	<input type="button" class="btn_normal btn_size_normal pxsize200" value="적립 포인트 일괄 변경"/>`
 	html += `</div>`
 	html += `<table class="pop_table">`
 	html += `	<colgroup>`
@@ -402,8 +404,8 @@ function procSrch(){
 	html += `</table>`
 	html += `<table class="table_list tborder" id="pop_Procedure_list" >`
 	html += `	<colgroup>`
-	html += `		<col width="8%">`
-	html += `		<col width="17%">`
+	html += `		<col width="5%">`
+	html += `		<col width="15%">`
 	html += `		<col width="25%">`
 	html += `		<col width="15%">`
 	html += `		<col width="20%">`
@@ -424,136 +426,107 @@ function procSrch(){
 	html += `	<tr class="table_list_header" >`
 	html += `		<td>시술명</td>`
 	html += `		<td>요금</td>`
-	html += `		<td>현금적립금</td>`
-	html += `		<td>카드적립금</td>`
+	html += `		<td>현금적립포인트</td>`
+	html += `		<td>카드적립포인트</td>`
 	html += `	</tr>`
 	html += `	</thead>`
 	html += `</table>`
-	html += `<div class="pop_schedule_contents">`
+	html += `<div class="pop_code_contents">`
 	html += `<div class="pop_Procedure_list">`
 	html += `<table class="table_list tborder" id="pop_Procedure_list" >`
 	html += `	<colgroup>`
-	html += `		<col width="8%">`
+	html += `		<col width="6%">`
 	html += `		<col width="17%">`
 	html += `		<col width="25%">`
 	html += `		<col width="15%">`
 	html += `		<col width="20%">`
 	html += `		<col width="20%">`
 	html += `	</colgroup>`
-	html += `	<tbody>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne1" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne1"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td rowspan="3">기타</td>`
-	html += `			<td>기타</td>`
-	html += `			<td>10,000</td>`
-	html += `			<td>0</td>`
-	html += `			<td>0</td>`
-	html += `		</tr>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne2" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne2"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td>붙임머리</td>`
-	html += `			<td>75,000</td>`
-	html += `			<td>7,500</td>`
-	html += `			<td>3,750</td>`
-	html += `		</tr>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne3" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne3"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td>올림머리</td>`
-	html += `			<td>30,000</td>`
-	html += `			<td>3,000</td>`
-	html += `			<td>1,500</td>`
-	html += `		</tr>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne4" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne4"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td rowspan="3">드라이</td>`
-	html += `			<td>드라이</td>`
-	html += `			<td>15,000</td>`
-	html += `			<td>0</td>`
-	html += `			<td>0</td>`
-	html += `		</tr>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne5" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne5"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td>매직드라이</td>`
-	html += `			<td>15,000</td>`
-	html += `			<td>1,500</td>`
-	html += `			<td>750</td>`
-	html += `		</tr>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne6" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne6"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td>웨이브드라이</td>`
-	html += `			<td>10,000</td>`
-	html += `			<td>1,000</td>`
-	html += `			<td>500</td>`
-	html += `		</tr>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne4" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne4"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td rowspan="3">드라이</td>`
-	html += `			<td>드라이</td>`
-	html += `			<td>15,000</td>`
-	html += `			<td>0</td>`
-	html += `			<td>0</td>`
-	html += `		</tr>`
-	html += `		<tr class="list_contents">`
-	html += `			<td style="cursor: default;">`
-	html += `				<div class="squaredOne">`
-	html += `					<input type="checkbox" value="None" style="display: none;"`
-	html += `						id="pop_PC_squaredOne5" name="pop_PC_check" /> <label`
-	html += `						for="pop_PC_squaredOne5"></label>`
-	html += `				</div>`
-	html += `			</td>`
-	html += `			<td>매직드라이</td>`
-	html += `			<td>15,000</td>`
-	html += `			<td>1,500</td>`
-	html += `			<td>750</td>`
-	html += `		</tr>`
+	html += `	<tbody id="procCode">`
 	html += `	</tbody>`
 	html += `</table>`
 	html += `</div>`
 	html += `</div>`
+// 		html += `		<tr rowspan="2">수정</td>`<input type="button" value="수정" id="btn_procCodeModify"/>`
+	makeNoBtnPopup(2, "시술 코드 목록", html, true, 600, 600, null);
 	
-	makeNoBtnPopup(2, "시술 코드 목록", html, true, 600, 600, false);
+	reloadProcCode();
+}
+
+function reloadProcCode(){
+	$.ajax({
+		type : "post",
+		url : "procCodeListAjax",
+		success : function(result) {
+			drawCode(result.list);
+		},
+		error : function(request, status, error) {
+			console.log("text : " + request.responseText);
+			console.log("error : " + error);
+		}
+	});
+}
+
+function drawCode(list){
+	
+	var html = "";
+	if(list.length == 0){
+		
+	} else {
+		for(var i in list){
+			if(i == 0){
+				html += `		<tr class="list_contents">`
+				html += `			<td style="cursor: default;">`
+				html += `				<div class="squaredOne">`
+				html += `					<input type="checkbox" value="None" style="display: none;"`
+				html += `						id="pop_PC_squaredOne1" name="pop_PC_check" /> <label`
+				html += `						for="pop_PC_squaredOne1"></label>`
+				html += `				</div>`
+				html += `			</td>`
+				html += `			<td rowspan="` + list[i].CNT + `">` + list[i].PCC_L_NM + `</td>`
+				html += `			<td>` + list[i].PCC_S_NM + `</td>`
+				html += `			<td>` + list[i].PCC_PRICE + `</td>`
+				html += `			<td>` + list[i].PCC_CASH_PT + `</td>`
+				html += `			<td>` + list[i].PCC_CARD_PT + `</td>`
+				html += `		</tr>`	
+			} else if(list[i].PCC_L_CATE != list[i-1].PCC_L_CATE){
+				html += `		<tr class="list_contents">`
+				html += `			<td style="cursor: default;">`
+				html += `				<div class="squaredOne">`
+				html += `					<input type="checkbox" value="None" style="display: none;"`
+				html += `						id="pop_PC_squaredOne1" name="pop_PC_check" /> <label`
+				html += `						for="pop_PC_squaredOne1"></label>`
+				html += `				</div>`
+				html += `			</td>`
+				html += `			<td rowspan="` + list[i].CNT + `">` + list[i].PCC_L_NM + `</td>`
+				html += `			<td>` + list[i].PCC_S_NM + `</td>`
+				html += `			<td>` + list[i].PCC_PRICE + `</td>`
+				html += `			<td>` + list[i].PCC_CASH_PT + `</td>`
+				html += `			<td>` + list[i].PCC_CARD_PT + `</td>`
+				html += `		</tr>`
+			} else {
+				html += `		<tr class="list_contents">`
+				html += `			<td style="cursor: default;">`
+				html += `				<div class="squaredOne">`
+				html += `					<input type="checkbox" value="None" style="display: none;"`
+				html += `						id="pop_PC_squaredOne1" name="pop_PC_check" /> <label`
+				html += `						for="pop_PC_squaredOne1"></label>`
+				html += `				</div>`
+				html += `			</td>`
+				html += `			<td>` + list[i].PCC_S_NM + `</td>`
+				html += `			<td>` + list[i].PCC_PRICE + `</td>`
+				html += `			<td>` + list[i].PCC_CASH_PT + `</td>`
+				html += `			<td>` + list[i].PCC_CARD_PT + `</td>`
+				html += `		</tr>`
+			}
+		}
+	}
+	$("#procCode").html(html);
+	
+	$(".pop_code_contents").slimScroll({
+		width : "100%",
+		height: "350px"
+	});
 }
 </script>
 </head>

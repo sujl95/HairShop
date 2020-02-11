@@ -479,10 +479,12 @@ tr {
 }
 
 /* margin-top */
-.mt10{
-	margin-top:10px;
+.mt20{
+	margin-top:20px;
 }
-
+.mt30{
+	margin-top:30px;
+}
 /* margin-right */
 .mr20{
 	margin-right:20px;

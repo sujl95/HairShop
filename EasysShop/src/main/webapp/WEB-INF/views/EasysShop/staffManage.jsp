@@ -6,43 +6,31 @@
 <head>
 <meta charset="UTF-8">
 <title>월간 예약 목록</title>
-<!-- 탭 아이콘 -->
-<link rel="shortcut icon" href="resources/images/Eimages/hairshop.ico">
-<!-- 메인 CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/Main.css" />
-<!-- 버튼 CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/btn.css" />
-<!-- 레이아웃 CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/layout.css" />
-<!-- input CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/input.css" />
-<!-- 팝업 CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/Hairshop/pop.css" />
-<!-- jQuery js 파일 -->
-<script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
-<!-- 슬림 스크롤 js 파일 -->
-<script type="text/javascript" src="resources/script/jquery/jquery.slimscroll.js"></script>
-<!-- 메인 js 파일 -->
-<script type="text/javascript" src="resources/script/jquery/Main.js"></script>
-<!-- 버튼 js 파일 -->
-<script type="text/javascript" src="resources/script/jquery/btn.js"></script>
+<c:import url="/header"></c:import>
 <script type="text/javascript">
 	//버튼에 한글자씩 추가되면 길이가 10씩 늘어납니다.
 	$(document).ready(function() {
 		// Button Auto Sizing
-		$('button').each(function() {
+		$('.btn_normal').each(function() {
 			if ($(this).html().length > 2) {
 				var leng_diff = $(this).html().length - 2;
 				$(this).width($(this).width() + (10 * leng_diff) + "px");
 			}
-		})
-		$('.content_btn>div').each(function() {
-			if ($(this).html().length > 2) {
-				var leng_diff = $(this).html().length - 2;
-				$(this).width($(this).width() + (10 * leng_diff) + "px");
-			}
-		})
-		 
+		});
+
+		/* 등록버튼 */ 
+		$("#insertBtn").on("click", function() {
+			
+			empInsertPop(1, true, function() {
+			});
+		});
+		
+		/* 표 목록 클릭 */
+		$(".list_tbody").on("click", "tr", function() {
+			$("#empNo").val($(this).attr("name"));
+			$("#popEmpDetail").removeClass("pop_off");
+			$("#popEmpDetail").addClass("pop_on");
+		});
 		  
 	});
 </script>
@@ -95,13 +83,22 @@ td {
 	font-size : 10pt;
 }
 
-.input_normal {
-	border: 0px;
+.table_header_td {
+	text-align: center;
 }
 
-.input_normal:focus {
-	border: 0px;
+.input_normal{
+	text-align: center;
+	text-indent: 0px;
 }
+
+.table_list_td:hover, .table_list_td:hover input {
+	background-color: #EAEAEA;
+	cursor: pointer;
+}
+/* .input_normal:focus {
+	border: 0px;
+} */
 </style>
 </head>
 <body>
@@ -109,9 +106,11 @@ td {
 <div id="popup_wrap">
 <%@include file="test.html" %> 
 </div>
-	
+<form>
+<input type="hidden" id="empNo" name="empNo"/>
+</form>
 	<!------------------------------------직원 상세정보 시작----------------------------------->
-	<div class="pop_wrap pop_off">
+	<div class="pop_wrap pop_off" id="popEmpDetail">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_customer_detail pop_white">
 			<div class="pop_title_area">
@@ -132,15 +131,6 @@ td {
 				</div>
 				<div class="pop_detail_top2">
 				</div>
-			</div>
-			<div class="detail_srch_area">
-				<select class="detail_srch_ddl">
-					<!-- 검색드랍다운리스트 -->
-					<option selected="selected">전체</option>
-					<option>직원명</option>
-					<option>연락처</option>
-				</select> <input type="text" class="txt_srch" placeholder="검색어를 입력해주세요." />
-				<div class="detail_btn_nomarl detail_btn_size_normal">검색</div>
 			</div>
 			<!-- 상세보기 위 테이블 -->
 			<div class="detail_table_area" style="height: auto;">
@@ -346,7 +336,7 @@ td {
 	<!------------------------------------직원 등록 시작----------------------------------->
 	<div class="pop_wrap">
 		<div class="pop_bg"></div>
-		<div class="pop pop_size_staff_insert pop_white">
+		<div class="pop pop_size_emp_insert pop_white pop_off">
 			<div class="pop_title_area">
 				<div class="pop_title_text">
 					<img src="resources/images/Eimages/EasysShopLogo.PNG"
@@ -377,52 +367,52 @@ td {
 					</colgroup>
 					<tbody>
 						<tr>
-							<td class="table_header_td">직원명</td>
+							<td class="field_name first_field_name">직원명</td>
 							<td><input type="text" class="input_normal" value=""></td>
-							<td class="table_header_td">직급</td>
+							<td class="field_name first_field_name">직급</td>
 							<td>
-								<input type="text" class="input_normal" style="width: 60%;" value="">
-								<div class="btn_normal btn_size_w40h20">검색</div>
+								<input type="text" class="input_normal" style="width: 64%;" value="">
+								<div class="btn_normal detail_btn_size_normal" style="margin-left: 0px;">검색</div>
 							</td>
 						</tr>
 						<tr>
-							<td class="table_header_td">주민번호</td>
+							<td class="field_name first_field_name">주민번호</td>
 							<td><input type="text" class="input_normal" value=""></td>
-							<td class="table_header_td">휴대폰</td>
+							<td class="field_name first_field_name">휴대폰</td>
 							<td><input type="text" class="input_normal" value=""></td>
 						</tr>
 						<tr>
-							<td class="table_header_td">생일</td>
+							<td class="field_name first_field_name">생일</td>
 							<td><input type="date" class="input_normal" value=""></td>
-							<td class="table_header_td">성별</td>
+							<td class="field_name first_field_name">성별</td>
 							<td><input type="text" class="input_normal" value=""></td>
 						</tr>
 						<tr>
-							<td class="table_header_td">이메일</td>
+							<td class="field_name first_field_name">이메일</td>
 							<td colspan="3"><input type="text" class="input_normal" value=""></td>
 						</tr>
 						<tr>
-							<td class="table_header_td">주소</td>
+							<td class="field_name first_field_name">주소</td>
 							<td colspan="3"><input type="text" class="input_normal" value=""></td>
 						</tr>
 						<tr>
-							<td class="table_header_td">입사일</td>
+							<td class="field_name first_field_name">입사일</td>
 							<td><input type="date" class="input_normal" value=""></td>
-							<td class="table_header_td">월급일</td>
+							<td class="field_name first_field_name">월급일</td>
 							<td><input type="text" class="input_normal" value=""></td>
 						</tr>
 						<tr>
-							<td class="table_header_td">메모</td>
+							<td class="field_name first_field_name">메모</td>
 							<td colspan="3"><input type="text" class="input_normal" value=""></td>
 						</tr>
 						<tr>
-							<td class="table_header_td">은행명</td>
+							<td class="field_name first_field_name">은행명</td>
 							<td colspan="3"><input type="text" class="input_normal" value=""></td>
 						</tr>
 						<tr>
-							<td class="table_header_td">계좌번호</td>
+							<td class="field_name first_field_name">계좌번호</td>
 							<td><input type="text" class="input_normal" value=""></td>
-							<td class="table_header_td">예금주</td>
+							<td class="field_name first_field_name">예금주</td>
 							<td><input type="text" class="input_normal" value=""></td>
 						</tr>
 					</tbody>
@@ -432,251 +422,133 @@ td {
 	</div>
 	<!------------------------------------직원 등록 끝----------------------------------->
 	
-	<div class="left_wrap">
-		<div class="logo_wrap">
-			<div>
-				<img src="resources/images/Eimages/EasysShopLogo.PNG"> EASYS SHOP
+	<!-----------------------------------직원 목록 시작----------------------------------->
+		<div class="pop_wrap pop_on" id="popEmpList">
+			<div class="pop_bg"></div>
+			<div class="pop pop_size_emp_list">
+			<div class="pop_title_area">
+			<div class="pop_title_text">
+			<img src="resources/images/common/logo.png" alt="" class="pop_icon" /> &nbsp;
+			직원 목록
+			</div>
+			<div class="pop_close">
+			<img src="resources/images/button/icon_cancel_white.png" alt="" width="20px" id="BtnPopClose" />
+			</div>
+			</div>
+			<div class="pop_contents">
+			<!-- 내용입력 -->
+				<div class="pop_detail_top_area">
+					<input type="text" class="input_normal" placeholder="직원명" style="width: 85%; text-align: left; margin-left: 20px;" value=""/>
+					<div class="btn_normal btn_size_normal">검색</div>
+				</div>
+				<div class="pop_mid_area">
+					<table style="width: 100%; margin-bottom: 20px;">
+						<colgroup>
+							<col width="50px" />
+							<col width="150px" />
+							<col width="100px" />
+							<col width="200px" />
+							<col width="200px" />
+							<col width="50px" />
+							<col width="200px" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th class="table_header_td">번호</th>
+								<th class="table_header_td">직원명</th>
+								<th class="table_header_td">직급</th>
+								<th class="table_header_td">연락처</th>
+								<th class="table_header_td">생일</th>
+								<th class="table_header_td">성별</th>
+								<th class="table_header_td">입사일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="table_list_td">
+								<td><input class="input_normal input_read" readonly="readonly" value="1"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="홍길동"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="대리"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="010-1234-5678"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="1995-03-05"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="남"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="2020-02-03"/></td>
+							</tr>
+							<tr class="table_list_td">
+								<td><input class="input_normal input_read" readonly="readonly" value="1"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="홍길동"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="대리"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="010-1234-5678"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="1995-03-05"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="남"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="2020-02-03"/></td>
+							</tr>
+							<tr class="table_list_td">
+								<td><input class="input_normal input_read" readonly="readonly" value="1"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="홍길동"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="대리"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="010-1234-5678"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="1995-03-05"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="남"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="2020-02-03"/></td>
+							</tr>
+							<tr class="table_list_td">
+								<td><input class="input_normal input_read" readonly="readonly" value="1"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="홍길동"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="대리"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="010-1234-5678"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="1995-03-05"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="남"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="2020-02-03"/></td>
+							</tr>
+							<tr class="table_list_td">
+								<td><input class="input_normal input_read" readonly="readonly" value="1"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="홍길동"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="대리"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="010-1234-5678"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="1995-03-05"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="남"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="2020-02-03"/></td>
+							</tr>
+							<tr class="table_list_td">
+								<td><input class="input_normal input_read" readonly="readonly" value="1"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="홍길동"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="대리"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="010-1234-5678"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="1995-03-05"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="남"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="2020-02-03"/></td>
+							</tr>
+							<tr class="table_list_td">
+								<td><input class="input_normal input_read" readonly="readonly" value="1"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="홍길동"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="대리"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="010-1234-5678"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="1995-03-05"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="남"/></td>
+								<td><input class="input_normal input_read" readonly="readonly" value="2020-02-03"/></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="paging_area" style="text-align: center; margin-bottom: 10px;">
+						<div class="btn_paging"><<</div>
+						<div class="btn_paging"><</div>
+						<div class="btn_paging">1</div>
+						<div class="btn_paging">2</div>
+						<div class="btn_paging">3</div>
+						<div class="btn_paging">4</div>
+						<div class="btn_paging">5</div>
+						<div class="btn_paging">></div>
+						<div class="btn_paging">>></div>
+					</div>
+				</div>
+			</div>
 			</div>
 		</div>
-		<div class="menu_wrap">
-			<div class="first_menu_wrap">
-				<div class="first_menu">
-					<div>
-						<div class="menu_txt">고객</div>
-						<div class="menu_gbn" id="menu_customer"></div>
-					</div>
-				</div>
-<!-- 				<div class="second_menu_wrap"> -->
-<!-- 					<div class="second_menu"> -->
-<!-- 						<div id="menu_customer_add">고객등록</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="second_menu"> -->
-<!-- 						<div id="menu_customer_list">고객관리</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-			</div>
-			<div class="first_menu_on">
-				<div>
-					<div class="menu_txt">직원</div>
-					<div class="menu_gbn"></div>
-				</div>
-			</div>
-	 			<div class="second_menu_wrap"> 	
-	 				<div class="second_menu"> 	
-	 					<div>직원등록</div> 	
-	 				</div> 	
-	 				<div class="second_menu_on"> 	
-	 					<div>직원관리</div>	
-	 				</div> 	
-	 				<div class="second_menu"> 	
-	 					<div>근태관리</div> 	
-					</div> 	
-				</div>
-			
-			<div class="first_menu">
-				<div>
-					<div class="menu_txt">시술</div>
-					<div class="menu_gbn"></div>
-				</div>
-			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>시술등록</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>시술관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>시술일별현황</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>시술상위고객</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-			<div class="first_menu">
-				<div>
-					<div class="menu_txt">판매</div>
-					<div class="menu_gbn"></div>
-				</div>
-			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>판매등록</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>판매관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>판매일별현황</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-			<div class="first_menu_wrap">
-				<div class="first_menu">
-					<div>
-						<div class="menu_txt">포인트</div>
-						<div class="menu_gbn"></div>
-					</div>
-				</div>
-			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>포인트등록</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>포인트관리</div> -->
-<!-- 				</div> -->
-<!-- 			</div>  -->
-			<div class="first_menu_wrap">
-			<div class="first_menu">
-				<div>
-					<div class="menu_txt">재고</div>
-					<div class="menu_gbn"></div>
-				</div>
-			</div>
-			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 					<div class="second_menu"> -->
-<!-- 						<div>재고등록</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="second_menu"> -->
-<!-- 						<div>재고현황</div> -->
-<!-- 					</div> -->
-<!-- 			</div> -->
-			<div class="first_menu_wrap">
-				<div class="first_menu">
-					<div>
-						<div class="menu_txt">입고</div>
-						<div class="menu_gbn"></div>
-					</div>
-				</div>
-			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>입고등록</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>입고관리</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-			<div class="first_menu_wrap">
-				<div class="first_menu">
-					<div>
-						<div class="menu_txt">출고</div>
-						<div class="menu_gbn"></div>
-					</div>
-				</div>
-			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 					<div class="second_menu"> -->
-<!-- 						<div>출고등록</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="second_menu"> -->
-<!-- 						<div>출고관리</div> -->
-<!-- 					</div> -->
-<!-- 			</div> -->
-			<div class="first_menu_wrap">
-				<div class="first_menu">
-					<div>
-						<div class="menu_txt">기초코드관리</div>
-						<div class="menu_gbn"></div>
-					</div>
-				</div>
-			</div>
-<!-- 			<div class="second_menu_wrap"> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>등급코드관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>시술코드관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>직급코드관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>상품코드관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>계정코드관리</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="second_menu"> -->
-<!-- 					<div>거래처코드관리</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-				<div class="first_menu_wrap">
-			
-			<div class="first_menu_on">
-				<div>
-					<div class="menu_txt">일정관리</div>
-					<div class="menu_gbn"></div>
-				</div>
-			</div>
-			<!-- <div class="second_menu_wrap">
-				<div class="second_menu">
-					<div>예약&일정</div>
-				</div>
-				<div class="second_menu">
-					<div>월간 예약 목록</div>
-				</div>
-				<div class="second_menu">
-					<div>월간 일정 목록</div>
-				</div>
-			</div> -->
-			</div>
-			<div class="first_menu_wrap">
-				<div class="first_menu">
-					<div>
-						<div class="menu_txt">영업관리</div>
-						<div class="menu_gbn"></div>
-					</div>
-				</div>
-			</div>
-			<div class="first_menu_wrap">
-				<div class="first_menu">
-					<div>
-						<div class="menu_txt">영업목표</div>
-						<div class="menu_gbn"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="right_wrap">
-		<div class="gnb_wrap">
-			<div class="gnb_area">
-				<div>
-					<div>Home > 예약&일정 > 월간 예약 목록 </div>
-				</div>
-			</div>
-			<div class="btn_area">
-				<div class="p_btn_cal_area">
-					<div class="p_btn btn_size_normal">
-						<div>
-							<div>일정예약</div>
-						</div>
-					</div>
-				</div>	
-				<div class="p_btn_cal_area">
-					<div class="p_btn btn_size_normal">
-						<div>
-							<div>대기고객</div>
-						</div>
-					</div>
-				</div>	
-				<div class="p_btn_area">
-					<div class="p_btn">
-						<div>
-							<div>정보수정</div>
-						</div>
-					</div>
-					<div class="p_btn_space"></div>
-					<div class="p_btn">
-						<div>
-							<div>로그아웃</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<!-----------------------------------직원 목록 끝----------------------------------->
+	
+	<c:import url="/topLeft">
+		<c:param name="menuNo">2</c:param>
+	</c:import>
 			<div class="title_area">직원 관리 목록</div>
 			<div class="content_area">
 				<div class="list_wrap">
@@ -710,8 +582,8 @@ td {
 							<input type="button" class="btn_normal btn_size_normal" value="검색"/>
 						</div>
 						<div class="top_btn_area size25">
-							<input type="button" class="btn_normal btn_size_normal" value="등록"/>
-							<input type="button" class="btn_normal btn_size_normal" value="삭제"/>
+							<input type="button" class="btn_normal btn_size_normal" id="insertBtn" value="등록"/>
+							<input type="button" class="btn_normal btn_size_normal" id="delBtn" value="삭제"/>
 						</div>
 					</div>
 					<div class="table_top_area">
@@ -723,9 +595,9 @@ td {
 									<option>50단위</option>
 									<option>100단위</option>
 								</select>
-								<span id=list_cnt_all">#</span>
+								<span id="list_cnt_all">#</span>
 								개 항목중
-								<span id=list_cnt_select">#</span>
+								<span id="list_cnt_select">#</span>
 								개 선택
 							</div>
 						</div>
@@ -745,7 +617,7 @@ td {
 							<col width="15%">
 							<col width="30%">
 						</colgroup>
-						<tbody>
+						<thead>
 							<tr class="table_list_header">
 								<td>
 									<div class="squaredOne_h">
@@ -763,6 +635,8 @@ td {
 								<td>월급일</td>
 								<td>주소</td>
 							</tr>
+						</thead>
+						<tbody class="list_tbody">
 							<tr class="list_contents">
 								<td style="cursor : default;">
 									<div class="squaredOne">
@@ -950,7 +824,5 @@ td {
            			 </div>
 				</div>
 			</div>
-		</div>
-	</div>
 </body>
 </html>

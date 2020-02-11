@@ -7,9 +7,10 @@
 <meta charset="UTF-8">
 <title>월간 예약 목록</title>
 <c:import url="/header"></c:import>
-<script type="text/javascript">
+<script type = "text/javascript">
 	//버튼에 한글자씩 추가되면 길이가 10씩 늘어납니다.
 	$(document).ready(function() {
+		reloadList();
 		// Button Auto Sizing
 		$(".dta").show();
 		$(".dta2").show();
@@ -46,11 +47,180 @@
 			$(".dta3").hide();
 			$(".dta4").show();
 		})		
-
+		$("#searchBtn").on("click", function(){
+			$("#page").val("1");
+			reloadList();
+		});
+		
+		$("#reg_Btn").on("click", function() {
+			makeNoBtnPopup(1, "고객등록팝업", "시발", false, 600, 630, null);
+		});
+		
+		$("#searchTxt").on("keypress", function(event) {
+			if(event.keyCode == 13) {
+				$("#searchBtn").click();
+				return false;
+			}
+		});
+		
+		$("#del_Btn").on("click", function() {
+			if($("#chk_cnt").html() == "0") {
+				makeAlert(1, "삭제 오류", "데이터가 선택되지 않았습니다.", null);
+			}
+			else {
+				makeTwoBtnPopup(1, "삭제 경고", "선택된 항목을 삭제 하시겠습니까?", false, 400, 200, null, "확인", function() {
+					closePopup(1);
+					
+					$("input[name='cal_check']").each(function() {
+						var del = $(this).attr("id").substring($(this).attr("id").indexOf("_") + 1);
+						if($(this).is(":checked")) {
+							var params = "&ct_no=" + del;
+							
+							$.ajax({
+								type: "post",
+								url: "cusDelAjax",
+								dataType: "json",
+								data: params,
+								success: function(result) {
+									console.log(result.res);
+									if(result.res == "FAILED") {
+										makeAlert(1, "삭제 실패", "삭제에 실패했습니다.", null);
+									}
+								},
+								error : function(request, status, error) {
+									console.log("status : " + request.status);
+									console.log("text : " + request.responseTest);
+									console.log("error : " + error);
+								}
+							});
+						}
+					});
+					reloadList();
+				}, "취소", function() {
+					closePopup(1);
+				});
+			}
+		});
+		$("#checkall").click(function(){
+	    	if($("#checkall").prop("checked")){
+	    		$("input[name=cal_check]").prop("checked",true);
+	    		//클릭이 안되있으면
+	    	}else{
+	    		$("input[name=cal_check]").prop("checked",false);
+	    	}
+	    });
+		/* 체크개수 카운팅  */
+		$(".table_list").on("click", ".list_chbox", function() {
+			
+			$("#chk_all").html($(".table_list tbody .list_chbox").length);
+			$("#chk_cnt").html($(".table_list tbody .list_chbox:checked").length);
+		});
 	});
+	function reloadList() {
+		var params = $("#listForm").serialize();
+		$.ajax({
+			type : "post",
+			url : "customerListAjax",
+			dataType : "json",
+			data : params,
+
+			success : function(result) {
+				redrawList(result.list);
+				drawListPaging(result.pb);
+			},
+			error : function(request, status, error) {
+				console.log("text : " + request.responseText);
+				console.log("error : " + error);
+			}
+		});
+	}
+	function redrawList(list) {
+		var html = "";
+		if(list.length > 0) {
+			for(var i in list) {
+				html += "<tr class = \"list_contents\" name=\"" + list[i].CT_NO + "\">";
+				html += `	<td width="60px" nowrap style="cursor : default;" class="chk_td">                                                                             `;
+				html += `		<div class="squaredOne">                                                                                              `;
+				html += `			<input type="checkbox" class="list_chbox" value="`+list[i].CT_NO+`" style="display : none;" id="chk_`+list[i].CT_NO+`" name="cal_check" />   `;
+				html += `			<label class="chbox_lbl" for="chk_`+list[i].CT_NO+`"></label>                                                                         `;
+				html += `		</div>                                                                                                                `;
+				html += `	</td>                                                                                                                     `;
+				html += `	<td  width="80px" nowrap>`+list[i].CT_NO+`</td>                                                                                                  `;
+				html += `	<td  width="130px" nowrap>`+list[i].CT_NM+`</td>                                                                                                  `;
+				html += `	<td  width="130px" nowrap>`+list[i].GRADE_NM+`</td>                                                                                                  `;
+				html += `	<td  width="130px" nowrap>`+list[i].EMP_NM+`</td>                                                                                                  `;
+				html += `	<td  width="100px" nowrap>`+list[i].POINT+`</td>                                                                                                  `;
+				html += `	<td  width="200px" nowrap>`+list[i].CT_PH+`</td>                                                                                                 `;
+				html += `	<td  width="100px" nowrap>`+list[i].CT_SEX+`</td>                                                                                                  `;
+				html += `	<td  width="165px" nowrap>`+list[i].VDT+`</td>                                                                                                  `;
+				html += `	<td  width="165px" nowrap>`+list[i].RDT+`</td>                                                                                                  `;
+				html += "</tr>";
+			}                              	                                                                                                           
+			
+			var chk_allcnt = list.length;
+			$("#chk_cnt").html(0);
+			$("#chk_all").html(chk_allcnt);
+			$("input[type=checkbox]").prop("checked",false);
+		}
+		else {
+			html += "<tr class=\"list_contents\" style=\"height: 350px;\">";
+			html += "<td  style = \"width:1200px !important;\"colspan=\"10\">조회된 데이터가 없습니다.</td>";
+			html += "</tr>";
+			$(".list_paging_area").html("");
+		}
+		$("#tbody1").html(html);
+		
+		/* 전체 체크박스 선택 후 해제 시 전체체크박스 풀림 */
+		$(".list_chbox").on("click", function() {
+			var cnt = 0;
+			$(".list_chbox").each(function() {
+				if(!$(this).is(":checked") && $(this).attr("id") != "checkall") {
+					cnt ++;
+				}
+			});
+			
+			var stat = (cnt > 0) ? false : true;
+			$("#checkall").prop("checked", stat);
+			
+		});
+		$(".list_chbox").on("click", function() {
+			var select = $(this).attr("id");
+			$("#ct_no").val(select.substring(select.indexOf("_") + 1));
+		});
+	}
+	//Paging draw
+	function drawListPaging(pb) {
+		var html = "";
+		html += "<div class=\"btn_paging\" name=\"1\">&lt;&lt;</div>";
+
+		html += "<div class=\"btn_paging\"name=\"";
+		html += ($("#page").val() == "1")? "1" : ($("#page").val() * 1 - 1);
+		html += "\">&lt;</div>";
+
+		for(var i = pb.startPcount; i <= pb.endPcount; i++) {		
+			html += "<div class=\"btn_paging";
+			html += ($("#page").val() == i)? "_on\">" : "\" name=\"" + i + "\">";
+			html += i + "</div>";
+		}
+		
+		html += "<div class=\"btn_paging\"name=\"";
+		html += ($("#page").val() == (pb.maxPcount))? pb.maxPcount : ($("#page").val() * 1 + 1);
+		html += "\">&gt;</div>";
+
+		html += "<div class=\"btn_paging\" name=\"" + pb.maxPcount + "\">&gt;&gt;</div>";
+		
+		$(".list_paging_area").html(html);
+		
+	}
 </script>
 <style type="text/css">
-
+.right_wrap > .slimScrollDiv {
+	display: inline-block;
+	height: calc(100% - 145px) !important;
+	width: calc(100% - 40px) !important;
+	min-width: 1040px !important;
+	padding: 0px 20px !important;
+}
 .detail_tr {
 	border-bottom: 1px solid #CCC;
 	font-size: 10pt;
@@ -96,8 +266,11 @@ table > thead {
 </style>
 </head>
 <body>
+<form action = "#" id = "actionForm" method = "post">
+
+</form>
 	<!-- 고객 등록,수정 팝업 -->
-	<div class="pop_wrap pop_off">
+	 <div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
 		<div class="pop pop_size_Customer_add2 pop_white">
 			<div class="pop_title_area">
@@ -268,7 +441,7 @@ table > thead {
 						<td>
 							<div class="squaredOne_h">
 								<input type="checkbox" value="None" style="display : none;" id="pop_CT_checkall"  />
-								<label for="pop_CT_checkall"  ></label> <!-- squaredOne 같이? -->
+								<label for="pop_CT_checkall"  ></label>
 							</div>
 						</td>
 						<td>선택</td>
@@ -356,7 +529,7 @@ table > thead {
 				</table>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 	<!-- 상세정보 -->
 	<div class="pop_wrap pop_off">
 		<div class="pop_bg"></div>
@@ -373,7 +546,7 @@ table > thead {
 			</div>
 			<!-- 내용입력 -->
 			<div class="pop_detail_top_area">
-				<!-- 상단 버튼 -->
+				상단 버튼
 				<div class="pop_detail_top1">
 					<input type="button" class="btn_normal btn_size_normal"
 						value="시술등록" /> <input type="button"
@@ -389,7 +562,7 @@ table > thead {
 			</div>
 			<div class="detail_srch_area">
 				<select class="detail_srch_ddl">
-					<!-- 검색드랍다운리스트 -->
+					검색드랍다운리스트
 					<option selected="selected">전체</option>
 					<option>고객명</option>
 					<option>연락처</option>
@@ -495,7 +668,7 @@ table > thead {
 							<option>연락처</option>
 							<option>담당자</option>
 							<option>예약내용</option>
-						</select> <input class="detail_input_size pxsize150" name="datemove"
+						</select> <input class="detail_input_size pxsize150" 
 							name = "startDate" id="startDate" type="date" value=""> ~ 
 							<input class="detail_input_size pxsize150" type="date" name = "endDate" id="endDate" value="">
 					</div>
@@ -640,54 +813,6 @@ table > thead {
 							<td>100000</td>
 							<td>취급주의취급주의</td>
 						</tr>
-						<tr class = "ttr">
-							<td>1</td>
-							<td>2019-12-26</td>
-							<td>바킈손</td>
-							<td>괴물죄</td>
-							<td>헤어샴푸403</td>
-							<td>100000</td>
-							<td>100000</td>
-							<td>230000</td>
-							<td>100000</td>
-							<td>취급주의취급주의</td>
-						</tr>
-						<tr class = "ttr">
-							<td>1</td>
-							<td>2019-12-26</td>
-							<td>바킈손</td>
-							<td>괴물죄</td>
-							<td>헤어샴푸403</td>
-							<td>100000</td>
-							<td>100000</td>
-							<td>230000</td>
-							<td>100000</td>
-							<td>취급주의취급주의</td>
-						</tr>
-						<tr class = "ttr">
-							<td>1</td>
-							<td>2019-12-26</td>
-							<td>바킈손</td>
-							<td>괴물죄</td>
-							<td>헤어샴푸403</td>
-							<td>100000</td>
-							<td>100000</td>
-							<td>230000</td>
-							<td>100000</td>
-							<td>취급주의취급주의</td>
-						</tr>
-						<tr class = "ttr">
-							<td>1</td>
-							<td>2019-12-26</td>
-							<td>바킈손</td>
-							<td>괴물죄</td>
-							<td>헤어샴푸403</td>
-							<td>100000</td>
-							<td>100000</td>
-							<td>230000</td>
-							<td>100000</td>
-							<td>취급주의취급주의</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -720,63 +845,6 @@ table > thead {
 								<td>500000</td>
 								<td>500000</td>
 							</tr>
-							<tr class = "ttr">
-								<td>1</td>
-								<td>2019-01-02</td>
-								<td>바킈손</td>
-								<td>400000 결제</td>
-								<td>500000</td>
-								<td>500000</td>
-							</tr>
-							<tr class = "ttr">
-								<td>1</td>
-								<td>2019-01-02</td>
-								<td>바킈손</td>
-								<td>400000 결제</td>
-								<td>500000</td>
-								<td>500000</td>
-							</tr>
-							<tr class = "ttr">
-								<td>1</td>
-								<td>2019-01-02</td>
-								<td>바킈손</td>
-								<td>400000 결제</td>
-								<td>500000</td>
-								<td>500000</td>
-							</tr>
-							<tr class = "ttr">
-								<td>1</td>
-								<td>2019-01-02</td>
-								<td>바킈손</td>
-								<td>400000 결제</td>
-								<td>500000</td>
-								<td>500000</td>
-							</tr>
-							<tr class = "ttr">
-								<td>1</td>
-								<td>2019-01-02</td>
-								<td>바킈손</td>
-								<td>400000 결제</td>
-								<td>500000</td>
-								<td>500000</td>
-							</tr>
-							<tr class = "ttr">
-								<td>1</td>
-								<td>2019-01-02</td>
-								<td>바킈손</td>
-								<td>400000 결제</td>
-								<td>500000</td>
-								<td>500000</td>
-							</tr>
-							<tr class = "ttr">
-								<td>1</td>
-								<td>2019-01-02</td>
-								<td>바킈손</td>
-								<td>400000 결제</td>
-								<td>500000</td>
-								<td>500000</td>
-							</tr>
-							
 						</tbody>
 				</table>
 				</div>
@@ -784,12 +852,17 @@ table > thead {
 	</div>
 	</div>
 	<c:import url="/topLeft">
-		<c:param name="menuNo">3</c:param>
+		<c:param name="menuNo">1</c:param>
 	</c:import>
+	
+	
 		<div class="title_area">고객 목록</div>
 		<!-- 내용작성 -->
 		<div class="content_area">
 			<div class="contents_wrap">
+			<!-- 리스트폼 -->
+				<form action = "#" id = "listForm" method = "post">
+				<input type = "hidden" name = "ct_no" id = "ct_no"/>
 			<div class="list_wrap">
 				<div class="table_top_area">
 					<div class="top_title_area size40" style="vertical-align: bottom;">
@@ -802,29 +875,31 @@ table > thead {
 					</div>
 					<div class="top_btn_area size60"></div>
 				</div>
+				<input type = "hidden" id = "page" name = "page" value = "1"/>
+				
 				<div class="table_top_area">
 					<div class="top_title_area size40" style="vertical-align: top;">
-						<select class="input_size pxsize100">
-							<option selected="selected">전체</option>
-							<option>예약자</option>
-							<option>연락처</option>
-							<option>담당자</option>
-							<option>예약내용</option>
-						</select> <input class="input_size pxsize150" name="datemove"
+						<select name = "searchGbn" id = "searchGbn" class="input_size pxsize100">
+							<option selected="selected" value = "0">전체</option>
+							<option value = "1">고객명</option>
+							<option value = "2">등급</option>
+							<option value = "3">담당자</option>
+							<option value = "4">핸드폰</option>
+						</select> <input class="input_size pxsize150" name="startDate"
 							id="startDate" type="date" value=""> ~ 
-							<input class="input_size pxsize150" type="date" id="endDate" value="">
+							<input class="input_size pxsize150" type="date" id="endDate" name = "endDate" value="">
 					</div>
 					<div class="top_title_area size25">
-						<input class="input_size pxsize200" type="text"
-							placeholder="예약자/연락처/담당자/예약내용"> <input type="button"
-							class="btn_normal btn_size_normal" value="검색" />
+						<input class="input_size pxsize200" name = "searchTxt" id = "searchTxt"type="text"
+							placeholder="고객명/연락처/담당자/핸드폰"> 
+							<input type="button" class="btn_normal btn_size_normal" id = "searchBtn" name = "searchBtn" value="검색" />
 					</div>
 					<div class="top_btn_area size35">
 						<input type="button" class="btn_normal btn_size_normal"
-							value="대기등록" /> <input type="button"
-							class="btn_normal btn_size_normal" value="등록" /> <input
-							type="button" class="btn_normal btn_size_normal" value="수정" /> <input
-							type="button" class="btn_normal btn_size_normal" value="삭제" />
+							value="대기등록" /> 
+							<input type="button" id = "reg_Btn" class="btn_normal btn_size_normal" value="등록" /> 
+							<input type="button" id = "update_Btn" class="btn_normal btn_size_normal" value="수정" /> 
+							<input type="button" id = "del_Btn" class="btn_normal btn_size_normal" value="삭제" />
 					</div>
 				</div>
 				<div class="table_top_area">
@@ -835,7 +910,7 @@ table > thead {
 								<option>20단위</option>
 								<option>50단위</option>
 								<option>100단위</option>
-							</select> <span id="list_cnt_all">#</span> 개 항목중 <span id="list_cnt_select">#</span>
+							</select> <span id="chk_all">#</span> 개 항목중 <span id="chk_cnt">0</span>
 							개 선택
 						</div>
 					</div>
@@ -854,7 +929,7 @@ table > thead {
 						<col width="13%">
 						<col width="13%">
 					</colgroup>
-					<tbody>
+					<thead>
 						<tr class="table_list_header">
 							<td>
 								<div class="squaredOne_h">
@@ -873,191 +948,20 @@ table > thead {
 							<td>최근방문일</td>
 							<td>등록일</td>
 						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne1" name="check" /> <label for="squaredOne1"></label>
-								</div>
-							</td>
-							<td>1</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne2" name="check" /> <label for="squaredOne2"></label>
-								</div>
-							</td>
-							<td>2</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne3" name="check" /> <label for="squaredOne3"></label>
-								</div>
-							</td>
-							<td>ㅋ</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne4" name="check" /> <label for="squaredOne4"></label>
-								</div>
-							</td>
-							<td>3</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne5" name="check" /> <label for="squaredOne5"></label>
-								</div>
-							</td>
-							<td>4</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne6" name="check" /> <label for="squaredOne6"></label>
-								</div>
-							</td>
-							<td>5</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne7" name="check" /> <label for="squaredOne7"></label>
-								</div>
-							</td>
-							<td>6</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne8" name="check" /> <label for="squaredOne8"></label>
-								</div>
-							</td>
-							<td>7</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne9" name="check" /> <label for="squaredOne9"></label>
-								</div>
-							</td>
-							<td>8</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
-						<tr class="list_contents">
-							<td style="cursor: default;">
-								<div class="squaredOne">
-									<input type="checkbox" value="None" style="display: none;"
-										id="squaredOne10" name="check" /> <label for="squaredOne10"></label>
-								</div>
-							</td>
-							<td>9</td>
-							<td>괴물죄</td>
-							<td>Diamond</td>
-							<td>장혜쥐</td>
-							<td>50000</td>
-							<td>010-0000-0000</td>
-							<td>남자</td>
-							<td>2019-12-16</td>
-							<td>2019-12-16</td>
-						</tr>
+					<thead>
+					<tbody id = "tbody1">
 					</tbody>
 				</table>
 				<div class="list_paging_area">
-					<div class="btn_paging"></div>
-					<div class="btn_paging"></div>
+					<div class="btn_paging"><</div>
+					<div class="btn_paging"><<</div>
 					<div class="btn_paging">1</div>
-					<div class="btn_paging">2</div>
-					<div class="btn_paging">3</div>
-					<div class="btn_paging">4</div>
-					<div class="btn_paging">5</div>
 					<div class="btn_paging">></div>
 					<div class="btn_paging">>></div>
 				</div>
 				<div class="blank_space"></div>
 			</div>
+				</form>
 			</div>
 		</div>
 <!-- 	</div> -->

@@ -42,7 +42,7 @@ $(document).ready(function() {
 		$("#res_all").html($(".table_list tbody .list_chbox").length);
 		$("#res_cnt").html($(".table_list tbody .list_chbox:checked").length);
 	});
-	
+
 	
 	/* 체크박스 영역 제외하고 나머지tr부분 이벤트 적용 */
 	$(".table_list").on("click",".res_update" ,function(e) {
@@ -272,7 +272,7 @@ $(document).ready(function() {
 			html += "			<td class=\"field_contents\">                                                                            ";
 			html += `				<input type="hidden" name="txt_client_no">                                                    `;
 			html += "				<input class=\"input_size size70\" id=\"txt_client_name\" name=\"txt_client_name\" type=\"text\">                                                    ";
-			html += "				<input type=\"button\" class=\"btn_normal btn_size_normal\" value=\"검색\"/>                         ";
+			html += "				<input type=\"button\" id = \"cus_Btn\"class=\"btn_normal btn_size_normal\" value=\"검색\"/>                         ";
 			html += "			</td>                                                                                                    ";
 			html += "		</tr>                                                                                                        ";
 			html += "		<tr>                                                                                                         ";
@@ -375,6 +375,125 @@ $(document).ready(function() {
 			$(".txt_client_ph").on("keyup", function() {
 				inputNumberFormat(this);
 			});
+			$("#cus_Btn").on("click", function(){
+				html = "";
+				html += "<table class = \"pop_table pop_list\">";
+				html += "<tbody>";
+				html += "<tr>"
+				html += "<td colspan = \"4\" class = \"field_contents size100\">";
+				html += "<input type=\"button\" class=\"btn_normal btn_size_normal\" value=\"등록\"/>";
+				html += "<input type=\"button\" class=\"btn_normal btn_size_normal\" value=\"삭제\"/>";
+				html += "</td>";
+				html += "</tr>";
+				html += "<tr>";
+				html += "<td class = \"field_name first_field_name size15\">검색조건</td>";
+				html += "<td class = \"size30\">";
+				html += "<select class=\"input_size pxsize200\">";
+				html += "<option selected=\"selected\">전체</option>";
+				html += "<option>고객명</option>";
+				html += "<option>연락처</option>";
+				html += "</select>";
+				html += "</td>";
+				html += "<td class = \"field_name first_field_name size15\">검색어</td>";
+				html += "<td>";
+				html += "<input class=\"input_size pxsize200\" type=\"text\">";
+				html += "<input type=\"button\" class=\"btn_normal btn_size_normal\" value=\"검색\"/>&nbsp; &nbsp; &nbsp; &nbsp;";
+				html += "</td>";
+				html += "</tr>";
+				html += "</tbody>";
+				html += "</table>";
+				html += "<div class = \"pop_customer_list widthscroll\">";
+				html += "<table class = \"table_list tborder pxsize1650\" id = \"pop_customer_list\">";
+				html += "<colgroup>";
+				html += "<col width=\"3%\">";
+				html += "<col width=\"4%\">";
+				html += "<col width=\"4%\">";
+				html += "<col width=\"3%\">";
+				html += "<col width=\"6%\">";
+				html += "<col width=\"6%\">";
+				html += "<col width=\"6%\">";
+				html += "<col width=\"8%\">";
+				html += "<col width=\"6%\">";
+				html += "<col width=\"4%\">";
+				html += "<col width=\"8%\">";
+				html += "<col width=\"8%\">";
+				html += "<col width=\"10%\">";
+				html += "<col width=\"10%\">";
+				html += "<col width=\"14%\">";
+				html += "</colgroup>";
+				html += "<thead>";
+				html += "<tr class = \"table_list_header padding0a10\">";
+				html += "<td>";
+				html += "<div class = \"squaredOne_h\">";
+				html += "<input type=\"checkbox\" value=\"None\" style=\"display : none;\" id=\"pop_CT_checkall\"  />";
+				html += "<label for=\"pop_CT_checkall\"  ></label>"
+				html += "</div>";
+				html += "</td>";
+				html += "<td>선택</td>";
+				html += "<td>수정</td>";
+				html += "<td>NO</td>";
+				html += "<td>고객명</td>";
+				html += "<td>담당자</td>";
+				html += "<td>포인트</td>";
+				html += "<td>핸드폰</td>";
+				html += "<td>전화</td>";
+				html += "<td>성별</td>";
+				html += "<td>생년월일</td>";
+				html += "<td>회원등록일</td>";
+				html += "<td>이메일</td>";
+				html += "<td>주소</td>";
+				html += "<td>메모</td>";
+				html += "</tr>";
+				html += "</thead>";
+				html += "</table>";
+				html += "<table class = \"table_list tborder pxsize1650\" id = \"pop_customer_list\" style=\"table-layout: fixed\">";
+				html += "<colgroup>";
+				html += "<col width = \"3%\">";
+				html += "<col width = \"4%\">";
+				html += "<col width = \"4%\">";
+				html += "<col width = \"3%\">";
+				html += "<col width = \"6%\">";
+				html += "<col width = \"6%\">";
+				html += "<col width = \"6%\">";
+				html += "<col width = \"8%\">";
+				html += "<col width = \"6%\">";
+				html += "<col width = \"4%\">";
+				html += "<col width = \"8%\">";
+				html += "<col width = \"8%\">";
+				html += "<col width = \"10%\">";
+				html += "<col width = \"10%\">";
+				html += "<col width = \"14%\">";
+				html += "</colgroup>";
+				html += "<tbody id = \"cbody\">"
+				html += "</tbody>"
+				makeNoBtnPopup(3, "고객 목록", html, true, 900, 575, function() {
+					
+					$(".pop_list").parent(".pop_contents").css("padding", "0");
+					
+					var params = $("#reserForm").serialize();
+					
+					$.ajax({
+						type : "post", //데이터 전송방식
+						url : "cListAjax", //주소
+						dataType : "json", //데이터 전송 규격
+						data : params, //보낼 데이터
+						// {키: 값, 키:값, ...} - > json
+						
+						success : function(result){
+							
+								customerList(result.list);
+							
+						} , 
+						error : function(request,status,error) {
+							console.log("status : "+request.status);
+							console.log("text : "+request.responseText);
+							console.log("error : "+error);
+						}
+						
+					})
+				});
+			});
+				
 			//설렉트 색깔 바꿔주기
 		 	$("#edit-color").change(function() {
 		 		$("#edit-color").css("color",$(this).val());
@@ -483,6 +602,48 @@ function resaddpopset() {
 	var dd = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
 	$("#resstartDate").val(yyyy+"-"+mm+"-"+dd);
 	
+}
+//예약 리스트 Draw
+function customerList(list) {
+	var html = "";
+	if(list.length > 0) {
+		for(var i in list) {
+			html += `<tr class="list_contents padding0a10" name="`+list[i].CT_NO+`">                                                                              `;
+			html += `	<td style="cursor : default;" class="chk_td">                                                                             `;
+			html += `		<div class="squaredOne">                                                                                              `;
+			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].CT_NO+`" style="display : none;" id="chk_`+list[i].CT_NO+`" name="res_check" />   `;
+			html += `			<label class="chbox_lbl" for="chk_`+list[i].CT_NO+`"></label>                                                                         `;
+			html += `		</div>                                                                                                                `;
+			html += `	</td>                                                                                                                     `;
+			html += `	<td style="cursor : default;"><input name="`+list[i].CT_NO+`"type="button" class="res_update" value="선택"/></td>                              `;
+			html += `	<td style="cursor : default;"><input name="`+list[i].CT_NO+`"type="button" class="res_update" value="수정"/></td>                              `;
+			html += `	<td>`+list[i].CT_NO+`</td>                                                                                                  `;
+			html += `	<td>`+list[i].CT_NM+`</td>                                                                                                  `;
+			html += `	<td>`+list[i].EMP_NM+`</td>                                                                                                  `;
+			html += `	<td>`+list[i].POINT+`</td>                                                                                                  `;
+			html += `	<td>`+list[i].CT_NUM+`</td>                                                                                                  `;
+			html += `	<td>`+list[i].CT_PH+`</td>                                                                                                 `;
+			html += `	<td>`+list[i].CT_SEX +`</td>                                                                                               `;
+			html += `	<td>`+list[i].BIR +`</td>                                                                                               `;
+			html += `	<td>`+list[i].REG +`</td>                                                                                               `;
+			html += `	<td>`+list[i].CT_EMAIL +`</td>                                                                                               `;
+			html += `	<td>`+list[i].CT_ADD +`</td>                                                                                               `;
+			html += `	<td>`+list[i].CT_MEMO +`</td>                                                                                               `;
+			html += `</tr>                                                                                                                        `;
+		}                                                                                                                                         
+		
+		var res_allcnt = list.length;
+		$("#res_cnt").html(0);
+		$("#res_all").html(res_allcnt);
+		$("input[type=checkbox]").prop("checked",false);
+	}
+	else {
+		html += "<tr class=\"list_contents\" style=\"height: 350px;\">";
+		html += "<td colspan=\"9\">조회된 데이터가 없습니다.</td>";
+		html += "</tr>";
+		$(".list_paging_area").html("");
+	}
+	$("#cbody").html(html);
 }
 </script>
 </head>

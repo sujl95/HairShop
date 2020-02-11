@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="led">
+
+	<select id="warehousingList" parameterType="hashmap" resultType="hashmap">
+		SELECT WH_NO, WH_DATE, IT_NM,CP_NM,WH_PRICE,WH_CNT,WH_UNIT,WH_GROUP_NM
+		FROM WAREHOUSING WR INNER JOIN ITEM_CODE IC
+	                            ON WR.IT_NO = IC.IT_NO
+	                    	LEFT OUTER JOIN COMPANY_CODE CC
+	                            ON WR.CP_NO = CC.CP_NO	
+	</select>
 	
-	<!-- <select id="ledgerList" parameterType="hashmap" resultType="hashmap">
-		
-	</select> -->
+	<select id="warehousingListCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM WAREHOUSING WR INNER JOIN ITEM_CODE IC
+	                            ON WR.IT_NO = IC.IT_NO
+	                    	LEFT OUTER JOIN COMPANY_CODE CC
+	                            ON WR.CP_NO = CC.CP_NO	
+	</select>
 	
 </mapper>

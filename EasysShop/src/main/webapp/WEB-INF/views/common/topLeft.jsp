@@ -80,7 +80,7 @@ function load_event() {
 			ajax = "getcompdataAjax";
 		} else if($(this).attr("id") == "IT_CODE_NO") {
 			ajax = "getitemcodedataAjax";
-		} else if($(this).attr("id") == "IT_TYPE_NO") {
+		} else if($(this).attr("id") == "IT_TYPE_NM") {
 			ajax = "getitemtypedataAjax";
 		} 
 		console.log(params);
@@ -102,7 +102,7 @@ function load_event() {
 				} else if (ajax == "getitemcodedataAjax") {
 					make_item_pop(2,"상품 코드 수정",3,result1);
 				} else if (ajax == "getitemtypedataAjax") {
-					make_it_type_pop(2,"상품 분류 코드 수정",3,result1);
+					make_it_type_pop(3,result1);
 				} 
 				
 				
@@ -115,14 +115,26 @@ function load_event() {
 			
 		});
 	});
-//		체크 전체
+//	체크 전체
 	$("#pop_chk_all").click(function(){
-    	if($("#pop_chk_all").prop("checked")){
-    		$("input[name=pop_check]").prop("checked",true);
-    	}else{
-    		$("input[name=pop_check]").prop("checked",false);
-    	}
+		var arr = []; 
+		arr = $(this).attr("class").split(' ');
+		if(typeof arr[1] == "undefined"){
+			if($("#pop_chk_all").prop("checked")){
+	    		$("input[name=pop_check]").prop("checked",true);
+	    	}else{
+	    		$("input[name=pop_check]").prop("checked",false);
+	    	}
+		} else {
+			if($("#pop_chk_all").prop("checked")){
+	    		$("input[name="+arr[1]+"]").prop("checked",true);
+	    	}else{
+	    		$("input[name="+arr[1]+"]").prop("checked",false);
+	    	}
+		}
+    	
     });
+
     
 }
 
@@ -167,172 +179,8 @@ function getlist(no) {
 		}
 	});
 }
-//고객,직원 등급 메서드
-function Gradefun (ck) {
-	var html = "";
-	html += `<form id="popactionForm" action="#" method="post">`;
-	html += `<table class="pop_table">`;
-	html += `	<colgroup>            `;
-	html += `		<col width="20%"> `;
-	html += `		<col width="80%"> `;
-	html += `	</colgroup>           `;
-	html += `	<tbody>               `;
-	html += `		<tr>              `;
-	html += `			<td class="field_name first_field_name">검색어</td> `;
-	html += `			<td class="field_contents">                         `;
-	if (ck == 1) {
-		html += `				<input class="input_size size60" type="text" id="getcustgradelist" name="searchTxt">   `;
-		html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getcustgradelist" value="검색"/>`;
-	} else if( ck == 2) {
-		html += `				<input class="input_size size60" type="text" id="getempgradelist" name="searchTxt">   `;
-		html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getempgradelist" value="검색"/>`;
-	}
-	html += `			</td>`;
-	html += `		</tr> `;
-	html += `	</tbody>  `;
-	html += `</table>     `;
-	html += `<br>`;
-	html += `</form>`;
-	html += `<form id="popdataForm" action="#" method="post">`;
-	html += `<table class="table_list pop_list">                `;
-	html += `	<thead class="thead_scroll">           `;
-	html += `		<tr class="table_list_header">     `;
-	html += `			<td  width="80px" nowrap>      `;
-	html += `				<div class="squaredOne_h"> `;
-	html += `					<input type="checkbox" value="None" class="list_chbox" style="display : none;" id="pop_chk_all"  />`;
-	html += `					<label for="pop_chk_all"  ></label>`; 
-	html += `				</div>`;
-	html += `			</td>`;
-	html += `			<td  width="95px" nowrap>수정</td>     `;
-	html += `			<td  width="75px" nowrap>레벨</td>               `;
-	html += `			<td  width="130px" nowrap>등급명</td>             `;
-	html += `		</tr>                                              `;
-	html += `	</thead>                                               `;
-	html += `	<tbody class="tbody_scroll sscroll" style="height : 300px !important">                           `;
-	html += `	</tbody>                                               `;
-	html += `</table>                                                  `;
-	html += `</form>`;
-	var str = "";
-	if (ck == 1) {
-		str = "고객 등급";
-	} else if( ck == 2) {
-		str = "직원 등급"
-	}
-	makeThreeBtnPopup(1, str, html, false, 400, 600, function() {
-		getlist(ck);
-	}
-	, "등록", function() {
-		if (ck == 1) {
-			make_custgrade_pop(1,"고객 등급 등록");
-		} else if( ck == 2) {
-			make_custgrade_pop(3,"직원 등급 등록");
-		}
-		
-	},"삭제", function() {
-		var params = $("#popdataForm").serialize();
-		if (ck == 1) {
-			listdel(2,"고객 등급",400,200,"popactionForm","custgradedelAjax","getlist1",params);
-		} else if( ck == 2) {
-			listdel(2,"직원 등급",400,200,"popactionForm","empgradedelAjax","getlist2",params);
-		}
-	},"취소", function() {
-		closePopup(1);
-	});
-}
 
-//거래처 메서드
-function Compfun (depth) {
-	var html = "";
-	html += `<form id="popactionForm" action="#" method="post">`;
-	html += `<table class="pop_table">`;
-	html += `	<colgroup>            `;
-	html += `		<col width="20%"> `;
-	html += `		<col width="80%"> `;
-	html += `	</colgroup>           `;
-	html += `	<tbody>               `;
-	html += `		<tr>              `;
-	html += `			<td class="field_name first_field_name">검색어</td> `;
-	html += `			<td class="field_contents">                         `;
-	html += `				<select class="input_size pxsize100" name="searchGbn" id="searchGbn">  `;
-	html += `					<option value="0" selected="selected">전체</option>                `;
-	html += `					<option value="1">거래처 구분</option>                                  `;
-	html += `					<option value="2">거래처명</option>                                  `;
-	html += `					<option value="3">담당자</option>                                `;
-	html += `				</select>                                                              `;
-	html += `				<input class="input_size size60" type="text" id="getcomplist" name="searchTxt">   `;
-	html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getcomplist" value="검색"/>`;
-	html += `			</td>`;
-	html += `		</tr> `;
-	html += `	</tbody>  `;
-	html += `</table>     `;
-	html += `<br>`;
-	html += `</form>`;
-	html += `<form id="popdataForm" action="#" method="post">`;
-	html += `<table class="table_list pop_list widthscroll" id="comp_list">                `;
-	html += `	<thead class="thead_scroll ">           `;
-	html += `		<tr class="table_list_header">     `;
-	html += `			<td width="80px" nowrap>      `;
-	html += `				<div class="squaredOne_h"> `;
-	html += `					<input type="checkbox" value="None" class="list_chbox" style="display : none;" id="pop_chk_all"  />`;
-	html += `					<label for="pop_chk_all"  ></label>`; 
-	html += `				</div>`;
-	html += `			</td>`;
-	html += `			<td width="95px" nowrap>수정</td>     `;
-	html += `			<td width="120px" nowrap>담당자</td>`;
-	html += `			<td width="120px" nowrap>거래처 구분</td>`;
-	html += `			<td width="130px" nowrap>거래처명</td>    `;
-	html += `			<td width="150px" nowrap>사업자번호</td>    `;
-	html += `			<td width="110px" nowrap>대표자명</td>   `;
-	html += `			<td width="110px" nowrap>업태</td>      `;
-	html += `			<td width="110px" nowrap>종목</td>   `;
-	html += `			<td width="300px" nowrap>주소</td>  `;
-	html += `			<td width="140px" nowrap>전화1</td>`;
-	html += `			<td width="140px" nowrap>전화2</td>   `;
-	html += `			<td width="140px" nowrap>핸드폰</td>     `;
-	html += `			<td width="140px" nowrap>팩스</td>     `;
-	html += `			<td width="140px" nowrap>이메일</td> `;
-	html += `			<td width="180px" nowrap>사이트</td>   `;
-	html += `			<td width="100px" nowrap>메모</td>   `;
-	html += `			<td width="130px" nowrap>등록일</td>   `;
-	html += `			<td width="130px" nowrap>거래일</td>   `;
-	html += `		</tr>                                              `;
-	html += `	</thead>                                               `;
-	html += `	<tbody class="tbody_scroll sscroll">                           `;
-	html += `	</tbody>                                               `;
-	html += `</table>                                                  `;
-	html += `</form>`;
-	if (depth == null) {
-		depth = 1;
-	} else {
-		
-	}
-	makeThreeBtnPopup(depth, "거래처 코드 목록", html, false, 900, 700, function() {
-		getlist(3);
-		$("#popdataForm").slimScroll({
-			width : "880px",
-			height: "500px",
-			axis: 'both'
-		});
-	}
-	, "등록", function() {
-		make_comp_pop(1, "거래처 등록",depth+1);
-	},"삭제", function() {
-		var params = $("#popdataForm").serialize();
-		if (depth == null) {
-			depth = 2;
-		} else {
-			depth += 1;
-		}
-		listdel(depth ,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
-	},"취소", function() {
-		if (depth == null) {
-			depth = 1;
-		}
-		closePopup(depth);
-	});
-	
-	
-}
+
 
 //상품 코드 목록 메서드
 function Itemfun (depth) {
@@ -416,7 +264,7 @@ function drawitemtypeList(list) {
 			html += `<tr class="list_contents" name="`+list[i].CODE_NAME+`">                                                                              `;
 			html += `	<td width="60px" nowrap style="cursor : default;" class="chk_td">                                                                             `;
 			html += `		<div class="squaredOne">                                                                                              `;
-			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].CODE_NAME+`" style="display : none;" id="chk_`+list[i].CODE_NAME+`" name="pop_check" />   `;
+			html += `			<input type="checkbox" class="list_chbox item_type" value="`+list[i].CODE_NAME+`" style="display : none;" id="chk_`+list[i].CODE_NAME+`" name="item_type_check" />   `;
 			html += `			<label class="chbox_lbl" for="chk_`+list[i].CODE_NAME+`"></label>                                                                         `;
 			html += `		</div>                                                                                                                `;
 			html += `	</td>                                                                                                                     `;
@@ -426,7 +274,7 @@ function drawitemtypeList(list) {
 			html += `			<td width="130px" nowrap>`+list[i].CODE_NAME+`</td>`;
 			html += `</tr>                                                                                                                        `
 		}            
-// 		$("input[type=checkbox]").prop("checked",false);
+		$("input[type=checkbox]").prop("checked",false);
 	}
 	else {
 		html += "<tr class=\"list_contents\" style=\"height: 350px;\">";
@@ -488,6 +336,63 @@ function drawitemcodeList(list) {
 		height: "450px"
 	});
 }
+//상품 분류 코드 수정
+function make_it_type_pop(depth,result1) {
+	const cdepth = depth;
+	var html = "";
+	html += `<form id="popactionForm" action="#" method="post">`;
+	html += `<table class="pop_table">`;
+	html += `	<colgroup>            `;
+	html += `		<col width="20%"> `;
+	html += `		<col width="80%"> `;
+	html += `	</colgroup>           `;
+	html += `	<tbody>               `;
+	html += `			<tr>      `
+	html += `				<td class="field_name first_field_name">상품 코드</td>                             `
+	html += `				<td class="field_contents" id="it_code_txt">                                                         `
+	html += `				<input type="hidden" id="it_NM_type" name="it_NM_type" value="`+result1.data.CODE_NAME+`" >   `;
+	html += `				<input class="input_size size30" type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" id="IT_M_GROUP_NO" name="IT_M_GROUP_NO" value="`+result1.data.CODE_M_CATE+`" placeholder="대분류코드">   `;
+	html += `				<input class="input_size size30" type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" id="it_S_code" name="it_S_code" value="`+result1.data.CODE_S_CATE+`" placeholder="소분류코드">   `;
+	html += `				<input class="input_size size30" type="text" value="`+result1.data.CODE_NAME+`" id="it_NM_code" name="it_NM_code" placeholder="코드이름">   `;
+	html += `				</td>                                                                                `
+	html += `			</tr>     `
+	html += `	</tbody>  `;
+	html += `</table>     `;
+	html += `<br>`;
+	html += `</form>`;
+	makeTwoBtnPopup(cdepth+1, "상품 분류 코드", html, true, 400, 300, null, 
+	  "확인", function() {
+		var params = ($("#it_NM_type").val() != $("#it_NM_code").val()) ? $("#popactionForm").serialize() + "&ck_val="+"0" : $("#popactionForm").serialize() + "&ck_val="+"0" + "&nck_val="+"1" ;
+		$.ajax({
+			type : "post", //데이터 전송방식
+			url : "itemtypeupdateAjax" , //주소
+			dataType : "json", //데이터 전송 규격
+			data : params, //보낼 데이터
+			// {키: 값, 키:값, ...} - > json
+			
+			success : function(result){
+				if(result.res == "SUCCESS"){
+					closePopup(cdepth+1);
+					makeAlert(cdepth+2, "수정 성공", "수정 되었습니다.", null);
+					getlist(5);
+				} else {
+					makeAlert(cdepth+2, "수정 오류", "수정에 실패하였습니다.", null);
+				}
+			} , 
+			error : function(request,status,error) {
+				console.log("status : "+request.status);
+				console.log("text : "+request.responseText);
+				console.log("error : "+error);
+			}
+			
+		});
+	},"하이", function() {
+		closePopup(cdepth+1);
+	});
+	
+	
+}
+
 //상품 코드 등록 수정
 function make_item_pop(ck, str ,depth,result1) {
 	const cdepth = depth;
@@ -664,7 +569,7 @@ function make_item_pop(ck, str ,depth,result1) {
 				html += `		<tr class="table_list_header">     `;
 				html += `			<td  width="60px" nowrap>      `;
 				html += `				<div class="squaredOne_h"> `;
-				html += `					<input type="checkbox" value="None" class="list_chbox" style="display : none;" id="pop_chk_all"  />`;
+				html += `					<input type="checkbox" value="None" class="list_chbox item_type_check" style="display : none;" id="pop_chk_all"  />`;
 				html += `					<label for="pop_chk_all"  ></label>`; 
 				html += `				</div>`;
 				html += `			</td>`;
@@ -708,31 +613,6 @@ function make_item_pop(ck, str ,depth,result1) {
 								makeAlert(cdepth+2, str+" 오류", "코드이름을 입력하세요", null);
 							} else {
 								var params = $("#popactionForm").serialize() + "&ck_val=" + "1";
-								$.ajax({
-									type : "post", //데이터 전송방식
-									url : "itemtypeckAjax" , //주소
-									dataType : "json", //데이터 전송 규격
-									data : params, //보낼 데이터
-									// {키: 값, 키:값, ...} - > json
-									
-									success : function(result){
-										if(result.res == "SUCCESS"){
-											closePopup(cdepth+1);
-											makeAlert(cdepth+2, str+" 성공", str+"되었습니다.", null);
-											getlist(5);
-										} else if(result.res == "MFailed"){
-											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다. 분류 코드 또는 코드이름이 중복입니다", null);
-										} else {
-											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다.", null);
-										}
-									} , 
-									error : function(request,status,error) {
-										console.log("status : "+request.status);
-										console.log("text : "+request.responseText);
-										console.log("error : "+error);
-									}
-									
-								});
 							}
 									
 						} else if ($("input[name=it_type]:checked").val() == "소분류"){
@@ -745,32 +625,9 @@ function make_item_pop(ck, str ,depth,result1) {
 								makeAlert(cdepth+2, str+" 오류", "코드이름을 입력하세요", null);
 							} else{
 								var params = $("#popactionForm").serialize() + "&ck_val=" + "0";
-								$.ajax({
-									type : "post", //데이터 전송방식
-									url : "itemtypeckAjax" , //주소
-									dataType : "json", //데이터 전송 규격
-									data : params, //보낼 데이터
-									// {키: 값, 키:값, ...} - > json
-									
-									success : function(result){
-										if(result.res == "SUCCESS"){
-											makeAlert(cdepth+2, str+" 성공", str+"되었습니다.", null);
-											getlist(5);
-										} else if(result.res == "MFailed"){
-											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다. 분류 코드 또는 코드이름이 중복입니다", null);
-										} else {
-											makeAlert(cdepth+2, str+" 오류", str+"에 실패하였습니다.", null);
-										}
-									} , 
-									error : function(request,status,error) {
-										console.log("status : "+request.status);
-										console.log("text : "+request.responseText);
-										console.log("error : "+error);
-									}
-									
-								});
 							}
-						} else if(typeof params != "undefined") {
+						} 
+						if (typeof params != "undefined") {
 							console.log(params);
 							$.ajax({
 								type : "post", //데이터 전송방식
@@ -781,7 +638,6 @@ function make_item_pop(ck, str ,depth,result1) {
 								
 								success : function(result){
 									if(result.res == "SUCCESS"){
-										closePopup(cdepth+1);
 										makeAlert(cdepth+2, str+" 성공", str+"되었습니다.", null);
 										getlist(5);
 									} else if(result.res == "MFailed"){
@@ -798,39 +654,7 @@ function make_item_pop(ck, str ,depth,result1) {
 								
 							});
 						} 
-						
-							
-						
 						 
-// 						console.log($("#IT_M_GROUP_NO1").val());
-						
-						
-						
-// 						var params = $("#popactionForm").serialize() ;
-// 						console.log(params);
-// 						$.ajax({
-// 							type : "post", //데이터 전송방식
-// 							url : ajax , //주소
-// 							dataType : "json", //데이터 전송 규격
-// 							data : params, //보낼 데이터
-// 							// {키: 값, 키:값, ...} - > json
-							
-// 							success : function(result){
-// 								if(result.res == "SUCCESS"){
-// 									closePopup(cdepth);
-// 									makeAlert(cdepth+1, str+" 성공", str+"되었습니다.", null);
-// 									getlist(4);
-// 								} else{
-// 									makeAlert(cdepth+1, str+" 오류", str+"에 실패하였습니다.", null);
-// 								}
-// 							} , 
-// 							error : function(request,status,error) {
-// 								console.log("status : "+request.status);
-// 								console.log("text : "+request.responseText);
-// 								console.log("error : "+error);
-// 							}
-							
-// 						});
 					});
 					getlist(5);
 					load_event();
@@ -891,7 +715,6 @@ function make_item_pop(ck, str ,depth,result1) {
 					"&IT_CARD_PT1="+$("#IT_CARD_PT").val().replace(/[^0-9]/g, "") 
 					;
 	
-					console.log(params);
 					$.ajax({
 						type : "post", //데이터 전송방식
 						url : ajax , //주소
@@ -1000,6 +823,100 @@ function drawitemScate(Slist,result1) {
 	$("#IT_S_GROUP_NO").html(html);
 }
 
+
+//거래처 메서드
+function Compfun (depth) {
+	var html = "";
+	html += `<form id="popactionForm" action="#" method="post">`;
+	html += `<table class="pop_table">`;
+	html += `	<colgroup>            `;
+	html += `		<col width="20%"> `;
+	html += `		<col width="80%"> `;
+	html += `	</colgroup>           `;
+	html += `	<tbody>               `;
+	html += `		<tr>              `;
+	html += `			<td class="field_name first_field_name">검색어</td> `;
+	html += `			<td class="field_contents">                         `;
+	html += `				<select class="input_size pxsize100" name="searchGbn" id="searchGbn">  `;
+	html += `					<option value="0" selected="selected">전체</option>                `;
+	html += `					<option value="1">거래처 구분</option>                                  `;
+	html += `					<option value="2">거래처명</option>                                  `;
+	html += `					<option value="3">담당자</option>                                `;
+	html += `				</select>                                                              `;
+	html += `				<input class="input_size size60" type="text" id="getcomplist" name="searchTxt">   `;
+	html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getcomplist" value="검색"/>`;
+	html += `			</td>`;
+	html += `		</tr> `;
+	html += `	</tbody>  `;
+	html += `</table>     `;
+	html += `<br>`;
+	html += `</form>`;
+	html += `<form id="popdataForm" action="#" method="post">`;
+	html += `<table class="table_list pop_list widthscroll" id="comp_list">                `;
+	html += `	<thead class="thead_scroll ">           `;
+	html += `		<tr class="table_list_header">     `;
+	html += `			<td width="80px" nowrap>      `;
+	html += `				<div class="squaredOne_h"> `;
+	html += `					<input type="checkbox" value="None" class="list_chbox comp" style="display : none;" id="pop_chk_all"  />`;
+	html += `					<label for="pop_chk_all"  ></label>`; 
+	html += `				</div>`;
+	html += `			</td>`;
+	html += `			<td width="95px" nowrap>수정</td>     `;
+	html += `			<td width="120px" nowrap>담당자</td>`;
+	html += `			<td width="120px" nowrap>거래처 구분</td>`;
+	html += `			<td width="130px" nowrap>거래처명</td>    `;
+	html += `			<td width="150px" nowrap>사업자번호</td>    `;
+	html += `			<td width="110px" nowrap>대표자명</td>   `;
+	html += `			<td width="110px" nowrap>업태</td>      `;
+	html += `			<td width="110px" nowrap>종목</td>   `;
+	html += `			<td width="300px" nowrap>주소</td>  `;
+	html += `			<td width="140px" nowrap>전화1</td>`;
+	html += `			<td width="140px" nowrap>전화2</td>   `;
+	html += `			<td width="140px" nowrap>핸드폰</td>     `;
+	html += `			<td width="140px" nowrap>팩스</td>     `;
+	html += `			<td width="140px" nowrap>이메일</td> `;
+	html += `			<td width="180px" nowrap>사이트</td>   `;
+	html += `			<td width="100px" nowrap>메모</td>   `;
+	html += `			<td width="130px" nowrap>등록일</td>   `;
+	html += `			<td width="130px" nowrap>거래일</td>   `;
+	html += `		</tr>                                              `;
+	html += `	</thead>                                               `;
+	html += `	<tbody class="tbody_scroll sscroll">                           `;
+	html += `	</tbody>                                               `;
+	html += `</table>                                                  `;
+	html += `</form>`;
+	if (depth == null) {
+		depth = 1;
+	} else {
+		
+	}
+	makeThreeBtnPopup(depth, "거래처 코드 목록", html, false, 900, 700, function() {
+		getlist(3);
+		$("#popdataForm").slimScroll({
+			width : "880px",
+			height: "500px",
+			axis: 'both'
+		});
+	}
+	, "등록", function() {
+		make_comp_pop(1, "거래처 등록",depth+1);
+	},"삭제", function() {
+		var params = $("#popdataForm").serialize();
+		if (depth == null) {
+			depth = 2;
+		} else {
+			depth += 1;
+		}
+		listdel(depth ,"거래처 ",400,200,"popactionForm","compdelAjax","getlist3",params);
+	},"취소", function() {
+		if (depth == null) {
+			depth = 1;
+		}
+		closePopup(depth);
+	});
+	
+	
+}
 //거래처 리스트 Draw
 function drawcompList(list) {
 	var html = "";
@@ -1008,7 +925,7 @@ function drawcompList(list) {
 			html += `<tr class="list_contents" name="`+list[i].CP_NO+`_`+list[i].CP_NM+`">                                                                              `;
 			html += `	<td width="80px" nowrap style="cursor : default;" class="chk_td">                                                                             `;
 			html += `		<div class="squaredOne">                                                                                              `;
-			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].CP_NO+`" style="display : none;" id="chk_`+list[i].CP_NO+`" name="pop_check" />   `;
+			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].CP_NO+`" style="display : none;" id="chk_`+list[i].CP_NO+`" name="comp" />   `;
 			html += `			<label class="chbox_lbl" for="chk_`+list[i].CP_NO+`"></label>                                                                         `;
 			html += `		</div>                                                                                                                `;
 			html += `	</td>                                                                                                                     `;
@@ -1242,7 +1159,80 @@ function make_comp_pop(ck, str,depth ,result1) {
 	 	
 }
 
-// 고객등급 리스트 Draw
+
+//고객,직원 등급 메서드
+function Gradefun (ck) {
+	var html = "";
+	html += `<form id="popactionForm" action="#" method="post">`;
+	html += `<table class="pop_table">`;
+	html += `	<colgroup>            `;
+	html += `		<col width="20%"> `;
+	html += `		<col width="80%"> `;
+	html += `	</colgroup>           `;
+	html += `	<tbody>               `;
+	html += `		<tr>              `;
+	html += `			<td class="field_name first_field_name">검색어</td> `;
+	html += `			<td class="field_contents">                         `;
+	if (ck == 1) {
+		html += `				<input class="input_size size60" type="text" id="getcustgradelist" name="searchTxt">   `;
+		html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getcustgradelist" value="검색"/>`;
+	} else if( ck == 2) {
+		html += `				<input class="input_size size60" type="text" id="getempgradelist" name="searchTxt">   `;
+		html += `				<input type="button" class="btn_normal btn_size_normal" id="pop_Search_Btn" name="getempgradelist" value="검색"/>`;
+	}
+	html += `			</td>`;
+	html += `		</tr> `;
+	html += `	</tbody>  `;
+	html += `</table>     `;
+	html += `<br>`;
+	html += `</form>`;
+	html += `<form id="popdataForm" action="#" method="post">`;
+	html += `<table class="table_list pop_list" id="grade_list">                `;
+	html += `	<thead class="thead_scroll">           `;
+	html += `		<tr class="table_list_header">     `;
+	html += `			<td  width="80px" nowrap>      `;
+	html += `				<div class="squaredOne_h"> `;
+	html += `					<input type="checkbox" value="None" class="list_chbox grade" style="display : none;" id="pop_chk_all"  />`;
+	html += `					<label for="pop_chk_all"  ></label>`; 
+	html += `				</div>`;
+	html += `			</td>`;
+	html += `			<td  width="95px" nowrap>수정</td>     `;
+	html += `			<td  width="75px" nowrap>레벨</td>               `;
+	html += `			<td  width="130px" nowrap>등급명</td>             `;
+	html += `		</tr>                                              `;
+	html += `	</thead>                                               `;
+	html += `	<tbody class="tbody_scroll sscroll" style="height : 300px !important">                           `;
+	html += `	</tbody>                                               `;
+	html += `</table>                                                  `;
+	html += `</form>`;
+	var str = "";
+	if (ck == 1) {
+		str = "고객 등급";
+	} else if( ck == 2) {
+		str = "직원 등급"
+	}
+	makeThreeBtnPopup(1, str, html, false, 400, 600, function() {
+		getlist(ck);
+	}
+	, "등록", function() {
+		if (ck == 1) {
+			make_custgrade_pop(1,"고객 등급 등록");
+		} else if( ck == 2) {
+			make_custgrade_pop(3,"직원 등급 등록");
+		}
+		
+	},"삭제", function() {
+		var params = $("#popdataForm").serialize();
+		if (ck == 1) {
+			listdel(2,"고객 등급",400,200,"popactionForm","custgradedelAjax","getlist1",params);
+		} else if( ck == 2) {
+			listdel(2,"직원 등급",400,200,"popactionForm","empgradedelAjax","getlist2",params);
+		}
+	},"취소", function() {
+		closePopup(1);
+	});
+}
+//고객,직원 등급 리스트 Draw
 function drawgradeList(ck,list) {
 	var html = "";
 	if(list.length > 0) {
@@ -1251,7 +1241,7 @@ function drawgradeList(ck,list) {
 			html += `<tr class="list_contents" name="`+list[i].GRADE_NO+`">                                                                              `;
 			html += `	<td width="80px" nowrap style="cursor : default;" class="chk_td">                                                                             `;
 			html += `		<div class="squaredOne">                                                                                              `;
-			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].GRADE_NO+`" style="display : none;" id="chk_`+list[i].GRADE_NO+`" name="pop_check" />   `;
+			html += `			<input type="checkbox" class="list_chbox" value="`+list[i].GRADE_NO+`" style="display : none;" id="chk_`+list[i].GRADE_NO+`" name="grade" />   `;
 			html += `			<label class="chbox_lbl" for="chk_`+list[i].GRADE_NO+`"></label>                                                                         `;
 			html += `		</div>                                                                                                                `;
 			html += `	</td>                                                                                                                     `;
@@ -1272,15 +1262,14 @@ function drawgradeList(ck,list) {
 		html += "</tr>";
 	}
 	
-	$(".pop_list tbody").html(html);
+	$("#grade_list tbody").html(html);
 	
 	$(".sscroll").slimScroll({
 		width : "100%",
 		height: "350px"
 	});
 }
-
-//고객 등급 등록, 수정 
+//고객,직원 등급 등록, 수정 
 function make_custgrade_pop(ck, str ,result1) {
 	var ajax = "";
 	if (ck == 1) {
@@ -1292,7 +1281,6 @@ function make_custgrade_pop(ck, str ,result1) {
 	} else if (ck == 4) {
 		ajax = "empcodeUpdateAjax";
 	}
-	console.log(result1);
 	var html ="";
 		html += `<form action="#" id="ctgForm" method="post">                                      `;
 		if (ck == 1 || ck == 2) {
@@ -1320,9 +1308,9 @@ function make_custgrade_pop(ck, str ,result1) {
 		html += `				<td class="field_name">등급 레벨</td>                                                  `;
 		html += `				<td class="field_contents">                                                            `;
 		if (ck == 1 || ck == 2) {
-			html += `<input class="input_normal" id="cust_grade_lvl" name="cust_grade_lvl" placeholder="레벨" type="text" >                   `;
+			html += `<input class="input_normal" id="cust_grade_lvl" name="cust_grade_lvl" placeholder="레벨"  type="text" onkeyup="$(this).val($(this).val().replace(/[^0-9]/g, ''));" >                   `;
 		} else if (ck == 3 || ck == 4) {
-			html += `<input class="input_normal" id="emp_grade_lvl" name="emp_grade_lvl" placeholder="레벨" type="text" >                   `;
+			html += `<input class="input_normal" id="emp_grade_lvl" name="emp_grade_lvl" placeholder="레벨" type="text"  onkeyup="$(this).val($(this).val().replace(/[^0-9]/g, ''));" >                   `;
 		}
 		html += `				</td> `;                                                                               
 		html += `			</tr>     `;
@@ -1330,10 +1318,6 @@ function make_custgrade_pop(ck, str ,result1) {
 		html += `	</table>          `;
 		html += `</form>              `;
 		makeTwoBtnPopup(2, str, html, true, 500, 200, function() {
-			//텍스트 숫자 포맷팅
-			$("#cust_grade_lvl, #emp_grade_lvl").on("keyup", function() {
-				 $(this).val($(this).val().replace(/[^0-9]/g,""));
-			});
 			// 버튼 크기 자동 조절
 		    $('.btn').each(function() {
 		        if($(this).html().length > 2) {

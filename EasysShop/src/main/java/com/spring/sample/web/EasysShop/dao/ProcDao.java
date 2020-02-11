@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,6 +29,12 @@ public class ProcDao implements IProcDao {
 	public List<HashMap<String, String>> getProcSCate(HashMap<String, String> params) throws Throwable {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("Proc.getProcSCate",params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> getProcCodeList() throws Throwable {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("Proc.getProcCodeList");
 	}
 
 }

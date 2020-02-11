@@ -149,4 +149,14 @@ public class EService implements IEService {
 		iEDao.itemtypeadd(params);
 	}
 
+	@Override
+	public HashMap<String, String> getitemtypedata(HashMap<String, String> params) throws Throwable {
+		return iEDao.getitemtypedata(params);
+	}
+
+	@Override
+	public void itemtypecodeUpdate(HashMap<String, String> params) throws Throwable {
+		iEDao.itemtypecodeUpdate(params);
+	}
+
 }

@@ -24,6 +24,15 @@
     text-indent: 5px;
 }
 
+/* 조회용 */
+.input_read {
+	border: 0px;
+}
+
+.input_read:focus {
+	border: 0px;
+}
+
 /* 사이즈 설정 입력폼 스타일 */
 .input_size {
     height: 30px;

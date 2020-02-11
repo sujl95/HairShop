@@ -180,7 +180,7 @@ public class EController {
 //	고객 등급 삭제 
 	@RequestMapping(value="/custgradedelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
 	@ResponseBody
-	public String custgradedelAjax(@RequestParam HashMap<String, String> params, @RequestParam("pop_check") List<String> pop_check, ModelAndView mav) throws Throwable {
+	public String custgradedelAjax(@RequestParam HashMap<String, String> params, @RequestParam("grade") List<String> pop_check, ModelAndView mav) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		String res = "";
@@ -262,10 +262,9 @@ public class EController {
 //	직원 등급 삭제 
 	@RequestMapping(value="/empgradedelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
 	@ResponseBody
-	public String empgradedelAjax(@RequestParam HashMap<String, String> params, @RequestParam("pop_check") List<String> pop_check, ModelAndView mav) throws Throwable {
+	public String empgradedelAjax(@RequestParam HashMap<String, String> params, @RequestParam("grade") List<String> pop_check, ModelAndView mav) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		System.out.println("param"+params);
 		String res = "";
 		try {
 			for(int i = 0 ; i < pop_check.size(); i++) {
@@ -347,10 +346,9 @@ public class EController {
 //	거래처 삭제 
 	@RequestMapping(value="/compdelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
 	@ResponseBody
-	public String compdelAjax(@RequestParam HashMap<String, String> params, @RequestParam("pop_check") List<String> pop_check, ModelAndView mav) throws Throwable {
+	public String compdelAjax(@RequestParam HashMap<String, String> params, @RequestParam("comp") List<String> pop_check, ModelAndView mav) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		System.out.println("param"+params);
 		String res = "";
 		try {
 			for(int i = 0 ; i < pop_check.size(); i++) {
@@ -481,6 +479,20 @@ public class EController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
+//	상품 분류 코드 데이터 가져오기
+	@RequestMapping(value = "/getitemtypedataAjax",
+			method = RequestMethod.POST,
+			produces = "test/json;charset=UTF-8")
+	@ResponseBody 
+	public String getitemtypedataAjax(@RequestParam HashMap<String, String>params,HttpSession session, ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper= new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		HashMap<String, String> data = iEService.getitemtypedata(params);
+		
+		modelMap.put("data",data);
+		return mapper.writeValueAsString(modelMap);
+	}
+	
 //	상품 분류 코드 중복검사
 	@RequestMapping(value = "/itemtypeckAjax",
 			method = RequestMethod.POST,
@@ -489,7 +501,6 @@ public class EController {
 	public String itemtypeckAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
 		ObjectMapper mapper= new ObjectMapper();
 		Map<String,Object> modelMap = new HashMap<String,Object>();
-		System.out.println("params" + params);
 		try {
 			int ck = iEService.itemtypeck(params);
 			int nmck = iEService.itemnmtypeck(params);
@@ -506,11 +517,46 @@ public class EController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
+//	상품 분류 코드 수정
+	@RequestMapping(value = "/itemtypeupdateAjax",
+			method = RequestMethod.POST,
+			produces = "test/json;charset=UTF-8")
+	@ResponseBody 
+	public String itemtypeupdateAjax(@RequestParam HashMap<String, String>params, ModelAndView modelAndView) throws Throwable{
+		ObjectMapper mapper= new ObjectMapper();
+		Map<String,Object> modelMap = new HashMap<String,Object>();
+		try {
+			if(params.get("nck_val").equals("1")) {
+				int ck = iEService.itemtypeck(params);
+				if(ck == 0) {
+					iEService.itemtypecodeUpdate(params);
+					modelMap.put("res","SUCCESS");
+				} else {
+					modelMap.put("res", "Failed");
+				}
+			} else {
+				int ck = iEService.itemtypeck(params);
+				int nmck = iEService.itemnmtypeck(params);
+				
+				if(ck == 0 && nmck == 0) {
+					iEService.itemtypecodeUpdate(params);
+					modelMap.put("res","SUCCESS");
+				} else {
+					modelMap.put("res", "Failed");
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			modelMap.put("res", "Failed");
+		}
+		return mapper.writeValueAsString(modelMap);
+	}
 	
 //	상품 분류 코드 삭제 
 	@RequestMapping(value="/itemtypedelAjax", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
 	@ResponseBody
-	public String itemtypedelAjax(@RequestParam HashMap<String, String> params, @RequestParam("pop_check") List<String> pop_check, ModelAndView mav) throws Throwable {
+	public String itemtypedelAjax(@RequestParam HashMap<String, String> params, @RequestParam("item_type_check") List<String> pop_check, ModelAndView mav) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		String res = "";

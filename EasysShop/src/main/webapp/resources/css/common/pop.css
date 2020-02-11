@@ -106,13 +106,13 @@ img {
 	text-align : center;
 }
 /* 팝업 크기 관련 */
-.pop_size_small {
-    width: 400px;
-    height: 200px;
-    top: calc(50% - 100px);
-    left: calc(50% - 200px);
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-}
+/* .pop_size_small { */
+/*     width: 400px; */
+/*     height: 200px; */
+/*     top: calc(50% - 100px); */
+/*     left: calc(50% - 200px); */
+/*     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); */
+/* } */
 
 
 

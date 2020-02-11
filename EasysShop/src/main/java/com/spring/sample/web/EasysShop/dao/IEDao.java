@@ -62,4 +62,8 @@ public interface IEDao {
 
 	void itemtypeadd(HashMap<String, String> params) throws Throwable;
 
+	HashMap<String, String> getitemtypedata(HashMap<String, String> params) throws Throwable;
+
+	void itemtypecodeUpdate(HashMap<String, String> params) throws Throwable;
+
 }

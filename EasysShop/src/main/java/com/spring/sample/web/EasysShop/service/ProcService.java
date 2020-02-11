@@ -32,4 +32,10 @@ public class ProcService implements IProcService {
 		return iProcDao.getProcSCate(params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getProcCodeList() throws Throwable {
+		// TODO Auto-generated method stub
+		return iProcDao.getProcCodeList();
+	}
+
 }
