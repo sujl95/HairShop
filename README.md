@@ -1,116 +1,72 @@
-# hairshop
+# MangoCRM
+간단하고 최소한의 기능을 담은 블로그와 개인 블로그입니다.
 
-### Contributer
-- 이성준
-- 조형준
-- 박희재
-- 김태호
-- 김현
+# Project Info
+## Project Info
+- 프로젝트 명 : SLOG(블로그)
+- 개발 기간 : 2019.12.20 ~ 2020.01.20
+- 참여 인원 : 1명
+- 담당 업무 : DB설계, 화면구현, 기능, 개발
+## Use Technology
+- 개발 환경 : Windows 10
+- 사용 도구 : Eclipse Kepler Release, OracleDeveloper
+- 사용 기술 : Java, oracle, jQuery, JSON, Ajax, HTML, CSS, JSP, XML
+# Preview 
+# Main 
+![Main](https://user-images.githubusercontent.com/58777597/75105844-0f2feb00-565c-11ea-9a9f-b54181cfc3c0.PNG)
+# Personal blog
+![개인블로그](https://user-images.githubusercontent.com/58777597/75105847-1bb44380-565c-11ea-9e61-ecccb0b8604c.PNG)
+![개인블로그1](https://user-images.githubusercontent.com/58777597/75105848-1eaf3400-565c-11ea-8612-b162598f08d3.PNG)
+![개인블로그2](https://user-images.githubusercontent.com/58777597/75105851-1fe06100-565c-11ea-9ebb-a1169b8c6dee.PNG)
 
+- 개인 블로그의 카테고리와 글의 개수 댓글 기능 삭제 또는 페이징 기능 카테고리 별 글 리스트를 보여줍니다
 
+## Plan
+![기획1](https://user-images.githubusercontent.com/58777597/75105943-967d5e80-565c-11ea-8a00-8c47fe7cabe2.png)
+![기획2](https://user-images.githubusercontent.com/58777597/75105945-99784f00-565c-11ea-8127-5b184c0d804a.png)
+- Ovenapp.io를 사용하여 디자인 기획을 진행 하였습니다
 
-## README.md 작성 가이드
-### 1. README란?
-일종의 가이드입니다. 해당 프로그램을 실행하기 위한 방법이라던가 프로그램의 스펙에 대해 작성할때 기록합니다.
+## DB Design 
+![스키마](https://user-images.githubusercontent.com/58777597/75105948-9d0bd600-565c-11ea-8599-cbe612961a53.png)
+- Oracle을 사용하여 DB설계를 하였습니다
+## [모듈화]
+- 모듈화된 DB설계를 통하여 확장성 확보
+- 공통 코드 사용을 통하여 데이터 사이즈 축소
 
+## DB ERD
+![ERD](https://user-images.githubusercontent.com/58777597/75105949-a137f380-565c-11ea-8f87-934238ed2b95.png)
+- Drawio를 이용하여 ERD설계를 하였습니다
 
-### 2.1 Header Text
-```
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
-```
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
-이중 H1과 H3를 각각 대제목 부제목으로 활용합니다.
+## Table Definition
+![테이블정의서](https://user-images.githubusercontent.com/58777597/75105953-a6953e00-565c-11ea-9d56-9e7c0fdf134d.png)
+- 모델링 데이터를 기준으로 테이블 정의서 작성
 
+## Framework Design
+[Spring 3.9]
+- Annotation Driven을 통한 컨트롤러 호출
+- Resource Mappting을 통한 리소스 폴더 관리
 
-### 2.2 BlockQuote
-```
-> BlockQuote
->> BlockQuote
-```
-> BlockQuote1
->> BlockQuote2
-
-들여쓰기 가시화입니다. 텍스트의 색이 옅어지며 안에는 다른 마크다운 요소들도 포함할 수 있습니다.
-
-
-### 2.3 Text Styling
-```
-*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-~~cancelline~~
-```
-*single asterisks*
-_single underscores_
-**double asterisks**
-__double underscores__
-~~cancelline~~
-
-텍스트 스타일 마크다운입니다. 보통은 BOLD를 많이 활용합니다.
+[MyBatis]
+- MyBatis와 Oracle 연동 구현
+- Connection Pool 셋팅을 통한 DB 연결 최적화
 
 
-### 2.4 구분선(수평선)
-```
-* * *
-***
-*****
-- - -
----------------------------------------
-```
+## Development Tools
+- eclipse
+- sqldeveloper
 
-* * *
-***
-*****
-- - -
----------------------------------------
-
-모두 수평선을 그어주는 마크다운입니다.
+## Using Language
+- Java
+- HTML, CSS3, JavaScript, jQuery
 
 
-### 2.5 목차
-```
-- 순서
-  - 없는
-    - 목차
-
-1. 순서
-2. 있는
-3. 목차
-```
-- 순서
-  - 없는
-    - 목차
-
-1. 순서
-2. 있는
-3. 목차
-
-목차를 구분할 때 사용합니다.
-
-
-### 2.6 코드로 묶기(박스)
-```
-``` 이렇게 씁니다. ```
-```
-``` 이렇게 씁니다. ```
-
-다른 마크다운이나 특수기호들, 코드 등을 묶어서 보여줄때 사용합니다. 
-마크다운 언어가 미적용되며 쓰여진 그대로 나타납니다.
-
-
-- - -
-위의 기능을 이용하면 대부분의 README.md를 작성할 수 있습니다.
-README.md는 각자의 코드가 무슨 역할을 하는지 작성하는 요약본으로 Contributer나 이용자에게 용이합니다.
-링크를 거는법이나 이미지를 삽입하는 법을 알고 싶으시면 저한테 물어보세요!
-
+## Development Environment
+- JDK 1.8.0
+- Spring Framework 3.9.10
+- maven-eclipse-plugin 2.9
+- Mybatis 3.2.7
+- Log4j 1.2.15
+- Servlet 3.0.1
+- DB : Oracle 12.1.0.2.0
+- Server : Tomcat 8.5
+- jQuery 1.12.4
