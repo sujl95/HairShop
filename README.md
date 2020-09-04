@@ -20,6 +20,19 @@
 ![기획2](https://user-images.githubusercontent.com/58777597/75116195-1df0bf00-56a9-11ea-93e3-d9241d16ecdf.png)
 - Ovenapp.io를 사용하여 디자인 기획을 진행 하였습니다
 
+## Code
+
+![EASYSSHOP-Controller](https://user-images.githubusercontent.com/58777597/92227010-964dfd80-eee0-11ea-9f60-5724177c92e9.PNG)
+![EASYSSHOP-Mapper](https://user-images.githubusercontent.com/58777597/92227720-a4e8e480-eee1-11ea-88f4-b771c8b14a46.PNG)
+![EASYSSHOP-Mapper1](https://user-images.githubusercontent.com/58777597/92227722-a61a1180-eee1-11ea-96df-f51787a3aeb4.PNG)
+![EASYSSHOP-reservationJSP](https://user-images.githubusercontent.com/58777597/92227730-a7e3d500-eee1-11ea-9df2-67520172f028.PNG)
+![EASYSSHOP-reservationJSP1](https://user-images.githubusercontent.com/58777597/92227734-a9150200-eee1-11ea-915b-b31a6ed5c9cc.PNG)
+![EASYSSHOP-reservationJSP2](https://user-images.githubusercontent.com/58777597/92227740-aadec580-eee1-11ea-9575-886055afb094.PNG)
+![EASYSSHOP-topLeftJSP](https://user-images.githubusercontent.com/58777597/92227744-ac0ff280-eee1-11ea-9cb8-c34ea9149dd2.PNG)
+
+-일부 구현 코드
+
+
 ## DB Design 
 ![스키마](https://user-images.githubusercontent.com/58777597/75116208-44165f00-56a9-11ea-95ee-79a805950688.PNG)
 - Oracle을 사용하여 DB설계를 하였습니다
