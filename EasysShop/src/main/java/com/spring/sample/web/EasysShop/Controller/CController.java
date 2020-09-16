@@ -29,14 +29,10 @@ public class CController {
 	@ResponseBody
 	public String customerListAjax(@RequestParam HashMap<String, String> params, ModelAndView modelAndView)
 			throws Throwable {
-
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-
 		
-		System.out.println(params);
 		int cnt = iCService.getcustomerCnt(params);
-		 
 		
 		 PagingBean pb =
 		 iPagingService.getPagingBean(Integer.parseInt(params.get("page")), cnt, 10,
@@ -44,12 +40,8 @@ public class CController {
 		 
 		 params.put("startCnt", Integer.toString(pb.getStartCount()));
 		 params.put("endCnt", Integer.toString(pb.getEndCount()));
-		 
-		 
-		
 
 		List<HashMap<String, String>> list = iCService.getCustomerlist(params);
-		
 		
 		modelMap.put("list", list);
 		modelMap.put("pb", pb);
