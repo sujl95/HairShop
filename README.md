@@ -1,44 +1,55 @@
-# MangoCRM
-간단하고 최소한의 기능을 담은 블로그와 개인 블로그입니다.
+# EasysShop
+간편하고 사용하기 쉬운 헤어샵 고객관리 프로그램 입니다.
 
 # Project Info
-## Project Info
-- 프로젝트 명 : SLOG(블로그)
-- 개발 기간 : 2019.12.20 ~ 2020.01.20
-- 참여 인원 : 1명
+- 프로젝트 명 : EasysShop(고객관리)
+- 개발 기간 : 2019.12.01 ~ 2020.02.12
+- 참여 인원 : 5명 (PL)
 - 담당 업무 : DB설계, 화면구현, 기능, 개발
 ## Use Technology
 - 개발 환경 : Windows 10
 - 사용 도구 : Eclipse Kepler Release, OracleDeveloper
 - 사용 기술 : Java, oracle, jQuery, JSON, Ajax, HTML, CSS, JSP, XML
 # Preview 
-# Main 
-![Main](https://user-images.githubusercontent.com/58777597/75105844-0f2feb00-565c-11ea-9a9f-b54181cfc3c0.PNG)
-# Personal blog
-![개인블로그](https://user-images.githubusercontent.com/58777597/75105847-1bb44380-565c-11ea-9e61-ecccb0b8604c.PNG)
-![개인블로그1](https://user-images.githubusercontent.com/58777597/75105848-1eaf3400-565c-11ea-8612-b162598f08d3.PNG)
-![개인블로그2](https://user-images.githubusercontent.com/58777597/75105851-1fe06100-565c-11ea-9ebb-a1169b8c6dee.PNG)
-
-- 개인 블로그의 카테고리와 글의 개수 댓글 기능 삭제 또는 페이징 기능 카테고리 별 글 리스트를 보여줍니다
+![S_예약일정](https://user-images.githubusercontent.com/58777597/75116068-d158b400-56a7-11ea-9442-89c4735ff4c8.PNG)
+![S_월간 예약 목록](https://user-images.githubusercontent.com/58777597/75116069-d3227780-56a7-11ea-8afe-8dccbf875948.PNG)
+![S_월간 일정 목록](https://user-images.githubusercontent.com/58777597/75116071-d453a480-56a7-11ea-8b30-b5c14e011a3c.PNG)
 
 ## Plan
-![기획1](https://user-images.githubusercontent.com/58777597/75105943-967d5e80-565c-11ea-8a00-8c47fe7cabe2.png)
-![기획2](https://user-images.githubusercontent.com/58777597/75105945-99784f00-565c-11ea-8127-5b184c0d804a.png)
+![기획1](https://user-images.githubusercontent.com/58777597/75116197-1f21ec00-56a9-11ea-9c1e-4d7bdb333c83.png)
+![기획2](https://user-images.githubusercontent.com/58777597/75116195-1df0bf00-56a9-11ea-93e3-d9241d16ecdf.png)
 - Ovenapp.io를 사용하여 디자인 기획을 진행 하였습니다
 
+## Code
+
+![EASYSSHOP-Controller](https://user-images.githubusercontent.com/58777597/92227010-964dfd80-eee0-11ea-9f60-5724177c92e9.PNG)
+![EASYSSHOP-Mapper](https://user-images.githubusercontent.com/58777597/92227720-a4e8e480-eee1-11ea-88f4-b771c8b14a46.PNG)
+![EASYSSHOP-Mapper1](https://user-images.githubusercontent.com/58777597/92227722-a61a1180-eee1-11ea-96df-f51787a3aeb4.PNG)
+![EASYSSHOP-reservationJSP](https://user-images.githubusercontent.com/58777597/92227730-a7e3d500-eee1-11ea-9df2-67520172f028.PNG)
+![EASYSSHOP-reservationJSP1](https://user-images.githubusercontent.com/58777597/92227734-a9150200-eee1-11ea-915b-b31a6ed5c9cc.PNG)
+![EASYSSHOP-reservationJSP2](https://user-images.githubusercontent.com/58777597/92227740-aadec580-eee1-11ea-9575-886055afb094.PNG)
+![EASYSSHOP-topLeftJSP](https://user-images.githubusercontent.com/58777597/92227744-ac0ff280-eee1-11ea-9cb8-c34ea9149dd2.PNG)
+
+-일부 구현 코드
+
+
 ## DB Design 
-![스키마](https://user-images.githubusercontent.com/58777597/75105948-9d0bd600-565c-11ea-8599-cbe612961a53.png)
+![스키마](https://user-images.githubusercontent.com/58777597/75116208-44165f00-56a9-11ea-95ee-79a805950688.PNG)
 - Oracle을 사용하여 DB설계를 하였습니다
 ## [모듈화]
 - 모듈화된 DB설계를 통하여 확장성 확보
 - 공통 코드 사용을 통하여 데이터 사이즈 축소
 
 ## DB ERD
-![ERD](https://user-images.githubusercontent.com/58777597/75105949-a137f380-565c-11ea-8f87-934238ed2b95.png)
+![ERD](https://user-images.githubusercontent.com/58777597/75116212-52647b00-56a9-11ea-8a9a-36c8735aec4d.png)
 - Drawio를 이용하여 ERD설계를 하였습니다
-
+![기능정의서](https://user-images.githubusercontent.com/58777597/75116252-b7b86c00-56a9-11ea-9ea7-3e56868b11be.png)
+- 기능정의서 작성
+![메타데이터](https://user-images.githubusercontent.com/58777597/75116253-b9822f80-56a9-11ea-83e5-513c5b0784e6.png)
+- 기능정의서를 기반으로 나온 명사들의 명을 정의
+- 회의를 통하여 팀원간 중복된 메타명 조정
 ## Table Definition
-![테이블정의서](https://user-images.githubusercontent.com/58777597/75105953-a6953e00-565c-11ea-9d56-9e7c0fdf134d.png)
+![테이블정의서](https://user-images.githubusercontent.com/58777597/75116220-601a0080-56a9-11ea-8fc5-1cb5826fbbf6.png)
 - 모델링 데이터를 기준으로 테이블 정의서 작성
 
 ## Framework Design
@@ -50,6 +61,14 @@
 - MyBatis와 Oracle 연동 구현
 - Connection Pool 셋팅을 통한 DB 연결 최적화
 
+[MAVEN]
+자바 프로젝트의 빌드(build)를 자동화 해주는 빌드 툴(build tool)이다.
+즉, 자바 소스를 compile하고 package해서 deploy하는 일을 자동화 해주는 것이다.
+
+## Devlop
+[SVN을 통한 공동작업]
+- SVN을 활용하여 팀 작업을 진행
+- 파트별 개발을 통한 개발일정 단축
 
 ## Development Tools
 - eclipse
@@ -70,3 +89,7 @@
 - DB : Oracle 12.1.0.2.0
 - Server : Tomcat 8.5
 - jQuery 1.12.4
+
+## DevOps
+- Github
+- SVN
