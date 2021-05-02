@@ -42,7 +42,7 @@
 - 기능정의서 작성
 
 ## 협업 툴
-![img.png](www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc3c9469a-3929-46b4-9941-bb8e284c93d4%2FUntitled.png?table=block&id=d8a7cb63-6346-434a-9a6c-6ab63c6b5436&width=1920&userId=6fccea26-95c2-4666-8989-cbba516a665f&cache=v2)
+![img.png](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc3c9469a-3929-46b4-9941-bb8e284c93d4%2FUntitled.png?table=block&id=d8a7cb63-6346-434a-9a6c-6ab63c6b5436&width=1920&userId=6fccea26-95c2-4666-8989-cbba516a665f&cache=v2)
 
 ## Table Definition
 ![테이블정의서](https://user-images.githubusercontent.com/58777597/75116220-601a0080-56a9-11ea-8fc5-1cb5826fbbf6.png)
