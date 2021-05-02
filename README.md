@@ -27,10 +27,6 @@
 ![S_월간 예약 목록](https://user-images.githubusercontent.com/58777597/75116069-d3227780-56a7-11ea-8afe-8dccbf875948.PNG)
 ![S_월간 일정 목록](https://user-images.githubusercontent.com/58777597/75116071-d453a480-56a7-11ea-8b30-b5c14e011a3c.PNG)
 
-## Plan
-![기획1](https://user-images.githubusercontent.com/58777597/75116197-1f21ec00-56a9-11ea-9c1e-4d7bdb333c83.png)
-![기획2](https://user-images.githubusercontent.com/58777597/75116195-1df0bf00-56a9-11ea-93e3-d9241d16ecdf.png)
-
 ## 모듈화
 - 모듈화된 DB설계를 통하여 확장성 확보
 - 공통 코드 사용을 통하여 데이터 사이즈 축소
@@ -40,16 +36,14 @@
 
 ## DB ERD
 ![ERD](https://user-images.githubusercontent.com/58777597/75116212-52647b00-56a9-11ea-8a9a-36c8735aec4d.png)
+
+## 기능정의서
 ![기능정의서](https://user-images.githubusercontent.com/58777597/75116252-b7b86c00-56a9-11ea-9ea7-3e56868b11be.png)
 - 기능정의서 작성
-![메타데이터](https://user-images.githubusercontent.com/58777597/75116253-b9822f80-56a9-11ea-83e5-513c5b0784e6.png)
-- 기능정의서를 기반으로 나온 명사들의 명을 정의
-- 회의를 통하여 팀원간 중복된 메타명 조정
+
+## 협업 툴
+![img.png](www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc3c9469a-3929-46b4-9941-bb8e284c93d4%2FUntitled.png?table=block&id=d8a7cb63-6346-434a-9a6c-6ab63c6b5436&width=1920&userId=6fccea26-95c2-4666-8989-cbba516a665f&cache=v2)
+
 ## Table Definition
 ![테이블정의서](https://user-images.githubusercontent.com/58777597/75116220-601a0080-56a9-11ea-8fc5-1cb5826fbbf6.png)
 - 모델링 데이터를 기준으로 테이블 정의서 작성
-
-## Devlop
-[SVN을 통한 공동작업]
-- SVN을 활용하여 팀 작업을 진행
-- 파트별 개발을 통한 개발일정 단축
